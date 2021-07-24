@@ -5,7 +5,6 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 
 import androidx.activity.OnBackPressedCallback;
-import androidx.annotation.Keep;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
@@ -13,14 +12,10 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.util.Log;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -28,8 +23,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.rayadev.byoc.R;
-import com.rayadev.byoc.room.Converter;
-import com.rayadev.byoc.room.ConverterViewModel;
+import com.rayadev.byoc.model.Converter;
 
 import java.util.ArrayList;
 import java.util.List;

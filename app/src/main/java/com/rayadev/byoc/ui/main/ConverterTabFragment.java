@@ -2,20 +2,16 @@ package com.rayadev.byoc.ui.main;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.lifecycle.ViewModelStoreOwner;
 
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
@@ -29,12 +25,9 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.rayadev.byoc.MainActivity;
 import com.rayadev.byoc.R;
-import com.rayadev.byoc.room.Converter;
-import com.rayadev.byoc.room.ConverterViewModel;
+import com.rayadev.byoc.model.Converter;
 
-import java.util.ArrayList;
 import java.util.List;
 
 

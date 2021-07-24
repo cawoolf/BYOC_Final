@@ -1,29 +1,20 @@
 package com.rayadev.byoc.ui.main;
 
-import android.content.res.Resources;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
 
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.rayadev.byoc.MainActivity;
 import com.rayadev.byoc.R;
-import com.rayadev.byoc.room.ConverterRepository;
-import com.rayadev.byoc.room.ConverterViewModel;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
 
 public class SpinnerScrollViewFragment extends Fragment {
 

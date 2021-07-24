@@ -1,26 +1,17 @@
 package com.rayadev.byoc;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
-import android.view.View;
 import android.view.WindowManager;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.cardview.widget.CardView;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.tabs.TabLayout;
-import com.rayadev.byoc.room.Converter;
-import com.rayadev.byoc.room.ConverterViewModel;
-import com.rayadev.byoc.ui.main.CustomConverterActivity;
 import com.rayadev.byoc.ui.main.PageAdapter;
 
 public class MainActivity extends AppCompatActivity {

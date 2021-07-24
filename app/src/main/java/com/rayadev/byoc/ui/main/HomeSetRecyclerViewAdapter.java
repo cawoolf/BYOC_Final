@@ -13,7 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.rayadev.byoc.R;
-import com.rayadev.byoc.room.Converter;
+import com.rayadev.byoc.model.Converter;
 
 import java.util.ArrayList;
 
