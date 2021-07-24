@@ -126,8 +126,6 @@ public class SpinnerScrollViewFragment extends Fragment {
 
                     sendConverterName();
 
-
-
                 }
 
 
@@ -166,7 +164,7 @@ public class SpinnerScrollViewFragment extends Fragment {
             String converterName = converterUnitAName + converterUnitBName;
 
             mUserConverterSelection.sendConverterName(converterName);
-            mUserConverterSelection.setConverterBoxName(converterUnitAName, converterUnitBName);
+            mUserConverterSelection.setUnitNames (converterUnitAName, converterUnitBName);
 
             Log.i("TAGS", converterName);
             converterUnitAName ="";
@@ -177,7 +175,8 @@ public class SpinnerScrollViewFragment extends Fragment {
     public interface UserConverterSelection {
 
         void sendConverterName(String converterName);
-        void setConverterBoxName(String converterUnitAName, String converterUnitBName);
+        void setUnitNames (String converterUnitAName, String converterUnitBName); //Use this more to interact with the enums
+
     }
 
 

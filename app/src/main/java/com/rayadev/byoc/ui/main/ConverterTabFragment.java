@@ -10,6 +10,8 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -36,7 +38,7 @@ public class ConverterTabFragment extends Fragment {
 
 
     private int spinnerID;
-    private ConverterViewModel mConverterViewModel;
+
 
     //Views for the converter UI
     private TextView mUnitATitleTextView, mUnitBTitleTextView;
@@ -95,7 +97,6 @@ public class ConverterTabFragment extends Fragment {
     private void linkViews(View view) {
 
         //SetUp View Model
-        mConverterViewModel = new ViewModelProvider(this).get(ConverterViewModel.class);
 
         //Set Up Bottom UI
         mBuildConverterButton = view.findViewById(R.id.build_converter_button);
@@ -127,8 +128,6 @@ public class ConverterTabFragment extends Fragment {
         mAddConverterButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Converter converter = new Converter("M","FT",1,1, "distance");
-                mConverterViewModel.insertConverter(converter);
 
                 Toast.makeText(getContext(), "Add clicked", Toast.LENGTH_SHORT).show();
             }
@@ -184,14 +183,17 @@ public class ConverterTabFragment extends Fragment {
             public void sendConverterName(String converterName) {
                 Toast.makeText(getContext(), converterName, Toast.LENGTH_SHORT).show();
 
-                setUpTargetConverter(converterName);
 
             }
 
             @Override
-            public void setConverterBoxName(String converterUnitAName, String converterUnitBName) {
-//                        mUnitATitleTextView.setText(converterUnitAName);
-//                        mUnitBTitleTextView.setText(converterUnitBName);
+            public void setUnitNames(String converterUnitAName, String converterUnitBName) {
+                    Converter.Unit fromUnit = Converter.Unit.fromString(converterUnitAName);
+                    Converter.Unit toUnit = Converter.Unit.fromString(converterUnitBName);
+
+                    setConverterBoxTitles(converterUnitAName, converterUnitBName);
+
+                    setConverterBoxLogic(fromUnit, toUnit);
             }
         });
 
@@ -209,67 +211,44 @@ public class ConverterTabFragment extends Fragment {
 
     private void setConverterBoxTitles(String unitAText, String unitBText) {
 
-        //Does this actually happen on a seperate thread?
-//        Toast.makeText(getContext(), "Thread Success", Toast.LENGTH_SHORT).show();
         mUnitATitleTextView.setText(unitAText);
         mUnitBTitleTextView.setText(unitBText);
 
     }
 
-    private void setUpTargetConverter(String converterName) {
 
-        //Creating multiple instances of this view model just to access the database seems not good..
-        //But that's not really whats happening!.. Right?
-        ConverterViewModel mConverterViewModel = new ViewModelProvider(this).get(ConverterViewModel.class);
+    private void setConverterBoxLogic(Converter.Unit fromUnit, Converter.Unit toUnit) {
 
-        LiveData<List<Converter>> converterData = mConverterViewModel.getTargetConverter(converterName);
-
-
-        //This observer seems to be getting triggered from the add button, and other fragments.
-        Observer<List<Converter>> observer = new Observer<List<Converter>>() {
-            @Override
-            public void onChanged(List<Converter> converters) {
-                //This code just sets up a converter for an example
-              Converter converter = converters.get(0);
-              Log.i("TAG1", "converter observer triggered");
-
-                String unitATitle = converter.getConverterUnitA_Name();
-                String unitBTitle = converter.getConverterUnitB_Name();
-
-                setConverterBoxTitles(unitATitle, unitBTitle);
-                setConverterBoxLogic(converter.getConverterUnitA_Value(), converter.getConverterUnitB_Value());
-
-            }
-        };
-
-        converterData.observe(getViewLifecycleOwner(), observer);
-
-    }
-
-
-    private void setConverterBoxLogic(double unitAValue, double unitBValue) {
-
-        final MyTextWatcherUtils[] myTextWatcherUtils = new MyTextWatcherUtils[2];
-
-        myTextWatcherUtils[0] = new MyTextWatcherUtils(1, unitAValue, unitBValue, mUnitAInputEditText, mUnitBInputEditText);
-        myTextWatcherUtils[1] = new MyTextWatcherUtils(2, unitAValue, unitBValue, mUnitAInputEditText, mUnitBInputEditText);
-
-        mUnitAInputEditText.clearFocus();
-        mUnitBInputEditText.clearFocus();
 
         clearUserInput();
 
-        myTextWatcherUtils[0].setUnitEditTextWatcher(mUnitAInputEditText);
-        myTextWatcherUtils[1].setUnitEditTextWatcher(mUnitBInputEditText);
+        Converter fromUnit_toUnit = new Converter(fromUnit, toUnit);
+        Converter toUnit_fromUnit = new Converter(toUnit, fromUnit);
+
+        mUnitAInputEditText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                double input = Double.parseDouble(mUnitAInputEditText.getText().toString());
+
+                double result = fromUnit_toUnit.convert(input);
+                mUnitAInputEditText.setText(String.valueOf(result));
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
 
         keyboardManager();
 
-        mUnitBInputEditText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-                clearUserInput();
-            }
-        });
+        //Need TextWatchers here as well
 
         mUnitBInputEditText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
@@ -278,47 +257,14 @@ public class ConverterTabFragment extends Fragment {
             }
         });
 
-//        mUnitAInputEditText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-//            @Override
-//            public void onFocusChange(View v, boolean hasFocus) {
-//                if(hasFocus) {
-//                    clearUserInput();
-//
-//                    Log.i("FTAG", "AET HF");
-//                    myTextWatcherUtils[0].setUnitEditTextWatcher(mUnitAInputEditText);
-//
-//
-//                }
-//
-//                else {
-//
-//                    myTextWatcherUtils[0].removeTextWatcher(mUnitAInputEditText);
-//                    Log.i("FTAG", "AET TWR");
-//                }
-//
-//
-//            }
-//        });
-//
-//        mUnitBInputEditText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-//            @Override
-//            public void onFocusChange(View v, boolean hasFocus) {
-//                if(hasFocus) {
-//                    clearUserInput();
-//
-//                    Log.i("FTAG", "BET HF");
-//                    myTextWatcherUtils[1].setUnitEditTextWatcher(mUnitBInputEditText);
-//
-//                }
-//
-//                else {
-//
-//                    //TextWatcher not being remove here for some reason.
-//                    myTextWatcherUtils[1].removeTextWatcher(mUnitBInputEditText);
-//                    Log.i("FTAG", "BET TWR");
-//                }
-//            }
-//        });
+        mUnitBInputEditText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                clearUserInput();
+            }
+        });
+
+
 
 
 

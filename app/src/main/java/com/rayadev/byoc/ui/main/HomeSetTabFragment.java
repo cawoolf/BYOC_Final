@@ -38,7 +38,7 @@ public class HomeSetTabFragment extends Fragment implements HomeSetRecyclerViewA
 
     private RecyclerView mRecyclerView;
     private HomeSetRecyclerViewAdapter mAdapter;
-    private ConverterViewModel mConverterViewModel;
+
     private View mConverterUI;
 
 
@@ -101,7 +101,7 @@ public class HomeSetTabFragment extends Fragment implements HomeSetRecyclerViewA
         // Create an adapter and supply the data to be displayed.
         mAdapter = new HomeSetRecyclerViewAdapter(view.getContext(), this);
 
-        setUpConverterViewModel(mAdapter);
+
 
         // Connect the adapter with the RecyclerView.
         mRecyclerView.setAdapter(mAdapter);
@@ -110,25 +110,7 @@ public class HomeSetTabFragment extends Fragment implements HomeSetRecyclerViewA
         mRecyclerView.setLayoutManager(new GridLayoutManager(view.getContext(), 3));
     }
 
-    private void setUpConverterViewModel(final HomeSetRecyclerViewAdapter adapter) {
 
-
-        //all the activity's interactions are with the ViewModel only.
-        // When the activity is destroyed, the ViewModel still exists. It is not subject to LifeCycle methods.
-        mConverterViewModel = new ViewModelProvider(this).get(ConverterViewModel.class); //Call ViewModel constructor directly
-
-        //Going to need a Favorites Table for this one..
-
-        //To display the current contents of the database, you add an observer that observes the LiveData in the ViewModel.
-        mConverterViewModel.getFavoriteConverters().observe(getViewLifecycleOwner(), new Observer<List<Converter>>() {
-            @Override
-            public void onChanged(List<Converter> converters) {
-                adapter.setConverterArrayList((ArrayList<Converter>) converters);
-                //Clear it does need this.. or else it won't update the HomeSet.
-            }
-        });
-
-    }
 
     //Sets the Converter data into the fragment Converter UI.
     @Override
@@ -172,7 +154,7 @@ public class HomeSetTabFragment extends Fragment implements HomeSetRecyclerViewA
                 // The dialog is automatically dismissed when a dialog button is clicked.
                 .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
-                        mConverterViewModel.deleteConverterByID(converterID);
+
 
                     }
                 })

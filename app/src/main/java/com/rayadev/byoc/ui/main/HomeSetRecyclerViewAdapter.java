@@ -50,17 +50,17 @@ public class HomeSetRecyclerViewAdapter extends RecyclerView.Adapter<HomeSetRecy
             Converter mConverter = mConverterArrayList.get(position);
 
            //Set the views for the holder.
-            holder.mConverterUnitA_Name.setText(mConverter.getConverterUnitA_Name());
-            holder.mConverterUnitB_Name.setText(mConverter.getConverterUnitB_Name());
-            //holder.mConverterImageView.setImageResource(mConverter.getConverterBoxImageID());
-
-            //Pass the data from converter down to the holder.
-            holder.converterID = mConverter.getConverterID();
-            holder.unitAName = mConverter.getConverterUnitA_Name();
-            holder.unitBName = mConverter.getConverterUnitB_Name();
-            holder.unitAValue = mConverter.getConverterUnitA_Value();
-            holder.unitBValue = mConverter.getConverterUnitB_Value();
-            holder.unitCategory = mConverter.getConverterCategory();
+//            holder.mConverterUnitA_Name.setText(mConverter.getConverterUnitA_Name());
+//            holder.mConverterUnitB_Name.setText(mConverter.getConverterUnitB_Name());
+//            //holder.mConverterImageView.setImageResource(mConverter.getConverterBoxImageID());
+//
+//            //Pass the data from converter down to the holder.
+//            holder.converterID = mConverter.getConverterID();
+//            holder.unitAName = mConverter.getConverterUnitA_Name();
+//            holder.unitBName = mConverter.getConverterUnitB_Name();
+//            holder.unitAValue = mConverter.getConverterUnitA_Value();
+//            holder.unitBValue = mConverter.getConverterUnitB_Value();
+//            holder.unitCategory = mConverter.getConverterCategory();
 
 //            if (position%2 == 0) {
 //                holder.mConverterImageView.setImageResource(R.drawable.converter_icon_weight);

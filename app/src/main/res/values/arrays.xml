@@ -21,4 +21,5 @@
         <item>@id/DB7</item>
         <item>@id/DB8</item>
     </integer-array>
+
 </resources>
