@@ -17,7 +17,6 @@ import com.rayadev.byoc.ui.main.PageAdapter;
 public class MainActivity extends AppCompatActivity {
 
     private CardView mConverterCardView;
-    public ConverterViewModel mConverterViewModel;
 
 
     @Override
@@ -38,8 +37,6 @@ public class MainActivity extends AppCompatActivity {
         setUpPageAdapter(tabLayout);
 
     }
-
-
 
 
     private void keyBoardManager() {
