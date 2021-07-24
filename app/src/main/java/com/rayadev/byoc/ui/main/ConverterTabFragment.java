@@ -220,23 +220,46 @@ public class ConverterTabFragment extends Fragment {
     private void setConverterBoxLogic(Converter.Unit fromUnit, Converter.Unit toUnit) {
 
 
+        final int[] userChoice = new int[1];
         clearUserInput();
 
         Converter fromUnit_toUnit = new Converter(fromUnit, toUnit);
         Converter toUnit_fromUnit = new Converter(toUnit, fromUnit);
 
-        mUnitAInputEditText.addTextChangedListener(new TextWatcher() {
+        TextWatcher converterTextWatcher = new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+                if(mUnitAInputEditText.hasFocus()) {
+                    userChoice[0] = 1;
+                }
+                else if(mUnitBInputEditText.hasFocus()) {
+                    userChoice[0] = 2;
+                }
+
 
             }
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                double input = Double.parseDouble(mUnitAInputEditText.getText().toString());
 
-                double result = fromUnit_toUnit.convert(input);
-                mUnitAInputEditText.setText(String.valueOf(result));
+                switch(userChoice[0]) {
+                    case 1:
+                        double input = Double.parseDouble(mUnitAInputEditText.getText().toString());
+
+                        double result = fromUnit_toUnit.convert(input);
+                        mUnitAInputEditText.setText(String.valueOf(result));
+                        break;
+
+                    case 2:
+                        double input2 = Double.parseDouble(mUnitBInputEditText.getText().toString());
+
+                        double result2 = toUnit_fromUnit.convert(input2);
+                        mUnitBInputEditText.setText(String.valueOf(result2));
+                        break;
+
+
+                }
 
             }
 
@@ -244,27 +267,10 @@ public class ConverterTabFragment extends Fragment {
             public void afterTextChanged(Editable s) {
 
             }
-        });
+        };
 
-        keyboardManager();
-
-        //Need TextWatchers here as well
-
-        mUnitBInputEditText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-                clearUserInput();
-            }
-        });
-
-        mUnitBInputEditText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-                clearUserInput();
-            }
-        });
-
-
+        mUnitAInputEditText.addTextChangedListener(converterTextWatcher);
+        mUnitBInputEditText.addTextChangedListener(converterTextWatcher);
 
 
 
