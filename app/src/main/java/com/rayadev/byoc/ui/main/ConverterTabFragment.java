@@ -232,6 +232,7 @@ public class ConverterTabFragment extends Fragment {
 
                 if(mUnitAInputEditText.hasFocus()) {
                     userChoice[0] = 1;
+
                 }
                 else if(mUnitBInputEditText.hasFocus()) {
                     userChoice[0] = 2;
