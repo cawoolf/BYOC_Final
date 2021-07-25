@@ -174,12 +174,12 @@ public class HomeSetTabFragment extends Fragment implements HomeSetRecyclerViewA
 
     }
 
-    private void setConverterBoxLogic(double unitAValue, double unitBValue) {
+    private void setConverterBoxLogic(double unitAValue, double unitBValue) { //Duplicated code from the ConverterTabFragment
 
         final MyTextWatcherUtils[] myTextWatcherUtils = new MyTextWatcherUtils[2];
 
-        myTextWatcherUtils[0] = new MyTextWatcherUtils(1, unitAValue, unitBValue, mUnitAInputEditText, mUnitBInputEditText);
-        myTextWatcherUtils[1] = new MyTextWatcherUtils(2, unitAValue, unitBValue, mUnitAInputEditText, mUnitBInputEditText);
+//        myTextWatcherUtils[0] = new MyTextWatcherUtils(1, unitAValue, unitBValue, mUnitAInputEditText, mUnitBInputEditText);
+//        myTextWatcherUtils[1] = new MyTextWatcherUtils(2, unitAValue, unitBValue, mUnitAInputEditText, mUnitBInputEditText);
 
         mUnitAInputEditText.clearFocus();
         mUnitBInputEditText.clearFocus();
@@ -204,42 +204,6 @@ public class HomeSetTabFragment extends Fragment implements HomeSetRecyclerViewA
             }
         });
 
-
-
-//        mUnitAInputEditText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-//            @Override
-//            public void onFocusChange(View v, boolean hasFocus) {
-//                if(hasFocus) {
-//                    clearUserInput();
-////                    Log.i("FTAG", "AET HF");
-//                    myTextWatcherUtils[0].setUnitEditTextWatcher(mUnitAInputEditText);
-//                }
-//
-//                else if(!hasFocus){
-//
-//                    myTextWatcherUtils[0].removeTextWatcher(mUnitAInputEditText);
-////                    Log.i("FTAG", "AET TWR");
-//                }
-//
-//
-//            }
-//        });
-//
-//        mUnitBInputEditText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-//            @Override
-//            public void onFocusChange(View v, boolean hasFocus) {
-//                if(hasFocus) {
-//                    clearUserInput();
-//                    myTextWatcherUtils[1].setUnitEditTextWatcher(mUnitBInputEditText);
-////                    Log.i("FTAG", "BET HF");
-//                }
-//
-//                else if(!hasFocus) {
-//                    myTextWatcherUtils[1].removeTextWatcher(mUnitBInputEditText);
-////                    Log.i("FTAG", "BET TWR");
-//                }
-//            }
-//        });
 
 
     }

@@ -4,6 +4,8 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.widget.EditText;
 
+import com.rayadev.byoc.model.Converter;
+
 class MyTextWatcherUtils {
 
     private EditText viewA, viewB;
@@ -12,7 +14,7 @@ class MyTextWatcherUtils {
 
     private TextWatcher mTextWatcher;
 
-    MyTextWatcherUtils(int userSelection, double unitAValue, double unitBValue, EditText viewA, EditText viewB) {
+    MyTextWatcherUtils(int userSelection, EditText viewA, EditText viewB, Converter converter) {
 
         this.userSelection = userSelection;
         this.unitAValue = unitAValue;
