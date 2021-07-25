@@ -9,7 +9,7 @@ import com.rayadev.byoc.model.Converter;
 class MyTextWatcherUtils {
 
     private EditText viewA, viewB;
-    private double unitAValue, unitBValue;
+    private Converter converter;
     private int userSelection;
 
     private TextWatcher mTextWatcher;
@@ -17,8 +17,7 @@ class MyTextWatcherUtils {
     MyTextWatcherUtils(int userSelection, EditText viewA, EditText viewB, Converter converter) {
 
         this.userSelection = userSelection;
-        this.unitAValue = unitAValue;
-        this.unitBValue = unitBValue;
+        this.converter = converter;
 
         this.viewA = viewA;
         this.viewB = viewB;
@@ -41,13 +40,13 @@ class MyTextWatcherUtils {
                 switch(userSelection) {
                     case 1:
                         if(viewA.isFocused()) {
-                            runConversionAB();
+                            runConversionAB(converter);
                         }
 
                         break;
                     case 2:
                         if(viewB.isFocused()) {
-                            runConversionBA();
+                            runConversionBA(converter);
                         }
                         break;
                 }
@@ -68,35 +67,33 @@ class MyTextWatcherUtils {
         userInputEditText.removeTextChangedListener(mTextWatcher);
     }
 
-    private void runConversionAB() {
+    private void runConversionAB(Converter converter) {
 
         String editTextAInputString = String.valueOf(viewA.getText());
         if(!editTextAInputString.equals("")) {
-            double unitAInput = Double.parseDouble(editTextAInputString);
-            double result = unitAInput * unitBValue;
-            String resultText = result + "";
-            viewB.setText(resultText);
+            double input = Double.parseDouble(viewA.getText().toString());
+
+            double result = converter.convert(input);
+            viewB.setText(String.valueOf(result));
         }
         else{
-//            viewB.setText(""); //This line is cuasing the loop
+            viewB.setText(""); //This line is cuasing the loop
 
         }
 
     }
 
-    private void runConversionBA() {
+    private void runConversionBA(Converter converter) {
 
         String editTextBInputString = String.valueOf(viewB.getText());
         if(!editTextBInputString.equals("")) {
-            double unitBInput = Double.parseDouble(editTextBInputString);
+            double input = Double.parseDouble(viewB.getText().toString());
 
-            double ratio = unitAValue / unitBValue;
-            double result = unitBInput * ratio;
-            String resultText = result + "";
-            viewA.setText(resultText);
+            double result = converter.convert(input);
+            viewA.setText(String.valueOf(result));
         }
         else{
-//            viewA.setText(""); //This line is cuasing the loop
+            viewA.setText("");
 
 
         }

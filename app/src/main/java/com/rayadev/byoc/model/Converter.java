@@ -16,6 +16,7 @@ public class Converter {
         YARD,
         METER,
         MILE,
+        MILLIMETER,
         KILOMETER;
 
         // Helper method to select the unit, and convert text to one of the above constants
@@ -147,6 +148,23 @@ public class Converter {
                     constant = 0.621371;
                 }
                 break;
+            case MILLIMETER: //Add unit conversions
+                if (to == Unit.INCH) {
+                    constant = 0.0393701;
+                } else if (to == Unit.CENTIMETER) {
+                    constant = 0.1;
+                } else if (to == Unit.FOOT) {
+                    constant = 0.00328084;
+                } else if (to == Unit.YARD) {
+                    constant = 0.0010936133333333;
+                } else if (to == Unit.METER) {
+                    constant = 0.001;
+                } else if (to == Unit.MILE) {
+                    constant = 6.2137e-7;
+                }
+                 else if (to == Unit.KILOMETER) {
+                    constant = 1e-6;
+                }
         }
 
         multiplier = constant;
