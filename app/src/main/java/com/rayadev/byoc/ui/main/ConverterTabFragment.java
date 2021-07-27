@@ -29,6 +29,7 @@ import android.widget.Toast;
 
 import com.rayadev.byoc.R;
 import com.rayadev.byoc.model.Converter;
+import com.rayadev.byoc.model.ConverterUtil;
 import com.rayadev.byoc.model.ConverterViewModel;
 
 import java.util.List;
@@ -133,7 +134,7 @@ public class ConverterTabFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                Converter converter = new Converter(Converter.Unit.KILOMETER, Converter.Unit.MILE);
+                Converter converter = new Converter("Kilometer", "Mile");
 
                 mConverterViewModel.insert(converter);
 
@@ -196,8 +197,8 @@ public class ConverterTabFragment extends Fragment {
 
             @Override
             public void setUnitNames(String converterUnitAName, String converterUnitBName) {
-                    Converter.Unit fromUnit = Converter.Unit.fromString(converterUnitAName);
-                    Converter.Unit toUnit = Converter.Unit.fromString(converterUnitBName);
+                    ConverterUtil.Unit fromUnit = ConverterUtil.Unit.fromString(converterUnitAName);
+                    ConverterUtil.Unit toUnit = ConverterUtil.Unit.fromString(converterUnitBName);
 
                     setConverterBoxTitles(converterUnitAName, converterUnitBName);
 
@@ -225,11 +226,11 @@ public class ConverterTabFragment extends Fragment {
     }
 
 
-    private void setConverterBoxLogic(Converter.Unit fromUnit, Converter.Unit toUnit) {
+    private void setConverterBoxLogic(ConverterUtil.Unit fromUnit, ConverterUtil.Unit toUnit) {
 
 
-        Converter fromUnit_toUnit = new Converter(fromUnit, toUnit);
-        Converter toUnit_fromUnit = new Converter(toUnit, fromUnit);
+        ConverterUtil fromUnit_toUnit = new ConverterUtil(fromUnit, toUnit);
+        ConverterUtil toUnit_fromUnit = new ConverterUtil(toUnit, fromUnit);
 
         final MyTextWatcherUtils[] myTextWatcherUtils = new MyTextWatcherUtils[2];
 

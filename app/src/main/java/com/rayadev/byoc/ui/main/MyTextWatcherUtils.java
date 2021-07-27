@@ -5,16 +5,17 @@ import android.text.TextWatcher;
 import android.widget.EditText;
 
 import com.rayadev.byoc.model.Converter;
+import com.rayadev.byoc.model.ConverterUtil;
 
 class MyTextWatcherUtils {
 
     private EditText viewA, viewB;
-    private Converter converter;
+    private ConverterUtil converter;
     private int userSelection;
 
     private TextWatcher mTextWatcher;
 
-    MyTextWatcherUtils(int userSelection, EditText viewA, EditText viewB, Converter converter) {
+    MyTextWatcherUtils(int userSelection, EditText viewA, EditText viewB, ConverterUtil converter) {
 
         this.userSelection = userSelection;
         this.converter = converter;
@@ -67,7 +68,7 @@ class MyTextWatcherUtils {
         userInputEditText.removeTextChangedListener(mTextWatcher);
     }
 
-    private void runConversionAB(Converter converter) {
+    private void runConversionAB(ConverterUtil converter) {
 
         String editTextAInputString = String.valueOf(viewA.getText());
         if(!editTextAInputString.equals("")) {
@@ -83,7 +84,7 @@ class MyTextWatcherUtils {
 
     }
 
-    private void runConversionBA(Converter converter) {
+    private void runConversionBA(ConverterUtil converter) {
 
         String editTextBInputString = String.valueOf(viewB.getText());
         if(!editTextBInputString.equals("")) {
