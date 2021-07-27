@@ -10,16 +10,31 @@ public class Converter {
     @PrimaryKey(autoGenerate = true)
     public int converterID;
 
-    public String fromUnit, toUnit;
-    public String unitCategory;
+    public String unitAString, unitBString;
 
+    public String unitCategory;
 
     public Converter(String fromUnit, String toUnit) {
         this.unitCategory = "distance";
-        this.fromUnit = fromUnit;
-        this.toUnit = toUnit;
+        this.unitAString = fromUnit;
+        this.unitBString = toUnit;
     }
 
+    public int getConverterID() {
+        return converterID;
+    }
+
+    public String getUnitAString() {
+        return unitAString;
+    }
+
+    public String getUnitBString() {
+        return unitBString;
+    }
+
+    public String getUnitCategory() {
+        return unitCategory;
+    }
 
 
 }

@@ -60,7 +60,7 @@ public class HomeSetRecyclerViewAdapter extends RecyclerView.Adapter<HomeSetRecy
 //            holder.unitBName = mConverter.getConverterUnitB_Name();
 //            holder.unitAValue = mConverter.getConverterUnitA_Value();
 //            holder.unitBValue = mConverter.getConverterUnitB_Value();
-//            holder.unitCategory = mConverter.getConverterCategory();
+                holder.unitCategory = mConverter.getUnitCategory();
 
 //            if (position%2 == 0) {
 //                holder.mConverterImageView.setImageResource(R.drawable.converter_icon_weight);
