@@ -14,10 +14,10 @@ public class Converter {
 
     public String unitCategory;
 
-    public Converter(String fromUnit, String toUnit) {
-        this.unitCategory = "distance";
-        this.unitAString = fromUnit;
-        this.unitBString = toUnit;
+    public Converter(String unitCategory, String unitAString, String unitBString) {
+        this.unitCategory = unitCategory;
+        this.unitAString = unitAString;
+        this.unitBString = unitBString;
     }
 
     public int getConverterID() {

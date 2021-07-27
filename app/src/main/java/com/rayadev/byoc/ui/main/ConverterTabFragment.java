@@ -134,7 +134,7 @@ public class ConverterTabFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                Converter converter = new Converter("Kilometer", "Mile");
+                Converter converter = new Converter("distance","Kilometer", "Mile");
 
                 mConverterViewModel.insert(converter);
 
