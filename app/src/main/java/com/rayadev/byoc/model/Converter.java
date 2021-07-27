@@ -1,10 +1,10 @@
 package com.rayadev.byoc.model;
 
 
+import androidx.room.Entity;
 
-
+@Entity(tableName= "converter_table")
 public class Converter {
-
 
     //Reference points for the units.
     public enum Unit {
