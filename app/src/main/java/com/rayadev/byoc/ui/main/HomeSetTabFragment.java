@@ -74,6 +74,7 @@ public class HomeSetTabFragment extends Fragment implements HomeSetRecyclerViewA
         View view = inflater.inflate(R.layout.fragment_home_set_tab, container, false);
 
         setUpHomeSetRecyclerView(view);
+        setUpConverterViewModel(mAdapter);
         linkViews(view);
 
         return view;
@@ -122,7 +123,7 @@ public class HomeSetTabFragment extends Fragment implements HomeSetRecyclerViewA
         //Going to need a Favorites Table for this one..
 
         //To display the current contents of the database, you add an observer that observes the LiveData in the ViewModel.
-        mConverterViewModel.getConverter.observe(getViewLifecycleOwner(), new Observer<List<Converter>>() {
+        mConverterViewModel.getConverterFavoritesList().observe(getViewLifecycleOwner(), new Observer<List<Converter>>() {
             @Override
             public void onChanged(List<Converter> converters) {
                 adapter.setConverterArrayList((ArrayList<Converter>) converters);

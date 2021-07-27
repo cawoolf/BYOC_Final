@@ -26,7 +26,7 @@ public class ConverterViewModel extends AndroidViewModel {
     // Pass these up the the Main Activity or whatever needs access.
 
     //Wrapper for the "getter" method that gets all the words.
-    LiveData<List<Converter>> getConverterFavoritesList() {
+    public LiveData<List<Converter>> getConverterFavoritesList() {
         return mConverterFavoritesList;
     }
 

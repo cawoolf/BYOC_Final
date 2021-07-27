@@ -11,9 +11,11 @@ public class Converter {
     public int converterID;
 
     public String fromUnit, toUnit;
+    public String unitCategory;
 
 
     public Converter(String fromUnit, String toUnit) {
+        this.unitCategory = "distance";
         this.fromUnit = fromUnit;
         this.toUnit = toUnit;
     }
