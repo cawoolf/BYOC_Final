@@ -29,6 +29,7 @@ import android.widget.Toast;
 
 import com.rayadev.byoc.R;
 import com.rayadev.byoc.model.Converter;
+import com.rayadev.byoc.model.ConverterViewModel;
 
 import java.util.List;
 
@@ -38,7 +39,7 @@ public class ConverterTabFragment extends Fragment {
 
 
     private int spinnerID;
-
+    private ConverterViewModel mConverterViewModel;
 
     //Views for the converter UI
     private TextView mUnitATitleTextView, mUnitBTitleTextView;
@@ -81,6 +82,9 @@ public class ConverterTabFragment extends Fragment {
         linkViews(view);
         setBottomUIOnClicks();
         buildSpinner(view);
+
+        //SetUp View Model
+        mConverterViewModel = new ViewModelProvider(this).get(ConverterViewModel.class);
 
         return view;
 
@@ -128,6 +132,10 @@ public class ConverterTabFragment extends Fragment {
         mAddConverterButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                Converter converter = new Converter(Converter.Unit.KILOMETER, Converter.Unit.MILE);
+
+                mConverterViewModel.insert(converter);
 
                 Toast.makeText(getContext(), "Add clicked", Toast.LENGTH_SHORT).show();
             }
