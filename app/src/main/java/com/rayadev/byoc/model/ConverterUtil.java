@@ -1,10 +1,6 @@
 package com.rayadev.byoc.model;
 
 
-import androidx.room.Entity;
-import androidx.room.PrimaryKey;
-
-
 public class ConverterUtil {
 
 

@@ -1,4 +1,4 @@
-package com.rayadev.byoc.model;
+package com.rayadev.byoc.room;
 
 import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
@@ -6,6 +6,8 @@ import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
+
+import com.rayadev.byoc.model.Converter;
 
 import java.util.List;
 

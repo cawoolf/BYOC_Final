@@ -1,4 +1,4 @@
-package com.rayadev.byoc.model;
+package com.rayadev.byoc.room;
 
 
 import android.content.Context;
@@ -6,6 +6,8 @@ import android.content.Context;
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
+
+import com.rayadev.byoc.model.Converter;
 
 @Database(entities = {Converter.class}, version = 1, exportSchema = false)
 public abstract class ConverterDatabase extends RoomDatabase {

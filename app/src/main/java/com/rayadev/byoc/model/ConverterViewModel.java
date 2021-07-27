@@ -6,6 +6,9 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 
+import com.rayadev.byoc.model.Converter;
+import com.rayadev.byoc.room.ConverterRepository;
+
 import java.util.List;
 
 public class ConverterViewModel extends AndroidViewModel {

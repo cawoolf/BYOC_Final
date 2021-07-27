@@ -6,13 +6,8 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.lifecycle.LiveData;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,8 +26,6 @@ import com.rayadev.byoc.R;
 import com.rayadev.byoc.model.Converter;
 import com.rayadev.byoc.model.ConverterUtil;
 import com.rayadev.byoc.model.ConverterViewModel;
-
-import java.util.List;
 
 
 //The main fragment that allows the user to run conversions, and set up a converter to be saved to the HomeSetTab

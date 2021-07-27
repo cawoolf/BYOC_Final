@@ -1,9 +1,11 @@
-package com.rayadev.byoc.model;
+package com.rayadev.byoc.room;
 
 import android.app.Application;
 import android.os.AsyncTask;
 
 import androidx.lifecycle.LiveData;
+
+import com.rayadev.byoc.model.Converter;
 
 import java.util.List;
 
