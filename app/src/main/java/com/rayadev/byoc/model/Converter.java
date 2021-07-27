@@ -2,9 +2,17 @@ package com.rayadev.byoc.model;
 
 
 import androidx.room.Entity;
+import androidx.room.PrimaryKey;
 
 @Entity(tableName= "converter_table")
 public class Converter {
+
+
+
+    public String fromUnit, toUnit;
+
+    @PrimaryKey(autoGenerate = true)
+    public int converterID;
 
     //Reference points for the units.
     public enum Unit {
@@ -33,12 +41,19 @@ public class Converter {
     }
 
     // What can I multiply by to get me from my fromUnit to my toUnit?
-    private final double multiplier;
+    public double multiplier;
 
     //Constructor that creates the proper conversion ratios for the resutls.
 
+    public Converter(String fromUnit, String toUnit) {
+        this.fromUnit = fromUnit;
+        this.toUnit = toUnit;
+    }
+
 
     public Converter(Unit from, Unit to) {  //Add a category constant to this..IE distance ect.
+
+
         double constant = 1;
         // Set the multiplier, else if fromUnit = toUnit, then it is 1
         //Just using distance for now.
