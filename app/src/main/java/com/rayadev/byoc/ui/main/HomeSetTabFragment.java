@@ -24,6 +24,7 @@ import android.widget.Toast;
 
 import com.rayadev.byoc.R;
 import com.rayadev.byoc.model.Converter;
+import com.rayadev.byoc.model.ConverterViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,6 +39,7 @@ public class HomeSetTabFragment extends Fragment implements HomeSetRecyclerViewA
 
     private RecyclerView mRecyclerView;
     private HomeSetRecyclerViewAdapter mAdapter;
+    private ConverterViewModel mConverterViewModel;
 
     private View mConverterUI;
 
@@ -108,6 +110,26 @@ public class HomeSetTabFragment extends Fragment implements HomeSetRecyclerViewA
 
         // Give the RecyclerView a default layout manager.
         mRecyclerView.setLayoutManager(new GridLayoutManager(view.getContext(), 3));
+    }
+
+    private void setUpConverterViewModel(final HomeSetRecyclerViewAdapter adapter) {
+
+
+        //all the activity's interactions are with the ViewModel only.
+        // When the activity is destroyed, the ViewModel still exists. It is not subject to LifeCycle methods.
+        mConverterViewModel = new ViewModelProvider(this).get(ConverterViewModel.class); //Call ViewModel constructor directly
+
+        //Going to need a Favorites Table for this one..
+
+        //To display the current contents of the database, you add an observer that observes the LiveData in the ViewModel.
+        mConverterViewModel.getConverter.observe(getViewLifecycleOwner(), new Observer<List<Converter>>() {
+            @Override
+            public void onChanged(List<Converter> converters) {
+                adapter.setConverterArrayList((ArrayList<Converter>) converters);
+                //Clear it does need this.. or else it won't update the HomeSet.
+            }
+        });
+
     }
 
 
