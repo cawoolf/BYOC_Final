@@ -12,7 +12,7 @@ import java.util.List;
 @Dao
 interface ConverterDAO {
 
-    @Insert(onConflict = OnConflictStrategy.ABORT)
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
     void insert(Converter param);
 
     @Delete
