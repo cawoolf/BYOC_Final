@@ -162,7 +162,7 @@ public class HomeSetTabFragment extends Fragment implements HomeSetRecyclerViewA
     }
 
     @Override
-    public void onConverterLongClick(int converterID) { //This should really just use the String name of the converter
+    public void onConverterLongClick(int position) { //This should really just use the String name of the converter
 
 
         new AlertDialog.Builder(getContext())
@@ -173,6 +173,9 @@ public class HomeSetTabFragment extends Fragment implements HomeSetRecyclerViewA
                 // The dialog is automatically dismissed when a dialog button is clicked.
                 .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
+
+                        Converter converter = mAdapter.getConverterAtPosition(position);
+                        mConverterViewModel.delete(converter);
 
 
                     }

@@ -144,7 +144,8 @@ public class HomeSetRecyclerViewAdapter extends RecyclerView.Adapter<HomeSetRecy
                 @Override
                 public boolean onLongClick(View v) {
                     v.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS);
-                    mClickListener.onConverterLongClick(converterID);
+                    int position = getAdapterPosition();
+                    mClickListener.onConverterLongClick(position);
                     return false;
                 }
             });
@@ -159,5 +160,11 @@ public class HomeSetRecyclerViewAdapter extends RecyclerView.Adapter<HomeSetRecy
 
         void onConverterIconClick(String converterUnitA_Name, String converterUnitB_Name);
         void onConverterLongClick(int converterID); //Need to get Converter ID to pass to the delete operation.
+    }
+
+    //Enables the Adapter to detect the touched word.
+    public Converter getConverterAtPosition (int position) {
+
+        return mConverterArrayList.get(position);
     }
 }
