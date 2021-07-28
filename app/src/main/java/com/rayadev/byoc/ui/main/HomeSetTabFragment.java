@@ -30,12 +30,6 @@ import com.rayadev.byoc.model.ConverterViewModel;
 import java.util.ArrayList;
 import java.util.List;
 
-/*
-A list of converters (stored in CB's) the user has saved. Each one is a little square like converter bee.
-
-Can drag and drop converter boxes (CB)'s into each other to create a new set. Like an Android folder
-    > When you click the converter folder, it opens up a new activity with all the converters in that sub set.
- */
 public class HomeSetTabFragment extends Fragment implements HomeSetRecyclerViewAdapter.ConverterClickListener {
 
     private RecyclerView mRecyclerView;
@@ -44,12 +38,10 @@ public class HomeSetTabFragment extends Fragment implements HomeSetRecyclerViewA
 
     private View mConverterUI;
 
-
     //Views for the Converter UI
     private TextView mUnitATitleTextView, mUnitBTitleTextView;
     private EditText mUnitAInputEditText, mUnitBInputEditText;
     private ImageButton mConverterInfoButton, mConverterSwapButton;
-
 
     public HomeSetTabFragment() {
         // Required empty public constructor
@@ -61,7 +53,6 @@ public class HomeSetTabFragment extends Fragment implements HomeSetRecyclerViewA
         return fragment;
     }
 
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,7 +61,6 @@ public class HomeSetTabFragment extends Fragment implements HomeSetRecyclerViewA
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
 
         View view = inflater.inflate(R.layout.fragment_home_set_tab, container, false);
 
@@ -114,19 +104,16 @@ public class HomeSetTabFragment extends Fragment implements HomeSetRecyclerViewA
 
     private void setUpConverterViewModel(final HomeSetRecyclerViewAdapter adapter) {
 
-
-        //all the activity's interactions are with the ViewModel only.
+        //All the activity's interactions are with the ViewModel only.
         // When the activity is destroyed, the ViewModel still exists. It is not subject to LifeCycle methods.
         mConverterViewModel = new ViewModelProvider(this).get(ConverterViewModel.class); //Call ViewModel constructor directly
-
-        //Going to need a Favorites Table for this one..
 
         //To display the current contents of the database, you add an observer that observes the LiveData in the ViewModel.
         mConverterViewModel.getConverterFavoritesList().observe(getViewLifecycleOwner(), new Observer<List<Converter>>() {
             @Override
             public void onChanged(List<Converter> converters) {
                 adapter.setConverterArrayList((ArrayList<Converter>) converters);
-                //Clear it does need this.. or else it won't update the HomeSet.
+
             }
         });
 
@@ -137,8 +124,6 @@ public class HomeSetTabFragment extends Fragment implements HomeSetRecyclerViewA
     //Sets the Converter data into the fragment Converter UI.
     @Override
     public void onConverterIconClick(String unitAName, String unitBName) {
-
-        //Just use call the ConverterUtil directly here.
 
         setConverterBoxTitles(unitAName, unitBName);
 
@@ -162,21 +147,17 @@ public class HomeSetTabFragment extends Fragment implements HomeSetRecyclerViewA
     }
 
     @Override
-    public void onConverterLongClick(int position) { //This should really just use the String name of the converter
-
+    public void onConverterLongClick(int position) {
 
         new AlertDialog.Builder(getContext())
                 .setTitle("Delete Converter")
                 .setMessage("Are you sure you want to delete this entry?")
 
-                // Specifying a listener allows you to take an action before dismissing the dialog.
-                // The dialog is automatically dismissed when a dialog button is clicked.
                 .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
 
                         Converter converter = mAdapter.getConverterAtPosition(position);
                         mConverterViewModel.delete(converter);
-
 
                     }
                 })
@@ -190,7 +171,6 @@ public class HomeSetTabFragment extends Fragment implements HomeSetRecyclerViewA
 
     private void setConverterBoxTitles(String unitAText, String unitBText) {
 
-//        Toast.makeText(getContext(), "Thread Success", Toast.LENGTH_SHORT).show();
         mUnitATitleTextView.setText(unitAText);
         mUnitBTitleTextView.setText(unitBText);
 
@@ -246,13 +226,11 @@ public class HomeSetTabFragment extends Fragment implements HomeSetRecyclerViewA
             @Override
             public void onToggleSoftKeyboard(boolean isVisible) {
 
-                Log.i("KTAG", "keyboard visible: " + isVisible);
                 if (isVisible) {
                     mConverterUI.setVisibility(View.VISIBLE);
                 } else {
                     mConverterUI.setVisibility(View.GONE);
                     clearUserInput();
-
                 }
             }
         });

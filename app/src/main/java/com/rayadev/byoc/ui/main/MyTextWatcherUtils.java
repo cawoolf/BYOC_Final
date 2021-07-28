@@ -77,7 +77,7 @@ class MyTextWatcherUtils {
             viewB.setText(String.valueOf(result));
         }
         else{
-            viewB.setText(""); //This line is cuasing the loop
+            viewB.setText("");
 
         }
 
