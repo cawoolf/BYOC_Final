@@ -8,16 +8,12 @@ import android.view.WindowManager;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.cardview.widget.CardView;
 import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.tabs.TabLayout;
 import com.rayadev.byoc.ui.main.PageAdapter;
 
 public class MainActivity extends AppCompatActivity {
-
-    private CardView mConverterCardView;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,16 +24,13 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    //Example of how I like to organize methods
     private void initializeUI() {
 
         keyBoardManager();
         setUpToolbar();
         TabLayout tabLayout = setUpTabLayout();
         setUpPageAdapter(tabLayout);
-
     }
-
 
     private void keyBoardManager() {
 
@@ -80,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
         final PageAdapter pageAdapter = new PageAdapter(getSupportFragmentManager(), tabLayout.getTabCount());
         viewPager.setAdapter(pageAdapter);
 
-        // Setting a listener for clicks
+        // Setting a listener for tab clicks
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
 
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
