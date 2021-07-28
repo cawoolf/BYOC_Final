@@ -44,6 +44,9 @@ public class ConverterTabFragment extends Fragment {
     private ImageView mBuildConverterButton, mAddConverterButton;
     private LinearLayout mBottomUI;
 
+    //Converter Unit Strings for favorites Constructor
+    private String unitAString, unitBString;
+
     public ConverterTabFragment() {
         this.spinnerID = R.layout.spinner_scrollview_distance;
 
@@ -127,7 +130,7 @@ public class ConverterTabFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                Converter converter = new Converter("distance","Kilometer", "Mile");
+                Converter converter = new Converter("distance",unitAString, unitBString);
 
                 mConverterViewModel.insert(converter);
 
@@ -185,7 +188,6 @@ public class ConverterTabFragment extends Fragment {
             public void sendConverterName(String converterName) {
                 Toast.makeText(getContext(), converterName, Toast.LENGTH_SHORT).show();
 
-
             }
 
             @Override
@@ -194,6 +196,9 @@ public class ConverterTabFragment extends Fragment {
                     ConverterUtil.Unit toUnit = ConverterUtil.Unit.fromString(converterUnitBName);
 
                     setConverterBoxTitles(converterUnitAName, converterUnitBName);
+
+                    unitAString = converterUnitAName;
+                    unitBString = converterUnitBName;
 
                     setConverterBoxLogic(fromUnit, toUnit);
             }
@@ -277,76 +282,3 @@ public class ConverterTabFragment extends Fragment {
     }
 
 }
-
-
-
-
-
-
-
-
-
-
-
-//Other attemps at Threads and Async
-
-//    //Need methods to set the data inside the converter_master_cardview
-//    //Use LiveData for the List<Converter> with an observer. See HomeSetTab
-
-//
-//        mConverterViewModel.getTargetConverter(getConverterName()).observe(getViewLifecycleOwner(), new Observer<List<Converter>>() {
-//            @Override
-//            public void onChanged(List<Converter> converters) {
-//               setConverterBoxData();
-//
-//            }
-//        });
-
-
-
-//    private static class getTargetConverterAsyncTask extends AsyncTask<String, Void, LiveData<List<Converter>>> {
-//
-//        private ConverterViewModel mConverterViewModel;
-//
-//        public getTargetConverterAsyncTask(ConverterViewModel converterViewModel){
-//            this.mConverterViewModel = converterViewModel;
-//        }
-//        @Override
-//        protected LiveData<List<Converter>> doInBackground(String... strings) {
-//            LiveData<List<Converter>> converters = mConverterViewModel.getTargetConverter(strings[0]);
-//            return converters;
-//        }
-//
-//        @Override
-//        protected void onPostExecute(LiveData<List<Converter>> converters) {
-//            super.onPostExecute(converters);
-//            Log.i("TAG", converters.getValue()+"success");
-//
-//        }
-//    }
-//
-//    private class GetTargetConverterThread implements Runnable {
-//
-//        private String converterName;
-//        private ConverterViewModel mConverterViewModel;
-//
-//        private GetTargetConverterThread(ConverterViewModel converterViewModel) {
-//            this.mConverterViewModel = converterViewModel;
-//        }
-//
-//        public GetTargetConverterThread(String converterName, ConverterViewModel converterViewModel) {
-//            this.converterName = converterName;
-//        }
-//
-//        @Override
-//        public void run() {
-//            mConverterViewModel.getTargetConverter(getConverterName()).observe(getViewLifecycleOwner(), new Observer<List<Converter>>() {
-//                @Override
-//                public void onChanged(List<Converter> converters) {
-//                    //This is where you would update the Converter UI with the data.
-//                    setConverterBoxData();
-//                }
-//            });
-//        }
-//
-//    }
