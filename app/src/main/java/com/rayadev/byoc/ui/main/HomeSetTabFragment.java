@@ -24,6 +24,7 @@ import android.widget.Toast;
 
 import com.rayadev.byoc.R;
 import com.rayadev.byoc.model.Converter;
+import com.rayadev.byoc.model.ConverterUtil;
 import com.rayadev.byoc.model.ConverterViewModel;
 
 import java.util.ArrayList;
@@ -137,17 +138,14 @@ public class HomeSetTabFragment extends Fragment implements HomeSetRecyclerViewA
 
     //Sets the Converter data into the fragment Converter UI.
     @Override
-    public void onConverterIconClick(String unitAName, String unitBName, double unitAValue, double unitBValue) {
+    public void onConverterIconClick(String unitAName, String unitBName) {
 
-        String unitString = unitAName + ": " + unitAValue + " " + unitBName + ": " + unitBValue;
-
-
-        Toast.makeText(getContext(), unitString, Toast.LENGTH_SHORT).show();
-        Log.i("TAG", "HomeSetTabFragClick");
-
+        //Just use call the ConverterUtil directly here.
 
         setConverterBoxTitles(unitAName, unitBName);
-        setConverterBoxLogic(unitAValue, unitBValue);
+
+        setConverterBoxLogic(ConverterUtil.Unit.fromString(unitAName), ConverterUtil.Unit.fromString(unitBName));
+
         keyboardManager();
 
         //Custom back button function.
@@ -197,12 +195,16 @@ public class HomeSetTabFragment extends Fragment implements HomeSetRecyclerViewA
 
     }
 
-    private void setConverterBoxLogic(double unitAValue, double unitBValue) { //Duplicated code from the ConverterTabFragment
+    private void setConverterBoxLogic(ConverterUtil.Unit fromUnit, ConverterUtil.Unit toUnit) {
+
+
+        ConverterUtil fromUnit_toUnit = new ConverterUtil(fromUnit, toUnit);
+        ConverterUtil toUnit_fromUnit = new ConverterUtil(toUnit, fromUnit);
 
         final MyTextWatcherUtils[] myTextWatcherUtils = new MyTextWatcherUtils[2];
 
-//        myTextWatcherUtils[0] = new MyTextWatcherUtils(1, unitAValue, unitBValue, mUnitAInputEditText, mUnitBInputEditText);
-//        myTextWatcherUtils[1] = new MyTextWatcherUtils(2, unitAValue, unitBValue, mUnitAInputEditText, mUnitBInputEditText);
+        myTextWatcherUtils[0] = new MyTextWatcherUtils(1, mUnitAInputEditText, mUnitBInputEditText, fromUnit_toUnit);
+        myTextWatcherUtils[1] = new MyTextWatcherUtils(2,  mUnitAInputEditText, mUnitBInputEditText, toUnit_fromUnit);
 
         mUnitAInputEditText.clearFocus();
         mUnitBInputEditText.clearFocus();
@@ -212,6 +214,7 @@ public class HomeSetTabFragment extends Fragment implements HomeSetRecyclerViewA
         myTextWatcherUtils[0].setUnitEditTextWatcher(mUnitAInputEditText);
         myTextWatcherUtils[1].setUnitEditTextWatcher(mUnitBInputEditText);
 
+        keyboardManager();
 
         mUnitBInputEditText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
@@ -226,8 +229,6 @@ public class HomeSetTabFragment extends Fragment implements HomeSetRecyclerViewA
                 clearUserInput();
             }
         });
-
-
 
     }
 

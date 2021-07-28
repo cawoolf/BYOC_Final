@@ -50,8 +50,8 @@ public class HomeSetRecyclerViewAdapter extends RecyclerView.Adapter<HomeSetRecy
             Converter mConverter = mConverterArrayList.get(position);
 
            //Set the views for the holder.
-//            holder.mConverterUnitA_Name.setText(mConverter.getConverterUnitA_Name());
-//            holder.mConverterUnitB_Name.setText(mConverter.getConverterUnitB_Name());
+            holder.mConverterUnitA_Name.setText(mConverter.getUnitAString());
+            holder.mConverterUnitB_Name.setText(mConverter.getUnitBString());
 //            //holder.mConverterImageView.setImageResource(mConverter.getConverterBoxImageID());
 //
 //            //Pass the data from converter down to the holder.
@@ -136,7 +136,7 @@ public class HomeSetRecyclerViewAdapter extends RecyclerView.Adapter<HomeSetRecy
                 @Override
                 public void onClick(View v) {
 
-                    mClickListener.onConverterIconClick(unitAName, unitBName, unitAValue, unitBValue);
+                    mClickListener.onConverterIconClick(unitAName, unitBName);
                 }
             });
 
@@ -157,7 +157,7 @@ public class HomeSetRecyclerViewAdapter extends RecyclerView.Adapter<HomeSetRecy
     public interface ConverterClickListener {
         //Passes all the Converter info to the fragment
 
-        void onConverterIconClick(String converterUnitA_Name, String converterUnitB_Name, double converterUnitA_Value, double convertUnitB_Value);
+        void onConverterIconClick(String converterUnitA_Name, String converterUnitB_Name);
         void onConverterLongClick(int converterID); //Need to get Converter ID to pass to the delete operation.
     }
 }
