@@ -56,8 +56,8 @@ public class HomeSetRecyclerViewAdapter extends RecyclerView.Adapter<HomeSetRecy
 //
 //            //Pass the data from converter down to the holder.
 //            holder.converterID = mConverter.getConverterID();
-//            holder.unitAName = mConverter.getConverterUnitA_Name();
-//            holder.unitBName = mConverter.getConverterUnitB_Name();
+            holder.unitAName = mConverter.getUnitAString();
+            holder.unitBName = mConverter.getUnitBString();
 //            holder.unitAValue = mConverter.getConverterUnitA_Value();
 //            holder.unitBValue = mConverter.getConverterUnitB_Value();
                 holder.unitCategory = mConverter.getUnitCategory();
