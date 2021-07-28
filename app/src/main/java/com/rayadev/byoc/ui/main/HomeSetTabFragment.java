@@ -105,8 +105,6 @@ public class HomeSetTabFragment extends Fragment implements HomeSetRecyclerViewA
         // Create an adapter and supply the data to be displayed.
         mAdapter = new HomeSetRecyclerViewAdapter(view.getContext(), this);
 
-
-
         // Connect the adapter with the RecyclerView.
         mRecyclerView.setAdapter(mAdapter);
 
