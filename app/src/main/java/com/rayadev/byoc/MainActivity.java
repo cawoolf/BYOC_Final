@@ -54,7 +54,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    //Might need to be in its own thread, and class.
+    //Might need to be in its own thread, and class..
+    //For sure. And set it for double pair requests, and for only once a day.
     private void loadCurrencyData() {
 
         Retrofit retrofit = new Retrofit.Builder()
@@ -82,11 +83,13 @@ public class MainActivity extends AppCompatActivity {
             Log.i(TAG, c1);
         }
 
+        Log.i(TAG, pairs.size()+"");
+
         String mCurrencyPair = "USD_CAD";
 
-        for(String pair : pairs) {
-            getCurrency(mCurrencyPair);
-        }
+//        for(String pair : pairs) {
+//            getCurrency(pair);
+//        }
 
 
     }
