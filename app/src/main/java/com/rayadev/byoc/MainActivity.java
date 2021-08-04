@@ -21,6 +21,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -61,12 +62,29 @@ public class MainActivity extends AppCompatActivity {
         mCurrencyAPI = retrofit.create(CurrencyAPI.class);
 
         HashMap<String, Double> currencyPairs = new HashMap<>();
+        HashSet<String> pairs = new HashSet<>();
+
         String[] currencies = {getString(R.string.currency_USD), getString(R.string.currency_CAD),
                 getString(R.string.currency_EUR), getString(R.string.currency_NZD)};
 
+
+        for(String c : currencies) {
+            String c1 = c;
+            for(String c2: currencies) {
+                String pair = c1+"_"+c2;
+                pairs.add(pair);
+            }
+        }
+
+        for(String c1 : pairs) {
+            Log.i(TAG, c1);
+        }
+
         String mCurrencyPair = "USD_CAD";
 
-        getCurrency(mCurrencyPair);
+        for(String pair : pairs) {
+            getCurrency(mCurrencyPair);
+        }
 
 
     }
@@ -150,6 +168,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+    //Can make get request for currency at once.
     private void getCurrency(String mCurrencyPair) {
 
 //        Call call = mCurrencyAPI.getCurrencyPair(pair);
