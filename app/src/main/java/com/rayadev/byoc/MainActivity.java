@@ -53,6 +53,8 @@ public class MainActivity extends AppCompatActivity {
         setUpPageAdapter(tabLayout);
     }
 
+
+    //Might need to be in its own thread, and class.
     private void loadCurrencyData() {
 
         Retrofit retrofit = new Retrofit.Builder()
