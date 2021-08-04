@@ -88,9 +88,9 @@ public class MainActivity extends AppCompatActivity {
 
         String mCurrencyPair = "USD_CAD";
 
-        for(String pair : pairs) {
-            getCurrency(pair);
-        }
+//        for(String pair : pairs) {
+//            getCurrency(pair);
+//        }
 
 
     }
