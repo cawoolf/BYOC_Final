@@ -141,7 +141,7 @@ public class ConverterTabFragment extends Fragment {
 
     private void buildSpinner(View view) {
 
-        String[] units = {getString(R.string.spinner_distance_title), getString(R.string.spinner_area_title), getString(R.string.spinner_time_title), getString(R.string.spinner_volume_title), getString(R.string.spinner_weight_title)};
+        String[] units = {getString(R.string.spinner_distance_title), getString(R.string.spinner_area_title), getString(R.string.spinner_time_title), getString(R.string.spinner_volume_title), getString(R.string.spinner_weight_title), getString(R.string.spinner_currency_title)};
 
         Spinner spinner = (Spinner) view.findViewById(R.id.spinner1);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this.getActivity(), android.R.layout.simple_spinner_item, units);
@@ -170,6 +170,13 @@ public class ConverterTabFragment extends Fragment {
                     Toast toast = Toast.makeText(context, text, duration);
                     toast.show();
                     setSpinnerScrollViewFragment(R.layout.spinner_scrollview_area);
+                }
+
+                if(text.equals(getString(R.string.spinner_currency_title))) {
+                    Toast toast = Toast.makeText(context, text, duration);
+                    toast.show();
+                    setSpinnerScrollViewFragment(R.layout.spinner_scrollview_currency);
+
                 }
             }
 

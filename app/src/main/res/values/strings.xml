@@ -27,6 +27,7 @@
     <string name="spinner_time_title">Time</string>
     <string name="spinner_volume_title">Volume</string>
     <string name="spinner_weight_title">Weight</string>
+    <string name="spinner_currency_title">Currency</string>
 
     <!-- Distance Preset Units -->
     <string name="distance_kilometer">Kilometer</string>
@@ -37,5 +38,11 @@
     <string name="distance_yard">Yard</string>
     <string name="distance_foot">Foot</string>
     <string name="distance_inch">Inch</string>
+
+    <!--Currency Preset Units -->
+    <string name = "currency_USD">USD</string>
+    <string name = "currency_CAD">CAD</string>
+    <string name = "currency_EUR">EUR</string>
+    <string name = "currency_NZD">NZD</string>
 
 </resources>
