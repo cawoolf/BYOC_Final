@@ -182,7 +182,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call call, Response response) {
                 if (!response.isSuccessful()) {
-                    Toast.makeText(MainActivity.this, "Code: " + response.code(), Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(MainActivity.this, "Code: " + response.code(), Toast.LENGTH_SHORT).show();
                     return;
                 }
 
@@ -198,7 +198,8 @@ public class MainActivity extends AppCompatActivity {
                     String result = "Code: " + response.code() +"\n" +
                             mCurrencyPair + ": "+ currency.getString(mCurrencyPair);
 
-                    Toast.makeText(MainActivity.this, result, Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(MainActivity.this, result, Toast.LENGTH_SHORT).show();
+                    Log.i(TAG, result);
 
 
                 }
