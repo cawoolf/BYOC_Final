@@ -31,7 +31,6 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class MainActivity extends AppCompatActivity {
 
     private CurrencyAPI mCurrencyAPI;
-    private String mCurrencyPair;
     private final String mAPIKey = "882cc2509c2a6546a18c";
     private final String TAG = "ATAG";
 
@@ -64,6 +63,10 @@ public class MainActivity extends AppCompatActivity {
         HashMap<String, Double> currencyPairs = new HashMap<>();
         String[] currencies = {getString(R.string.currency_USD), getString(R.string.currency_CAD),
                 getString(R.string.currency_EUR), getString(R.string.currency_NZD)};
+
+        String mCurrencyPair = "USD_CAD";
+
+        getCurrency(mCurrencyPair);
 
 
     }
@@ -147,8 +150,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-    private void getCurrency() {
-
+    private void getCurrency(String mCurrencyPair) {
 
 //        Call call = mCurrencyAPI.getCurrencyPair(pair);
         Call call = mCurrencyAPI.getCurrency(getUrlString(mAPIKey, mCurrencyPair));
