@@ -13,6 +13,9 @@ import androidx.viewpager.widget.ViewPager;
 import com.google.android.material.tabs.TabLayout;
 import com.rayadev.byoc.ui.main.PageAdapter;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
@@ -21,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         
         initializeUI();
+        loadCurrencyData();
 
     }
 
@@ -30,6 +34,15 @@ public class MainActivity extends AppCompatActivity {
         setUpToolbar();
         TabLayout tabLayout = setUpTabLayout();
         setUpPageAdapter(tabLayout);
+    }
+
+    private void loadCurrencyData() {
+        HashMap<String, Double> currencyPairs = new HashMap<>();
+        String[] currencies = {getString(R.string.currency_USD), getString(R.string.currency_CAD),
+                getString(R.string.currency_EUR), getString(R.string.currency_NZD)};
+
+
+
     }
 
     private void keyBoardManager() {
