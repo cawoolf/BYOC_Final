@@ -72,6 +72,15 @@ public class SpinnerScrollViewFragment extends Fragment {
 
         }
 
+        if(layoutID == R.layout.spinner_scrollview_currency) {
+            int[] currencyScrollViewA_ViewIDs = new int[] {R.id.CURA1, R.id.CURA2, R.id.CURA3,
+            R.id.CURA4};
+
+            int[] currencyScrollViewB_ViewIds = new int[] {R.id.CURB1, R.id.CURB2, R.id.CURB3, R.id.CURB3};
+
+            linkSpinnerViews(view, currencyScrollViewA_ViewIDs, currencyScrollViewB_ViewIds);
+        }
+
 //        if(layoutID == R.layout.spinner_scrollview_area) {
 //            int areaScrollViewA_ViewIDs = int int[] {R.id.D}
 //        }
