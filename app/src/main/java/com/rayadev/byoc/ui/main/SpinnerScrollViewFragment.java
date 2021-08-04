@@ -76,7 +76,8 @@ public class SpinnerScrollViewFragment extends Fragment {
             int[] currencyScrollViewA_ViewIDs = new int[] {R.id.CURA1, R.id.CURA2, R.id.CURA3,
             R.id.CURA4};
 
-            int[] currencyScrollViewB_ViewIds = new int[] {R.id.CURB1, R.id.CURB2, R.id.CURB3, R.id.CURB3};
+            int[] currencyScrollViewB_ViewIds = new int[] {R.id.CURB1, R.id.CURB2, R.id.CURB3, R.id.CURB3,
+            R.id.CURB4};
 
             linkSpinnerViews(view, currencyScrollViewA_ViewIDs, currencyScrollViewB_ViewIds);
         }

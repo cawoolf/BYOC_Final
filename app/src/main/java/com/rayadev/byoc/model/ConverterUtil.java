@@ -15,7 +15,13 @@ public class ConverterUtil {
         METER,
         MILE,
         MILLIMETER,
-        KILOMETER;
+        KILOMETER,
+
+        //Currency
+        USD,
+        CAD,
+        EUR,
+        NZD;
 
         // Helper method to select the unit, and convert text to one of the above constants
         public static Unit fromString(String text) {
