@@ -4,16 +4,19 @@ import android.app.Activity;
 import android.app.AppComponentFactory;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.gson.Gson;
+import com.rayadev.byoc.MainActivity;
 import com.rayadev.byoc.R;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 
@@ -27,7 +30,8 @@ public class CurrencyUtil {
 
     private CurrencyAPI mCurrencyAPI;
     private final String mAPIKey = "882cc2509c2a6546a18c";
-    private final String TAG = "ATAG";;
+    private final String TAG = "ATAG";
+
 
 
     //Might need to be in its own thread, and class..
@@ -47,28 +51,57 @@ public class CurrencyUtil {
 //        String[] currencies = new String[]{getString(R.string.currency_USD), getString(R.string.currency_CAD),
 //                getString(R.string.currency_EUR), getString(R.string.currency_NZD)};
 
-        String[] currencies = new String[] {"USD", "CAD", "EUR", "NZD"};
+        String[] currencies = new String[]{"USD", "CAD", "EUR", "NZD"};
 
-
-        for(String c : currencies) {
+        //Create unique set of all currency pairs in currencies
+        for (String c : currencies) {
             String c1 = c;
-            for(String c2: currencies) {
-                String pair = c1+"_"+c2;
+            for (String c2 : currencies) {
+                String pair = c1 + "_" + c2;
                 pairs.add(pair);
             }
         }
 
-        for(String c1 : pairs) {
-            Log.i(TAG, c1);
+        Log.i(TAG, pairs.size() + ""); //Log the size
+
+        for (String c1 : pairs) {
+            Log.i(TAG, c1); //Show each pair
         }
 
-        Log.i(TAG, pairs.size()+"");
+        //Convert to HashSet to ArrayList so that we can create unique pair doubles
+        ArrayList<String> currencyPairList = new ArrayList<>();
 
-        String mCurrencyPair = "USD_CAD";
+        currencyPairList.addAll(pairs);
 
-        for(String pair : pairs) {
-            getCurrency(pair);
+        //Run through the list and create a Set of unique double currencyPairs
+        HashSet<String> currencyPairDoubles = new HashSet<>();
+
+        int I = 0;
+        int J = 1;
+        while (J < currencyPairList.size()) {
+
+            String currencyA = currencyPairList.get(I);
+            String currencyB = currencyPairList.get(J);
+            String currencyAB = currencyA + "," + currencyB;
+            currencyPairDoubles.add(currencyAB);
+
+            I = I + 2;
+            J = J + 2;
+
+            //getCurrency(pair);
         }
+
+
+        for (String c1 : currencyPairDoubles) {
+            Log.i(TAG, c1); //Show each pair
+
+        }
+
+        //Just an issue with getting the data out of the JSON
+        String test= "USD_PHP,USD_CAD";
+        getCurrency(test);
+
+
 
 
     }
@@ -82,28 +115,23 @@ public class CurrencyUtil {
             @Override
             public void onResponse(Call call, Response response) {
                 if (!response.isSuccessful()) {
-//                    Toast.makeText(MainActivity.this, "Code: " + response.code(), Toast.LENGTH_SHORT).show();
+                     Log.i(TAG,"Fail: " + response.code());
                     return;
                 }
 
-//                String code = "Success Code:" + response.code();
-//                String body = new Gson().toJson(response.body());
-//                textViewResult.setText(code + "\n" + body);
 
                 String body = new Gson().toJson(response.body());
                 JSONObject currency = null;
                 try {
                     currency = new JSONObject(body);
 
-                    String result = "Code: " + response.code() +"\n" +
-                            mCurrencyPair + ": "+ currency.getString(mCurrencyPair);
+                    String result = "Code: " + response.code() + "\n" +
+                            mCurrencyPair + ": " + currency.getString(mCurrencyPair);
 
-//                    Toast.makeText(MainActivity.this, result, Toast.LENGTH_SHORT).show();
                     Log.i(TAG, result);
 
 
-                }
-                catch (JSONException e) {
+                } catch (JSONException e) {
                     e.printStackTrace();
                 }
 
@@ -112,7 +140,7 @@ public class CurrencyUtil {
             @Override
             public void onFailure(Call<Object> call, Throwable t) {
 
-                String fail = "Fail"+ t.getMessage();
+                String fail = "Fail" + t.getMessage();
                 Log.i(TAG, fail);
 
             }
