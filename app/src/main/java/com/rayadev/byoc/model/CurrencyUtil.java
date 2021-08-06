@@ -48,9 +48,6 @@ public class CurrencyUtil {
         HashMap<String, Double> currencyPairs = new HashMap<>();
         HashSet<String> pairs = new HashSet<>();
 
-//        String[] currencies = new String[]{getString(R.string.currency_USD), getString(R.string.currency_CAD),
-//                getString(R.string.currency_EUR), getString(R.string.currency_NZD)};
-
         String[] currencies = new String[]{"USD", "CAD", "EUR", "NZD"};
 
         //Create unique set of all currency pairs in currencies
@@ -62,11 +59,11 @@ public class CurrencyUtil {
             }
         }
 
-        Log.i(TAG, pairs.size() + ""); //Log the size
+        Log.i(TAG, "Original request size: " + pairs.size() + ""); //Log the size
 
-        for (String c1 : pairs) {
-            Log.i(TAG, c1); //Show each pair
-        }
+//        for (String c1 : pairs) {
+//            Log.i(TAG, c1); //Show each pair
+//        }
 
         //Convert to HashSet to ArrayList so that we can create unique pair doubles
         ArrayList<String> currencyPairList = new ArrayList<>();
@@ -74,6 +71,7 @@ public class CurrencyUtil {
         currencyPairList.addAll(pairs);
 
         //Run through the list and create a Set of unique double currencyPairs
+        //This cuts down on the number of API requests. Free version only has max of two pairs per request.
         HashSet<String> currencyPairDoubles = new HashSet<>();
 
         int I = 0;
@@ -92,16 +90,21 @@ public class CurrencyUtil {
         }
 
 
+        int i = 0;
         for (String c1 : currencyPairDoubles) {
             Log.i(TAG, c1); //Show each pair
+            getCurrency(c1);
+            i++;
+
 
         }
 
-        //Just an issue with getting the data out of the JSON
-        String test= "USD_PHP,USD_CAD";
-        getCurrency(test);
+        Log.i(TAG, "Number of requests: " + i);
 
-
+//        //Just an issue with getting the data out of the JSON
+//        String test= "USD_PHP,USD_CAD";
+//        String test1 = "USD_NZD";
+//        getCurrency(test);
 
 
     }
@@ -119,14 +122,19 @@ public class CurrencyUtil {
                     return;
                 }
 
-
                 String body = new Gson().toJson(response.body());
                 JSONObject currency = null;
+
+                //Modify the string right here.
+                String c1 = mCurrencyPair.substring(0,7); //currency pair 1
+                String c2 = mCurrencyPair.substring(8,15); //currency pair 2
+
                 try {
                     currency = new JSONObject(body);
 
-                    String result = "Code: " + response.code() + "\n" +
-                            mCurrencyPair + ": " + currency.getString(mCurrencyPair);
+                    String result = "Success: " + response.code() + "\n" +
+                            c1 + ": " + currency.getString(c1) + "\n" +
+                            c2 + ": " + currency.get(c2);
 
                     Log.i(TAG, result);
 
