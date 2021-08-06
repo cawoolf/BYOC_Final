@@ -67,6 +67,7 @@ public class CurrencyUtil {
 
         //Run through the list and create a Set of unique double currencyPairs
         //This cuts down on the number of API requests. Free version only has max of two pairs per request.
+        //This would be good code to learn and run testing on.
         HashSet<String> currencyPairDoubles = new HashSet<>();
 
         int I = 0;
