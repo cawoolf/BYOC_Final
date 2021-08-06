@@ -45,7 +45,6 @@ public class CurrencyUtil {
                 .build();
         mCurrencyAPI = retrofit.create(CurrencyAPI.class);
 
-        HashMap<String, Double> currencyPairs = new HashMap<>();
         HashSet<String> pairs = new HashSet<>();
 
         String[] currencies = new String[]{"USD", "CAD", "EUR", "NZD"};
@@ -60,10 +59,6 @@ public class CurrencyUtil {
         }
 
         Log.i(TAG, "Original request size: " + pairs.size() + ""); //Log the size
-
-//        for (String c1 : pairs) {
-//            Log.i(TAG, c1); //Show each pair
-//        }
 
         //Convert to HashSet to ArrayList so that we can create unique pair doubles
         ArrayList<String> currencyPairList = new ArrayList<>();
@@ -86,33 +81,24 @@ public class CurrencyUtil {
             I = I + 2;
             J = J + 2;
 
-            //getCurrency(pair);
         }
 
 
+        //Run each double currency pair through API get request.
         int i = 0;
         for (String c1 : currencyPairDoubles) {
             Log.i(TAG, c1); //Show each pair
             getCurrency(c1);
             i++;
-
-
         }
 
         Log.i(TAG, "Number of requests: " + i);
 
-//        //Just an issue with getting the data out of the JSON
-//        String test= "USD_PHP,USD_CAD";
-//        String test1 = "USD_NZD";
-//        getCurrency(test);
-
-
     }
 
-    //Can make get request for currency at once.
+    //Can makes the API get request
     private void getCurrency(String mCurrencyPair) {
 
-//        Call call = mCurrencyAPI.getCurrencyPair(pair);
         Call call = mCurrencyAPI.getCurrency(getUrlString(mAPIKey, mCurrencyPair));
         call.enqueue(new Callback<Object>() {
             @Override
@@ -125,7 +111,7 @@ public class CurrencyUtil {
                 String body = new Gson().toJson(response.body());
                 JSONObject currency = null;
 
-                //Modify the string right here.
+                //Modify the string right here to separate out the currency pairs
                 String c1 = mCurrencyPair.substring(0,7); //currency pair 1
                 String c2 = mCurrencyPair.substring(8,15); //currency pair 2
 
