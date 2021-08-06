@@ -1,7 +1,12 @@
 package com.rayadev.byoc.model;
 
 import android.app.Activity;
+import android.app.AppComponentFactory;
+import android.os.Bundle;
 import android.util.Log;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.gson.Gson;
 import com.rayadev.byoc.R;
@@ -18,7 +23,7 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class CurrencyUtil extends Activity {
+public class CurrencyUtil {
 
     private CurrencyAPI mCurrencyAPI;
     private final String mAPIKey = "882cc2509c2a6546a18c";
@@ -39,8 +44,10 @@ public class CurrencyUtil extends Activity {
         HashMap<String, Double> currencyPairs = new HashMap<>();
         HashSet<String> pairs = new HashSet<>();
 
-        String[] currencies = {getString(R.string.currency_USD), getString(R.string.currency_CAD),
-                getString(R.string.currency_EUR), getString(R.string.currency_NZD)};
+//        String[] currencies = new String[]{getString(R.string.currency_USD), getString(R.string.currency_CAD),
+//                getString(R.string.currency_EUR), getString(R.string.currency_NZD)};
+
+        String[] currencies = new String[] {"USD", "CAD", "EUR", "NZD"};
 
 
         for(String c : currencies) {
