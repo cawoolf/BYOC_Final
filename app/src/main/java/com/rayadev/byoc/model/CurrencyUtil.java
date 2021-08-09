@@ -79,6 +79,8 @@ public class CurrencyUtil {
             String currencyAB = currencyA + "," + currencyB;
             currencyPairDoubles.add(currencyAB);
 
+            //Iterates over the list skipping over two to ensure that each set of pairs is unqiue. This breaks
+            //If the total size of the set is an odd number.
             I = I + 2;
             J = J + 2;
 
