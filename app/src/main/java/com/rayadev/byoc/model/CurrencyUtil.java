@@ -122,7 +122,7 @@ public class CurrencyUtil {
                     currency = new JSONObject(body);
 
                     String result = "Success: " + response.code() + "\n" +
-                            c1 + ": " + currency.getString(c1) + "\n" +
+                            c1 + ": " + currency.get(c1) + "\n" +
                             c2 + ": " + currency.get(c2);
 
                     Log.i(TAG, result);
