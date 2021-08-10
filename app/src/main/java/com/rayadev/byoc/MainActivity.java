@@ -53,6 +53,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void loadCurrencyData() {
+
+        //Need to make a SharedPref here so that you don't request the currency data from the API
+        //Everytime you open the app. Make a SharedPref or something that resets everyday/hour. So
+        //That the call is made only once per day/hour
         CurrencyUtil currencyUtil = new CurrencyUtil();
         currencyUtil.loadCurrencyData();
     }
