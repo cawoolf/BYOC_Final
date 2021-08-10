@@ -121,6 +121,8 @@ public class CurrencyUtil {
                 try {
                     currency = new JSONObject(body);
 
+                    //So basically pass the JSON to a SharedPreferneces.. Or use Hawk.
+                    //Does all the serialization and stuff for you. And SharedPrefs is only for Strings.
                     String result = "Success: " + response.code() + "\n" +
                             c1 + ": " + currency.get(c1) + "\n" +
                             c2 + ": " + currency.get(c2);
