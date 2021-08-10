@@ -233,6 +233,9 @@ public class ConverterTabFragment extends Fragment {
 
     private void setConverterBoxLogic(ConverterUtil.Unit fromUnit, ConverterUtil.Unit toUnit) {
 
+        mUnitAInputEditText.clearFocus();
+        mUnitBInputEditText.clearFocus();
+        clearUserInput();
 
         ConverterUtil fromUnit_toUnit = new ConverterUtil(fromUnit, toUnit);
         ConverterUtil toUnit_fromUnit = new ConverterUtil(toUnit, fromUnit);
@@ -241,11 +244,6 @@ public class ConverterTabFragment extends Fragment {
 
         myTextWatcherUtils[0] = new MyTextWatcherUtils(1, mUnitAInputEditText, mUnitBInputEditText, fromUnit_toUnit);
         myTextWatcherUtils[1] = new MyTextWatcherUtils(2,  mUnitAInputEditText, mUnitBInputEditText, toUnit_fromUnit);
-
-        mUnitAInputEditText.clearFocus();
-        mUnitBInputEditText.clearFocus();
-
-        clearUserInput();
 
         myTextWatcherUtils[0].setUnitEditTextWatcher(mUnitAInputEditText);
         myTextWatcherUtils[1].setUnitEditTextWatcher(mUnitBInputEditText);
