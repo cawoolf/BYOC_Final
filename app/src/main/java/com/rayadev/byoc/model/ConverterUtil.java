@@ -154,7 +154,7 @@ public class ConverterUtil {
                     constant = 0.621371;
                 }
                 break;
-            case MILLIMETER: //Some bugs with converting Millimeter
+            case MILLIMETER: //Some bugs with converting Millimeter.. Oh each other UNIT now needs a MILLIMETER
                 if (to == Unit.INCH) {
                     constant = 0.0393701;
                 } else if (to == Unit.CENTIMETER) {
