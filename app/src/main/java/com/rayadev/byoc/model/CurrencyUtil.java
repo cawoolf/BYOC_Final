@@ -88,14 +88,20 @@ public class CurrencyUtil {
 
 
         //Run each double currency pair through API get request.
-        int i = 0;
-        for (String c1 : currencyPairDoubles) {
-            Log.i(TAG, c1); //Show each pair
-            getCurrency(c1);
-            i++;
-        }
+////        int i = 0;
+////        for (String c1 : currencyPairDoubles) {
+////            Log.i(TAG, c1); //Show each pair
+////            getCurrency(c1);
+////            i++;
+////        }
+//
+//        Log.i(TAG, "Number of requests: " + i);
 
-        Log.i(TAG, "Number of requests: " + i);
+        //Another good spot for testing;
+        Log.i(TAG, "User Request: " + "\n");
+        getCurrency("USD_NZD,NZD_USD");
+
+
 
     }
 
