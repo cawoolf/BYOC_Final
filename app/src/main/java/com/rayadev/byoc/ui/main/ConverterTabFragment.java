@@ -237,6 +237,8 @@ public class ConverterTabFragment extends Fragment {
         mUnitBInputEditText.clearFocus();
         clearUserInput();
 
+        //Theres definitely a more simple way to go about this, but I'm just solving the issue
+        //Using objects instead of algorithms.. Just use lots of objects haha Probably not that efficient at big scales.
         ConverterUtil fromUnit_toUnit = new ConverterUtil(fromUnit, toUnit);
         ConverterUtil toUnit_fromUnit = new ConverterUtil(toUnit, fromUnit);
 
