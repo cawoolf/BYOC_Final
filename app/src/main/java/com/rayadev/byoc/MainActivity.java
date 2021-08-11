@@ -58,7 +58,15 @@ public class MainActivity extends AppCompatActivity {
         //Everytime you open the app. Make a SharedPref or something that resets everyday/hour. So
         //That the call is made only once per day/hour
         CurrencyUtil currencyUtil = new CurrencyUtil();
-        currencyUtil.loadCurrencyData();
+
+        try {
+            currencyUtil.loadCurrencyData();
+        } catch (JSONException e) {
+
+            Log.i("BTAG", e.toString());
+
+        }
+
     }
 
     private void keyBoardManager() {

@@ -35,6 +35,7 @@ public class CurrencyUtil{
     private CurrencyAPI mCurrencyAPI;
     private final String mAPIKey = "882cc2509c2a6546a18c";
     private final String TAG = "ATAG";
+    private JSONObject master = new JSONObject();
 
 
 
@@ -43,7 +44,7 @@ public class CurrencyUtil{
     //For sure. And set it for double pair requests, and for only once a day.
 
 
-    public void loadCurrencyData() {
+    public void loadCurrencyData() throws JSONException {
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("https://free.currconv.com/api/v7/")
@@ -59,16 +60,21 @@ public class CurrencyUtil{
         JSONObject currencyJSON = new JSONObject();
         for(String pair: currencySet) {
 //            currencyJSON.put(runCurrencyAPIRequest(pair)); something like that
-           runCurrencyAPIRequest(pair);
+            //or maybe even this needs to be wrapped in a Thread..
+
+           currencyJSON = runCurrencyAPIRequest(pair, currencyJSON);
             Log.i(TAG, pair);
             i++;
         }
 
+
         Log.i(TAG, "Number of requests: " + i);
+
+        Log.i("BTAG", master.getString("USD_NZD")+ "www");
 
         //Another good spot for testing;
         Log.i(TAG, "User Request: " + "\n");
-        runCurrencyAPIRequest("USD_NZD,NZD_USD");
+//        runCurrencyAPIRequest("USD_NZD,NZD_USD");
 
 
 
@@ -125,7 +131,7 @@ public class CurrencyUtil{
 
     //Makes the API call from the given currency HashSet value.
     //The returned data is asynchronous. How to get it out.
-    private void runCurrencyAPIRequest(String mCurrencyPair) {
+    private JSONObject runCurrencyAPIRequest(String mCurrencyPair, JSONObject test) throws JSONException {
 
 
         //Write here is where the thread needs to be more or less
@@ -159,10 +165,13 @@ public class CurrencyUtil{
 
                     Log.i(TAG, result);
 
-                    //Need to build the JSON here as well. Each pair needs to be added to it.
-                    //To create the final file with all the currency data.
-                    writeJSON(currency.get(c1)+"");
-                    jsonObject[0] = currency;
+//                    //Need to build the JSON here as well. Each pair needs to be added to it.
+//                    //To create the final file with all the currency data.
+
+//                    test.put(c1, currency.get(c1));
+//                    test.put(c2, currency.get(c2));
+                    master.put(c1, currency.get(c1));
+                    master.put(c2, currency.get(c2));
 
 
                 } catch (JSONException e) {
@@ -180,6 +189,9 @@ public class CurrencyUtil{
             }
 
         });
+
+        Log.i("BTAG" , test.get("USD_NZD") +"");
+        return test;
 
 
     }
@@ -203,5 +215,9 @@ public class CurrencyUtil{
 
     private String getUrlString(String apiKey, String currencyPair) {
         return "https://free.currconv.com/api/v7/convert?q=" + currencyPair + "&compact=ultra&apiKey=" + apiKey;
+    }
+
+    private JSONObject getMaster() {
+        return master;
     }
 }
