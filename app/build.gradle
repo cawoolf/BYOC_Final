@@ -75,4 +75,8 @@ dependencies {
     //Retrofit
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+
+    //Hawk
+    //Simple way to serialize and access java objects
+    implementation "com.orhanobut:hawk:2.0.1"
 }

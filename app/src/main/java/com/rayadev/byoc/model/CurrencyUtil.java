@@ -2,6 +2,9 @@ package com.rayadev.byoc.model;
 
 import android.app.Activity;
 import android.app.AppComponentFactory;
+import android.content.ContentProvider;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
@@ -10,6 +13,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.gson.Gson;
+import com.orhanobut.hawk.Hawk;
 import com.rayadev.byoc.MainActivity;
 import com.rayadev.byoc.R;
 
@@ -26,7 +30,7 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class CurrencyUtil {
+public class CurrencyUtil{
 
     private CurrencyAPI mCurrencyAPI;
     private final String mAPIKey = "882cc2509c2a6546a18c";
@@ -37,6 +41,8 @@ public class CurrencyUtil {
     //Might need to be in its own thread, and class..
     //Watch coding in flows video about Handler and Looper to update UI thread from Currency Thread.
     //For sure. And set it for double pair requests, and for only once a day.
+
+
     public void loadCurrencyData() {
 
         Retrofit retrofit = new Retrofit.Builder()
@@ -45,8 +51,32 @@ public class CurrencyUtil {
                 .build();
         mCurrencyAPI = retrofit.create(CurrencyAPI.class);
 
-        HashSet<String> pairs = new HashSet<>();
+        HashSet<String> currencySet = buildCurrencyHashSet();
 
+        int i = 0;
+        for(String pair: currencySet) {
+            runCurrencyAPIRequest(pair);
+            Log.i(TAG, pair);
+            i++;
+        }
+
+        Log.i(TAG, "Number of requests: " + i);
+
+        //Another good spot for testing;
+        Log.i(TAG, "User Request: " + "\n");
+        runCurrencyAPIRequest("USD_NZD,NZD_USD");
+
+
+
+    }
+
+    private HashSet<String> buildCurrencyHashSet() {
+
+        //Max of two currencies pairs per request with free APIkey.
+        //Build a HashSet with unique values that looks like "USD_NZD,NZD_USD"
+        //Pass that argument into the String url for Retrofit.
+
+        HashSet<String> pairs = new HashSet<>();
         String[] currencies = new String[]{"USD", "CAD", "EUR", "NZD"};
 
         //Create unique set of all currency pairs in currencies
@@ -86,27 +116,17 @@ public class CurrencyUtil {
 
         }
 
-
-        //Run each double currency pair through API get request.
-////        int i = 0;
-////        for (String c1 : currencyPairDoubles) {
-////            Log.i(TAG, c1); //Show each pair
-////            getCurrency(c1);
-////            i++;
-////        }
-//
-//        Log.i(TAG, "Number of requests: " + i);
-
-        //Another good spot for testing;
-        Log.i(TAG, "User Request: " + "\n");
-        getCurrency("USD_NZD,NZD_USD");
-
-
-
+        return currencyPairDoubles;
     }
 
-    //Can makes the API get request
-    private void getCurrency(String mCurrencyPair) {
+    //Makes the API call from the given currency HashSet value.
+    //The returned data is asynchronous. How to get it out.
+    private void runCurrencyAPIRequest(String mCurrencyPair) {
+
+
+        //Write here is where the thread needs to be more or less
+        //Wait for the call to finish, and the return the JSON.
+        final JSONObject[] jsonObject = {new JSONObject()};
 
         Call call = mCurrencyAPI.getCurrency(getUrlString(mAPIKey, mCurrencyPair));
         call.enqueue(new Callback<Object>() {
@@ -135,6 +155,11 @@ public class CurrencyUtil {
 
                     Log.i(TAG, result);
 
+                    //Need to build the JSON here as well. Each pair needs to be added to it.
+                    //To create the final file with all the currency data.
+                    writeJSON(currency.get(c1)+"");
+                    jsonObject[0] = currency;
+
 
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -149,7 +174,24 @@ public class CurrencyUtil {
                 Log.i(TAG, fail);
 
             }
+
         });
+
+
+    }
+
+    private void writeJSON(String test) {
+
+        //Best way is to pass this JSON back out of this classUtil, which is handled in its own thread.
+
+
+        Log.i("BTAG",test);
+
+
+//        SharedPreferences sharedPref = context.getSharedPreferences(
+//                "JSON", Context.MODE_PRIVATE);
+//
+//        SharedPreferences.Editor editor = sharedPref.edit();
 
     }
 

@@ -8,6 +8,13 @@ Update Connection With Being to get consent for viewing an Ad
 ***Add option to have favorites as the home screen.
 
 
+Currency Favorites implementation
+    > Currency Util talks to Homeset Frag, and Add button.
+    > Having a hard time getting that data out of the Retofit call
+        > Watching the rest of the tutorials on RetroFit, and Threads on CodingInFlow
+        > Looper, Handlers, and so to get the data out.
+
+
 
 ****
 
