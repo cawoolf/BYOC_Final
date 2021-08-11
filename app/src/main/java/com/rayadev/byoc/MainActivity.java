@@ -63,6 +63,7 @@ public class MainActivity extends AppCompatActivity {
         //Everytime you open the app. Make a SharedPref or something that resets everyday/hour. So
         //That the call is made only once per day/hour
         //With a Thread running out from here or most likely some kind of LiveData observer
+        //Actually you should use the Repository
         CurrencyUtil currencyUtil = new CurrencyUtil();
 
         try {
