@@ -53,10 +53,13 @@ public class CurrencyUtil{
 
         HashSet<String> currencySet = buildCurrencyHashSet();
 
-        //Basically all this would wrapped in
+        //Basically all this would wrapped in a thread
+        //Just adding and building the JSON that will be passed back up to the Main Activity to be stored in Sharedprefs
         int i = 0;
+        JSONObject currencyJSON = new JSONObject();
         for(String pair: currencySet) {
-            runCurrencyAPIRequest(pair);
+//            currencyJSON.put(runCurrencyAPIRequest(pair)); something like that
+           runCurrencyAPIRequest(pair);
             Log.i(TAG, pair);
             i++;
         }
