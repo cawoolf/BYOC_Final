@@ -53,6 +53,7 @@ public class CurrencyUtil{
 
         HashSet<String> currencySet = buildCurrencyHashSet();
 
+        //Basically all this would wrapped in
         int i = 0;
         for(String pair: currencySet) {
             runCurrencyAPIRequest(pair);
