@@ -187,6 +187,8 @@ public class CurrencyUtil{
 
         Log.i("BTAG",test);
 
+//Was having a huge null context issue with SharedPrefs. Which is why I wanted to solve the issue with Threads
+//And bring the data back up to the main activity for context.
 
 //        SharedPreferences sharedPref = context.getSharedPreferences(
 //                "JSON", Context.MODE_PRIVATE);
