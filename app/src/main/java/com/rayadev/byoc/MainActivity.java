@@ -7,8 +7,12 @@ import android.view.MenuInflater;
 import android.view.WindowManager;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.lifecycle.LifecycleOwner;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.Observer;
 import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.tabs.TabLayout;
@@ -17,6 +21,7 @@ import com.rayadev.byoc.model.CurrencyAPI;
 import com.rayadev.byoc.model.CurrencyUtil;
 import com.rayadev.byoc.ui.main.PageAdapter;
 
+import org.jetbrains.annotations.NotNull;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -57,6 +62,7 @@ public class MainActivity extends AppCompatActivity {
         //Need to make a SharedPref here so that you don't request the currency data from the API
         //Everytime you open the app. Make a SharedPref or something that resets everyday/hour. So
         //That the call is made only once per day/hour
+        //With a Thread running out from here or most likely some kind of LiveData observer
         CurrencyUtil currencyUtil = new CurrencyUtil();
 
         try {
@@ -66,6 +72,15 @@ public class MainActivity extends AppCompatActivity {
             Log.i("BTAG", e.toString());
 
         }
+
+        LiveData<JSONObject> test = new LiveData<JSONObject>() {
+            @Override
+            public void observe(@NonNull @NotNull LifecycleOwner owner, @NonNull @NotNull Observer<? super JSONObject> observer) {
+                super.observe(owner, observer);
+            }
+        };
+
+
 
     }
 
