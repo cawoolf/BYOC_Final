@@ -13,6 +13,7 @@ Currency Favorites implementation
     > Having a hard time getting that data out of the Retofit call
         > Watching the rest of the tutorials on RetroFit, and Threads on CodingInFlow
         > Looper, Handlers, and so to get the data out.
+    > Actually caching is what i need to do.. Cache from retrofit.
 
 
 
