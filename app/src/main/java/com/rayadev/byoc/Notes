@@ -15,6 +15,9 @@ Currency Favorites implementation
         > Looper, Handlers, and so to get the data out.
     > Actually caching is what i need to do.. Cache from retrofit.
 
+Plan now is to just create a separate room database for the currency objects. Or maybe not.
+Could probably just use the same database.
+
 
 
 ****
