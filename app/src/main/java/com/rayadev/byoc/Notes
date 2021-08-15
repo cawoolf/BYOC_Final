@@ -18,6 +18,8 @@ Currency Favorites implementation
 Plan now is to just create a separate room database for the currency objects. Or maybe not.
 Could probably just use the same database.
 
+There can be several tables in Room?
+
 
 
 ****

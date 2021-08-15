@@ -11,6 +11,8 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.lifecycle.ViewModelStoreOwner;
 
 import com.google.gson.Gson;
 import com.orhanobut.hawk.Hawk;
@@ -44,7 +46,7 @@ public class CurrencyUtil{
     //For sure. And set it for double pair requests, and for only once a day.
 
 
-    public void loadCurrencyData() throws JSONException {
+    public void loadCurrencyData(ConverterViewModel converterViewModel) throws JSONException {
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("https://free.currconv.com/api/v7/")
@@ -62,7 +64,7 @@ public class CurrencyUtil{
 //            currencyJSON.put(runCurrencyAPIRequest(pair)); something like that
             //or maybe even this needs to be wrapped in a Thread..
 
-           currencyJSON = runCurrencyAPIRequest(pair, currencyJSON);
+           currencyJSON = runCurrencyAPIRequest(pair, currencyJSON, converterViewModel);
             Log.i(TAG, pair);
             i++;
         }
@@ -131,9 +133,10 @@ public class CurrencyUtil{
 
     //Makes the API call from the given currency HashSet value.
     //The returned data is asynchronous. How to get it out.
-    private JSONObject runCurrencyAPIRequest(String mCurrencyPair, JSONObject test) throws JSONException {
+    private JSONObject runCurrencyAPIRequest(String mCurrencyPair, JSONObject test, ConverterViewModel converterViewModel) throws JSONException {
 
 
+//        ConverterViewModel converterViewModel = new ViewModelProvider((ViewModelStoreOwner) this).get(ConverterViewModel.class);
         //Write here is where the thread needs to be more or less
         //Wait for the call to finish, and the return the JSON.
         final JSONObject[] jsonObject = {new JSONObject()};
@@ -172,6 +175,10 @@ public class CurrencyUtil{
 //                    test.put(c2, currency.get(c2));
                     master.put(c1, currency.get(c1));
                     master.put(c2, currency.get(c2));
+
+                    Converter converter = new Converter("currency","CAD_", "USD");
+
+                    converterViewModel.insert(converter);
 
 
                 } catch (JSONException e) {

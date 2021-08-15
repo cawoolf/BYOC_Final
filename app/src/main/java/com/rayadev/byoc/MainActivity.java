@@ -13,10 +13,13 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.lifecycle.ViewModelStoreOwner;
 import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.tabs.TabLayout;
 import com.google.gson.Gson;
+import com.rayadev.byoc.model.ConverterViewModel;
 import com.rayadev.byoc.model.CurrencyAPI;
 import com.rayadev.byoc.model.CurrencyUtil;
 import com.rayadev.byoc.ui.main.PageAdapter;
@@ -45,7 +48,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         
         initializeUI();
-        loadCurrencyData();
+        ConverterViewModel converterViewModel = new ViewModelProvider( this).get(ConverterViewModel.class);
+        loadCurrencyData(converterViewModel);
 
     }
 
@@ -57,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
         setUpPageAdapter(tabLayout);
     }
 
-    private void loadCurrencyData() {
+    private void loadCurrencyData(ConverterViewModel converterViewModel) {
 
         //Need to make a SharedPref here so that you don't request the currency data from the API
         //Everytime you open the app. Make a SharedPref or something that resets everyday/hour. So
@@ -67,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
         CurrencyUtil currencyUtil = new CurrencyUtil();
 
         try {
-            currencyUtil.loadCurrencyData();
+            currencyUtil.loadCurrencyData(converterViewModel);
         } catch (JSONException e) {
 
             Log.i("BTAG", e.toString());
