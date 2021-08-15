@@ -41,7 +41,7 @@ public class CurrencyUtil{
     private CurrencyAPI mCurrencyAPI;
     private final String mAPIKey = "882cc2509c2a6546a18c";
     private final String TAG = "ATAG";
-    private JSONObject master = new JSONObject();
+
 
 
 
@@ -76,7 +76,6 @@ public class CurrencyUtil{
 
         Log.i(TAG, "Number of requests: " + i);
 
-        Log.i("BTAG", master.getString("USD_NZD")+ "www");
 
         //Another good spot for testing;
         Log.i(TAG, "User Request: " + "\n");
@@ -172,21 +171,11 @@ public class CurrencyUtil{
 
                     Log.i(TAG, result);
 
-//                    //Need to build the JSON here as well. Each pair needs to be added to it.
-//                    //To create the final file with all the currency data.
-
-//                    test.put(c1, currency.get(c1));
-//                    test.put(c2, currency.get(c2));
-                    master.put(c1, currency.get(c1));
-                    master.put(c2, currency.get(c2));
-
-//                    Converter converter = new Converter("currency","CAD_", "USD");
-//
-//
-//                    converterViewModel.insert(converter);
                     Currency currency1 = new Currency(c1, (Double)currency.get(c1));
+                    Currency currency2 = new Currency(c2, (Double)currency.get(c2));
 
                     converterViewModel.insertCurrency(currency1);
+                    converterViewModel.insertCurrency(currency2);
 
 
 
@@ -233,7 +222,4 @@ public class CurrencyUtil{
         return "https://free.currconv.com/api/v7/convert?q=" + currencyPair + "&compact=ultra&apiKey=" + apiKey;
     }
 
-    private JSONObject getMaster() {
-        return master;
-    }
 }

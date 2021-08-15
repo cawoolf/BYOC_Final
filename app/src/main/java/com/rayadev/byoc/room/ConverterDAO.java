@@ -18,7 +18,7 @@ interface ConverterDAO {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     void insert(Converter param);
 
-    @Insert(entity = Currency.class)
+    @Insert(entity = Currency.class, onConflict =  OnConflictStrategy.IGNORE)
     void insertCurrency(Currency currency);
 
     @Delete
