@@ -43,13 +43,7 @@ public class CurrencyUtil{
     private final String TAG = "ATAG";
 
 
-
-
-    //Might need to be in its own thread, and class..
-    //Watch coding in flows video about Handler and Looper to update UI thread from Currency Thread.
-    //For sure. And set it for double pair requests, and for only once a day.
-
-
+    //Still need some kind of Java Date function that prevents Retrofit from running on every start.
     public void loadCurrencyData(ConverterViewModel converterViewModel) throws JSONException {
 
         Retrofit retrofit = new Retrofit.Builder()
@@ -60,28 +54,10 @@ public class CurrencyUtil{
 
         HashSet<String> currencySet = buildCurrencyHashSet();
 
-        //Basically all this would wrapped in a thread
-        //Just adding and building the JSON that will be passed back up to the Main Activity to be stored in Sharedprefs
-        int i = 0;
-
         for(String pair: currencySet) {
-//            currencyJSON.put(runCurrencyAPIRequest(pair)); something like that
-            //or maybe even this needs to be wrapped in a Thread..
-
            runCurrencyAPIRequest(pair,converterViewModel);
             Log.i(TAG, pair);
-            i++;
         }
-
-
-        Log.i(TAG, "Number of requests: " + i);
-
-
-        //Another good spot for testing;
-        Log.i(TAG, "User Request: " + "\n");
-//        runCurrencyAPIRequest("USD_NZD,NZD_USD");
-
-
 
     }
 
@@ -102,10 +78,6 @@ public class CurrencyUtil{
                 pairs.add(pair);
             }
         }
-
-//        for(String pair : currencies) {
-//            Log.i(TAG, pair+""); //Log the size
-//        }
 
         //Convert to HashSet to ArrayList so that we can create unique pair doubles
         ArrayList<String> currencyPairList = new ArrayList<>();
@@ -145,12 +117,6 @@ public class CurrencyUtil{
     //The returned data is asynchronous. How to get it out.
     private void runCurrencyAPIRequest(String mCurrencyPair, ConverterViewModel converterViewModel) throws JSONException {
 
-
-//        ConverterViewModel converterViewModel = new ViewModelProvider((ViewModelStoreOwner) this).get(ConverterViewModel.class);
-        //Write here is where the thread needs to be more or less
-        //Wait for the call to finish, and the return the JSON.
-        final JSONObject[] jsonObject = {new JSONObject()};
-
         Call call = mCurrencyAPI.getCurrency(getUrlString(mAPIKey, mCurrencyPair));
         call.enqueue(new Callback<Object>() {
             @Override
@@ -170,8 +136,6 @@ public class CurrencyUtil{
                 try {
                     currency = new JSONObject(body);
 
-                    //So basically pass the JSON to a SharedPreferneces.. Or use Hawk.
-                    //Does all the serialization and stuff for you. And SharedPrefs is only for Strings.
                     String result = "Success: " + response.code() + "\n" +
                             c1 + ": " + currency.get(c1) + "\n" +
                             c2 + ": " + currency.get(c2);
@@ -203,22 +167,6 @@ public class CurrencyUtil{
         });
     }
 
-    private void writeJSON(String test) {
-
-        //Best way is to pass this JSON back out of this classUtil, which is handled in its own thread.
-
-
-        Log.i("BTAG",test);
-
-//Was having a huge null context issue with SharedPrefs. Which is why I wanted to solve the issue with Threads
-//And bring the data back up to the main activity for context.
-
-//        SharedPreferences sharedPref = context.getSharedPreferences(
-//                "JSON", Context.MODE_PRIVATE);
-//
-//        SharedPreferences.Editor editor = sharedPref.edit();
-
-    }
 
     private String getUrlString(String apiKey, String currencyPair) {
         return "https://free.currconv.com/api/v7/convert?q=" + currencyPair + "&compact=ultra&apiKey=" + apiKey;
