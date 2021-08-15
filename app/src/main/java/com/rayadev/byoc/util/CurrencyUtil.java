@@ -148,8 +148,6 @@ public class CurrencyUtil{
                     converterViewModel.insertCurrency(currency1);
                     converterViewModel.insertCurrency(currency2);
 
-
-
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -166,7 +164,6 @@ public class CurrencyUtil{
 
         });
     }
-
 
     private String getUrlString(String apiKey, String currencyPair) {
         return "https://free.currconv.com/api/v7/convert?q=" + currencyPair + "&compact=ultra&apiKey=" + apiKey;
