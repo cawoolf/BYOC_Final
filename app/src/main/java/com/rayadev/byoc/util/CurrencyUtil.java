@@ -63,12 +63,12 @@ public class CurrencyUtil{
         //Basically all this would wrapped in a thread
         //Just adding and building the JSON that will be passed back up to the Main Activity to be stored in Sharedprefs
         int i = 0;
-        JSONObject currencyJSON = new JSONObject();
+
         for(String pair: currencySet) {
 //            currencyJSON.put(runCurrencyAPIRequest(pair)); something like that
             //or maybe even this needs to be wrapped in a Thread..
 
-           currencyJSON = runCurrencyAPIRequest(pair, currencyJSON, converterViewModel);
+           runCurrencyAPIRequest(pair,converterViewModel);
             Log.i(TAG, pair);
             i++;
         }
@@ -103,7 +103,9 @@ public class CurrencyUtil{
             }
         }
 
-        Log.i(TAG, "Original request size: " + pairs.size() + ""); //Log the size
+//        for(String pair : currencies) {
+//            Log.i(TAG, pair+""); //Log the size
+//        }
 
         //Convert to HashSet to ArrayList so that we can create unique pair doubles
         ArrayList<String> currencyPairList = new ArrayList<>();
@@ -131,12 +133,17 @@ public class CurrencyUtil{
 
         }
 
+        for(String pair : currencyPairDoubles) {
+            Log.i(TAG, pair+"");
+
+        }
+
         return currencyPairDoubles;
     }
 
     //Makes the API call from the given currency HashSet value.
     //The returned data is asynchronous. How to get it out.
-    private JSONObject runCurrencyAPIRequest(String mCurrencyPair, JSONObject test, ConverterViewModel converterViewModel) throws JSONException {
+    private void runCurrencyAPIRequest(String mCurrencyPair, ConverterViewModel converterViewModel) throws JSONException {
 
 
 //        ConverterViewModel converterViewModel = new ViewModelProvider((ViewModelStoreOwner) this).get(ConverterViewModel.class);
@@ -194,11 +201,6 @@ public class CurrencyUtil{
             }
 
         });
-
-        Log.i("BTAG" , test.get("USD_NZD") +"");
-        return test;
-
-
     }
 
     private void writeJSON(String test) {
