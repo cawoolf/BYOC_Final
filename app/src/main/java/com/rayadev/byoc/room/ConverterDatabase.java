@@ -8,8 +8,9 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
 import com.rayadev.byoc.model.Converter;
+import com.rayadev.byoc.model.Currency;
 
-@Database(entities = {Converter.class}, version = 1, exportSchema = false)
+@Database(entities = {Converter.class, Currency.class}, version = 1, exportSchema = false)
 public abstract class ConverterDatabase extends RoomDatabase {
 
     public abstract ConverterDAO getConverterDAO();

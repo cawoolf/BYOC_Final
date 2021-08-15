@@ -14,11 +14,16 @@ public class Converter {
 
     public String unitCategory;
 
+    public Converter() {
+
+    }
+
     public Converter(String unitCategory, String unitAString, String unitBString) {
         this.unitCategory = unitCategory;
         this.unitAString = unitAString;
         this.unitBString = unitBString;
     }
+
 
     public int getConverterID() {
         return converterID;

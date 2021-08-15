@@ -8,6 +8,7 @@ import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 
 import com.rayadev.byoc.model.Converter;
+import com.rayadev.byoc.model.Currency;
 
 import java.util.List;
 
@@ -16,6 +17,9 @@ interface ConverterDAO {
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     void insert(Converter param);
+
+    @Insert(entity = Currency.class)
+    void insertCurrency(Currency currency);
 
     @Delete
     void delete(Converter converter);

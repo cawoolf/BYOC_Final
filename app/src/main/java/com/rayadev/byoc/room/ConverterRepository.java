@@ -6,6 +6,7 @@ import android.os.AsyncTask;
 import androidx.lifecycle.LiveData;
 
 import com.rayadev.byoc.model.Converter;
+import com.rayadev.byoc.model.Currency;
 
 import java.util.List;
 
@@ -28,6 +29,10 @@ public class ConverterRepository {
         new insertAsyncTask(mConverterDAO).execute(converter);
     }
 
+    public void insertCurrency(Currency currency) {
+       new insertCurrencyAsyncTask(mConverterDAO).execute(currency);
+    }
+
     public void delete (Converter converter) {
         new deleteAsyncTask(mConverterDAO).execute(converter);}
 
@@ -43,6 +48,21 @@ public class ConverterRepository {
         @Override
         protected Void doInBackground(final Converter... params) {
             mAsyncTaskDao.insert(params[0]);
+            return null;
+        }
+    }
+
+    private static class insertCurrencyAsyncTask extends AsyncTask<Currency, Void, Void> {
+
+        private final ConverterDAO mAsyncTaskDao;
+
+        insertCurrencyAsyncTask(ConverterDAO dao) {
+            mAsyncTaskDao = dao;
+        }
+
+        @Override
+        protected Void doInBackground(final Currency... params) {
+            mAsyncTaskDao.insertCurrency(params[0]);
             return null;
         }
     }
