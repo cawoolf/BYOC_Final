@@ -20,6 +20,7 @@ import com.rayadev.byoc.MainActivity;
 import com.rayadev.byoc.R;
 import com.rayadev.byoc.model.Converter;
 import com.rayadev.byoc.model.ConverterViewModel;
+import com.rayadev.byoc.model.Currency;
 import com.rayadev.byoc.model.CurrencyAPI;
 
 import org.json.JSONException;
@@ -179,9 +180,14 @@ public class CurrencyUtil{
                     master.put(c1, currency.get(c1));
                     master.put(c2, currency.get(c2));
 
-                    Converter converter = new Converter("currency","CAD_", "USD");
+//                    Converter converter = new Converter("currency","CAD_", "USD");
+//
+//
+//                    converterViewModel.insert(converter);
+                    Currency currency1 = new Currency(c1, (Double)currency.get(c1));
 
-                    converterViewModel.insert(converter);
+                    converterViewModel.insertCurrency(currency1);
+
 
 
                 } catch (JSONException e) {

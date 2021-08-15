@@ -38,6 +38,8 @@ public class ConverterViewModel extends AndroidViewModel {
         mRepository.insert(converter);
     }
 
+    public void insertCurrency(Currency currency){mRepository.insertCurrency(currency);}
+
     //Deletes a single word from the database
     public void delete(Converter converter) {
         mRepository.delete(converter);

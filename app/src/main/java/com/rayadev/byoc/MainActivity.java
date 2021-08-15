@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
 
         //Passes the ViewModel down to CurrencyUtil for Async Retrofit call. Inserts currency into database.
         ConverterViewModel converterViewModel = new ViewModelProvider( this).get(ConverterViewModel.class);
-//        loadCurrencyData(converterViewModel);
+        loadCurrencyData(converterViewModel);
 
     }
 

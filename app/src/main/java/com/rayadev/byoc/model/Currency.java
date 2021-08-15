@@ -11,9 +11,9 @@ public class Currency {
     @NonNull
     public String currencyPair;
 
-    public String currencyValue; //Comes out of the JSON as a String
+    public Double currencyValue; //Comes out of the JSON as a String
 
-    public Currency(String currencyPair, String currencyValue) {
+    public Currency(String currencyPair, Double currencyValue) {
 
         this.currencyPair = currencyPair;
         this.currencyValue = currencyValue;
