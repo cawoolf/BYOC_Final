@@ -1,4 +1,4 @@
-package com.rayadev.byoc.model;
+package com.rayadev.byoc.util;
 
 
 public class ConverterUtil {

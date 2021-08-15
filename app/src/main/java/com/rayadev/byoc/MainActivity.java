@@ -5,7 +5,6 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.WindowManager;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,29 +13,16 @@ import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.lifecycle.ViewModelStoreOwner;
 import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.tabs.TabLayout;
-import com.google.gson.Gson;
 import com.rayadev.byoc.model.ConverterViewModel;
-import com.rayadev.byoc.model.CurrencyAPI;
-import com.rayadev.byoc.model.CurrencyUtil;
+import com.rayadev.byoc.util.CurrencyUtil;
 import com.rayadev.byoc.ui.main.PageAdapter;
 
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -51,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
 
         //Passes the ViewModel down to CurrencyUtil for Async Retrofit call. Inserts currency into database.
         ConverterViewModel converterViewModel = new ViewModelProvider( this).get(ConverterViewModel.class);
-        loadCurrencyData(converterViewModel);
+//        loadCurrencyData(converterViewModel);
 
     }
 

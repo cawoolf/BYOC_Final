@@ -24,7 +24,7 @@ import android.widget.Toast;
 
 import com.rayadev.byoc.R;
 import com.rayadev.byoc.model.Converter;
-import com.rayadev.byoc.model.ConverterUtil;
+import com.rayadev.byoc.util.ConverterUtil;
 import com.rayadev.byoc.model.ConverterViewModel;
 
 

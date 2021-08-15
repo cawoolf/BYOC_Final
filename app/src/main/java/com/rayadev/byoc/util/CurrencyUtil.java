@@ -1,4 +1,4 @@
-package com.rayadev.byoc.model;
+package com.rayadev.byoc.util;
 
 import android.app.Activity;
 import android.app.AppComponentFactory;
@@ -18,6 +18,9 @@ import com.google.gson.Gson;
 import com.orhanobut.hawk.Hawk;
 import com.rayadev.byoc.MainActivity;
 import com.rayadev.byoc.R;
+import com.rayadev.byoc.model.Converter;
+import com.rayadev.byoc.model.ConverterViewModel;
+import com.rayadev.byoc.model.CurrencyAPI;
 
 import org.json.JSONException;
 import org.json.JSONObject;

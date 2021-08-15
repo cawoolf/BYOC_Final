@@ -12,7 +12,6 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,12 +19,12 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.rayadev.byoc.R;
 import com.rayadev.byoc.model.Converter;
-import com.rayadev.byoc.model.ConverterUtil;
+import com.rayadev.byoc.util.ConverterUtil;
 import com.rayadev.byoc.model.ConverterViewModel;
+import com.rayadev.byoc.util.KeyboardUtils;
 
 import java.util.ArrayList;
 import java.util.List;

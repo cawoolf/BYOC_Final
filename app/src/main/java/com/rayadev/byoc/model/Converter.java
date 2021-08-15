@@ -4,7 +4,7 @@ package com.rayadev.byoc.model;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-@Entity(tableName= "converter_table")
+@Entity(tableName= "converter_favorites_table")
 public class Converter {
 
     @PrimaryKey(autoGenerate = true)

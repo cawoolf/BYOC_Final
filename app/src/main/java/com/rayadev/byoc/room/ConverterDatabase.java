@@ -9,7 +9,7 @@ import androidx.room.RoomDatabase;
 
 import com.rayadev.byoc.model.Converter;
 
-@Database(entities = {Converter.class}, version = 2, exportSchema = false)
+@Database(entities = {Converter.class}, version = 1, exportSchema = false)
 public abstract class ConverterDatabase extends RoomDatabase {
 
     public abstract ConverterDAO getConverterDAO();
@@ -23,7 +23,7 @@ public abstract class ConverterDatabase extends RoomDatabase {
 
                     // Create database here
                     INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
-                            ConverterDatabase.class, "converter_table")
+                            ConverterDatabase.class, "converter_database")
                             .fallbackToDestructiveMigration()
                             .build();
                 }

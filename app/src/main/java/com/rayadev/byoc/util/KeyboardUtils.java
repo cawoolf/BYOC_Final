@@ -1,4 +1,4 @@
-package com.rayadev.byoc.ui.main;
+package com.rayadev.byoc.util;
 
 import android.app.Activity;
 import android.graphics.Rect;

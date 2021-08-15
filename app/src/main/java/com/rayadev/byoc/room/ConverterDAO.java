@@ -20,6 +20,6 @@ interface ConverterDAO {
     @Delete
     void delete(Converter converter);
 
-    @Query("SELECT * from converter_table") //Maybe try to order by primary key, or make it so that you can drag and rearrange the order of the converters.
+    @Query("SELECT * from converter_favorites_table") //Maybe try to order by primary key, or make it so that you can drag and rearrange the order of the converters.
     LiveData<List<Converter>> getFavoriteConverterList();
 }

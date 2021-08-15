@@ -4,7 +4,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.widget.EditText;
 
-import com.rayadev.byoc.model.ConverterUtil;
+import com.rayadev.byoc.util.ConverterUtil;
 
 class MyTextWatcherUtils {
 
