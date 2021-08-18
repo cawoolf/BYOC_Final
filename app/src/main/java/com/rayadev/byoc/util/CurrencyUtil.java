@@ -61,9 +61,11 @@ public class CurrencyUtil{
 
     }
 
+
     private HashSet<String> buildCurrencyHashSet() {
 
         //Max of two currencies pairs per request with free APIkey.
+        //Cuts down on the total number of requests from 16 to 8 when using 4 currencies.
         //Build a HashSet with unique values that looks like "USD_NZD,NZD_USD"
         //Pass that argument into the String url for Retrofit.
 
@@ -79,12 +81,12 @@ public class CurrencyUtil{
             }
         }
 
-        //Convert to HashSet to ArrayList so that we can create unique pair doubles
+        //Convert to HashSet to ArrayList so that we can create unique pair of pairs (double pairs)
         ArrayList<String> currencyPairList = new ArrayList<>();
 
         currencyPairList.addAll(pairs);
 
-        //Run through the list and create a Set of unique double currencyPairs
+        //Run through the list and create a Set of unique double pairs currencyPairs
         //This cuts down on the number of API requests. Free version only has max of two pairs per request.
         //This would be good code to learn and run testing on.
         HashSet<String> currencyPairDoubles = new HashSet<>();
