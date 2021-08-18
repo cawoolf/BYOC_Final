@@ -11,7 +11,7 @@ public class Currency {
     @NonNull
     public String currencyPair;
 
-    public Double currencyValue; //Comes out of the JSON as a String
+    public Double currencyValue;
 
     public Currency(String currencyPair, Double currencyValue) {
 
