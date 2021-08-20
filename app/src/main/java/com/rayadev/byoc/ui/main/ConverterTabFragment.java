@@ -46,6 +46,7 @@ public class ConverterTabFragment extends Fragment {
 
     //Converter Unit Strings for favorites Constructor
     private String unitAString, unitBString;
+    private String unitCategory;
 
     public ConverterTabFragment() {
         this.spinnerID = R.layout.spinner_scrollview_distance;
@@ -130,7 +131,7 @@ public class ConverterTabFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                Converter converter = new Converter("distance",unitAString, unitBString);
+                Converter converter = new Converter(unitCategory,unitAString, unitBString);
 
                 mConverterViewModel.insert(converter);
 
@@ -160,6 +161,7 @@ public class ConverterTabFragment extends Fragment {
                     Toast toast = Toast.makeText(context, text, duration);
                     toast.show();
                     setSpinnerScrollViewFragment(R.layout.spinner_scrollview_distance);
+                    unitCategory = (String) text;
 
                     //This should be called after the user selects units off the spinner.
 //                    setUpTargetConverter();
@@ -170,12 +172,14 @@ public class ConverterTabFragment extends Fragment {
                     Toast toast = Toast.makeText(context, text, duration);
                     toast.show();
                     setSpinnerScrollViewFragment(R.layout.spinner_scrollview_area);
+                    unitCategory = (String) text;
                 }
 
                 if(text.equals(getString(R.string.spinner_currency_title))) {
                     Toast toast = Toast.makeText(context, text, duration);
                     toast.show();
                     setSpinnerScrollViewFragment(R.layout.spinner_scrollview_currency);
+                    unitCategory = (String) text;
 
                 }
             }

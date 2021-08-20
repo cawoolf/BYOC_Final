@@ -70,19 +70,19 @@ public class HomeSetRecyclerViewAdapter extends RecyclerView.Adapter<HomeSetRecy
 //                holder.mConverterImageView.setImageResource(R.drawable.converter_icon_distance);
 //            }
 
-            if(holder.unitCategory.equals("distance")){
+            if(holder.unitCategory.equals("Distance")){
                 holder.mConverterImageView.setImageResource(R.drawable.converter_icon_distance);
             }
 
-            else if(holder.unitCategory.equals("area")) {
+            else if(holder.unitCategory.equals("Area")) {
                 holder.mConverterImageView.setImageResource(R.drawable.converter_icon_area);
             }
 
-            else if(holder.unitCategory.equals("time")) {
+            else if(holder.unitCategory.equals("Time")) {
                 holder.mConverterImageView.setImageResource(R.drawable.converter_icon_time);
             }
 
-            else if(holder.unitCategory.equals("weight")) {
+            else if(holder.unitCategory.equals("Weight")) {
                 holder.mConverterImageView.setImageResource(R.drawable.converter_icon_weight);
             }
 

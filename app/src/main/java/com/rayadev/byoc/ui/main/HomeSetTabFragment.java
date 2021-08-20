@@ -126,10 +126,12 @@ public class HomeSetTabFragment extends Fragment implements HomeSetRecyclerViewA
 
         setConverterBoxTitles(unitAName, unitBName);
 
-        if(unitCategory.equals("currency")) {
+        if(unitCategory.equals("Currency")) {
             //run logic for currency
+            //get currency data from currency_table.
+
         }
-        else if(unitCategory.equals("custom")) {
+        else if(unitCategory.equals("Custom")) {
             //run logic for custom
         }
 
