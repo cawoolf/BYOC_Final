@@ -26,4 +26,7 @@ interface ConverterDAO {
 
     @Query("SELECT * from converter_favorites_table") //Maybe try to order by primary key, or make it so that you can drag and rearrange the order of the converters.
     LiveData<List<Converter>> getFavoriteConverterList();
+
+    @Query("SELECT * from currency_table WHERE currencyPair =:currencyPair")
+    LiveData<List<Converter>> getTargetConverter(String currencyPair); //Should be get a distinct entity, but ArrayList just in case.
 }
