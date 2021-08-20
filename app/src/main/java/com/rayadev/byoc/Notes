@@ -42,6 +42,11 @@ Need to add favorites table to SQL for HomeSetTabFrag
     > Finish distance data. Atleast for km.. to make testing easier.
 
 Implement currency**
+Add all currecny data to table
+When add favorite is clicked, get the currency data from the table, and add it to the favorites.
+    > In this case it wont really update..
+Or just when converter icon is clicked, get the currency data from the table, and it set it the the values
+in real time. Might be laggy?
 
 
 

@@ -122,26 +122,36 @@ public class HomeSetTabFragment extends Fragment implements HomeSetRecyclerViewA
 
     //Sets the Converter data into the fragment Converter UI.
     @Override
-    public void onConverterIconClick(String unitAName, String unitBName) {
+    public void onConverterIconClick(String unitAName, String unitBName, String unitCategory) {
 
         setConverterBoxTitles(unitAName, unitBName);
 
-        setConverterBoxLogic(ConverterUtil.Unit.fromString(unitAName), ConverterUtil.Unit.fromString(unitBName));
+        if(unitCategory.equals("currency")) {
+            //run logic for currency
+        }
+        else if(unitCategory.equals("custom")) {
+            //run logic for custom
+        }
 
-        keyboardManager();
+        else {
 
-        //Custom back button function.
-        OnBackPressedCallback backPressedCallback = new OnBackPressedCallback(true) {
-            @Override
-            public void handleOnBackPressed() {
-                mConverterUI.setVisibility(View.GONE);
-                clearUserInput();
+            setConverterBoxLogic(ConverterUtil.Unit.fromString(unitAName), ConverterUtil.Unit.fromString(unitBName));
 
-            }
-        };
+            keyboardManager();
 
-        requireActivity().getOnBackPressedDispatcher().addCallback(this, backPressedCallback);
-        //Keyboard
+            //Custom back button function.
+            OnBackPressedCallback backPressedCallback = new OnBackPressedCallback(true) {
+                @Override
+                public void handleOnBackPressed() {
+                    mConverterUI.setVisibility(View.GONE);
+                    clearUserInput();
+
+                }
+            };
+
+            requireActivity().getOnBackPressedDispatcher().addCallback(this, backPressedCallback);
+            //Keyboard
+        }
 
     }
 

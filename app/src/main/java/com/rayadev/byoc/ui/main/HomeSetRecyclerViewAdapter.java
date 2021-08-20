@@ -136,7 +136,7 @@ public class HomeSetRecyclerViewAdapter extends RecyclerView.Adapter<HomeSetRecy
                 @Override
                 public void onClick(View v) {
 
-                    mClickListener.onConverterIconClick(unitAName, unitBName);
+                    mClickListener.onConverterIconClick(unitAName, unitBName, unitCategory);
                 }
             });
 
@@ -158,7 +158,8 @@ public class HomeSetRecyclerViewAdapter extends RecyclerView.Adapter<HomeSetRecy
     public interface ConverterClickListener {
         //Passes all the Converter info to the fragment
 
-        void onConverterIconClick(String converterUnitA_Name, String converterUnitB_Name);
+        //Pass the catgory up so that we can switch between custom, currency, and favorites converters.
+        void onConverterIconClick(String converterUnitA_Name, String converterUnitB_Name, String converterCategory);
         void onConverterLongClick(int converterID); //Need to get Converter ID to pass to the delete operation.
     }
 
