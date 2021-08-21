@@ -36,7 +36,8 @@ public class ConverterRepository {
     public void delete (Converter converter) {
         new deleteAsyncTask(mConverterDAO).execute(converter);}
 
-    public LiveData<List<Currency>> getTargetCurrency(String converterName) {
+    //How to acomplo
+    public Currency getTargetCurrency(String converterName) {
         return mConverterDAO.getTargetCurrency(converterName);
     }
 
