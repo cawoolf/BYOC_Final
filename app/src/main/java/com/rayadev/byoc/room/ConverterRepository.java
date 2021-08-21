@@ -36,6 +36,10 @@ public class ConverterRepository {
     public void delete (Converter converter) {
         new deleteAsyncTask(mConverterDAO).execute(converter);}
 
+    public LiveData<List<Currency>> getTargetCurrency(String converterName) {
+        return mConverterDAO.getTargetCurrency(converterName);
+    }
+
     //AsyncTasks for database methods.
     private static class insertAsyncTask extends AsyncTask<Converter, Void, Void> {
 
@@ -82,21 +86,5 @@ public class ConverterRepository {
             return null;
         }
     }
-
-    private static class getCurrencyAsyncTask extends AsyncTask<Currency, Void, Void> {
-
-        private final ConverterDAO mAsyncTaskDao;
-
-        getCurrencyAsyncTask(ConverterDAO asyncTaskDao) {
-            mAsyncTaskDao = asyncTaskDao;
-        }
-
-        @Override
-        protected Void doInBackground(Currency... currencies) {
-            mAsyncTaskDao.getTargetCurrency(currencies[0]);
-            return null;
-        }
-    }
-
 
 }

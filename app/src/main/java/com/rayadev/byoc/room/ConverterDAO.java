@@ -28,5 +28,5 @@ interface ConverterDAO {
     LiveData<List<Converter>> getFavoriteConverterList();
 
     @Query("SELECT * from currency_table WHERE currencyPair =:currencyPair")
-    LiveData<List<Converter>> getTargetCurrency(String currencyPair); //Should be get a distinct entity, but ArrayList just in case.
+    LiveData<List<Currency>> getTargetCurrency(String currencyPair); //Should be get a distinct entity, but ArrayList just in case.
 }
