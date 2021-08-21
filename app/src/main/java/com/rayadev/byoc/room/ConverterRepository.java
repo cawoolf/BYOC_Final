@@ -83,5 +83,20 @@ public class ConverterRepository {
         }
     }
 
+    private static class getCurrencyAsyncTask extends AsyncTask<Currency, Void, Void> {
+
+        private final ConverterDAO mAsyncTaskDao;
+
+        getCurrencyAsyncTask(ConverterDAO asyncTaskDao) {
+            mAsyncTaskDao = asyncTaskDao;
+        }
+
+        @Override
+        protected Void doInBackground(Currency... currencies) {
+            mAsyncTaskDao.getTargetCurrency(currencies[0]);
+            return null;
+        }
+    }
+
 
 }
