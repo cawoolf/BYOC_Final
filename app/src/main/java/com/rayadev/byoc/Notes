@@ -48,6 +48,9 @@ When add favorite is clicked, get the currency data from the table, and add it t
 Or just when converter icon is clicked, get the currency data from the table, and it set it the the values
 in real time. Might be laggy?
 
+Just convert the currency db into a json after the db updates the values once a day.
+Retrive the currency value from the json onClick in the HomeSet**
+
 
 
 
