@@ -10,9 +10,10 @@ import com.rayadev.byoc.model.Currency;
 
 import java.util.List;
 
-public class ConverterRepository {
+public class ConverterRepository{
 
     private ConverterDAO mConverterDAO;
+
     LiveData<List<Converter>> mConverterFavoritesList;
 
     //Add a constructor that gets a handle to the database and initializes the member variables.
@@ -36,10 +37,13 @@ public class ConverterRepository {
     public void delete (Converter converter) {
         new deleteAsyncTask(mConverterDAO).execute(converter);}
 
-    //How to acomplo
+    //Needs to be Async Task, and probably LiveData
     public Currency getTargetCurrency(String converterName) {
-        return mConverterDAO.getTargetCurrency(converterName);
-    }
+        new getCurrencyAsyncTask(mConverterDAO).execute(converterName);
+
+//        return new Currency(new getCurrencyAsyncTask(mConverterDAO).equals(converterName));
+        return null;
+   }
 
     //AsyncTasks for database methods.
     private static class insertAsyncTask extends AsyncTask<Converter, Void, Void> {
@@ -87,5 +91,36 @@ public class ConverterRepository {
             return null;
         }
     }
+
+    public static class getCurrencyAsyncTask extends AsyncTask<String, Void, Currency> {
+
+        private final ConverterDAO mAsyncTaskDao;
+        private getAsyncCurrency mCurrencyInterface;
+
+        getCurrencyAsyncTask(ConverterDAO asyncTaskDao) {
+            mAsyncTaskDao = asyncTaskDao;
+        }
+
+        @Override
+        protected Currency doInBackground(String... strings) {
+            Currency currency = mAsyncTaskDao.getTargetCurrency(strings[0]);
+            return currency;
+        }
+
+        @Override
+        protected void onPostExecute(Currency currency) {
+            super.onPostExecute(currency);
+            mCurrencyInterface.getCurrency(currency);
+
+        }
+
+        interface getAsyncCurrency{
+            Currency getCurrency(Currency currency);
+        }
+
+
+    }
+
+
 
 }

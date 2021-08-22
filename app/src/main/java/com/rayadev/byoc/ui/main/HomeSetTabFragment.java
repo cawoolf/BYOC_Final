@@ -12,6 +12,7 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,6 +23,7 @@ import android.widget.TextView;
 
 import com.rayadev.byoc.R;
 import com.rayadev.byoc.model.Converter;
+import com.rayadev.byoc.model.Currency;
 import com.rayadev.byoc.util.ConverterUtil;
 import com.rayadev.byoc.model.ConverterViewModel;
 import com.rayadev.byoc.util.KeyboardUtils;
@@ -127,8 +129,9 @@ public class HomeSetTabFragment extends Fragment implements HomeSetRecyclerViewA
         setConverterBoxTitles(unitAName, unitBName);
 
         if(unitCategory.equals("Currency")) {
-            //run logic for currency
-            //get currency data from currency_table.
+            Currency currency = mConverterViewModel.getTargetCurrency("USD_NZD");
+            Log.i("CTAG",currency.getCurrencyPair() + "" + currency.currencyValue);
+
 
         }
         else if(unitCategory.equals("Custom")) {

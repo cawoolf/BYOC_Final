@@ -44,4 +44,6 @@ public class ConverterViewModel extends AndroidViewModel {
     public void delete(Converter converter) {
         mRepository.delete(converter);
     }
+
+    public Currency getTargetCurrency(String pair) { return mRepository.getTargetCurrency(pair);}
 }

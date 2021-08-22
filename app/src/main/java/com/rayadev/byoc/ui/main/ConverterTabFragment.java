@@ -24,6 +24,7 @@ import android.widget.Toast;
 
 import com.rayadev.byoc.R;
 import com.rayadev.byoc.model.Converter;
+import com.rayadev.byoc.model.Currency;
 import com.rayadev.byoc.util.ConverterUtil;
 import com.rayadev.byoc.model.ConverterViewModel;
 
@@ -234,7 +235,7 @@ public class ConverterTabFragment extends Fragment {
 
     }
 
-
+    //Here if unitCategory equals currency, need to use a different set of constructors.
     private void setConverterBoxLogic(ConverterUtil.Unit fromUnit, ConverterUtil.Unit toUnit) {
 
         mUnitAInputEditText.clearFocus();

@@ -7,6 +7,7 @@ import androidx.room.PrimaryKey;
 @Entity(tableName= "currency_table")
 public class Currency {
 
+
     @PrimaryKey
     @NonNull
     public String currencyPair;
@@ -18,6 +19,15 @@ public class Currency {
         this.currencyPair = currencyPair;
         this.currencyValue = currencyValue;
 
+    }
+
+    @NonNull
+    public String getCurrencyPair() {
+        return currencyPair;
+    }
+
+    public Double getCurrencyValue() {
+        return currencyValue;
     }
 
 
