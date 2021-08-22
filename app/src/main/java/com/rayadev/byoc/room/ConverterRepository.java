@@ -38,6 +38,7 @@ public class ConverterRepository{
         new deleteAsyncTask(mConverterDAO).execute(converter);}
 
     //Needs to be Async Task, and probably LiveData
+    //Watch coding in flow tutorials and just use regular Java multiThreading.
     public Currency getTargetCurrency(String converterName) {
         new getCurrencyAsyncTask(mConverterDAO).execute(converterName);
 
