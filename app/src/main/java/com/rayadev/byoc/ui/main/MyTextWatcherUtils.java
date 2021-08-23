@@ -11,6 +11,8 @@ class MyTextWatcherUtils {
     private EditText viewA, viewB;
     private ConverterUtil converter;
     private int userSelection;
+    private double baseCurrency;
+    private double currencyValue;
 
     private TextWatcher mTextWatcher;
 
@@ -21,6 +23,17 @@ class MyTextWatcherUtils {
 
         this.viewA = viewA;
         this.viewB = viewB;
+
+    }
+
+
+    MyTextWatcherUtils(int userSelection, EditText viewA, EditText viewB, double baseCurrency, double currencyValue) {
+
+        this.userSelection = userSelection;
+        this.viewA = viewA;
+        this.viewB = viewB;
+        this.baseCurrency = baseCurrency;
+        this.currencyValue = currencyValue;
 
     }
 
@@ -70,32 +83,66 @@ class MyTextWatcherUtils {
     private void runConversionAB(ConverterUtil converter) {
 
         String editTextAInputString = String.valueOf(viewA.getText());
-        if(!editTextAInputString.equals("")) {
-            double input = Double.parseDouble(viewA.getText().toString());
 
-            double result = converter.convert(input);
-            viewB.setText(String.valueOf(result));
+        if(converter == null) {
+
+            if (!editTextAInputString.equals("")) {
+                double input = Double.parseDouble(viewA.getText().toString());
+
+                double result = input * currencyValue;
+                viewB.setText(String.valueOf(result));
+            } else {
+                viewB.setText("");
+
+            }
+
         }
-        else{
-            viewB.setText("");
 
+        else {
+
+
+            if (!editTextAInputString.equals("")) {
+                double input = Double.parseDouble(viewA.getText().toString());
+
+                double result = converter.convert(input);
+                viewB.setText(String.valueOf(result));
+            } else {
+                viewB.setText("");
+
+            }
         }
 
     }
 
     private void runConversionBA(ConverterUtil converter) {
 
+        //We are working with a currency now.
         String editTextBInputString = String.valueOf(viewB.getText());
-        if(!editTextBInputString.equals("")) {
-            double input = Double.parseDouble(viewB.getText().toString());
 
-            double result = converter.convert(input);
-            viewA.setText(String.valueOf(result));
+        if(converter == null) {
+            if (!editTextBInputString.equals("")) {
+                double input = Double.parseDouble(viewB.getText().toString());
+
+                double result = input * (baseCurrency/currencyValue);
+                viewA.setText(String.valueOf(result));
+            } else {
+                viewA.setText("");
+
+            }
+
         }
-        else{
-            viewA.setText("");
+
+        else {
+            if (!editTextBInputString.equals("")) {
+                double input = Double.parseDouble(viewB.getText().toString());
+
+                double result = converter.convert(input);
+                viewA.setText(String.valueOf(result));
+            } else {
+                viewA.setText("");
 
 
+            }
         }
 
     }

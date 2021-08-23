@@ -284,6 +284,7 @@ public class HomeSetTabFragment extends Fragment implements HomeSetRecyclerViewA
                 Log.i("CTAG", "Observer Success" + currency.getCurrencyPair() + ":" + currency.getCurrencyValue());
                 keyboardManager();
                 setConverterBoxTitles(currency.getCurrencyPair(), currency.getCurrencyPair());
+                setCurrencyLogic(currency.getCurrencyValue());
 
 
             }
@@ -291,6 +292,36 @@ public class HomeSetTabFragment extends Fragment implements HomeSetRecyclerViewA
         };
 
         currency.observe(getViewLifecycleOwner(), observer);
+
+    }
+
+    private void setCurrencyLogic(double currencyValue) {
+        MyTextWatcherUtils utilA = new MyTextWatcherUtils(1, mUnitAInputEditText, mUnitBInputEditText, 1, currencyValue);
+        MyTextWatcherUtils utilB = new MyTextWatcherUtils(2,  mUnitAInputEditText, mUnitBInputEditText, currencyValue, 1);
+
+        mUnitAInputEditText.clearFocus();
+        mUnitBInputEditText.clearFocus();
+
+        clearUserInput();
+
+        utilA.setUnitEditTextWatcher(mUnitAInputEditText);
+        utilB.setUnitEditTextWatcher(mUnitBInputEditText);
+
+        keyboardManager();
+
+        mUnitBInputEditText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                clearUserInput();
+            }
+        });
+
+        mUnitBInputEditText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                clearUserInput();
+            }
+        });
 
     }
 
