@@ -7,6 +7,7 @@ import android.os.Bundle;
 import androidx.activity.OnBackPressedCallback;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.LiveData;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -128,9 +129,12 @@ public class HomeSetTabFragment extends Fragment implements HomeSetRecyclerViewA
         setConverterBoxTitles(unitAName, unitBName);
 
         if(unitCategory.equals("Currency")) {
-            Currency currency = mConverterViewModel.getTargetCurrency("USD_NZD");
-            Log.i("CTAG",currency.getCurrencyPair() + "" + currency.currencyValue);
+            LiveData<Currency> currency = mConverterViewModel.getTargetCurrency("USD_NZD");
+//            Log.i("CTAG",currency.getCurrencyPair() + "" + currency.currencyValue);
+            if (currency != null) {
+                Log.i("CTAG", "LiveData success");
 
+            }
 
         }
         else if(unitCategory.equals("Custom")) {

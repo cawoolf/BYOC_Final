@@ -39,11 +39,9 @@ public class ConverterRepository{
 
     //Needs to be Async Task, and probably LiveData
     //Watch coding in flow tutorials and just use regular Java multiThreading.
-    public Currency getTargetCurrency(String converterName) {
-        new getCurrencyAsyncTask(mConverterDAO).execute(converterName);
+    public LiveData<Currency> getTargetCurrency(String converterName) {
 
-//        return new Currency(new getCurrencyAsyncTask(mConverterDAO).equals(converterName));
-        return null;
+        return mConverterDAO.getTargetCurrency(converterName);
    }
 
     //AsyncTasks for database methods.
@@ -93,21 +91,6 @@ public class ConverterRepository{
         }
     }
 
-    public static class getCurrencyAsyncTask extends AsyncTask<String, Void, LiveData<Currency>> {
-
-        private final ConverterDAO mAsyncTaskDao;
-
-        getCurrencyAsyncTask(ConverterDAO asyncTaskDao) {
-            mAsyncTaskDao = asyncTaskDao;
-        }
-
-        @Override
-        protected LiveData<Currency> doInBackground(String... strings) {
-            LiveData<Currency> currency = mAsyncTaskDao.getTargetCurrency(strings[0]);
-            return currency;
-        }
-
-    }
 
 
 }
