@@ -281,7 +281,8 @@ public class HomeSetTabFragment extends Fragment implements HomeSetRecyclerViewA
         Observer<Currency> observer = new Observer<Currency>() {
             @Override
             public void onChanged(Currency currency) {
-                Log.i("CTAG", "Observer Success");
+                Log.i("CTAG", "Observer Success" + currency.getCurrencyPair() + ":" + currency.getCurrencyValue());
+
             }
 
         };
