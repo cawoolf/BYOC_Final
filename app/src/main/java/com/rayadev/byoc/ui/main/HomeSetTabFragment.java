@@ -120,8 +120,6 @@ public class HomeSetTabFragment extends Fragment implements HomeSetRecyclerViewA
 
     }
 
-
-
     //Sets the Converter data into the fragment Converter UI.
     @Override
     public void onConverterIconClick(String unitAName, String unitBName, String unitCategory) {
