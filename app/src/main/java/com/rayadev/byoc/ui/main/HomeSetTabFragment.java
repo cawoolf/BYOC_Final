@@ -24,6 +24,7 @@ import android.widget.TextView;
 import com.rayadev.byoc.R;
 import com.rayadev.byoc.model.Converter;
 import com.rayadev.byoc.model.Currency;
+import com.rayadev.byoc.room.ConverterRepository;
 import com.rayadev.byoc.util.ConverterUtil;
 import com.rayadev.byoc.model.ConverterViewModel;
 import com.rayadev.byoc.util.KeyboardUtils;
