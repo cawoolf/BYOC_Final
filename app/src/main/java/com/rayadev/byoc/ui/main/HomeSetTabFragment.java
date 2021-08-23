@@ -282,6 +282,9 @@ public class HomeSetTabFragment extends Fragment implements HomeSetRecyclerViewA
             @Override
             public void onChanged(Currency currency) {
                 Log.i("CTAG", "Observer Success" + currency.getCurrencyPair() + ":" + currency.getCurrencyValue());
+                keyboardManager();
+                setConverterBoxTitles(currency.getCurrencyPair(), currency.getCurrencyPair());
+
 
             }
 
