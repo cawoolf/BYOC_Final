@@ -2,6 +2,7 @@ package com.rayadev.byoc.ui.main;
 
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.widget.EditText;
 
 import com.rayadev.byoc.util.ConverterUtil;
@@ -91,6 +92,7 @@ class MyTextWatcherUtils {
 
                 double result = input * currencyValue;
                 viewB.setText(String.valueOf(result));
+                Log.i("CTAG", "AB Ran");
             } else {
                 viewB.setText("");
 
@@ -123,8 +125,9 @@ class MyTextWatcherUtils {
             if (!editTextBInputString.equals("")) {
                 double input = Double.parseDouble(viewB.getText().toString());
 
-                double result = input * (baseCurrency/currencyValue);
+                double result = input * (1/currencyValue);
                 viewA.setText(String.valueOf(result));
+                Log.i("CTAG", "BA Ran");
             } else {
                 viewA.setText("");
 

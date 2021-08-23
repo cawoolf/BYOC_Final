@@ -133,7 +133,7 @@ public class HomeSetTabFragment extends Fragment implements HomeSetRecyclerViewA
 //            Log.i("CTAG",currency.getCurrencyPair() + "" + currency.currencyValue);
 
             Log.i("CTAG", "LiveData success");
-            setUpTargetCurrency("USD_NZD");
+            setUpTargetCurrency("USD_CAD");
         }
 
         else if(unitCategory.equals("Custom")) {
@@ -297,7 +297,7 @@ public class HomeSetTabFragment extends Fragment implements HomeSetRecyclerViewA
 
     private void setCurrencyLogic(double currencyValue) {
         MyTextWatcherUtils utilA = new MyTextWatcherUtils(1, mUnitAInputEditText, mUnitBInputEditText, 1, currencyValue);
-        MyTextWatcherUtils utilB = new MyTextWatcherUtils(2,  mUnitAInputEditText, mUnitBInputEditText, currencyValue, 1);
+        MyTextWatcherUtils utilB = new MyTextWatcherUtils(2,  mUnitAInputEditText, mUnitBInputEditText, 1, currencyValue);
 
         mUnitAInputEditText.clearFocus();
         mUnitBInputEditText.clearFocus();
