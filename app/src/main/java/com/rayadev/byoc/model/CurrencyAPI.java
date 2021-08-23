@@ -14,6 +14,7 @@ public interface CurrencyAPI {
 
     String apiSearch = "convert?q=USD_PHP&compact=ultra&apiKey=882cc2509c2a6546a18c";
 
+    //Will exceeding api limit cuase a crash? Handling respons codes.
     @GET
     Call<Object> getCurrency(@Url String url);
 
