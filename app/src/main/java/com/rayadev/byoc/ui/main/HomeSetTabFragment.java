@@ -129,14 +129,13 @@ public class HomeSetTabFragment extends Fragment implements HomeSetRecyclerViewA
         setConverterBoxTitles(unitAName, unitBName);
 
         if(unitCategory.equals("Currency")) {
-            LiveData<Currency> currency = mConverterViewModel.getTargetCurrency("USD_NZD");
+//            LiveData<Currency> currency = mConverterViewModel.getTargetCurrency("USD_NZD");
 //            Log.i("CTAG",currency.getCurrencyPair() + "" + currency.currencyValue);
-            if (currency != null) {
-                Log.i("CTAG", "LiveData success");
 
-            }
-
+            Log.i("CTAG", "LiveData success");
+            setUpTargetCurrency("USD_NZD");
         }
+
         else if(unitCategory.equals("Custom")) {
             //run logic for custom
         }
@@ -265,6 +264,29 @@ public class HomeSetTabFragment extends Fragment implements HomeSetRecyclerViewA
         if (mUnitBInputEditText.getText() != null) {
             mUnitBInputEditText.getText().clear();
         }
+
+    }
+
+
+
+    private void setUpTargetCurrency(String currencyPair) {
+
+        //Creating multiple instances of this view model just to access the database seems not good..
+        //But that's not really whats happening!.. Right?
+//        ConverterViewModel mConverterViewModel = new ViewModelProvider(this).get(ConverterViewModel.class);
+
+        LiveData<Currency> currency = mConverterViewModel.getTargetCurrency(currencyPair);
+
+        //This observer seems to be getting triggered from the add button, and other fragments.
+        Observer<Currency> observer = new Observer<Currency>() {
+            @Override
+            public void onChanged(Currency currency) {
+                Log.i("CTAG", "Observer Success");
+            }
+
+        };
+
+        currency.observe(getViewLifecycleOwner(), observer);
 
     }
 
