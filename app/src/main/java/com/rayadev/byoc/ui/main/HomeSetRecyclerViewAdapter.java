@@ -86,6 +86,10 @@ public class HomeSetRecyclerViewAdapter extends RecyclerView.Adapter<HomeSetRecy
                 holder.mConverterImageView.setImageResource(R.drawable.converter_icon_weight);
             }
 
+            else if(holder.unitCategory.equals("Currency")){
+                holder.mConverterImageView.setImageResource(R.drawable.converter_icon_currency);
+            }
+
 
         }
         else {
