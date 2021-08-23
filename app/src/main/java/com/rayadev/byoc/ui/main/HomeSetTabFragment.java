@@ -133,7 +133,10 @@ public class HomeSetTabFragment extends Fragment implements HomeSetRecyclerViewA
 //            Log.i("CTAG",currency.getCurrencyPair() + "" + currency.currencyValue);
 
             Log.i("CTAG", "LiveData success");
-            setUpTargetCurrency("USD_CAD");
+
+            //Next step is to use the unit names to parse a currency pair and fetch.
+            String currencyPair = unitAName + "_" + unitBName;
+            setUpTargetCurrency(currencyPair, unitAName, unitBName);
         }
 
         else if(unitCategory.equals("Custom")) {
@@ -269,7 +272,7 @@ public class HomeSetTabFragment extends Fragment implements HomeSetRecyclerViewA
 
 
 
-    private void setUpTargetCurrency(String currencyPair) {
+    private void setUpTargetCurrency(String currencyPair, String currencyA, String currencyB) {
 
         //Creating multiple instances of this view model just to access the database seems not good..
         //But that's not really whats happening!.. Right?
@@ -283,7 +286,7 @@ public class HomeSetTabFragment extends Fragment implements HomeSetRecyclerViewA
             public void onChanged(Currency currency) {
                 Log.i("CTAG", "Observer Success" + currency.getCurrencyPair() + ":" + currency.getCurrencyValue());
                 keyboardManager();
-                setConverterBoxTitles(currency.getCurrencyPair(), currency.getCurrencyPair());
+                setConverterBoxTitles(currencyA, currencyB);
                 setCurrencyLogic(currency.getCurrencyValue());
 
 
