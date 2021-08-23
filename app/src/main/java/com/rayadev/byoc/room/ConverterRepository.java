@@ -93,35 +93,21 @@ public class ConverterRepository{
         }
     }
 
-    public static class getCurrencyAsyncTask extends AsyncTask<String, Void, Currency> {
+    public static class getCurrencyAsyncTask extends AsyncTask<String, Void, LiveData<Currency>> {
 
         private final ConverterDAO mAsyncTaskDao;
-        private getAsyncCurrency mCurrencyInterface;
 
         getCurrencyAsyncTask(ConverterDAO asyncTaskDao) {
             mAsyncTaskDao = asyncTaskDao;
         }
 
         @Override
-        protected Currency doInBackground(String... strings) {
-            Currency currency = mAsyncTaskDao.getTargetCurrency(strings[0]);
+        protected LiveData<Currency> doInBackground(String... strings) {
+            LiveData<Currency> currency = mAsyncTaskDao.getTargetCurrency(strings[0]);
             return currency;
         }
 
-        @Override
-        protected void onPostExecute(Currency currency) {
-            super.onPostExecute(currency);
-            mCurrencyInterface.getCurrency(currency);
-
-        }
-
-        interface getAsyncCurrency{
-            Currency getCurrency(Currency currency);
-        }
-
-
     }
-
 
 
 }
