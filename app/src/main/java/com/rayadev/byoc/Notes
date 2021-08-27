@@ -11,7 +11,9 @@ Update Connection With Being to get consent for viewing an Ad
             > Max 100 calls per hour, say each user makes 10 calls. Just 10 individual can request per hour.
                 > Study Algorithms dood...
 ***Add option to have favorites as the home screen.
-
+***Complete Custom Converter activity
+    > Do the XML
+    > Figure out storage.
 
 
 1. Fill out and add more converter data to SpinnerFragment.
