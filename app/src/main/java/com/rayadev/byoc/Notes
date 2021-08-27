@@ -5,7 +5,10 @@ Keep up with this project enough during work so that you don't loose Android ski
 Update Connection With Being to get consent for viewing an Ad
 
 ***Finish Implementing Currencies into favorites list and converter fragment
-    > Database not updating
+    > Database wasnt updatedating because of dao conflict
+    > Add a date/timer function so that the api is only called once a day.
+        > The log the times to a server and use AI to optimize use of the free API quota! @_@
+            > Max 100 calls per hour, say each user makes 10 calls. Just 10 individual can request per hour.
 
 
 ***Add option to have favorites as the home screen.
