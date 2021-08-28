@@ -23,12 +23,11 @@
     <LinearLayout
         android:id="@+id/custom_converter_master_linear"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
 
         android:orientation="vertical"
 
         app:layout_constraintTop_toBottomOf="@id/custom_converter_activity_toolbar"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
@@ -241,6 +240,46 @@
 
         </LinearLayout>
 
+    </LinearLayout>
+
+    <include
+        android:id="@+id/custom_converter_cardlayout_include_converter_tab"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        layout="@layout/converter_master_cardview"
+        android:layout_marginTop="4dp"
+
+
+        app:layout_constraintBottom_toTopOf="@+id/custom_convertertab_BottomUI_LinearLayout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+
+        />
+
+    <LinearLayout
+        android:id="@+id/custom_convertertab_BottomUI_LinearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:gravity="center"
+        android:weightSum="2"
+
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+
+        >
+
+        <ImageView
+            android:id="@+id/add_converter_button"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_margin="6dp"
+
+            android:layout_weight="1"
+            android:src="@drawable/ic_baseline_library_add_24" />
 
     </LinearLayout>
 
