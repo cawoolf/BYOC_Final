@@ -36,6 +36,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
 
+            android:background="@drawable/edit_text_border_square"
+
             android:orientation="horizontal"
             android:weightSum="2"
             android:layout_marginTop="8dp">
@@ -43,11 +45,13 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="Enter Name of Unit A: "
+                android:text="Enter Name of Unit A : "
+
 
                 android:textSize="16sp"
 
-                android:gravity="center"
+                android:gravity="center||start"
+                android:layout_marginStart="16dp"
 
                 android:layout_weight="1"/>
 
@@ -68,6 +72,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
 
+            android:background="@drawable/edit_text_border_square"
+
             android:orientation="horizontal"
             android:weightSum="2"
             android:layout_marginTop="8dp">
@@ -75,11 +81,12 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="Enter Value of Unit A: "
+                android:text="Enter Value of Unit A : "
 
                 android:textSize="16sp"
 
-                android:gravity="center"
+                android:gravity="center||start"
+                android:layout_marginStart="16dp"
 
                 android:layout_weight="1"/>
 
@@ -100,6 +107,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
 
+            android:background="@drawable/edit_text_border_square"
+
             android:orientation="horizontal"
             android:weightSum="2"
             android:layout_marginTop="8dp">
@@ -107,11 +116,12 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="Enter Name of Unit B: "
+                android:text="Enter Name of Unit B : "
+
 
                 android:textSize="16sp"
-
-                android:gravity="center"
+                android:gravity="center||start"
+                android:layout_marginStart="16dp"
 
                 android:layout_weight="1"/>
 
@@ -132,10 +142,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
 
+
+
             android:gravity="center_horizontal"
             android:orientation="horizontal"
             android:weightSum="2"
-            android:layout_marginTop="8dp">
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -213,6 +226,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
 
+            android:background="@drawable/edit_text_border_square"
+
             android:orientation="horizontal"
             android:weightSum="2"
             android:layout_marginTop="8dp">
@@ -220,11 +235,13 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="Answer: "
+                android:text="Answer : "
 
                 android:textSize="16sp"
 
-                android:gravity="center"
+                android:gravity="center||start"
+
+                android:layout_marginStart="16dp"
 
                 android:layout_weight="1"/>
 
