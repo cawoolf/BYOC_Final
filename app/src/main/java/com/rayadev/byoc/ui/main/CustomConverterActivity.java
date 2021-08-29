@@ -5,6 +5,7 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -20,10 +21,15 @@ Allows the user to build their own converter, and save it to the HomeTab.
 
 public class CustomConverterActivity extends AppCompatActivity {
 
+    //EditTexts for user input
+    private EditText mUnitAName, mUnitAValue, mUnitBName, mUnitBValue;
+
     //Views for the converter UI
     private TextView mUnitATitleTextView, mUnitBTitleTextView;
     private EditText mUnitAInputEditText, mUnitBInputEditText;
     private ImageButton mConverterInfoButton, mConverterSwapButton;
+
+    private Button mButton;
 
     //Bottom UI
     private ImageView mAddConverterButton;
@@ -48,6 +54,7 @@ public class CustomConverterActivity extends AppCompatActivity {
     }
 
     private void linkViews() {
+
         //Link ConverterBox Views
         View converterUILayout = findViewById( R.id.custom_converter_cardlayout_include_converter_tab ); // root View id from include
 
@@ -59,5 +66,28 @@ public class CustomConverterActivity extends AppCompatActivity {
 
         mConverterInfoButton = converterUILayout.findViewById(R.id.cardView_InfoButton);
         mConverterSwapButton = converterUILayout.findViewById(R.id.cardView_SwapButton);
+
+        //User inputs
+        mUnitAName = findViewById(R.id.custom_converter_unitAName_EditText);
+        mUnitAValue = findViewById(R.id.custom_converter_unitAValue_EditText);
+        mUnitBName = findViewById(R.id.custom_converter_unitBName_EditText);
+        mUnitBValue = findViewById(R.id.custom_converter_unitBValue_EditText);
+
+        //Build Button click
+        mButton = findViewById(R.id.build_custom_converter_button);
+
+        mButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                buildConverter();
+            }
+        });
+    }
+
+    private void buildConverter() {
+
+        mUnitATitleTextView.setText(mUnitAName.getText().toString());
+        mUnitBTitleTextView.setText(mUnitBName.getText().toString());
+
     }
 }
