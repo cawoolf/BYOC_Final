@@ -75,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
            loadCurrencyData(converterViewModel);
 
            updates = updates +1;
-           editor.putInt("updates", updates);
+           editor.putInt("updates", updates).apply();
            Log.i("DTAG", "Update" + "\n" + "Old Date: " + oldDateSeconds + "\n" + "New Date: " + currentDateSeconds + "\n" +
                    "Total updates: " + updates);
 
