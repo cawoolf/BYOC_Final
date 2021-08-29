@@ -30,8 +30,6 @@ import java.util.Date;
 
 public class MainActivity extends AppCompatActivity {
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
         long diff = currentDateSeconds - oldDateSeconds;
 
        if(diff > 86400) { //Basically if its been longer than a day since the last currency update.
-           editor.putLong("date", currentDateMillis);
+           editor.putLong("date", currentDateMillis).apply();
 
            //Passes the ViewModel down to CurrencyUtil for Async Retrofit call. Inserts currency into database.
            ConverterViewModel converterViewModel = new ViewModelProvider(this).get(ConverterViewModel.class);
