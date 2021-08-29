@@ -3,8 +3,10 @@ package com.rayadev.byoc.ui.main;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -13,6 +15,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.rayadev.byoc.R;
+import com.rayadev.byoc.util.KeyboardUtils;
 
 /*Activity that gets triggered by the wrench on the ConverterTab
 
@@ -25,6 +28,7 @@ public class CustomConverterActivity extends AppCompatActivity {
     private EditText mUnitAName, mUnitAValue, mUnitBName, mUnitBValue;
 
     //Views for the converter UI
+    private View mConverterUI;
     private TextView mUnitATitleTextView, mUnitBTitleTextView;
     private EditText mUnitAInputEditText, mUnitBInputEditText;
     private ImageButton mConverterInfoButton, mConverterSwapButton;
@@ -39,8 +43,10 @@ public class CustomConverterActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_custom_converter);
+
         setUpToolbar();
         linkViews();
+        keyboardManager();
     }
 
     private void setUpToolbar() {
@@ -56,16 +62,16 @@ public class CustomConverterActivity extends AppCompatActivity {
     private void linkViews() {
 
         //Link ConverterBox Views
-        View converterUILayout = findViewById( R.id.custom_converter_cardlayout_include_converter_tab ); // root View id from include
+        mConverterUI = findViewById( R.id.custom_converter_cardlayout_include_converter_tab ); // root View id from include
 
-        mUnitATitleTextView = converterUILayout.findViewById(R.id.cardView_UnitATitle_TextView);
-        mUnitBTitleTextView = converterUILayout.findViewById(R.id.cardView_UnitBTitle_TextView);
+        mUnitATitleTextView = mConverterUI.findViewById(R.id.cardView_UnitATitle_TextView);
+        mUnitBTitleTextView = mConverterUI.findViewById(R.id.cardView_UnitBTitle_TextView);
 
-        mUnitAInputEditText = converterUILayout.findViewById(R.id.cardView_UnitAInput_EditText);
-        mUnitBInputEditText = converterUILayout.findViewById(R.id.cardView_UnitBInput_EditText);
+        mUnitAInputEditText = mConverterUI.findViewById(R.id.cardView_UnitAInput_EditText);
+        mUnitBInputEditText = mConverterUI.findViewById(R.id.cardView_UnitBInput_EditText);
 
-        mConverterInfoButton = converterUILayout.findViewById(R.id.cardView_InfoButton);
-        mConverterSwapButton = converterUILayout.findViewById(R.id.cardView_SwapButton);
+        mConverterInfoButton = mConverterUI.findViewById(R.id.cardView_InfoButton);
+        mConverterSwapButton = mConverterUI.findViewById(R.id.cardView_SwapButton);
 
         //User inputs
         mUnitAName = findViewById(R.id.custom_converter_unitAName_EditText);
@@ -88,6 +94,42 @@ public class CustomConverterActivity extends AppCompatActivity {
 
         mUnitATitleTextView.setText(mUnitAName.getText().toString());
         mUnitBTitleTextView.setText(mUnitBName.getText().toString());
+
+    }
+
+    private void keyboardManager() {
+
+        //Keyboard opens when Converter Icon is clicked
+        mUnitAInputEditText.requestFocus();
+        InputMethodManager imm = (InputMethodManager) this.getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.showSoftInput(mUnitAInputEditText, InputMethodManager.SHOW_IMPLICIT);
+
+        //When keyboard is closed, Hides the converter UI.
+        KeyboardUtils.addKeyboardToggleListener(this, new KeyboardUtils.SoftKeyboardToggleListener() {
+
+            @Override
+            public void onToggleSoftKeyboard(boolean isVisible) {
+
+                if (isVisible) {
+                    mConverterUI.setVisibility(View.GONE);
+                } else {
+                    mConverterUI.setVisibility(View.VISIBLE);
+                    clearUserInput();
+                }
+            }
+        });
+    }
+
+
+    private void clearUserInput() {
+
+        if (mUnitAInputEditText.getText() != null) {
+            mUnitAInputEditText.getText().clear();
+        }
+
+        if (mUnitBInputEditText.getText() != null) {
+            mUnitBInputEditText.getText().clear();
+        }
 
     }
 }
