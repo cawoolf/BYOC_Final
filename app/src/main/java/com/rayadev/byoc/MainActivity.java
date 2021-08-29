@@ -54,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences.Editor editor = sharedPref.edit();
 
         long oldDate = sharedPref.getLong("date", 0);
+        int updates = sharedPref.getInt("updates", 0);
 
         //getting the current time in milliseconds, and creating a Date object from it:
         Date currentDate = new Date(System.currentTimeMillis()); //or simply new Date();
@@ -73,7 +74,12 @@ public class MainActivity extends AppCompatActivity {
            ConverterViewModel converterViewModel = new ViewModelProvider(this).get(ConverterViewModel.class);
            loadCurrencyData(converterViewModel);
 
-           Log.i("DTAG", "Update" + "\n" + "Old Date: " + oldDateSeconds + "\n" + "New Date: " + currentDateSeconds);
+           updates = updates +1;
+           editor.putInt("updates", updates);
+           Log.i("DTAG", "Update" + "\n" + "Old Date: " + oldDateSeconds + "\n" + "New Date: " + currentDateSeconds + "\n" +
+                   "Total updates: " + updates);
+
+
        }
         else {
            Log.i("DTAG", "No Update" + "\n" + "Old Date: " + oldDateSeconds + "\n" + "New Date: " + currentDateSeconds);
