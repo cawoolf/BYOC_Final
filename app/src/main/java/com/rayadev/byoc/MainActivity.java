@@ -82,7 +82,8 @@ public class MainActivity extends AppCompatActivity {
 
        }
         else {
-           Log.i("DTAG", "No Update" + "\n" + "Old Date: " + oldDateSeconds + "\n" + "New Date: " + currentDateSeconds);
+           Log.i("DTAG", "No Update" + "\n" + "Old Date: " + oldDateSeconds + "\n" + "New Date: " + currentDateSeconds
+           + "\n" + "Total updates: " + updates);
 
        }
     }
