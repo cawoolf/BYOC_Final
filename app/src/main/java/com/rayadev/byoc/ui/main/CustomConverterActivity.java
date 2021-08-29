@@ -79,6 +79,10 @@ public class CustomConverterActivity extends AppCompatActivity {
         mUnitBName = findViewById(R.id.custom_converter_unitBName_EditText);
         mUnitBValue = findViewById(R.id.custom_converter_unitBValue_EditText);
 
+        //Bottom UI
+        mBottomUI = findViewById(R.id.custom_convertertab_BottomUI_LinearLayout);
+        mAddConverterButton = findViewById(R.id.custom_add_converter_button);
+
         //Build Button click
         mButton = findViewById(R.id.build_custom_converter_button);
 
@@ -112,8 +116,10 @@ public class CustomConverterActivity extends AppCompatActivity {
 
                 if (isVisible) {
                     mConverterUI.setVisibility(View.GONE);
+                    mBottomUI.setVisibility(View.GONE);
                 } else {
                     mConverterUI.setVisibility(View.VISIBLE);
+                    mBottomUI.setVisibility(View.VISIBLE);
                     clearUserInput();
                 }
             }

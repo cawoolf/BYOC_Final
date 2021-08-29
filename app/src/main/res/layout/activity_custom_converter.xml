@@ -227,8 +227,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
 
-            android:background="@drawable/edit_text_border_square"
-
             android:orientation="horizontal"
             android:weightSum="2"
             android:layout_marginTop="8dp">
@@ -258,8 +256,6 @@
             android:id="@+id/custom_converter_buildLine"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
-            android:background="@drawable/edit_text_border_square"
 
             android:gravity="center"
 
@@ -319,7 +315,7 @@
         >
 
         <ImageView
-            android:id="@+id/add_converter_button"
+            android:id="@+id/custom_add_converter_button"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_margin="6dp"

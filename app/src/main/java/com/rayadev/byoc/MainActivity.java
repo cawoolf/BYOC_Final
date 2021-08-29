@@ -79,13 +79,13 @@ public class MainActivity extends AppCompatActivity {
            updates = updates +1;
            editor.putInt("updates", updates).apply();
            Log.i("DTAG", "Update" + "\n" + "Old Date: " + oldDateSeconds + "\n" + "New Date: " + currentDateSeconds + "\n" +
-                   "Total updates: " + updates);
+                    "\n" + "Time Elapsed: " + diff + "\n" + "Total updates: " + updates);
 
 
        }
         else {
            Log.i("DTAG", "No Update" + "\n" + "Old Date: " + oldDateSeconds + "\n" + "New Date: " + currentDateSeconds
-           + "\n" + "Total updates: " + updates);
+           + "\n" + "Time Elapsed: " + diff + "\n" + "Total updates: " + updates);
 
        }
     }
