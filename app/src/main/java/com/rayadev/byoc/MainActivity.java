@@ -1,5 +1,7 @@
 package com.rayadev.byoc;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -24,6 +26,8 @@ import org.jetbrains.annotations.NotNull;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.Date;
+
 public class MainActivity extends AppCompatActivity {
 
 
@@ -34,10 +38,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         
         initializeUI();
-
-        //Passes the ViewModel down to CurrencyUtil for Async Retrofit call. Inserts currency into database.
-        ConverterViewModel converterViewModel = new ViewModelProvider( this).get(ConverterViewModel.class);
-        loadCurrencyData(converterViewModel);
+        setUpCurrency();
 
     }
 
@@ -47,6 +48,39 @@ public class MainActivity extends AppCompatActivity {
         setUpToolbar();
         TabLayout tabLayout = setUpTabLayout();
         setUpPageAdapter(tabLayout);
+    }
+
+    private void setUpCurrency() {
+
+        SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+
+        long oldDate = sharedPref.getLong("date", 0);
+
+        //getting the current time in milliseconds, and creating a Date object from it:
+        Date currentDate = new Date(System.currentTimeMillis()); //or simply new Date();
+
+        //converting it back to a milliseconds representation:
+        long currentDateMillis = currentDate.getTime();
+        long currentDateSeconds = currentDateMillis/1000;
+
+        long oldDateSeconds = oldDate/1000;
+
+        long diff = currentDateSeconds - oldDateSeconds;
+
+       if(diff > 86400) { //Basically if its been longer than a day since the last currency update.
+           editor.putLong("date", currentDateMillis);
+
+           //Passes the ViewModel down to CurrencyUtil for Async Retrofit call. Inserts currency into database.
+           ConverterViewModel converterViewModel = new ViewModelProvider(this).get(ConverterViewModel.class);
+           loadCurrencyData(converterViewModel);
+
+           Log.i("DTAG", "Update" + "\n" + "Old Date" + oldDateSeconds + "\n" + "New Date: " + currentDateSeconds);
+       }
+        else {
+           Log.i("DTAG", "No Update" + "\n" + "Old Date" + oldDateSeconds + "\n" + "New Date: " + currentDateSeconds);
+
+       }
     }
 
     private void loadCurrencyData(ConverterViewModel converterViewModel) {
