@@ -73,10 +73,10 @@ public class MainActivity extends AppCompatActivity {
            ConverterViewModel converterViewModel = new ViewModelProvider(this).get(ConverterViewModel.class);
            loadCurrencyData(converterViewModel);
 
-           Log.i("DTAG", "Update" + "\n" + "Old Date" + oldDateSeconds + "\n" + "New Date: " + currentDateSeconds);
+           Log.i("DTAG", "Update" + "\n" + "Old Date: " + oldDateSeconds + "\n" + "New Date: " + currentDateSeconds);
        }
         else {
-           Log.i("DTAG", "No Update" + "\n" + "Old Date" + oldDateSeconds + "\n" + "New Date: " + currentDateSeconds);
+           Log.i("DTAG", "No Update" + "\n" + "Old Date: " + oldDateSeconds + "\n" + "New Date: " + currentDateSeconds);
 
        }
     }
