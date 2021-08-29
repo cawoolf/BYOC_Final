@@ -50,6 +50,8 @@ public class MainActivity extends AppCompatActivity {
 
     private void setUpCurrency() {
 
+        //SharedPref and Date stuff to ensure that currency is only updated once a day
+        //Saves on API request limits.
         SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
 
