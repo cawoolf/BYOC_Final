@@ -1,4 +1,4 @@
-package com.rayadev.byoc.ui.main;
+package com.rayadev.byoc;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;

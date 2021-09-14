@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.WindowManager;
 
 import androidx.annotation.NonNull;
@@ -30,6 +31,8 @@ import java.util.Date;
 
 public class MainActivity extends AppCompatActivity {
 
+    private TabLayout mTabLayout;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,9 +47,11 @@ public class MainActivity extends AppCompatActivity {
 
         keyBoardManager();
         setUpToolbar();
-        TabLayout tabLayout = setUpTabLayout();
-        setUpPageAdapter(tabLayout);
+        setUpTabLayout();
+        setUpPageAdapter(mTabLayout);
+        checkFavoritesPrefs();
     }
+
 
     private void setUpCurrency() {
 
@@ -118,20 +123,19 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
     }
 
-    private TabLayout setUpTabLayout() {
+    private void setUpTabLayout() {
 
         // Create an instance of the tab layout from the view.
-        TabLayout tabLayout = findViewById(R.id.tab_layout);
+        mTabLayout = findViewById(R.id.tab_layout);
 
         // Set the title for each tab.
-        tabLayout.addTab(tabLayout.newTab().setText(R.string.tab_text_1));
-        tabLayout.addTab(tabLayout.newTab().setText(R.string.tab_text_2));
+        mTabLayout.addTab(mTabLayout.newTab().setText(R.string.tab_text_1));
+        mTabLayout.addTab(mTabLayout.newTab().setText(R.string.tab_text_2));
 //        tabLayout.addTab(tabLayout.newTab().setText(R.string.tab_text_3)); //Just comment this out to remove setlist
 
         // Set the tabs to fill the entire layout.
-        tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
+        mTabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
-        return tabLayout;
 
     }
 
@@ -169,6 +173,22 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    private void checkFavoritesPrefs() {
+        SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
+        boolean favPref = sharedPref.getBoolean("favorites_tab_default", false);
+
+        if(favPref) {
+            TabLayout.Tab tab = mTabLayout.getTabAt(1);
+            assert tab != null;
+            tab.select();
+        }
+        else{
+            TabLayout.Tab tab = mTabLayout.getTabAt(0);
+            assert tab != null;
+            tab.select();
+        }
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
 
@@ -177,10 +197,34 @@ public class MainActivity extends AppCompatActivity {
 
 
         return super.onCreateOptionsMenu(menu);
+
     }
 
+    @Override
+    public boolean onOptionsItemSelected(@NonNull @NotNull MenuItem item) {
 
+        switch(item.getItemId()) {
+            case R.id.homeFavoritesTrue_MenuItem:
+                setFavoritesTab(1);
+                break;
+            case R.id.homeFavoritesFalse_MenuItem:
+                setFavoritesTab(0);
+            case R.id.info_MenuItem:
+                //Load InfoActivity
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
+    private void setFavoritesTab(int i) {
+        SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
 
-
+        if(i == 1) {
+            editor.putBoolean("favorites_tab_default", true).apply();
+        }
+        else{
+            editor.putBoolean("favorites_tab_default", false).apply();
+        }
+    }
 }

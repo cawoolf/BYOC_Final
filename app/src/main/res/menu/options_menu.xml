@@ -2,13 +2,18 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/renameConverter_MenuItem"
+            android:id="@+id/homeFavoritesTrue_MenuItem"
             android:icon="@drawable/ic_baseline_add_24"
-            android:title="Rename Converter Set" />
+            android:title="Set Favorites as Homepage" />
+
         <item
-            android:id="@+id/addPresetConverter_MenuItem"
+            android:id="@+id/homeFavoritesFalse_MenuItem"
             android:icon="@drawable/ic_baseline_add_24"
-            android:title="Add Pre-made Conversion Set" />
+            android:title="Set Converter as Homepage" />
+        <item
+            android:id="@+id/info_MenuItem"
+            android:icon="@drawable/ic_baseline_add_24"
+            android:title="Info" />
     </group>
 
 </menu>

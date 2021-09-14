@@ -22,9 +22,9 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.rayadev.byoc.CustomConverterActivity;
 import com.rayadev.byoc.R;
 import com.rayadev.byoc.model.Converter;
-import com.rayadev.byoc.model.Currency;
 import com.rayadev.byoc.util.ConverterUtil;
 import com.rayadev.byoc.model.ConverterViewModel;
 
