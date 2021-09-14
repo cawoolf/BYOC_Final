@@ -179,6 +179,12 @@ public class CustomConverterActivity extends AppCompatActivity {
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) || (actionId == EditorInfo.IME_ACTION_DONE)) {
                     mMasterCustomLayout.setVisibility(View.VISIBLE);
+                    mUnitAInputEditText.clearFocus();
+                    mUnitBInputEditText.clearFocus();
+
+
+                    InputMethodManager imm = (InputMethodManager)v.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+                    imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
                 }
                 return false;
             }
@@ -189,6 +195,13 @@ public class CustomConverterActivity extends AppCompatActivity {
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) || (actionId == EditorInfo.IME_ACTION_DONE)) {
                     mMasterCustomLayout.setVisibility(View.VISIBLE);
+                    mUnitBInputEditText.clearFocus();
+                    mUnitAInputEditText.clearFocus();
+
+                    InputMethodManager imm = (InputMethodManager)v.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+                    imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
+
+
                 }
                 return false;
             }
