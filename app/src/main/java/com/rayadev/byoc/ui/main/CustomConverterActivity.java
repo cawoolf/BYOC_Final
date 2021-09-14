@@ -1,12 +1,16 @@
 package com.rayadev.byoc.ui.main;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
@@ -15,8 +19,11 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.google.android.material.textfield.TextInputLayout;
 import com.rayadev.byoc.R;
 import com.rayadev.byoc.util.KeyboardUtils;
+
+import org.jetbrains.annotations.NotNull;
 
 /*Activity that gets triggered by the wrench on the ConverterTab
 
@@ -24,6 +31,9 @@ Allows the user to build their own converter, and save it to the HomeTab.
  */
 
 public class CustomConverterActivity extends AppCompatActivity {
+
+    //Master custom layout
+    private LinearLayout mMasterCustomLayout;
 
     //EditTexts for user input
     private EditText mUnitAName, mUnitAValue, mUnitBName, mUnitBValue;
@@ -47,6 +57,7 @@ public class CustomConverterActivity extends AppCompatActivity {
 
         setUpToolbar();
         linkViews();
+        setChangeListeners();
         keyboardManager();
     }
 
@@ -61,6 +72,8 @@ public class CustomConverterActivity extends AppCompatActivity {
     }
 
     private void linkViews() {
+
+        mMasterCustomLayout = findViewById(R.id.custom_converter_master_linear);
 
         //Link ConverterBox Views
         mConverterUI = findViewById( R.id.custom_converter_cardlayout_include_converter_tab ); // root View id from include
@@ -87,6 +100,9 @@ public class CustomConverterActivity extends AppCompatActivity {
         //Build Button click
         mButton = findViewById(R.id.build_custom_converter_button);
 
+    }
+
+    private void setChangeListeners() {
         mButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -94,21 +110,90 @@ public class CustomConverterActivity extends AppCompatActivity {
             }
         });
 
-       mUnitAName.setOnTouchListener(new View.OnTouchListener() {
-           @Override
-           public boolean onTouch(View v, MotionEvent event) {
-               mUnitAName.setText("");
-               return false;
-           }
-       });
-
-        mUnitBName.setOnTouchListener(new View.OnTouchListener() {
+        mUnitAName.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                mUnitBName.setText("");
+            public void onFocusChange(View v, boolean hasFocus) {
+                if(hasFocus) {
+                    mUnitAName.setText("");
+                    mBottomUI.setVisibility(View.GONE);
+                    mConverterUI.setVisibility(View.GONE);
+                }
+
+                else {
+                    mBottomUI.setVisibility(View.VISIBLE);
+                    mConverterUI.setVisibility(View.VISIBLE);
+                }
+            }
+        });
+
+        mUnitBName.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if(hasFocus) {
+                    mUnitBName.setText("");
+                    mBottomUI.setVisibility(View.GONE);
+                    mConverterUI.setVisibility(View.GONE);
+                }
+
+                else {
+                    mBottomUI.setVisibility(View.VISIBLE);
+                    mConverterUI.setVisibility(View.VISIBLE);
+                }
+            }
+        });
+
+        mUnitAValue.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if(hasFocus) {
+                    mUnitAValue.setText("1");
+                    mBottomUI.setVisibility(View.GONE);
+                    mConverterUI.setVisibility(View.GONE);
+                }
+
+                else {
+                    mBottomUI.setVisibility(View.VISIBLE);
+                    mConverterUI.setVisibility(View.VISIBLE);
+                }
+            }
+        });
+
+        mUnitBValue.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if(hasFocus) {
+                    mUnitBValue.setText("");
+                    mBottomUI.setVisibility(View.GONE);
+                    mConverterUI.setVisibility(View.GONE);
+                }
+
+                else {
+                    mBottomUI.setVisibility(View.VISIBLE);
+                    mConverterUI.setVisibility(View.VISIBLE);
+                }
+            }
+        });
+
+        mUnitAInputEditText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) || (actionId == EditorInfo.IME_ACTION_DONE)) {
+                    mMasterCustomLayout.setVisibility(View.VISIBLE);
+                }
                 return false;
             }
         });
+
+        mUnitBInputEditText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) || (actionId == EditorInfo.IME_ACTION_DONE)) {
+                    mMasterCustomLayout.setVisibility(View.VISIBLE);
+                }
+                return false;
+            }
+        });
+
 
 
     }
@@ -123,24 +208,34 @@ public class CustomConverterActivity extends AppCompatActivity {
     private void keyboardManager() {
 
         //Keyboard opens when Converter Icon is clicked
-        mUnitAInputEditText.requestFocus();
+//        mUnitAInputEditText.requestFocus();
         InputMethodManager imm = (InputMethodManager) this.getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.showSoftInput(mUnitAInputEditText, InputMethodManager.SHOW_IMPLICIT);
 
-        //When keyboard is closed, Hides the converter UI.
+        //When keyboard is closed, Shows the converter UI
         KeyboardUtils.addKeyboardToggleListener(this, new KeyboardUtils.SoftKeyboardToggleListener() {
 
             @Override
             public void onToggleSoftKeyboard(boolean isVisible) {
 
-                if (isVisible) {
+                if (isVisible && !mUnitAInputEditText.hasFocus() && !mUnitBInputEditText.hasFocus()) {
                     mConverterUI.setVisibility(View.GONE);
                     mBottomUI.setVisibility(View.GONE);
                 } else {
                     mConverterUI.setVisibility(View.VISIBLE);
                     mBottomUI.setVisibility(View.VISIBLE);
-                    clearUserInput();
+
+                    if(mUnitAInputEditText.hasFocus() || mUnitBInputEditText.hasFocus()) {
+                        mMasterCustomLayout.setVisibility(View.GONE);
+                    }
+                    else{
+                        mMasterCustomLayout.setVisibility(View.VISIBLE);
+
+
+                    }
                 }
+
+
             }
         });
     }
