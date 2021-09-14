@@ -5,6 +5,7 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
@@ -92,6 +93,24 @@ public class CustomConverterActivity extends AppCompatActivity {
                 buildConverter();
             }
         });
+
+       mUnitAName.setOnTouchListener(new View.OnTouchListener() {
+           @Override
+           public boolean onTouch(View v, MotionEvent event) {
+               mUnitAName.setText("");
+               return false;
+           }
+       });
+
+        mUnitBName.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                mUnitBName.setText("");
+                return false;
+            }
+        });
+
+
     }
 
     private void buildConverter() {
