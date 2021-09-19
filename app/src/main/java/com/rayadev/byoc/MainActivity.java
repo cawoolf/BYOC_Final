@@ -177,16 +177,15 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
         boolean favPref = sharedPref.getBoolean("favorites_tab_default", false);
 
+        TabLayout.Tab tab;
         if(favPref) {
-            TabLayout.Tab tab = mTabLayout.getTabAt(1);
-            assert tab != null;
-            tab.select();
+            tab = mTabLayout.getTabAt(1);
         }
         else{
-            TabLayout.Tab tab = mTabLayout.getTabAt(0);
-            assert tab != null;
-            tab.select();
+            tab = mTabLayout.getTabAt(0);
         }
+        assert tab != null;
+        tab.select();
     }
 
     @Override
