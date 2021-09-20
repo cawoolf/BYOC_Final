@@ -44,8 +44,11 @@ public class ConverterTabFragment extends Fragment {
     //Bottom UI
     private ImageView mBuildConverterButton, mAddConverterButton;
     private LinearLayout mBottomUI;
+    private int mSwapUnits = 0;
 
-    //Converter Unit Strings for favorites Constructor
+
+    //Globals for Converter
+    private ConverterUtil.Unit fromUnit, toUnit;
     private String unitAString, unitBString;
     private String unitCategory;
 
@@ -106,7 +109,7 @@ public class ConverterTabFragment extends Fragment {
         mAddConverterButton = view.findViewById(R.id.add_converter_button);
 
         //Link ConverterBox Views
-        View converterUILayout = view.findViewById( R.id.converter_cardlayout_include_converter_tab ); // root View id from include
+        View converterUILayout = view.findViewById(R.id.converter_cardlayout_include_converter_tab); // root View id from include
 
         mUnitATitleTextView = converterUILayout.findViewById(R.id.cardView_UnitATitle_TextView);
         mUnitBTitleTextView = converterUILayout.findViewById(R.id.cardView_UnitBTitle_TextView);
@@ -132,11 +135,44 @@ public class ConverterTabFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                Converter converter = new Converter(unitCategory,unitAString, unitBString);
+                switch (mSwapUnits) {
 
-                mConverterViewModel.insert(converter);
+                    case 0:
+                        Converter converterAB = new Converter(unitCategory, unitAString, unitBString);
+                        mConverterViewModel.insert(converterAB);
+                        Toast.makeText(getContext(), unitAString + " : " + unitBString + " --> Favorites", Toast.LENGTH_SHORT).show();
+                        break;
 
-                Toast.makeText(getContext(), unitAString + " : " + unitBString + " --> Favorites", Toast.LENGTH_SHORT).show();
+                    case 1:
+                        Converter converterBA = new Converter(unitCategory, unitBString, unitAString);
+                        mConverterViewModel.insert(converterBA);
+                        Toast.makeText(getContext(), unitBString + " : " + unitAString + " --> Favorites", Toast.LENGTH_SHORT).show();
+                        break;
+
+                }
+            }
+        });
+
+        mConverterSwapButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                switch (mSwapUnits) {
+
+                    case 0:
+                        setConverterBoxLogic(toUnit, fromUnit);
+                        setConverterBoxTitles(unitBString, unitAString);
+                        mSwapUnits = 1;
+                        break;
+
+                    case 1:
+                        setConverterBoxLogic(fromUnit, toUnit);
+                        setConverterBoxTitles(unitAString, unitBString);
+                        mSwapUnits = 0;
+                        break;
+
+                }
+
             }
         });
     }
@@ -158,7 +194,7 @@ public class ConverterTabFragment extends Fragment {
                 CharSequence text = selected;
                 int duration = Toast.LENGTH_SHORT;
 
-                if(text.equals(getString(R.string.spinner_distance_title))){
+                if (text.equals(getString(R.string.spinner_distance_title))) {
                     Toast toast = Toast.makeText(context, text, duration);
                     toast.show();
                     setSpinnerScrollViewFragment(R.layout.spinner_scrollview_distance);
@@ -168,14 +204,14 @@ public class ConverterTabFragment extends Fragment {
 //                    setUpTargetConverter();
                 }
 
-                if(text.equals(getString(R.string.spinner_area_title))){
+                if (text.equals(getString(R.string.spinner_area_title))) {
                     Toast toast = Toast.makeText(context, text, duration);
                     toast.show();
                     setSpinnerScrollViewFragment(R.layout.spinner_scrollview_area);
                     unitCategory = (String) text;
                 }
 
-                if(text.equals(getString(R.string.spinner_currency_title))) {
+                if (text.equals(getString(R.string.spinner_currency_title))) {
                     Toast toast = Toast.makeText(context, text, duration);
                     toast.show();
                     setSpinnerScrollViewFragment(R.layout.spinner_scrollview_currency);
@@ -203,15 +239,15 @@ public class ConverterTabFragment extends Fragment {
 
             @Override
             public void setUnitNames(String converterUnitAName, String converterUnitBName) {
-                    ConverterUtil.Unit fromUnit = ConverterUtil.Unit.fromString(converterUnitAName);
-                    ConverterUtil.Unit toUnit = ConverterUtil.Unit.fromString(converterUnitBName);
+                fromUnit = ConverterUtil.Unit.fromString(converterUnitAName);
+                toUnit = ConverterUtil.Unit.fromString(converterUnitBName);
 
-                    setConverterBoxTitles(converterUnitAName, converterUnitBName);
+                setConverterBoxTitles(converterUnitAName, converterUnitBName);
 
-                    unitAString = converterUnitAName;
-                    unitBString = converterUnitBName;
+                unitAString = converterUnitAName;
+                unitBString = converterUnitBName;
 
-                    setConverterBoxLogic(fromUnit, toUnit);
+                setConverterBoxLogic(fromUnit, toUnit);
             }
         });
 
@@ -241,6 +277,7 @@ public class ConverterTabFragment extends Fragment {
         mUnitBInputEditText.clearFocus();
         clearUserInput();
 
+
         //Theres definitely a more simple way to go about this, but I'm just solving the issue
         //Using objects instead of algorithms.. Just use lots of objects haha Probably not that efficient at big scales.
         ConverterUtil fromUnit_toUnit = new ConverterUtil(fromUnit, toUnit);
@@ -249,7 +286,7 @@ public class ConverterTabFragment extends Fragment {
         final MyTextWatcherUtils[] myTextWatcherUtils = new MyTextWatcherUtils[2];
 
         myTextWatcherUtils[0] = new MyTextWatcherUtils(1, mUnitAInputEditText, mUnitBInputEditText, fromUnit_toUnit);
-        myTextWatcherUtils[1] = new MyTextWatcherUtils(2,  mUnitAInputEditText, mUnitBInputEditText, toUnit_fromUnit);
+        myTextWatcherUtils[1] = new MyTextWatcherUtils(2, mUnitAInputEditText, mUnitBInputEditText, toUnit_fromUnit);
 
         myTextWatcherUtils[0].setUnitEditTextWatcher(mUnitAInputEditText);
         myTextWatcherUtils[1].setUnitEditTextWatcher(mUnitBInputEditText);
@@ -271,6 +308,7 @@ public class ConverterTabFragment extends Fragment {
         });
 
     }
+
 
     private void clearUserInput() {
 
