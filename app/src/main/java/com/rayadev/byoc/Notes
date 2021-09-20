@@ -4,24 +4,31 @@ ToDo:
 Keep up with this project enough during work so that you don't loose Android skills.
 Update Connection With Being to get consent for viewing an Ad
 
-
-Finish Converter Workshop logic
-    > Save to favorites
-    > Add working logic
-
 Clean up UI
-    > Fix weird colors on Converter tab
-    > Fix colors on options menu
+    > Fix spinner colors
+    > Weird unit text size for currency, and other categories.
+    > Add swap units option for easier UI
+    > Info page on options menu
 
-Add Currency logic on Converter tab
+Logic punch list
+    > Save CustomConverter to favorites
+    > Add working logic to Custom Converter
+    > on Converter tab, always load converter if any two units are selected.
+    > Add Currency logic on Converter tab
 
-Add more data for Converters and Spinner drop down.
 
-Add swap units option for easier UI
+Finish adding data on Spinner drop downs
+    > Make sure all data loads correctly.
+
+Other Bugs
+    > Millimeter bug
+
+
 
 Create App Icon
 
-Info page on options menu
+
+
 
 Publish.
 

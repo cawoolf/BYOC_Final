@@ -1,6 +1,7 @@
 package com.rayadev.byoc;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
@@ -222,14 +223,16 @@ public class MainActivity extends AppCompatActivity {
             case R.id.homeFavoritesTrue_MenuItem:
                 setFavoritesTab(1);
                 item.setChecked(true);
-
                 break;
+
             case R.id.homeConverterTrue_MenuItem:
                 setFavoritesTab(0);
                 item.setChecked(true);
+                break;
 
             case R.id.info_MenuItem:
-                //Load InfoActivity
+                Intent intent = new Intent(this, InfoActivity.class);
+                startActivity(intent);
                 break;
         }
         return super.onOptionsItemSelected(item);
