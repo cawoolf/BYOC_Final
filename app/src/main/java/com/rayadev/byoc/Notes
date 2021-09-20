@@ -15,7 +15,7 @@ Logic punch list
     > Add working logic to Custom Converter
     > on Converter tab, always load converter if any two units are selected.
     > Add Currency logic on Converter tab
-
+    > Top back button on infoActivity doesn't work.
 
 Finish adding data on Spinner drop downs
     > Make sure all data loads correctly.
