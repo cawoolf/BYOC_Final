@@ -136,7 +136,7 @@ public class ConverterTabFragment extends Fragment {
 
                 mConverterViewModel.insert(converter);
 
-                Toast.makeText(getContext(), "Add clicked", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), unitAString + " : " + unitBString + " >>> Favorites", Toast.LENGTH_SHORT).show();
             }
         });
     }
