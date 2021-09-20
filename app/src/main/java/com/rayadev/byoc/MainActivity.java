@@ -32,6 +32,7 @@ import java.util.Date;
 public class MainActivity extends AppCompatActivity {
 
     private TabLayout mTabLayout;
+    private boolean mHomeTabChoice;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
         setUpToolbar();
         setUpTabLayout();
         setUpPageAdapter(mTabLayout);
-        checkFavoritesPrefs();
+        mHomeTabChoice = checkFavoritesPrefs();
     }
 
 
@@ -173,19 +174,23 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void checkFavoritesPrefs() {
+    private boolean checkFavoritesPrefs() {
         SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
         boolean favPref = sharedPref.getBoolean("favorites_tab_default", false);
 
         TabLayout.Tab tab;
         if(favPref) {
             tab = mTabLayout.getTabAt(1);
+
         }
         else{
             tab = mTabLayout.getTabAt(0);
+
         }
         assert tab != null;
         tab.select();
+
+        return favPref;
     }
 
     @Override
@@ -194,6 +199,16 @@ public class MainActivity extends AppCompatActivity {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.options_menu, menu);
 
+        MenuItem itemFavorites = menu.findItem(R.id.homeFavoritesTrue_MenuItem);
+        MenuItem itemConverter = menu.findItem(R.id.homeConverterTrue_MenuItem);
+
+        if(mHomeTabChoice) {
+            itemFavorites.setChecked(true);
+        }
+        else {
+            itemConverter.setChecked(true);
+
+        }
 
         return super.onCreateOptionsMenu(menu);
 
@@ -202,12 +217,17 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull @NotNull MenuItem item) {
 
+
         switch(item.getItemId()) {
             case R.id.homeFavoritesTrue_MenuItem:
                 setFavoritesTab(1);
+                item.setChecked(true);
+
                 break;
-            case R.id.homeFavoritesFalse_MenuItem:
+            case R.id.homeConverterTrue_MenuItem:
                 setFavoritesTab(0);
+                item.setChecked(true);
+
             case R.id.info_MenuItem:
                 //Load InfoActivity
                 break;

@@ -31,5 +31,9 @@
         <item name="tabIndicatorColor">@color/blueAccentColor</item>
     </style>
 
+    <style name="custom_toolbar_options_menu_style">
+        <item name="android:textColor">@color/whiteTextColor</item>
+    </style>
+
 
 </resources>
