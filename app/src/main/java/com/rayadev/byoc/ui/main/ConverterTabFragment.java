@@ -196,8 +196,8 @@ public class ConverterTabFragment extends Fragment {
                 int duration = Toast.LENGTH_SHORT;
 
                 if (text.equals(getString(R.string.spinner_distance_title))) {
-                    Toast toast = Toast.makeText(context, text, duration);
-                    toast.show();
+//                    Toast toast = Toast.makeText(context, text, duration);
+//                    toast.show();
                     setSpinnerScrollViewFragment(R.layout.spinner_scrollview_distance);
                     unitCategory = (String) text;
 
@@ -206,15 +206,15 @@ public class ConverterTabFragment extends Fragment {
                 }
 
                 if (text.equals(getString(R.string.spinner_area_title))) {
-                    Toast toast = Toast.makeText(context, text, duration);
-                    toast.show();
+//                    Toast toast = Toast.makeText(context, text, duration);
+//                    toast.show();
                     setSpinnerScrollViewFragment(R.layout.spinner_scrollview_area);
                     unitCategory = (String) text;
                 }
 
                 if (text.equals(getString(R.string.spinner_currency_title))) {
-                    Toast toast = Toast.makeText(context, text, duration);
-                    toast.show();
+////                    Toast toast = Toast.makeText(context, text, duration);
+//                    toast.show();
                     setSpinnerScrollViewFragment(R.layout.spinner_scrollview_currency);
                     unitCategory = (String) text;
 
@@ -234,7 +234,7 @@ public class ConverterTabFragment extends Fragment {
         SpinnerScrollViewFragment mFragment = new SpinnerScrollViewFragment(layoutID, new SpinnerScrollViewFragment.UserConverterSelection() {
             @Override
             public void sendConverterName(String converterName) {
-                Toast.makeText(getContext(), converterName, Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getContext(), converterName, Toast.LENGTH_SHORT).show();
 
             }
 
