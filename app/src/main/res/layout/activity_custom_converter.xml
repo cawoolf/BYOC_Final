@@ -288,6 +288,7 @@
                 android:id="@+id/build_custom_converter_button"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                style="@style/custom_tab_style"
                 android:text="Build Converter"/>
 
             <ImageView
