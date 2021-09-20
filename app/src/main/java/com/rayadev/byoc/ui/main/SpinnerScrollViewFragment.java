@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.content.res.ResourcesCompat;
 import androidx.fragment.app.Fragment;
 
 import android.util.Log;
@@ -48,7 +49,6 @@ public class SpinnerScrollViewFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
 
         //Handle all view interactions here.
-
         //Handle user selection of units, based on layout ID
         createScrollViewLogic(view);
 
@@ -58,7 +58,6 @@ public class SpinnerScrollViewFragment extends Fragment {
 
         //Get the set of unit View IDs based on the layout being used.
         //Declare all of this in an arrays resource file.
-
 
         if(layoutID == R.layout.spinner_scrollview_distance) {
 
@@ -120,24 +119,19 @@ public class SpinnerScrollViewFragment extends Fragment {
 
                 @Override
                 public void onClick(View v) {
-//                    This is for removing the color of the other selected units.
+                 // This is for removing the color of the other selected units.
                     for(TextView textView : mTextViewAList) {
-                        textView.setBackgroundColor(view.getResources().getColor(R.color.colorPrimaryDark));
+                        textView.setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.cardViewBackGroundColor, null));
                     }
 
-                    textView.setBackgroundColor(view.getResources().getColor(R.color.colorAccent));
-//                    setConverterUnitA_ID(textView.getId());
-//                    checkID(textView.getId());
-//                    sendOverConverter();
+                    textView.setBackground(ResourcesCompat.getDrawable(getResources(), R.drawable.edit_text_border_square, null));
 
                     converterUnitAName = textView.getText().toString();
-
                     Log.i("TAGS",textView.getText().toString());
 
                     sendConverterName();
 
                 }
-
 
             });
         }
@@ -147,19 +141,16 @@ public class SpinnerScrollViewFragment extends Fragment {
                 @Override
                 public void onClick(View v) {
                     for(TextView tv2 : mTextViewBList) {
-                        tv2.setBackgroundColor(view.getResources().getColor(R.color.colorPrimary));
+                        tv2.setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.cardViewBackGroundColor, null));
                     }
 
-                    textView.setBackgroundColor(view.getResources().getColor(R.color.colorAccent));
-//                    setConverterUnitB_ID(textView.getId());
-//                    checkID(textView.getId());
-//                    sendOverConverter();
+
+                    textView.setBackground(ResourcesCompat.getDrawable(getResources(), R.drawable.edit_text_border_square, null));
 
                     converterUnitBName = textView.getText().toString();
 
                     Log.i("TAGS",textView.getText().toString());
                     sendConverterName();
-
 
                 }
 
@@ -188,7 +179,5 @@ public class SpinnerScrollViewFragment extends Fragment {
         void setUnitNames (String converterUnitAName, String converterUnitBName); //Use this more to interact with the enums
 
     }
-
-
 
 }

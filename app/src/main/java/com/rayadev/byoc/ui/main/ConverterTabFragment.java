@@ -166,7 +166,6 @@ public class ConverterTabFragment extends Fragment {
 
                     //This should be called after the user selects units off the spinner.
 //                    setUpTargetConverter();
-
                 }
 
                 if(text.equals(getString(R.string.spinner_area_title))){
