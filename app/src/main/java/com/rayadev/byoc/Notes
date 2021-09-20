@@ -8,6 +8,7 @@ Clean up UI
     > Fix spinner colors
     > Weird unit text size for currency, and other categories.
     > Add swap units option for easier UI
+        > Not working with Currency**
     > Info page on options menu
 
 Logic punch list

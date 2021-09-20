@@ -46,6 +46,12 @@ public class HomeSetTabFragment extends Fragment implements HomeSetRecyclerViewA
     private EditText mUnitAInputEditText, mUnitBInputEditText;
     private ImageButton mConverterInfoButton, mConverterSwapButton;
 
+    //Globals for Converter
+    private ConverterUtil.Unit fromUnit, toUnit;
+    private String mUnitAName, mUnitBName;
+    private String mUnitCategory;
+    private int mSwapUnits = 0;
+
     public HomeSetTabFragment() {
         // Required empty public constructor
     }
@@ -87,6 +93,49 @@ public class HomeSetTabFragment extends Fragment implements HomeSetRecyclerViewA
         mConverterInfoButton = mConverterUI.findViewById(R.id.cardView_InfoButton);
         mConverterSwapButton = mConverterUI.findViewById(R.id.cardView_SwapButton);
 
+        mConverterSwapButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                switch (mSwapUnits) {
+
+                    case 0:
+
+                        if(mUnitCategory.equals("Currency")) {
+                            String currencyPair = mUnitBName + "_" + mUnitAName;
+                            setUpTargetCurrency(currencyPair, mUnitBName, mUnitAName);
+                            mSwapUnits = 1;
+
+                        }
+
+                        else {
+                            setConverterBoxLogic(toUnit, fromUnit);
+                            setConverterBoxTitles(mUnitBName, mUnitAName);
+                        }
+                        mSwapUnits = 1;
+                        break;
+
+                    case 1:
+
+                        if(mUnitCategory.equals("Currency")) {
+                            String currencyPair = mUnitAName + "_" + mUnitBName;
+                            setUpTargetCurrency(currencyPair, mUnitAName, mUnitBName);
+                            mSwapUnits = 0;
+
+                        }
+
+                        else {
+                            setConverterBoxLogic(fromUnit, toUnit);
+                            setConverterBoxTitles(mUnitAName, mUnitBName);
+                            mSwapUnits = 0;
+                            break;
+                        }
+
+                }
+
+            }
+        });
+
         mConverterUI.setVisibility(View.GONE);
     }
 
@@ -127,12 +176,16 @@ public class HomeSetTabFragment extends Fragment implements HomeSetRecyclerViewA
     public void onConverterIconClick(String unitAName, String unitBName, String unitCategory) {
 
         setConverterBoxTitles(unitAName, unitBName);
+        mUnitAName = unitAName;
+        mUnitBName = unitBName;
+        mUnitCategory = unitCategory;
 
         if(unitCategory.equals("Currency")) {
 //            LiveData<Currency> currency = mConverterViewModel.getTargetCurrency("USD_NZD");
 //            Log.i("CTAG",currency.getCurrencyPair() + "" + currency.currencyValue);
 
             Log.i("CTAG", "LiveData success");
+
 
             //Next step is to use the unit names to parse a currency pair and fetch.
             String currencyPair = unitAName + "_" + unitBName;
@@ -145,7 +198,10 @@ public class HomeSetTabFragment extends Fragment implements HomeSetRecyclerViewA
 
         else {
 
-            setConverterBoxLogic(ConverterUtil.Unit.fromString(unitAName), ConverterUtil.Unit.fromString(unitBName));
+            fromUnit = ConverterUtil.Unit.fromString(mUnitAName);
+            toUnit = ConverterUtil.Unit.fromString(mUnitBName);
+
+            setConverterBoxLogic(fromUnit, toUnit);
 
             keyboardManager();
 

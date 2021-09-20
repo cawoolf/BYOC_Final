@@ -44,13 +44,14 @@ public class ConverterTabFragment extends Fragment {
     //Bottom UI
     private ImageView mBuildConverterButton, mAddConverterButton;
     private LinearLayout mBottomUI;
-    private int mSwapUnits = 0;
+
 
 
     //Globals for Converter
     private ConverterUtil.Unit fromUnit, toUnit;
     private String unitAString, unitBString;
     private String unitCategory;
+    private int mSwapUnits = 0;
 
     public ConverterTabFragment() {
         this.spinnerID = R.layout.spinner_scrollview_distance;
