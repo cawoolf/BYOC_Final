@@ -6,17 +6,40 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".ui.main.ConverterTabFragment">
 
+    <RelativeLayout
+        android:id="@+id/spinner1"
+        android:layout_width="0dp"
+        android:layout_height="36dp"
+        android:background="@drawable/spinner_shape"
+        android:orientation="horizontal"
+
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
         <Spinner
-            android:id="@+id/spinner1"
+            android:id="@+id/spinner2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center"
+            android:background="@android:color/transparent"
+            android:gravity="center"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            android:spinnerMode="dropdown" />
 
-            android:background="@android:drawable/btn_dropdown"
-            android:spinnerMode="dropdown"
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
 
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            android:layout_marginEnd="3dp"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_baseline_arrow_downward_24" />
+
+    </RelativeLayout>
 
     <FrameLayout
         android:id="@+id/spinner_frame_layout"
