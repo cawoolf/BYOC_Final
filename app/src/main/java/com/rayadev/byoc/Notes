@@ -8,25 +8,23 @@ Clean up UI
     > Fix spinner colors
     > Weird unit text size for currency, and other categories.
     > Info page on options menu
-    > Currency and Currency swap logic on Converter Tab
 
 Logic punch list
     > Save CustomConverter to favorites
     > Add working logic to Custom Converter
     > on Converter tab, always load converter if any two units are selected.
-    > Add Currency logic on Converter tab
-    > Top back button on infoActivity doesn't work.
+    > Currency and Currency swap logic on Converter Tab
 
 Finish adding data on Spinner drop downs
     > Make sure all data loads correctly.
 
 Other Bugs
     > Millimeter bug
-    > Crash when Swap units with nothing loaded
 
    Fixed
         > Crash when user input is just "."
-         > Add button saves null converter, crashes when selected on favorites.
+        > Add button saves null converter, crashes when selected on favorites.
+        > Crash when Swap units with nothing loaded
 
 
 

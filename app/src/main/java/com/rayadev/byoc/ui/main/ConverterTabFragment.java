@@ -27,6 +27,7 @@ import com.rayadev.byoc.R;
 import com.rayadev.byoc.model.Converter;
 import com.rayadev.byoc.util.ConverterUtil;
 import com.rayadev.byoc.model.ConverterViewModel;
+import com.rayadev.byoc.util.MyTextWatcherUtils;
 
 
 //The main fragment that allows the user to run conversions, and set up a converter to be saved to the HomeSetTab

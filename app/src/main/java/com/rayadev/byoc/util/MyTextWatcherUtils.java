@@ -1,4 +1,4 @@
-package com.rayadev.byoc.ui.main;
+package com.rayadev.byoc.util;
 
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -7,7 +7,7 @@ import android.widget.EditText;
 
 import com.rayadev.byoc.util.ConverterUtil;
 
-class MyTextWatcherUtils {
+public class MyTextWatcherUtils {
 
     private EditText viewA, viewB;
     private ConverterUtil converter;
@@ -17,7 +17,7 @@ class MyTextWatcherUtils {
 
     private TextWatcher mTextWatcher;
 
-    MyTextWatcherUtils(int userSelection, EditText viewA, EditText viewB, ConverterUtil converter) {
+    public MyTextWatcherUtils(int userSelection, EditText viewA, EditText viewB, ConverterUtil converter) {
 
         this.userSelection = userSelection;
         this.converter = converter;
@@ -28,7 +28,7 @@ class MyTextWatcherUtils {
     }
 
 
-    MyTextWatcherUtils(int userSelection, EditText viewA, EditText viewB, double baseCurrency, double currencyValue) {
+    public MyTextWatcherUtils(int userSelection, EditText viewA, EditText viewB, double baseCurrency, double currencyValue) {
 
         this.userSelection = userSelection;
         this.viewA = viewA;
