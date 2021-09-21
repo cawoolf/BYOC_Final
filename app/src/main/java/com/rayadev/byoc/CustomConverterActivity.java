@@ -40,11 +40,11 @@ public class CustomConverterActivity extends AppCompatActivity {
 
     //Views for the converter UI
     private View mConverterUI;
-    private TextView mUnitATitleTextView, mUnitBTitleTextView, mUnitAQuestionTextView, mUnitBQuestionTextView;
+    private TextView mUnitATitleTextView, mUnitBTitleTextView, mUnitAQuestionTextView, mUnitBQuestionTextView, mValueUnitAQuestionTextView;
     private EditText mUnitAInputEditText, mUnitBInputEditText;
     private ImageButton mConverterInfoButton, mConverterSwapButton;
 
-    private Button mButton;
+    private LinearLayout mBuildButton;
 
     //Bottom UI
     private ImageView mAddConverterButton;
@@ -94,18 +94,19 @@ public class CustomConverterActivity extends AppCompatActivity {
         mUnitBValue = findViewById(R.id.custom_converter_unitBValue_EditText);
         mUnitAQuestionTextView = findViewById(R.id.custom_converter_unitAQuestion_TextView);
         mUnitBQuestionTextView = findViewById(R.id.custom_converter_unitBQuestion_TextView);
+        mValueUnitAQuestionTextView = findViewById(R.id.custom_converter_valueAQuestion_TextView);
 
         //Bottom UI
         mBottomUI = findViewById(R.id.custom_convertertab_BottomUI_LinearLayout);
         mAddConverterButton = findViewById(R.id.custom_add_converter_button);
 
         //Build Button click
-        mButton = findViewById(R.id.build_custom_converter_button);
+        mBuildButton = findViewById(R.id.custom_converter_buildButton_LinearLayout);
 
     }
 
     private void setChangeListeners() {
-        mButton.setOnClickListener(new View.OnClickListener() {
+        mBuildButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 buildConverter();
@@ -158,6 +159,7 @@ public class CustomConverterActivity extends AppCompatActivity {
                 else {
                     mBottomUI.setVisibility(View.VISIBLE);
                     mConverterUI.setVisibility(View.VISIBLE);
+                    mValueUnitAQuestionTextView.setText(mUnitAValue.getText().toString());
                 }
             }
         });
@@ -185,7 +187,6 @@ public class CustomConverterActivity extends AppCompatActivity {
                     mMasterCustomLayout.setVisibility(View.VISIBLE);
                     mUnitAInputEditText.clearFocus();
                     mUnitBInputEditText.clearFocus();
-
 
                     InputMethodManager imm = (InputMethodManager)v.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
                     imm.hideSoftInputFromWindow(v.getWindowToken(), 0);

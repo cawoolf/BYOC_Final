@@ -201,6 +201,7 @@
                 />
 
             <TextView
+                android:id="@+id/custom_converter_valueAQuestion_TextView"
                 android:text="1"
                 android:textSize="18sp"
                 android:layout_width="wrap_content"
@@ -272,11 +273,15 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/custom_converter_buildLine"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:id="@+id/custom_converter_buildButton_LinearLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="46dp"
 
             android:gravity="center"
+            android:layout_gravity="center"
+            android:background="@drawable/spinner_shape"
+
+            android:padding="5dp"
 
             android:orientation="horizontal"
             android:weightSum="2"
@@ -284,19 +289,24 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:src="@drawable/ic_baseline_build_24"/>
+                android:src="@drawable/ic_baseline_build_24"
 
-            <Button
+                android:layout_marginEnd="5dp"/>
+
+            <TextView
                 android:id="@+id/build_custom_converter_button"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:gravity="center"
+                android:textSize="18sp"
                 style="@style/custom_tab_style"
                 android:text="Build Converter"/>
 
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:src="@drawable/ic_baseline_build_24"/>
+                android:src="@drawable/ic_baseline_build_24"
+                android:layout_marginStart="5dp"/>
 
 
 
