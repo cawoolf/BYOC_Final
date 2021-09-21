@@ -1,4 +1,4 @@
-package com.rayadev.byoc.model;
+package com.rayadev.byoc.room;
 
 import retrofit2.Call;
 import retrofit2.http.GET;

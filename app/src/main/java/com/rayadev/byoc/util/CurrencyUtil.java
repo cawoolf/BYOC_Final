@@ -1,33 +1,16 @@
 package com.rayadev.byoc.util;
 
-import android.app.Activity;
-import android.app.AppComponentFactory;
-import android.content.ContentProvider;
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.os.Bundle;
 import android.util.Log;
-import android.widget.Toast;
-
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.ViewModelProvider;
-import androidx.lifecycle.ViewModelStoreOwner;
 
 import com.google.gson.Gson;
-import com.orhanobut.hawk.Hawk;
-import com.rayadev.byoc.MainActivity;
-import com.rayadev.byoc.R;
-import com.rayadev.byoc.model.Converter;
 import com.rayadev.byoc.model.ConverterViewModel;
 import com.rayadev.byoc.model.Currency;
-import com.rayadev.byoc.model.CurrencyAPI;
+import com.rayadev.byoc.room.CurrencyAPI;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.HashSet;
 
 import retrofit2.Call;
