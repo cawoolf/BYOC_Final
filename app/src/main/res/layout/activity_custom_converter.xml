@@ -176,6 +176,7 @@
                 />
 
             <TextView
+                android:id="@+id/custom_converter_unitBQuestion_TextView"
                 android:text="Unit B's"
                 android:textSize="18sp"
                 android:layout_width="wrap_content"
@@ -212,6 +213,7 @@
                />
 
             <TextView
+                android:id="@+id/custom_converter_unitAQuestion_TextView"
                 android:text="Unit A"
                 android:textSize="18sp"
                 android:layout_width="wrap_content"

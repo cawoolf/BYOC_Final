@@ -40,7 +40,7 @@ public class CustomConverterActivity extends AppCompatActivity {
 
     //Views for the converter UI
     private View mConverterUI;
-    private TextView mUnitATitleTextView, mUnitBTitleTextView;
+    private TextView mUnitATitleTextView, mUnitBTitleTextView, mUnitAQuestionTextView, mUnitBQuestionTextView;
     private EditText mUnitAInputEditText, mUnitBInputEditText;
     private ImageButton mConverterInfoButton, mConverterSwapButton;
 
@@ -92,6 +92,8 @@ public class CustomConverterActivity extends AppCompatActivity {
         mUnitAValue = findViewById(R.id.custom_converter_unitAValue_EditText);
         mUnitBName = findViewById(R.id.custom_converter_unitBName_EditText);
         mUnitBValue = findViewById(R.id.custom_converter_unitBValue_EditText);
+        mUnitAQuestionTextView = findViewById(R.id.custom_converter_unitAQuestion_TextView);
+        mUnitBQuestionTextView = findViewById(R.id.custom_converter_unitBQuestion_TextView);
 
         //Bottom UI
         mBottomUI = findViewById(R.id.custom_convertertab_BottomUI_LinearLayout);
@@ -122,6 +124,7 @@ public class CustomConverterActivity extends AppCompatActivity {
                 else {
                     mBottomUI.setVisibility(View.VISIBLE);
                     mConverterUI.setVisibility(View.VISIBLE);
+                    mUnitAQuestionTextView.setText((mUnitAName.getText().toString()));
                 }
             }
         });
@@ -138,6 +141,7 @@ public class CustomConverterActivity extends AppCompatActivity {
                 else {
                     mBottomUI.setVisibility(View.VISIBLE);
                     mConverterUI.setVisibility(View.VISIBLE);
+                    mUnitBQuestionTextView.setText((mUnitBName.getText().toString()));
                 }
             }
         });
@@ -249,7 +253,6 @@ public class CustomConverterActivity extends AppCompatActivity {
             }
         });
     }
-
 
     private void clearUserInput() {
 
