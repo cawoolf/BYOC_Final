@@ -21,7 +21,10 @@ import android.widget.TextView;
 
 import com.google.android.material.textfield.TextInputLayout;
 import com.rayadev.byoc.R;
+import com.rayadev.byoc.model.Converter;
+import com.rayadev.byoc.util.ConverterUtil;
 import com.rayadev.byoc.util.KeyboardUtils;
+import com.rayadev.byoc.util.MyTextWatcherUtils;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -49,6 +52,11 @@ public class CustomConverterActivity extends AppCompatActivity {
     //Bottom UI
     private ImageView mAddConverterButton;
     private LinearLayout mBottomUI;
+
+    //Custom Converter object
+    private Converter mCustomConverter;
+    private String mUnitAConverterName, mUnitBConverterName;
+    private double mUnitAConverterValue, mUnitBConverterValue;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -218,6 +226,14 @@ public class CustomConverterActivity extends AppCompatActivity {
         mUnitATitleTextView.setText(mUnitAName.getText().toString());
         mUnitBTitleTextView.setText(mUnitBName.getText().toString());
 
+        mUnitAConverterName = mUnitAInputEditText.getText().toString();
+        mUnitBConverterName = mUnitBInputEditText.getText().toString();
+        mUnitAConverterValue = Double.parseDouble(mUnitAValue.getText().toString());
+        mUnitBConverterValue = Double.parseDouble(mUnitBValue.getText().toString());
+
+        mCustomConverter = new Converter(mUnitAConverterName, mUnitBConverterName, mUnitAConverterValue, mUnitBConverterValue);
+
+
     }
 
     private void keyboardManager() {
@@ -250,7 +266,6 @@ public class CustomConverterActivity extends AppCompatActivity {
                     }
                 }
 
-
             }
         });
     }
@@ -264,6 +279,45 @@ public class CustomConverterActivity extends AppCompatActivity {
         if (mUnitBInputEditText.getText() != null) {
             mUnitBInputEditText.getText().clear();
         }
+
+    }
+
+    //Here if unitCategory equals currency, need to use a different set of constructors.
+    private void setConverterBoxLogic(ConverterUtil.Unit fromUnit, ConverterUtil.Unit toUnit) {
+
+        mUnitAInputEditText.clearFocus();
+        mUnitBInputEditText.clearFocus();
+        clearUserInput();
+
+
+        //Theres definitely a more simple way to go about this, but I'm just solving the issue
+        //Using objects instead of algorithms.. Just use lots of objects haha Probably not that efficient at big scales.
+        ConverterUtil fromUnit_toUnit = new ConverterUtil(fromUnit, toUnit);
+        ConverterUtil toUnit_fromUnit = new ConverterUtil(toUnit, fromUnit);
+
+        final MyTextWatcherUtils[] myTextWatcherUtils = new MyTextWatcherUtils[2];
+
+        myTextWatcherUtils[0] = new MyTextWatcherUtils(1, mUnitAInputEditText, mUnitBInputEditText, fromUnit_toUnit);
+        myTextWatcherUtils[1] = new MyTextWatcherUtils(2, mUnitAInputEditText, mUnitBInputEditText, toUnit_fromUnit);
+
+        myTextWatcherUtils[0].setUnitEditTextWatcher(mUnitAInputEditText);
+        myTextWatcherUtils[1].setUnitEditTextWatcher(mUnitBInputEditText);
+
+        keyboardManager();
+
+        mUnitBInputEditText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                clearUserInput();
+            }
+        });
+
+        mUnitBInputEditText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                clearUserInput();
+            }
+        });
 
     }
 }

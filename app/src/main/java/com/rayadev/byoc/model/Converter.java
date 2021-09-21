@@ -14,6 +14,8 @@ public class Converter {
 
     public String unitCategory;
 
+    private double unitAValue, unitBValue;
+
     public Converter() {
 
     }
@@ -22,6 +24,13 @@ public class Converter {
         this.unitCategory = unitCategory;
         this.unitAString = unitAString;
         this.unitBString = unitBString;
+    }
+
+    public Converter(String unitAString, String unitBString,double unitAValue, double unitBValue) {
+        this.unitAString = unitAString;
+        this.unitBString = unitBString;
+        this.unitAValue = unitAValue;
+        this.unitBValue = unitBValue;
     }
 
 
