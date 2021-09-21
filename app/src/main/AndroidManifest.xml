@@ -12,6 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".InfoActivity"
+            android:parentActivityName=".MainActivity"
             android:screenOrientation="portrait">
         </activity>
         <activity

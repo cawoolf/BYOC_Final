@@ -218,16 +218,20 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull @NotNull MenuItem item) {
 
+        TabLayout.Tab favoritesTab = mTabLayout.getTabAt(1);
+        TabLayout.Tab converterTab = mTabLayout.getTabAt(0);
 
         switch(item.getItemId()) {
             case R.id.homeFavoritesTrue_MenuItem:
                 setFavoritesTab(1);
                 item.setChecked(true);
+                mTabLayout.selectTab(favoritesTab);
                 break;
 
             case R.id.homeConverterTrue_MenuItem:
                 setFavoritesTab(0);
                 item.setChecked(true);
+                mTabLayout.selectTab(converterTab);
                 break;
 
             case R.id.info_MenuItem:
