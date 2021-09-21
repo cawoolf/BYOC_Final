@@ -106,8 +106,20 @@ public class MyTextWatcherUtils {
 
             if (!editTextAInputString.equals("") && !editTextAInputString.equals(".")) {
                 double input = Double.parseDouble(viewA.getText().toString());
+                double result = 0.0;
 
-                double result = converter.convert(input);
+                if(converter instanceof CustomConverterUtil) {
+
+                    double unitAValue = ((CustomConverterUtil) converter).getUnitAValue();
+                    double unitBValue = ((CustomConverterUtil) converter).getUnitBValue();
+
+                    result = ((CustomConverterUtil) converter).convertCustomUnits(unitAValue, unitBValue);
+
+                }
+                else {
+                    result = converter.convert(input);
+
+                }
                 viewB.setText(String.valueOf(result));
             }
 
@@ -142,8 +154,20 @@ public class MyTextWatcherUtils {
         else {
             if (!editTextBInputString.equals("") && !editTextBInputString.equals(".")) {
                 double input = Double.parseDouble(viewB.getText().toString());
+                double result = 0.0;
 
-                double result = converter.convert(input);
+                if(converter instanceof CustomConverterUtil) {
+
+                    double unitAValue = ((CustomConverterUtil) converter).getUnitAValue();
+                    double unitBValue = ((CustomConverterUtil) converter).getUnitBValue();
+
+                    result = ((CustomConverterUtil) converter).convertCustomUnits(unitBValue, unitAValue);
+
+                }
+                else {
+                    result = converter.convert(input);
+
+                }
                 viewA.setText(String.valueOf(result));
             } else {
                 viewA.setText("");

@@ -4,6 +4,10 @@ package com.rayadev.byoc.util;
 public class ConverterUtil {
 
 
+    public ConverterUtil() {
+
+    }
+
     //Reference points for the units.
     public enum Unit {
 
@@ -180,5 +184,6 @@ public class ConverterUtil {
     public double convert(double input) {
         return input * multiplier;
     }
+
 
 }
