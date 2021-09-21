@@ -14,7 +14,7 @@ public class Converter {
 
     public String unitCategory;
 
-    private double unitAValue, unitBValue;
+    public double unitAValue, unitBValue;
 
     public Converter() {
 
@@ -51,4 +51,11 @@ public class Converter {
     }
 
 
+    public double getUnitAValue() {
+        return unitAValue;
+    }
+
+    public double getUnitBValue() {
+        return unitBValue;
+    }
 }

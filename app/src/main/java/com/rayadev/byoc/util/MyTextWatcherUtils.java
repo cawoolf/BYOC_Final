@@ -17,6 +17,7 @@ public class MyTextWatcherUtils {
 
     private TextWatcher mTextWatcher;
 
+
     public MyTextWatcherUtils(int userSelection, EditText viewA, EditText viewB, ConverterUtil converter) {
 
         this.userSelection = userSelection;
@@ -93,7 +94,7 @@ public class MyTextWatcherUtils {
 
                 double result = input * currencyValue;
                 viewB.setText(String.valueOf(result));
-                Log.i("CTAG", "AB Ran");
+
             } else {
                 viewB.setText("");
 
@@ -106,14 +107,15 @@ public class MyTextWatcherUtils {
 
             if (!editTextAInputString.equals("") && !editTextAInputString.equals(".")) {
                 double input = Double.parseDouble(viewA.getText().toString());
-                double result = 0.0;
+                double result;
 
                 if(converter instanceof CustomConverterUtil) {
 
                     double unitAValue = ((CustomConverterUtil) converter).getUnitAValue();
                     double unitBValue = ((CustomConverterUtil) converter).getUnitBValue();
 
-                    result = ((CustomConverterUtil) converter).convertCustomUnits(unitAValue, unitBValue);
+                    result = ((CustomConverterUtil) converter).convertCustomUnits(input, unitBValue);
+                    Log.i("CTAG", "AB Ran");
 
                 }
                 else {
@@ -143,7 +145,7 @@ public class MyTextWatcherUtils {
 
                 double result = input * (1/currencyValue);
                 viewA.setText(String.valueOf(result));
-                Log.i("CTAG", "BA Ran");
+
             } else {
                 viewA.setText("");
 
@@ -154,14 +156,15 @@ public class MyTextWatcherUtils {
         else {
             if (!editTextBInputString.equals("") && !editTextBInputString.equals(".")) {
                 double input = Double.parseDouble(viewB.getText().toString());
-                double result = 0.0;
+                double result;
 
                 if(converter instanceof CustomConverterUtil) {
 
                     double unitAValue = ((CustomConverterUtil) converter).getUnitAValue();
                     double unitBValue = ((CustomConverterUtil) converter).getUnitBValue();
 
-                    result = ((CustomConverterUtil) converter).convertCustomUnits(unitBValue, unitAValue);
+                    result = ((CustomConverterUtil) converter).convertCustomUnits(input, unitAValue);
+                    Log.i("CTAG", "BA Ran");
 
                 }
                 else {

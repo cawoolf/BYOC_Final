@@ -7,7 +7,7 @@ public class CustomConverterUtil extends ConverterUtil{
     public CustomConverterUtil(double unitAValue, double unitBValue) {
         super();
         this.mUnitAValue = unitAValue;
-        this. mUnitBValue =unitBValue;
+        this.mUnitBValue = unitBValue;
     }
 
     public double convertCustomUnits(double input, double multiplier) {

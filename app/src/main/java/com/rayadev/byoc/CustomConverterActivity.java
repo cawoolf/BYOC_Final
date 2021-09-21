@@ -23,6 +23,7 @@ import com.google.android.material.textfield.TextInputLayout;
 import com.rayadev.byoc.R;
 import com.rayadev.byoc.model.Converter;
 import com.rayadev.byoc.util.ConverterUtil;
+import com.rayadev.byoc.util.CustomConverterUtil;
 import com.rayadev.byoc.util.KeyboardUtils;
 import com.rayadev.byoc.util.MyTextWatcherUtils;
 
@@ -233,6 +234,7 @@ public class CustomConverterActivity extends AppCompatActivity {
 
         mCustomConverter = new Converter(mUnitAConverterName, mUnitBConverterName, mUnitAConverterValue, mUnitBConverterValue);
 
+        setConverterBoxLogic();
 
     }
 
@@ -283,7 +285,7 @@ public class CustomConverterActivity extends AppCompatActivity {
     }
 
     //Here if unitCategory equals currency, need to use a different set of constructors.
-    private void setConverterBoxLogic(ConverterUtil.Unit fromUnit, ConverterUtil.Unit toUnit) {
+    private void setConverterBoxLogic() {
 
         mUnitAInputEditText.clearFocus();
         mUnitBInputEditText.clearFocus();
@@ -292,8 +294,11 @@ public class CustomConverterActivity extends AppCompatActivity {
 
         //Theres definitely a more simple way to go about this, but I'm just solving the issue
         //Using objects instead of algorithms.. Just use lots of objects haha Probably not that efficient at big scales.
-        ConverterUtil fromUnit_toUnit = new ConverterUtil(fromUnit, toUnit);
-        ConverterUtil toUnit_fromUnit = new ConverterUtil(toUnit, fromUnit);
+//        ConverterUtil fromUnit_toUnit = new ConverterUtil(fromUnit, toUnit);
+//        ConverterUtil toUnit_fromUnit = new ConverterUtil(toUnit, fromUnit);
+
+        CustomConverterUtil fromUnit_toUnit = new CustomConverterUtil(mCustomConverter.getUnitAValue(), mCustomConverter.getUnitBValue());
+        CustomConverterUtil toUnit_fromUnit = new CustomConverterUtil(mCustomConverter.getUnitAValue(), mCustomConverter.getUnitBValue());
 
         final MyTextWatcherUtils[] myTextWatcherUtils = new MyTextWatcherUtils[2];
 
