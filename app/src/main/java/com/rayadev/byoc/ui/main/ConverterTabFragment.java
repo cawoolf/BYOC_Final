@@ -136,20 +136,25 @@ public class ConverterTabFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                switch (mSwapUnits) {
+                if(unitAString != null && unitBString != null) {
+                    switch (mSwapUnits) {
 
-                    case 0:
-                        Converter converterAB = new Converter(unitCategory, unitAString, unitBString);
-                        mConverterViewModel.insert(converterAB);
-                        Toast.makeText(getContext(), unitAString + " : " + unitBString + " --> Favorites", Toast.LENGTH_SHORT).show();
-                        break;
+                        case 0:
+                            Converter converterAB = new Converter(unitCategory, unitAString, unitBString);
+                            mConverterViewModel.insert(converterAB);
+                            Toast.makeText(getContext(), unitAString + " : " + unitBString + " --> Favorites", Toast.LENGTH_SHORT).show();
+                            break;
 
-                    case 1:
-                        Converter converterBA = new Converter(unitCategory, unitBString, unitAString);
-                        mConverterViewModel.insert(converterBA);
-                        Toast.makeText(getContext(), unitBString + " : " + unitAString + " --> Favorites", Toast.LENGTH_SHORT).show();
-                        break;
+                        case 1:
+                            Converter converterBA = new Converter(unitCategory, unitBString, unitAString);
+                            mConverterViewModel.insert(converterBA);
+                            Toast.makeText(getContext(), unitBString + " : " + unitAString + " --> Favorites", Toast.LENGTH_SHORT).show();
+                            break;
 
+                    }
+                }
+                else {
+                    Toast.makeText(getActivity(), "Select Units for Favorites", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -158,22 +163,24 @@ public class ConverterTabFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                switch (mSwapUnits) {
+                if (unitAString != null && unitBString != null) {
+                    switch (mSwapUnits) {
+                        case 0:
+                            setConverterBoxLogic(toUnit, fromUnit);
+                            setConverterBoxTitles(unitBString, unitAString);
+                            mSwapUnits = 1;
+                            break;
 
-                    case 0:
-                        setConverterBoxLogic(toUnit, fromUnit);
-                        setConverterBoxTitles(unitBString, unitAString);
-                        mSwapUnits = 1;
-                        break;
-
-                    case 1:
-                        setConverterBoxLogic(fromUnit, toUnit);
-                        setConverterBoxTitles(unitAString, unitBString);
-                        mSwapUnits = 0;
-                        break;
-
+                        case 1:
+                            setConverterBoxLogic(fromUnit, toUnit);
+                            setConverterBoxTitles(unitAString, unitBString);
+                            mSwapUnits = 0;
+                            break;
+                    }
                 }
-
+                else {
+                    Toast.makeText(getActivity(), "Select Units Before Swapping", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }

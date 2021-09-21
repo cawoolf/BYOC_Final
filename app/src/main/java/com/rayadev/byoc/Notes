@@ -23,7 +23,10 @@ Finish adding data on Spinner drop downs
 Other Bugs
     > Millimeter bug
     > Crash when Swap units with nothing loaded
-    > Crash when user input is just "."
+
+   Fixed
+        > Crash when user input is just "."
+         > Add button saves null converter, crashes when selected on favorites.
 
 
 
