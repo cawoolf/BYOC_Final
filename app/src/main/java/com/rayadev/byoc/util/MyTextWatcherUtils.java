@@ -160,10 +160,10 @@ public class MyTextWatcherUtils {
 
                 if(converter instanceof CustomConverterUtil) {
 
-                    double unitAValue = ((CustomConverterUtil) converter).getUnitAValue();
+                    double unitAValue = ((CustomConverterUtil) converter).getUnitAValue(); //Should usually be 1.
                     double unitBValue = ((CustomConverterUtil) converter).getUnitBValue();
 
-                    result = ((CustomConverterUtil) converter).convertCustomUnits(input, unitAValue);
+                    result = ((CustomConverterUtil) converter).convertBACustomUnits(unitAValue, unitBValue, input);
                     Log.i("CTAG", "BA Ran");
 
                 }

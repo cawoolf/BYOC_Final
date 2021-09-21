@@ -4,8 +4,11 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
+import android.os.VibrationEffect;
+import android.os.Vibrator;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
@@ -18,6 +21,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputLayout;
 import com.rayadev.byoc.R;
@@ -59,6 +63,9 @@ public class CustomConverterActivity extends AppCompatActivity {
     private String mUnitAConverterName, mUnitBConverterName;
     private double mUnitAConverterValue, mUnitBConverterValue;
 
+    private Vibrator mVibrator;
+    private VibrationEffect mVibrationEffect;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,6 +75,8 @@ public class CustomConverterActivity extends AppCompatActivity {
         linkViews();
         setChangeListeners();
         keyboardManager();
+
+        Toast.makeText(this, "1) Input Values For Units" + "\n" + "2) Click Build!", Toast.LENGTH_LONG).show();
     }
 
     private void setUpToolbar() {
@@ -112,13 +121,20 @@ public class CustomConverterActivity extends AppCompatActivity {
         //Build Button click
         mBuildButton = findViewById(R.id.custom_converter_buildButton_LinearLayout);
 
+        mVibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+
     }
 
     private void setChangeListeners() {
+
+
         mBuildButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                hideKeyboard(CustomConverterActivity.this);
                 buildConverter();
+
+
             }
         });
 
@@ -196,7 +212,7 @@ public class CustomConverterActivity extends AppCompatActivity {
                     mMasterCustomLayout.setVisibility(View.VISIBLE);
                     mUnitAInputEditText.clearFocus();
                     mUnitBInputEditText.clearFocus();
-
+//
                     InputMethodManager imm = (InputMethodManager)v.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
                     imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
                 }
@@ -229,12 +245,25 @@ public class CustomConverterActivity extends AppCompatActivity {
 
         mUnitAConverterName = mUnitAInputEditText.getText().toString();
         mUnitBConverterName = mUnitBInputEditText.getText().toString();
-        mUnitAConverterValue = Double.parseDouble(mUnitAValue.getText().toString());
-        mUnitBConverterValue = Double.parseDouble(mUnitBValue.getText().toString());
 
-        mCustomConverter = new Converter(mUnitAConverterName, mUnitBConverterName, mUnitAConverterValue, mUnitBConverterValue);
+        try {
+            mUnitAConverterValue = Double.parseDouble(mUnitAValue.getText().toString());
+            mUnitBConverterValue = Double.parseDouble(mUnitBValue.getText().toString());
+            mCustomConverter = new Converter(mUnitAConverterName, mUnitBConverterName, mUnitAConverterValue, mUnitBConverterValue);
+            setConverterBoxLogic();
 
-        setConverterBoxLogic();
+            // this effect creates the vibration of default amplitude for 1000ms(1 sec)
+            mVibrationEffect = VibrationEffect.createOneShot(75,75);
+
+            // it is safe to cancel other vibrations currently taking place
+            mVibrator.cancel();
+            mVibrator.vibrate(mVibrationEffect);
+        }
+        catch (Exception e) {
+            Toast.makeText(this, "Input Values for Units", Toast.LENGTH_SHORT).show();
+        }
+
+
 
     }
 
@@ -324,5 +353,16 @@ public class CustomConverterActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    public static void hideKeyboard(Activity activity) {
+        InputMethodManager imm = (InputMethodManager) activity.getSystemService(Activity.INPUT_METHOD_SERVICE);
+        //Find the currently focused view, so we can grab the correct window token from it.
+        View view = activity.getCurrentFocus();
+        //If no view currently has focus, create a new one, just so we can grab a window token from it
+        if (view == null) {
+            view = new View(activity);
+        }
+        imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
 }

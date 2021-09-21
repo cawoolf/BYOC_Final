@@ -10,9 +10,15 @@ public class CustomConverterUtil extends ConverterUtil{
         this.mUnitBValue = unitBValue;
     }
 
+    //Need to get the ratios correct here.
     public double convertCustomUnits(double input, double multiplier) {
         return input * multiplier;
 
+    }
+
+    public double convertBACustomUnits(double valueA, double valueB, double input) {
+        double ratio = valueA/valueB;
+        return input * ratio;
     }
 
     public double getUnitAValue() {

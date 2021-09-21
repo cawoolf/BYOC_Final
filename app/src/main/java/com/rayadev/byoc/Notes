@@ -8,10 +8,10 @@ Clean up UI
     > Fix spinner colors
     > Weird unit text size for currency, and other categories.
     > Info page on options menu
+    > Text overflow issue on Custom Converter question.
 
 Logic punch list
     > Save CustomConverter to favorites
-    > Add working logic to Custom Converter
     > on Converter tab, always load converter if any two units are selected.
     > Currency and Currency swap logic on Converter Tab
 
