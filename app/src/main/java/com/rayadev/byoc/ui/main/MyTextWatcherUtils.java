@@ -85,9 +85,10 @@ class MyTextWatcherUtils {
 
         String editTextAInputString = String.valueOf(viewA.getText());
 
+        //Currency provides a null converter
         if(converter == null) {
 
-            if (!editTextAInputString.equals("")) {
+            if (!editTextAInputString.equals("") && !editTextAInputString.equals(".")) {
                 double input = Double.parseDouble(viewA.getText().toString());
 
                 double result = input * currencyValue;
@@ -103,12 +104,15 @@ class MyTextWatcherUtils {
         else {
 
 
-            if (!editTextAInputString.equals("")) {
+            if (!editTextAInputString.equals("") && !editTextAInputString.equals(".")) {
                 double input = Double.parseDouble(viewA.getText().toString());
 
                 double result = converter.convert(input);
                 viewB.setText(String.valueOf(result));
-            } else {
+            }
+
+
+            else {
                 viewB.setText("");
 
             }
@@ -118,11 +122,11 @@ class MyTextWatcherUtils {
 
     private void runConversionBA(ConverterUtil converter) {
 
-        //We are working with a currency now.
         String editTextBInputString = String.valueOf(viewB.getText());
 
+        //Currency provides a null converter
         if(converter == null) {
-            if (!editTextBInputString.equals("")) {
+            if (!editTextBInputString.equals("") && !editTextBInputString.equals(".")) {
                 double input = Double.parseDouble(viewB.getText().toString());
 
                 double result = input * (1/currencyValue);
@@ -136,7 +140,7 @@ class MyTextWatcherUtils {
         }
 
         else {
-            if (!editTextBInputString.equals("")) {
+            if (!editTextBInputString.equals("") && !editTextBInputString.equals(".")) {
                 double input = Double.parseDouble(viewB.getText().toString());
 
                 double result = converter.convert(input);
