@@ -9,6 +9,8 @@ Clean up UI
     > Weird unit text size for currency, and other categories.
     > Info page on options menu
     > Text overflow issue on Custom Converter question.
+    > Set max number of decmials on all converters for UI
+    > Set text overflow limit on custom converter.
 
 Logic punch list
     > Save CustomConverter to favorites
