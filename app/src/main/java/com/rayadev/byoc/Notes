@@ -11,7 +11,6 @@ Clean up UI
     > Text overflow issue on Custom Converter question.
     > Set max number of decmials on all converters for UI
     > Set text overflow limit on custom converter.
-    > fix flashing text box on custom
 
 Logic punch list
     > Save CustomConverter to favorites
@@ -28,6 +27,8 @@ Other Bugs
         > Crash when user input is just "."
         > Add button saves null converter, crashes when selected on favorites.
         > Crash when Swap units with nothing loaded
+        > fix flashing text box on custom
+            > Issue with View.GONE vs View.Invisible.
 
 
 

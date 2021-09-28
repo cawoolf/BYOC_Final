@@ -143,8 +143,8 @@ public class CustomConverterActivity extends AppCompatActivity {
             public void onFocusChange(View v, boolean hasFocus) {
                 if(hasFocus) {
                     mUnitAName.setText("");
-                    mBottomUI.setVisibility(View.GONE);
-                    mConverterUI.setVisibility(View.GONE);
+                    mBottomUI.setVisibility(View.INVISIBLE);
+                    mConverterUI.setVisibility(View.INVISIBLE);
                 }
 
                 else {
@@ -160,8 +160,8 @@ public class CustomConverterActivity extends AppCompatActivity {
             public void onFocusChange(View v, boolean hasFocus) {
                 if(hasFocus) {
                     mUnitBName.setText("");
-                    mBottomUI.setVisibility(View.GONE);
-                    mConverterUI.setVisibility(View.GONE);
+                    mBottomUI.setVisibility(View.INVISIBLE);
+                    mConverterUI.setVisibility(View.INVISIBLE);
                 }
 
                 else {
@@ -177,8 +177,8 @@ public class CustomConverterActivity extends AppCompatActivity {
             public void onFocusChange(View v, boolean hasFocus) {
                 if(hasFocus) {
                     mUnitAValue.setText("1");
-                    mBottomUI.setVisibility(View.GONE);
-                    mConverterUI.setVisibility(View.GONE);
+                    mBottomUI.setVisibility(View.INVISIBLE);
+                    mConverterUI.setVisibility(View.INVISIBLE);
                 }
 
                 else {
@@ -194,8 +194,8 @@ public class CustomConverterActivity extends AppCompatActivity {
             public void onFocusChange(View v, boolean hasFocus) {
                 if(hasFocus) {
                     mUnitBValue.setText("");
-                    mBottomUI.setVisibility(View.GONE);
-                    mConverterUI.setVisibility(View.GONE);
+                    mBottomUI.setVisibility(View.INVISIBLE);
+                    mConverterUI.setVisibility(View.INVISIBLE);
                 }
 
                 else {
@@ -224,7 +224,7 @@ public class CustomConverterActivity extends AppCompatActivity {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) || (actionId == EditorInfo.IME_ACTION_DONE)) {
-////                    mMasterCustomLayout.setVisibility(View.VISIBLE);
+//                   mMasterCustomLayout.setVisibility(View.VISIBLE);
                     mUnitBInputEditText.clearFocus();
                     mUnitAInputEditText.clearFocus();
 
@@ -282,8 +282,8 @@ public class CustomConverterActivity extends AppCompatActivity {
             public void onToggleSoftKeyboard(boolean isVisible) {
 
                 if (isVisible && !mUnitAInputEditText.hasFocus() && !mUnitBInputEditText.hasFocus()) {
-                    mConverterUI.setVisibility(View.GONE);
-                    mBottomUI.setVisibility(View.GONE);
+                    mConverterUI.setVisibility(View.INVISIBLE);
+                    mBottomUI.setVisibility(View.INVISIBLE);
                 } else {
                     mConverterUI.setVisibility(View.VISIBLE);
                     mBottomUI.setVisibility(View.VISIBLE);
@@ -293,7 +293,6 @@ public class CustomConverterActivity extends AppCompatActivity {
                     }
                     else{
                         mMasterCustomLayout.setVisibility(View.VISIBLE);
-
 
                     }
                 }
