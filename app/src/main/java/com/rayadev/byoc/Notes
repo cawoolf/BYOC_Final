@@ -5,8 +5,7 @@ Keep up with this project enough during work so that you don't loose Android ski
 Update Connection With Being to get consent for viewing an Ad
 
 Clean up UI
-    > Fix spinner colors
-    > Weird unit text size for currency, and other categories.
+
     > Info page on options menu
     > Text overflow issue on Custom Converter question.
     > Set max number of decmials on all converters for UI
@@ -15,15 +14,18 @@ Clean up UI
 Logic punch list
     > Save CustomConverter to favorites
     > on Converter tab, always load converter if any two units are selected.
-    > Currency and Currency swap logic on Converter Tab
+    > Currency and Currency swap logic on Converter Tab. Run actual currency conversions.
 
 Finish adding data on Spinner drop downs
     > Make sure all data loads correctly.
 
 Other Bugs
-    > Millimeter bug
+    > Millimeter data bug. Fix units.
+    > Can't click CURB4 TextView on spinner.
 
    Fixed
+        > Wierd spinner text.
+        > Fix spinner colors
         > Crash when user input is just "."
         > Add button saves null converter, crashes when selected on favorites.
         > Crash when Swap units with nothing loaded
