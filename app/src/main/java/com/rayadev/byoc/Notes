@@ -5,10 +5,9 @@ Keep up with this project enough during work so that you don't loose Android ski
 Update Connection With Being to get consent for viewing an Ad
 
 Clean up UI
-
     > Info page on options menu
     > Text overflow issue on Custom Converter question.
-    > Set max number of decmials on all converters for UI
+    > Set max number of decimals on all converters for UI
     > Set text overflow limit on custom converter.
 
 Logic punch list
@@ -24,7 +23,7 @@ Other Bugs
     > Can't click CURB4 TextView on spinner.
 
    Fixed
-        > Wierd spinner text.
+        > Weird spinner text.
         > Fix spinner colors
         > Crash when user input is just "."
         > Add button saves null converter, crashes when selected on favorites.
