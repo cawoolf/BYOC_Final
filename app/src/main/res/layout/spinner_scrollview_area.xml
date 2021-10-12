@@ -27,66 +27,50 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Item 2 Item 2 Item 2"
-                    android:textSize="23sp"
-                    android:textColor="@color/myTextColor"
+                    style="@style/srollview_textview_style"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Item 1 Item 1 Item 1 "
+                    style="@style/srollview_textview_style"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_marginBottom="16dp"
-                    android:layout_marginTop="10dp"/>
+                    android:text="Item 1 Item 1 Item 1 "
+                    style="@style/srollview_textview_style"/>
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Item 1 Item 1 Item 1 "
-                    android:textSize="23sp"
-                    android:textColor="@color/myTextColor"
-                    android:layout_marginBottom="16dp"/>
+                    style="@style/srollview_textview_style"/>
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Item 1 Item 1 Item 1 "
-                    android:textSize="23sp"
-                    android:textColor="@color/myTextColor"
-                    android:layout_marginBottom="16dp"/>
+                    style="@style/srollview_textview_style"/>
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Item 1 Item 1 Item 1 "
-                    android:textSize="23sp"
-                    android:textColor="@color/myTextColor"
-                    android:layout_marginBottom="16dp"/>
+                    style="@style/srollview_textview_style"/>
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Item 1 Item 1 Item 1 "
-                    android:textSize="23sp"
-                    android:textColor="@color/myTextColor"
-                    android:layout_marginBottom="16dp"/>
+                    style="@style/srollview_textview_style"/>
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Item 1 Item 1 Item 1 "
-                    android:textSize="23sp"
-                    android:textColor="@color/myTextColor"
-                    android:layout_marginBottom="16dp"/>
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Item 1 Item 1 Item 1 "
-                    android:textSize="23sp"
-                    android:textColor="@color/myTextColor"
-                    android:layout_marginBottom="16dp"/>
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Item 1 Item 1 Item 1 "
-                    android:textSize="23sp"
-                    android:textColor="@color/myTextColor"
-                    android:layout_marginBottom="16dp"/>
+                    style="@style/srollview_textview_style"/>
 
 
             </LinearLayout>
@@ -106,66 +90,49 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Item 1 Item 1 Item 1 "
-                    android:textSize="23sp"
-                    android:textColor="@color/myTextColor"
-                    android:layout_marginBottom="16dp"
-                    android:layout_marginTop="10dp"/>
+                    style="@style/srollview_textview_style"/>
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Item 1 Item 1 Item 1 "
-                    android:textSize="23sp"
-                    android:textColor="@color/myTextColor"
-                    android:layout_marginBottom="16dp"/>
+                    style="@style/srollview_textview_style"/>
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Item 1 Item 1 Item 1 "
-                    android:textSize="23sp"
-                    android:textColor="@color/myTextColor"
-                    android:layout_marginBottom="16dp"/>
+                    style="@style/srollview_textview_style"/>
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Item 1 Item 1 Item 1 "
-                    android:textSize="23sp"
-                    android:textColor="@color/myTextColor"
-                    android:layout_marginBottom="16dp"/>
+                    style="@style/srollview_textview_style"/>
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Item 1 Item 1 Item 1 "
-                    android:textSize="23sp"
-                    android:textColor="@color/myTextColor"
-                    android:layout_marginBottom="16dp"/>
+                    style="@style/srollview_textview_style"/>
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Item 1 Item 1 Item 1 "
-                    android:textSize="23sp"
-                    android:textColor="@color/myTextColor"
-                    android:layout_marginBottom="16dp"/>
+                    style="@style/srollview_textview_style"/>
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Item 1 Item 1 Item 1 "
-                    android:textSize="23sp"
-                    android:textColor="@color/myTextColor"
-                    android:layout_marginBottom="16dp"/>
+                    style="@style/srollview_textview_style"/>
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Item 1 Item 1 Item 1 "
-                    android:textSize="23sp"
-                    android:textColor="@color/myTextColor"
-                    android:layout_marginBottom="16dp"/>
+                    style="@style/srollview_textview_style"/>
 
 
             </LinearLayout>

@@ -29,69 +29,55 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text= "@string/currency_USD"
-                    android:textSize="23sp"
-                    android:textColor="@color/myTextColor"
-                    android:layout_marginBottom="16dp"
-                    android:layout_marginTop="10dp"/>
+
+                    style="@style/srollview_textview_style"/>
 
                 <TextView
                     android:id="@+id/CURA2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/currency_EUR"
-                    android:textSize="23sp"
-                    android:textColor="@color/myTextColor"
-                    android:layout_marginBottom="16dp"/>
+
+                    style="@style/srollview_textview_style"/>
 
                 <TextView
                     android:id="@+id/CURA3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/currency_CAD"
-                    android:textSize="23sp"
-                    android:textColor="@color/myTextColor"
-                    android:layout_marginBottom="16dp"/>
+                    style="@style/srollview_textview_style" />
 
                 <TextView
                     android:id="@+id/CURA4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/currency_NZD"
-                    android:textSize="23sp"
-                    android:textColor="@color/myTextColor"
-                    android:layout_marginBottom="16dp"/>
+                    style="@style/srollview_textview_style"/>
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Item 1 Item 1 Item 1 "
-                    android:textSize="23sp"
-                    android:textColor="@color/myTextColor"
-                    android:layout_marginBottom="16dp"/>
+                    style="@style/srollview_textview_style"/>
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Item 1 Item 1 Item 1 "
-                    android:textSize="23sp"
-                    android:textColor="@color/myTextColor"
-                    android:layout_marginBottom="16dp"/>
+                    style="@style/srollview_textview_style"/>
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Item 1 Item 1 Item 1 "
-                    android:textSize="23sp"
-                    android:textColor="@color/myTextColor"
-                    android:layout_marginBottom="16dp"/>
+                    style="@style/srollview_textview_style"/>
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
                     android:text="Item 1 Item 1 Item 1 "
-                    android:textSize="23sp"
-                    android:textColor="@color/myTextColor"
-                    android:layout_marginBottom="16dp"/>
+                    style="@style/srollview_textview_style"/>
 
 
             </LinearLayout>
@@ -110,72 +96,57 @@
 
                 <TextView
                     android:id="@+id/CURB1"
+                    android:text="@string/currency_USD"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/currency_USD"
-                    android:textSize="23sp"
-                    android:textColor="@color/myTextColor"
-                    android:layout_marginBottom="16dp"
-                    android:layout_marginTop="10dp"/>
+                    style="@style/srollview_textview_style"/>
 
                 <TextView
                     android:id="@+id/CURB2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/currency_EUR"
-                    android:textSize="23sp"
-                    android:textColor="@color/myTextColor"
-                    android:layout_marginBottom="16dp"/>
+                    style="@style/srollview_textview_style"/>
 
                 <TextView
                     android:id="@+id/CURB3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/currency_CAD"
-                    android:textSize="23sp"
-                    android:textColor="@color/myTextColor"
-                    android:layout_marginBottom="16dp"/>
+                    style="@style/srollview_textview_style"
+                 />
 
                 <TextView
                     android:id="@+id/CURB4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/currency_NZD"
-                    android:textSize="23sp"
-                    android:textColor="@color/myTextColor"
-                    android:layout_marginBottom="16dp"/>
+                    style="@style/srollview_textview_style"
+                  />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Item 1 Item 1 Item 1 "
-                    android:textSize="23sp"
-                    android:textColor="@color/myTextColor"
-                    android:layout_marginBottom="16dp"/>
+                    style="@style/srollview_textview_style"/>
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Item 1 Item 1 Item 1 "
-                    android:textSize="23sp"
-                    android:textColor="@color/myTextColor"
-                    android:layout_marginBottom="16dp"/>
+                    style="@style/srollview_textview_style"/>
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Item 1 Item 1 Item 1 "
-                    android:textSize="23sp"
-                    android:textColor="@color/myTextColor"
-                    android:layout_marginBottom="16dp"/>
+                    style="@style/srollview_textview_style"/>
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Item 1 Item 1 Item 1 "
-                    android:textSize="23sp"
-                    android:textColor="@color/myTextColor"
-                    android:layout_marginBottom="16dp"/>
+                    style="@style/srollview_textview_style"/>
 
 
             </LinearLayout>
