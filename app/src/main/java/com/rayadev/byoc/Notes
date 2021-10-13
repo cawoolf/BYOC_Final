@@ -9,6 +9,8 @@ Clean up UI
     > Text overflow issue on Custom Converter question.
     > Set max number of decimals on all converters for UI
     > Set text overflow limit on custom converter.
+    > On Converter home page, don't open keyboard unless units selected.
+    > Close keyboard on user swipe to next fragment.
 
 Logic punch list
     > Save CustomConverter to favorites
