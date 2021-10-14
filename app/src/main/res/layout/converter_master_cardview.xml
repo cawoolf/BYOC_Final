@@ -28,7 +28,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/converter_cardview_textsize"
-                android:text="Example Unit A"
+                android:text="Select Unit A Above"
                 android:layout_alignParentStart="true"
                 />
             <TextView
@@ -36,7 +36,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/converter_cardview_textsize"
-                android:text="Example Unit B"
+                android:text="Select Unit B Above"
                 android:layout_alignParentEnd="true"/>
         </RelativeLayout>
 

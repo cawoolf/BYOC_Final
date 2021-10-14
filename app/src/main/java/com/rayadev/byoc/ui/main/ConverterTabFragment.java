@@ -9,6 +9,7 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
@@ -53,6 +54,7 @@ public class ConverterTabFragment extends Fragment {
     private String unitAString, unitBString;
     private String unitCategory;
     private int mSwapUnits = 0;
+    private boolean mFreshFragment = true;
 
     public ConverterTabFragment() {
         this.spinnerID = R.layout.spinner_scrollview_distance;
@@ -89,6 +91,12 @@ public class ConverterTabFragment extends Fragment {
 
         //SetUp View Model
         mConverterViewModel = new ViewModelProvider(this).get(ConverterViewModel.class);
+
+        //For first create suppress keyboard until user selects units.
+
+        if(mFreshFragment = true) {
+            suppressKeyBoard();
+        }
 
         return view;
 
@@ -282,9 +290,14 @@ public class ConverterTabFragment extends Fragment {
     //Here if unitCategory equals currency, need to use a different set of constructors.
     private void setConverterBoxLogic(ConverterUtil.Unit fromUnit, ConverterUtil.Unit toUnit) {
 
+        //Restores the keyboard functionality for EditTexts that was disable in onCreateView.
+        enableKeyboard();
+
         mUnitAInputEditText.clearFocus();
         mUnitBInputEditText.clearFocus();
         clearUserInput();
+
+
 
 
         //Theres definitely a more simple way to go about this, but I'm just solving the issue
@@ -337,6 +350,28 @@ public class ConverterTabFragment extends Fragment {
 
         InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.showSoftInput(mUnitAInputEditText, InputMethodManager.SHOW_IMPLICIT);
+    }
+
+    private void suppressKeyBoard() {
+        mUnitAInputEditText.setShowSoftInputOnFocus(false);
+        mUnitBInputEditText.setShowSoftInputOnFocus(false);
+
+//        mUnitAInputEditText.setText("Select Units");
+////        mUnitAInputEditText.setTextSize(16);
+//        mUnitBInputEditText.setText("From Above");
+////        mUnitBInputEditText.setTextSize(16);
+
+        Toast.makeText(getContext(), "Select Units from drop down above.", Toast.LENGTH_LONG).show();
+    }
+
+    private void enableKeyboard() {
+
+        mUnitAInputEditText.setShowSoftInputOnFocus(true);
+        mUnitBInputEditText.setShowSoftInputOnFocus(true);
+
+//        mUnitAInputEditText.setOnTouchListener(null);
+//        mUnitBInputEditText.setOnTouchListener(null);
+
     }
 
 }
