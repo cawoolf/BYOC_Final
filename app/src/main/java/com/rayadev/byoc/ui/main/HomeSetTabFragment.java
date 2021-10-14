@@ -393,7 +393,7 @@ public class HomeSetTabFragment extends Fragment implements HomeSetRecyclerViewA
     }
 
 
-    //Interface for communicating with the Main Activity
+    //Interface for communicating with the Main Activity to Hide the interface during swiping.
     public interface HideConverterUIInterface {
         void hideConverterUI(View view);
     }
