@@ -356,11 +356,6 @@ public class ConverterTabFragment extends Fragment {
         mUnitAInputEditText.setShowSoftInputOnFocus(false);
         mUnitBInputEditText.setShowSoftInputOnFocus(false);
 
-//        mUnitAInputEditText.setText("Select Units");
-////        mUnitAInputEditText.setTextSize(16);
-//        mUnitBInputEditText.setText("From Above");
-////        mUnitBInputEditText.setTextSize(16);
-
         Toast.makeText(getContext(), "Select Units from drop down above.", Toast.LENGTH_LONG).show();
     }
 
@@ -369,8 +364,6 @@ public class ConverterTabFragment extends Fragment {
         mUnitAInputEditText.setShowSoftInputOnFocus(true);
         mUnitBInputEditText.setShowSoftInputOnFocus(true);
 
-//        mUnitAInputEditText.setOnTouchListener(null);
-//        mUnitBInputEditText.setOnTouchListener(null);
 
     }
 
