@@ -26,6 +26,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.tabs.TabLayout;
 import com.rayadev.byoc.model.ConverterViewModel;
+import com.rayadev.byoc.ui.main.HomeSetTabFragment;
 import com.rayadev.byoc.util.CurrencyUtil;
 import com.rayadev.byoc.ui.main.PageAdapter;
 
@@ -35,10 +36,12 @@ import org.json.JSONObject;
 
 import java.util.Date;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements HomeSetTabFragment.HideConverterUIInterface {
 
     private TabLayout mTabLayout;
     private boolean mHomeTabChoice;
+
+    private View mHomeSetConverterUI;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -179,8 +182,16 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onTabUnselected(TabLayout.Tab tab) {
 
+                //Hides the ConverterUI on the HomeSetTab when the user isn't interacting with it
+                //Allows for a smoother transition for swiping tabs while the keyboard is still visible.
+                final Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        mHomeSetConverterUI.setVisibility(View.GONE);
 
-
+                    }
+                }, 350);
 
             }
 
@@ -282,6 +293,9 @@ public class MainActivity extends AppCompatActivity {
         imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
 
-    public interface hideConverterUI {
-    };
+
+    @Override
+    public void hideConverterUI(View view) {
+        mHomeSetConverterUI = view;
+    }
 }

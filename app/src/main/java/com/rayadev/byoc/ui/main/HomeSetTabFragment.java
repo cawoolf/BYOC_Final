@@ -40,6 +40,7 @@ public class HomeSetTabFragment extends Fragment implements HomeSetRecyclerViewA
     private ConverterViewModel mConverterViewModel;
 
     private View mConverterUI;
+    private HideConverterUIInterface mHideConverterUIInterface;
 
     //Views for the Converter UI
     private TextView mUnitATitleTextView, mUnitBTitleTextView;
@@ -76,6 +77,8 @@ public class HomeSetTabFragment extends Fragment implements HomeSetRecyclerViewA
         setUpHomeSetRecyclerView(view);
         setUpConverterViewModel(mAdapter);
         linkViews(view);
+        sendUpConverterUI();
+
 
         return view;
     }
@@ -137,6 +140,11 @@ public class HomeSetTabFragment extends Fragment implements HomeSetRecyclerViewA
         });
 
         mConverterUI.setVisibility(View.GONE);
+    }
+
+    private void sendUpConverterUI() {
+        //Sends the ConverterUI up to the MainActivity, so that it can be hidden when swiping the keyboard...
+        mHideConverterUIInterface.hideConverterUI(mConverterUI);
     }
 
     private void setUpHomeSetRecyclerView(View view) {
@@ -382,6 +390,23 @@ public class HomeSetTabFragment extends Fragment implements HomeSetRecyclerViewA
             }
         });
 
+    }
+
+
+    //Interface for communicating with the Main Activity
+    public interface HideConverterUIInterface {
+        void hideConverterUI(View view);
+    }
+
+    // lifecycle method in SimpleFragment to capture the host Activity interface implementation:
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        if (context instanceof HideConverterUIInterface) {
+            mHideConverterUIInterface = (HideConverterUIInterface) context;
+        } else {
+            throw new ClassCastException(context.toString());
+        }
     }
 
 
