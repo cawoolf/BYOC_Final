@@ -5,8 +5,9 @@ Keep up with this project enough during work so that you don't loose Android ski
 Update Connection With Being to get consent for viewing an Ad
 
 Working:
-    > On Converter home page, don't open keyboard unless units selected.
-    > Close keyboard on user swipe to next fragment.
+    > on Converter tab, always load converter if any two units are selected.
+    > Currency and Currency swap logic on Converter Tab. Run actual currency conversions.
+
 
 Clean up UI
     > Text overflow issue on Custom Converter question.
@@ -16,8 +17,7 @@ Clean up UI
 
 Logic punch list
     > Save CustomConverter to favorites
-    > on Converter tab, always load converter if any two units are selected.
-    > Currency and Currency swap logic on Converter Tab. Run actual currency conversions.
+
 
 Finish adding data on Spinner drop downs
     > Make sure all data loads correctly.
@@ -34,6 +34,8 @@ Other Bugs
         > Crash when Swap units with nothing loaded
         > fix flashing text box on custom
             > Issue with View.GONE vs View.Invisible.
+        > On Converter home page, don't open keyboard unless units selected.
+        > Close keyboard on user swipe to next fragment.
 
 Create App Icon
 
