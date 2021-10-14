@@ -1,14 +1,19 @@
 package com.rayadev.byoc;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -160,10 +165,22 @@ public class MainActivity extends AppCompatActivity {
                 viewPager.setCurrentItem(tab.getPosition()); //Important for clicking over to new tabs.
                 Log.i("TAG", String.valueOf(tab.getPosition()));
 
+                final Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        hideKeyboard(MainActivity.this);
+
+                    }
+                }, 350);
+
             }
 
             @Override
             public void onTabUnselected(TabLayout.Tab tab) {
+
+
+
 
             }
 
@@ -253,4 +270,18 @@ public class MainActivity extends AppCompatActivity {
             editor.putBoolean("favorites_tab_default", false).apply();
         }
     }
+
+    public void hideKeyboard(Activity activity) {
+        InputMethodManager imm = (InputMethodManager) activity.getSystemService(Activity.INPUT_METHOD_SERVICE);
+        //Find the currently focused view, so we can grab the correct window token from it.
+        View view = activity.getCurrentFocus();
+        //If no view currently has focus, create a new one, just so we can grab a window token from it
+        if (view == null) {
+            view = new View(activity);
+        }
+        imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+    }
+
+    public interface hideConverterUI {
+    };
 }

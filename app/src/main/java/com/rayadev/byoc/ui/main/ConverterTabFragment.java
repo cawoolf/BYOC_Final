@@ -357,6 +357,7 @@ public class ConverterTabFragment extends Fragment {
         mUnitBInputEditText.setShowSoftInputOnFocus(false);
 
         Toast.makeText(getContext(), "Select Units from drop down above.", Toast.LENGTH_LONG).show();
+        mFreshFragment = false;
     }
 
     private void enableKeyboard() {
