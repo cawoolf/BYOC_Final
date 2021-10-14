@@ -310,7 +310,9 @@ public class HomeSetTabFragment extends Fragment implements HomeSetRecyclerViewA
             public void onToggleSoftKeyboard(boolean isVisible) {
 
                 if (isVisible) {
-                    mConverterUI.setVisibility(View.VISIBLE);
+                    if(mUnitAInputEditText.hasFocus() || mUnitBInputEditText.hasFocus()) {
+                        mConverterUI.setVisibility(View.VISIBLE);
+                    }
                 } else {
                     mConverterUI.setVisibility(View.GONE);
                     clearUserInput();
