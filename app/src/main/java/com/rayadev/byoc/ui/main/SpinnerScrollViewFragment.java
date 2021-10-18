@@ -21,9 +21,10 @@ public class SpinnerScrollViewFragment extends Fragment {
 
     private final int layoutID;
     private UserConverterSelection mUserConverterSelection;
-    private String converterUnitAName = "";
-    private String converterUnitBName = "";
-
+    private String mConverterUnitAName = "";
+    private String mConverterUnitBName = "";
+    private String storedUnitAName ="";
+    private String storedUnitBName = "";
 
 
 //    public SpinnerScrollViewFragment() {
@@ -126,7 +127,8 @@ public class SpinnerScrollViewFragment extends Fragment {
 
                     textView.setBackground(ResourcesCompat.getDrawable(getResources(), R.drawable.edit_text_border_square, null));
 
-                    converterUnitAName = textView.getText().toString();
+                    mConverterUnitAName = textView.getText().toString();
+                    storedUnitAName = mConverterUnitAName;
                     Log.i("TAGS",textView.getText().toString());
 
                     sendConverterName();
@@ -147,7 +149,8 @@ public class SpinnerScrollViewFragment extends Fragment {
 
                     textView.setBackground(ResourcesCompat.getDrawable(getResources(), R.drawable.edit_text_border_square, null));
 
-                    converterUnitBName = textView.getText().toString();
+                    mConverterUnitBName = textView.getText().toString();
+                    storedUnitBName = mConverterUnitBName;
 
                     Log.i("TAGS",textView.getText().toString());
                     sendConverterName();
@@ -161,15 +164,28 @@ public class SpinnerScrollViewFragment extends Fragment {
 
     private void sendConverterName() {
 
-        if(!converterUnitAName.equals("") && !converterUnitBName.equals("")) {
-            String converterName = converterUnitAName + converterUnitBName;
+
+        //This makes the converter automatically select both units, and show the keyboard.
+        if(mConverterUnitAName.equals(""))
+        {
+            mConverterUnitAName = storedUnitAName;
+        }
+
+        if(mConverterUnitBName.equals("")) {
+            mConverterUnitBName = storedUnitBName;
+        }
+
+        Log.i("CTAG", mConverterUnitAName + " CA" + "\n" + mConverterUnitBName + " CB");
+
+        if(!mConverterUnitAName.equals("") && !mConverterUnitBName.equals("")) {
+            String converterName = mConverterUnitAName + mConverterUnitBName;
 
             mUserConverterSelection.sendConverterName(converterName);
-            mUserConverterSelection.setUnitNames (converterUnitAName, converterUnitBName);
+            mUserConverterSelection.setUnitNames (mConverterUnitAName, mConverterUnitBName);
 
             Log.i("TAGS", converterName);
-            converterUnitAName ="";
-            converterUnitBName="";
+            mConverterUnitAName ="";
+            mConverterUnitBName="";
         }
     }
 
