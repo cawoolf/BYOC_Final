@@ -358,12 +358,28 @@ public class ConverterTabFragment extends Fragment {
 
         Toast.makeText(getContext(), "Select Units from drop down above.", Toast.LENGTH_LONG).show();
         mFreshFragment = false;
+
+        mUnitAInputEditText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getContext(), "Select Units from drop down above.", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        mUnitBInputEditText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getContext(), "Select Units from drop down above.", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     private void enableKeyboard() {
 
         mUnitAInputEditText.setShowSoftInputOnFocus(true);
         mUnitBInputEditText.setShowSoftInputOnFocus(true);
+        mUnitAInputEditText.setOnClickListener(null);
+        mUnitBInputEditText.setOnClickListener(null);
 
 
     }
