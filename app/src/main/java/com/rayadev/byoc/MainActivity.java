@@ -149,7 +149,7 @@ public class MainActivity extends AppCompatActivity implements HomeSetTabFragmen
 
         }
 
-        Log.i("FTAG", freshInstall +"");
+//        Log.i("FTAG", freshInstall +"");
 
     }
 
@@ -241,8 +241,9 @@ public class MainActivity extends AppCompatActivity implements HomeSetTabFragmen
                             unitSpinnerCategory(mUnitCategory);
                         }
 
-                        Log.i("FTAG", freshInstall +"");
+//                        Log.i("FTAG", freshInstall +"");
 
+                        //Shows a one time alert to give directions on how to use favorite tab
                         if(mViewPager.getCurrentItem() == 1 && freshInstall) {
                             showFavoritesAlertDialog();
                         }
