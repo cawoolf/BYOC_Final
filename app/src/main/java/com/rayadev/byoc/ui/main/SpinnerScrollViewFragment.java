@@ -184,7 +184,7 @@ public class SpinnerScrollViewFragment extends Fragment {
             mUserConverterSelection.setUnitNames (mConverterUnitAName, mConverterUnitBName);
 
             //Toast to prompt user that the Converter is set and ready for use.
-            Toast.makeText(getActivity(), mConverterUnitAName + " --> " + mConverterUnitBName, Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(), mConverterUnitAName + " : " + mConverterUnitBName, Toast.LENGTH_SHORT).show();
 
             Log.i("TAGS", converterName);
             mConverterUnitAName ="";
