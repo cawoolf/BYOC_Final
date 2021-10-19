@@ -57,6 +57,7 @@ public class ConverterTabFragment extends Fragment {
     private boolean mFreshFragment = true;
 
     public ConverterTabFragment() {
+        //Sets the initial spinner category to distance.
         this.spinnerID = R.layout.spinner_scrollview_distance;
 
     }
@@ -298,8 +299,6 @@ public class ConverterTabFragment extends Fragment {
         clearUserInput();
 
 
-
-
         //Theres definitely a more simple way to go about this, but I'm just solving the issue
         //Using objects instead of algorithms.. Just use lots of objects haha Probably not that efficient at big scales.
         ConverterUtil fromUnit_toUnit = new ConverterUtil(fromUnit, toUnit);
@@ -313,7 +312,7 @@ public class ConverterTabFragment extends Fragment {
         myTextWatcherUtils[0].setUnitEditTextWatcher(mUnitAInputEditText);
         myTextWatcherUtils[1].setUnitEditTextWatcher(mUnitBInputEditText);
 
-        keyboardManager();
+
 
         mUnitBInputEditText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
@@ -327,7 +326,15 @@ public class ConverterTabFragment extends Fragment {
             public void onFocusChange(View v, boolean hasFocus) {
                 clearUserInput();
             }
+
         });
+
+        //Enables first time display of the UI keyboard when setting Converter.
+        // Prompts the user that the keyboard can be displayed by clicking.
+        if(mFreshFragment) {
+            displayFocusedKeyboard();
+        }
+        mFreshFragment = false;
 
     }
 
@@ -344,7 +351,7 @@ public class ConverterTabFragment extends Fragment {
 
     }
 
-    private void keyboardManager() {
+    private void displayFocusedKeyboard() {
 
         mUnitAInputEditText.requestFocus();
 
@@ -357,7 +364,7 @@ public class ConverterTabFragment extends Fragment {
         mUnitBInputEditText.setShowSoftInputOnFocus(false);
 
         Toast.makeText(getContext(), "Select Units from drop down above.", Toast.LENGTH_LONG).show();
-        mFreshFragment = false;
+
 
         mUnitAInputEditText.setOnClickListener(new View.OnClickListener() {
             @Override

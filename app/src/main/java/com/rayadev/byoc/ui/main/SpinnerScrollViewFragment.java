@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.rayadev.byoc.R;
 
@@ -164,16 +165,15 @@ public class SpinnerScrollViewFragment extends Fragment {
 
     private void sendConverterName() {
 
+            //This makes the converter automatically select both units, and show the keyboard.
+            if (mConverterUnitAName.equals("")) {
+                mConverterUnitAName = storedUnitAName;
+            }
 
-        //This makes the converter automatically select both units, and show the keyboard.
-        if(mConverterUnitAName.equals(""))
-        {
-            mConverterUnitAName = storedUnitAName;
-        }
+            if (mConverterUnitBName.equals("")) {
+                mConverterUnitBName = storedUnitBName;
+            }
 
-        if(mConverterUnitBName.equals("")) {
-            mConverterUnitBName = storedUnitBName;
-        }
 
         Log.i("CTAG", mConverterUnitAName + " CA" + "\n" + mConverterUnitBName + " CB");
 
@@ -183,9 +183,14 @@ public class SpinnerScrollViewFragment extends Fragment {
             mUserConverterSelection.sendConverterName(converterName);
             mUserConverterSelection.setUnitNames (mConverterUnitAName, mConverterUnitBName);
 
+            //Toast to prompt user that the Converter is set and ready for use.
+            Toast.makeText(getActivity(), mConverterUnitAName + " --> " + mConverterUnitBName, Toast.LENGTH_SHORT).show();
+
             Log.i("TAGS", converterName);
             mConverterUnitAName ="";
             mConverterUnitBName="";
+
+
         }
     }
 
