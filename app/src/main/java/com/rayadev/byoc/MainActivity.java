@@ -2,6 +2,7 @@ package com.rayadev.byoc;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
@@ -14,8 +15,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.LifecycleOwner;
@@ -25,7 +28,10 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.tabs.TabLayout;
+import com.rayadev.byoc.model.Converter;
 import com.rayadev.byoc.model.ConverterViewModel;
+import com.rayadev.byoc.model.Currency;
+import com.rayadev.byoc.ui.main.ConverterTabFragment;
 import com.rayadev.byoc.ui.main.HomeSetTabFragment;
 import com.rayadev.byoc.util.CurrencyUtil;
 import com.rayadev.byoc.ui.main.PageAdapter;
@@ -36,12 +42,19 @@ import org.json.JSONObject;
 
 import java.util.Date;
 
-public class MainActivity extends AppCompatActivity implements HomeSetTabFragment.HideConverterUIInterface {
+public class MainActivity extends AppCompatActivity implements HomeSetTabFragment.HideConverterUIInterface, ConverterTabFragment.SpinnerCategorySelection {
 
     private TabLayout mTabLayout;
+
+    private ViewPager mViewPager;
+
     private boolean mHomeTabChoice;
 
+    private boolean mAlertShown;
+
     private View mHomeSetConverterUI;
+
+    private String mUnitCategory;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +63,7 @@ public class MainActivity extends AppCompatActivity implements HomeSetTabFragmen
         
         initializeUI();
         setUpCurrency();
+        setUpFavoritesExamples();
 
     }
 
@@ -60,6 +74,11 @@ public class MainActivity extends AppCompatActivity implements HomeSetTabFragmen
         setUpTabLayout();
         setUpPageAdapter(mTabLayout);
         mHomeTabChoice = checkFavoritesPrefs();
+
+        if(!mHomeTabChoice) {
+            displayStartUpToasts();
+        }
+
     }
 
 
@@ -103,6 +122,35 @@ public class MainActivity extends AppCompatActivity implements HomeSetTabFragmen
            + "\n" + "Time Elapsed: " + diff + "\n" + "Total updates: " + updates);
 
        }
+    }
+
+    // Populates the Favorites tab with a few examples on a fresh install
+    // Allows the user to see the functionality of the favorites tab.
+    private void setUpFavoritesExamples() {
+
+        SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
+        boolean freshInstall = sharedPref.getBoolean("fresh_install", true);
+        SharedPreferences.Editor editor = sharedPref.edit();
+
+        if(freshInstall) {
+
+            ConverterViewModel mConverterViewModel = new ViewModelProvider(this).get(ConverterViewModel.class);
+
+            Converter converter = new Converter("Distance", "Kilometer", "Mile");
+
+            //Currency objects are parsed over from Converters. The category "Currency" is critical.
+            Converter converter2 = new Converter("Currency", "USD","CAD");
+
+            mConverterViewModel.insert(converter);
+            mConverterViewModel.insert(converter2);
+
+            editor.putBoolean("fresh_install", false);
+            editor.apply();
+
+        }
+
+        Log.i("FTAG", freshInstall +"");
+
     }
 
     private void loadCurrencyData(ConverterViewModel converterViewModel) {
@@ -155,29 +203,56 @@ public class MainActivity extends AppCompatActivity implements HomeSetTabFragmen
 
         // Each page is represented by its own fragment
         //PageAdapter populates the screens that the ViewPager passes to the TabLayout
-        final ViewPager viewPager = findViewById(R.id.pager);
+        mViewPager = findViewById(R.id.pager);
         final PageAdapter pageAdapter = new PageAdapter(getSupportFragmentManager(), tabLayout.getTabCount());
-        viewPager.setAdapter(pageAdapter);
+        mViewPager.setAdapter(pageAdapter);
+
+        SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
+        final boolean freshInstall = sharedPref.getBoolean("fresh_install", true);
+
 
         // Setting a listener for tab clicks
-        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+        mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
 
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
-                viewPager.setCurrentItem(tab.getPosition()); //Important for clicking over to new tabs.
+                mViewPager.setCurrentItem(tab.getPosition()); //Important for clicking over to new tabs.
                 Log.i("TAG", String.valueOf(tab.getPosition()));
 
+                //Hides to keyboard if it's left open while swiping over from FavoritesTab
                 final Handler handler = new Handler();
                 handler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
                         hideKeyboard(MainActivity.this);
 
+
                     }
                 }, 350);
 
+                //Displays toast for unit category after swiping from favorites tab
+                final Handler handler2 = new Handler();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+
+                        if(mViewPager.getCurrentItem() == 0) {
+                            unitSpinnerCategory(mUnitCategory);
+                        }
+
+                        Log.i("FTAG", freshInstall +"");
+
+                        if(mViewPager.getCurrentItem() == 1 && freshInstall) {
+                            showFavoritesAlertDialog();
+                        }
+
+
+                    }
+                }, 550);
+
             }
+
 
             @Override
             public void onTabUnselected(TabLayout.Tab tab) {
@@ -193,6 +268,7 @@ public class MainActivity extends AppCompatActivity implements HomeSetTabFragmen
                     }
                 }, 350);
 
+
             }
 
             @Override
@@ -200,6 +276,29 @@ public class MainActivity extends AppCompatActivity implements HomeSetTabFragmen
 
             }
         });
+
+    }
+
+    private void showFavoritesAlertDialog() {
+
+        if(!mAlertShown) {
+            AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
+            alertDialog.setTitle("Favorites Tab");
+            alertDialog.setMessage("Click the add button on the Converter Tab to create more favorites.");
+            alertDialog.setIcon(R.drawable.ic_baseline_library_add_24);
+            alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "Confirmed",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                        }
+                    });
+            alertDialog.show();
+            mAlertShown = true;
+        }
+    }
+
+    private void displayStartUpToasts() {
+        Toast.makeText(this, "Select Units from drop down above.", Toast.LENGTH_LONG).show();
 
     }
 
@@ -282,7 +381,7 @@ public class MainActivity extends AppCompatActivity implements HomeSetTabFragmen
         }
     }
 
-    public void hideKeyboard(Activity activity) {
+    public void hideKeyboard(@NotNull Activity activity) {
         InputMethodManager imm = (InputMethodManager) activity.getSystemService(Activity.INPUT_METHOD_SERVICE);
         //Find the currently focused view, so we can grab the correct window token from it.
         View view = activity.getCurrentFocus();
@@ -294,8 +393,21 @@ public class MainActivity extends AppCompatActivity implements HomeSetTabFragmen
     }
 
 
+    //Interface from HomeSetFragment for handling UI behavior during swiping
     @Override
     public void hideConverterUI(View view) {
         mHomeSetConverterUI = view;
+    }
+
+    //Interface from ConverterTabFragment for handling unitCategory Toasts
+    @Override
+    public void unitSpinnerCategory(String unitCategory) {
+
+        mUnitCategory = unitCategory;
+
+        if(mViewPager.getCurrentItem() == 0) {
+            Toast toast = Toast.makeText(this, "CATEGORY: " + unitCategory, Toast.LENGTH_SHORT);
+            toast.show();
+        }
     }
 }

@@ -24,11 +24,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.rayadev.byoc.CustomConverterActivity;
+import com.rayadev.byoc.MainActivity;
 import com.rayadev.byoc.R;
 import com.rayadev.byoc.model.Converter;
 import com.rayadev.byoc.util.ConverterUtil;
 import com.rayadev.byoc.model.ConverterViewModel;
 import com.rayadev.byoc.util.MyTextWatcherUtils;
+
+import org.jetbrains.annotations.NotNull;
 
 
 //The main fragment that allows the user to run conversions, and set up a converter to be saved to the HomeSetTab
@@ -47,7 +50,7 @@ public class ConverterTabFragment extends Fragment {
     private ImageView mBuildConverterButton, mAddConverterButton;
     private LinearLayout mBottomUI;
 
-
+    private SpinnerCategorySelection mSpinnerCategorySelection;
 
     //Globals for Converter
     private ConverterUtil.Unit fromUnit, toUnit;
@@ -62,6 +65,7 @@ public class ConverterTabFragment extends Fragment {
 
     }
 
+    @NotNull
     public static ConverterTabFragment newInstance() {
         ConverterTabFragment fragment = new ConverterTabFragment();
 
@@ -210,28 +214,31 @@ public class ConverterTabFragment extends Fragment {
                 String selected = parentView.getItemAtPosition(position).toString();
                 Context context = parentView.getContext();
                 CharSequence text = selected;
-                int duration = Toast.LENGTH_SHORT;
+//                int duration = Toast.LENGTH_SHORT;
 
                 if (text.equals(getString(R.string.spinner_distance_title))) {
-                    Toast toast = Toast.makeText(context, "CATEGORY: " + text, duration);
-                    toast.show();
+//                    Toast toast = Toast.makeText(context, "CATEGORY: " + text, duration);
+//                    toast.show();
+
+                    mSpinnerCategorySelection.unitSpinnerCategory((String)text);
                     setSpinnerScrollViewFragment(R.layout.spinner_scrollview_distance);
                     unitCategory = (String) text;
 
-                    //This should be called after the user selects units off the spinner.
-//                    setUpTargetConverter();
                 }
 
                 if (text.equals(getString(R.string.spinner_area_title))) {
-                    Toast toast = Toast.makeText(context, "CATEGORY: " + text, duration);
-                    toast.show();
+//                    Toast toast = Toast.makeText(context, "CATEGORY: " + text, duration);
+//                    toast.show();
+                    mSpinnerCategorySelection.unitSpinnerCategory((String)text);
                     setSpinnerScrollViewFragment(R.layout.spinner_scrollview_area);
                     unitCategory = (String) text;
                 }
 
                 if (text.equals(getString(R.string.spinner_currency_title))) {
-                    Toast toast = Toast.makeText(context, "CATEGORY: " + text, duration);
-                    toast.show();
+//                    Toast toast = Toast.makeText(context, "CATEGORY: " + text, duration);
+//                    toast.show();
+
+                    mSpinnerCategorySelection.unitSpinnerCategory((String)text);
                     setSpinnerScrollViewFragment(R.layout.spinner_scrollview_currency);
                     unitCategory = (String) text;
 
@@ -363,7 +370,7 @@ public class ConverterTabFragment extends Fragment {
         mUnitAInputEditText.setShowSoftInputOnFocus(false);
         mUnitBInputEditText.setShowSoftInputOnFocus(false);
 
-        Toast.makeText(getContext(), "Select Units from drop down above.", Toast.LENGTH_LONG).show();
+//        Toast.makeText(getContext(), "Select Units from drop down above.", Toast.LENGTH_LONG).show();
 
 
         mUnitAInputEditText.setOnClickListener(new View.OnClickListener() {
@@ -389,6 +396,21 @@ public class ConverterTabFragment extends Fragment {
         mUnitBInputEditText.setOnClickListener(null);
 
 
+    }
+
+    public interface SpinnerCategorySelection {
+        void unitSpinnerCategory(String unitCategory);
+    }
+
+    // lifecycle method in Fragment to capture the host Activity interface implementation:
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        if (context instanceof SpinnerCategorySelection) {
+            mSpinnerCategorySelection = (SpinnerCategorySelection) context;
+        } else {
+            throw new ClassCastException(context.toString());
+        }
     }
 
 }
