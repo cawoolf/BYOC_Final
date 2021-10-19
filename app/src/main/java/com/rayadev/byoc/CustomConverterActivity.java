@@ -159,7 +159,7 @@ public class CustomConverterActivity extends AppCompatActivity {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
                 if(hasFocus) {
-//                    mUnitBName.setText("");
+                    mUnitBName.setText("");
                     mBottomUI.setVisibility(View.INVISIBLE);
                     mConverterUI.setVisibility(View.INVISIBLE);
                 }
