@@ -22,7 +22,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class CurrencyUtil{
 
     private CurrencyAPI mCurrencyAPI;
-    private final String mAPIKey = "882cc2509c2a6546a18c";
+    private final String mAPIKey = "882cc2509c2a6546a18c"; //Do not change API Key...
     private final String TAG = "ATAG";
 
 
