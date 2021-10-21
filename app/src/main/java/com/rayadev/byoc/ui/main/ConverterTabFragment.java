@@ -410,20 +410,6 @@ public class ConverterTabFragment extends Fragment {
 
     }
 
-    public interface SpinnerCategorySelection {
-        void unitSpinnerCategory(String unitCategory);
-    }
-
-    // lifecycle method in Fragment to capture the host Activity interface implementation:
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        if (context instanceof SpinnerCategorySelection) {
-            mSpinnerCategorySelection = (SpinnerCategorySelection) context;
-        } else {
-            throw new ClassCastException(context.toString());
-        }
-    }
 
     private void setUpTargetCurrency(String currencyPair, String currencyA, String currencyB) {
 
@@ -479,6 +465,21 @@ public class ConverterTabFragment extends Fragment {
             }
         });
 
+    }
+
+    public interface SpinnerCategorySelection {
+        void unitSpinnerCategory(String unitCategory);
+    }
+
+    // lifecycle method in Fragment to capture the host Activity interface implementation:
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        if (context instanceof SpinnerCategorySelection) {
+            mSpinnerCategorySelection = (SpinnerCategorySelection) context;
+        } else {
+            throw new ClassCastException(context.toString());
+        }
     }
 
 }
