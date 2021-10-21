@@ -26,6 +26,7 @@ public class SpinnerScrollViewFragment extends Fragment {
     private String mConverterUnitBName = "";
     private String storedUnitAName ="";
     private String storedUnitBName = "";
+    private String mUnitCategory = "";
 
 
 //    public SpinnerScrollViewFragment() {
@@ -63,6 +64,8 @@ public class SpinnerScrollViewFragment extends Fragment {
 
         if(layoutID == R.layout.spinner_scrollview_distance) {
 
+            mUnitCategory = "Distance";
+
             int[] distanceScrollViewA_ViewIDs = new int[]{R.id.DA1, R.id.DA2, R.id.DA3, R.id.DA4,
                     R.id.DA5, R.id.DA6, R.id.DA7, R.id.DA8};
 
@@ -74,6 +77,9 @@ public class SpinnerScrollViewFragment extends Fragment {
         }
 
         if(layoutID == R.layout.spinner_scrollview_currency) {
+
+            mUnitCategory = "Currency";
+
             int[] currencyScrollViewA_ViewIDs = new int[] {R.id.CURA1, R.id.CURA2, R.id.CURA3,
             R.id.CURA4};
 
@@ -181,7 +187,7 @@ public class SpinnerScrollViewFragment extends Fragment {
             String converterName = mConverterUnitAName + mConverterUnitBName;
 
             mUserConverterSelection.sendConverterName(converterName);
-            mUserConverterSelection.setUnitNames (mConverterUnitAName, mConverterUnitBName);
+            mUserConverterSelection.setUnitNames (mUnitCategory, mConverterUnitAName, mConverterUnitBName);
 
             //Toast to prompt user that the Converter is set and ready for use.
             Toast.makeText(getActivity(), mConverterUnitAName + " : " + mConverterUnitBName, Toast.LENGTH_SHORT).show();
@@ -197,7 +203,7 @@ public class SpinnerScrollViewFragment extends Fragment {
     public interface UserConverterSelection {
 
         void sendConverterName(String converterName);
-        void setUnitNames (String converterUnitAName, String converterUnitBName); //Use this more to interact with the enums
+        void setUnitNames (String converterCategory, String converterUnitAName, String converterUnitBName); //Use this more to interact with the enums
 
     }
 

@@ -6,8 +6,11 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -27,6 +30,7 @@ import com.rayadev.byoc.CustomConverterActivity;
 import com.rayadev.byoc.MainActivity;
 import com.rayadev.byoc.R;
 import com.rayadev.byoc.model.Converter;
+import com.rayadev.byoc.model.Currency;
 import com.rayadev.byoc.util.ConverterUtil;
 import com.rayadev.byoc.model.ConverterViewModel;
 import com.rayadev.byoc.util.MyTextWatcherUtils;
@@ -262,8 +266,8 @@ public class ConverterTabFragment extends Fragment {
 
             }
 
-            @Override
-            public void setUnitNames(String converterUnitAName, String converterUnitBName) {
+            @Override //Add converter category here so that currency function can work.
+            public void setUnitNames(String unitCategory, String converterUnitAName, String converterUnitBName) {
                 fromUnit = ConverterUtil.Unit.fromString(converterUnitAName);
                 toUnit = ConverterUtil.Unit.fromString(converterUnitBName);
 
@@ -272,7 +276,15 @@ public class ConverterTabFragment extends Fragment {
                 unitAString = converterUnitAName;
                 unitBString = converterUnitBName;
 
-                setConverterBoxLogic(fromUnit, toUnit);
+                if(unitCategory.equals("Currency")) {
+                    String currencyPair = converterUnitAName +"_" + converterUnitBName;
+                    setUpTargetCurrency(currencyPair, converterUnitAName, converterUnitBName);
+
+                }
+                else {
+
+                    setConverterBoxLogic(fromUnit, toUnit);
+                }
             }
         });
 
@@ -411,6 +423,62 @@ public class ConverterTabFragment extends Fragment {
         } else {
             throw new ClassCastException(context.toString());
         }
+    }
+
+    private void setUpTargetCurrency(String currencyPair, String currencyA, String currencyB) {
+
+        //Creating multiple instances of this view model just to access the database seems not good..
+        //But that's not really whats happening!.. Right?
+//        ConverterViewModel mConverterViewModel = new ViewModelProvider(this).get(ConverterViewModel.class);
+
+        LiveData<Currency> currency = mConverterViewModel.getTargetCurrency(currencyPair);
+
+        //This observer seems to be getting triggered from the add button, and other fragments.
+        Observer<Currency> observer = new Observer<Currency>() {
+            @Override
+            public void onChanged(Currency currency) {
+                Log.i("CTAG", "Observer Success" + currency.getCurrencyPair() + ":" + currency.getCurrencyValue());
+                setConverterBoxTitles(currencyA, currencyB);
+                setCurrencyLogic(currency.getCurrencyValue());
+
+            }
+
+        };
+
+        currency.observe(getViewLifecycleOwner(), observer);
+
+    }
+
+    private void setCurrencyLogic(double currencyValue) {
+
+        enableKeyboard();
+        mUnitAInputEditText.clearFocus();
+        mUnitBInputEditText.clearFocus();
+
+        clearUserInput();
+
+        MyTextWatcherUtils utilA = new MyTextWatcherUtils(1, mUnitAInputEditText, mUnitBInputEditText, 1, currencyValue);
+        MyTextWatcherUtils utilB = new MyTextWatcherUtils(2,  mUnitAInputEditText, mUnitBInputEditText, 1, currencyValue);
+
+
+        utilA.setUnitEditTextWatcher(mUnitAInputEditText);
+        utilB.setUnitEditTextWatcher(mUnitBInputEditText);
+
+
+        mUnitBInputEditText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                clearUserInput();
+            }
+        });
+
+        mUnitBInputEditText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                clearUserInput();
+            }
+        });
+
     }
 
 }
