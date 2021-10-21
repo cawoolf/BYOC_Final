@@ -58,8 +58,8 @@ public class ConverterTabFragment extends Fragment {
 
     //Globals for Converter
     private ConverterUtil.Unit fromUnit, toUnit;
-    private String unitAString, unitBString;
-    private String unitCategory;
+    private String mUnitAString, mUnitBString;
+    private String mUnitCategory;
     private int mSwapUnits = 0;
     private boolean mFreshFragment = true;
 
@@ -154,19 +154,19 @@ public class ConverterTabFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                if(unitAString != null && unitBString != null) {
+                if(mUnitAString != null && mUnitBString != null) {
                     switch (mSwapUnits) {
 
                         case 0:
-                            Converter converterAB = new Converter(unitCategory, unitAString, unitBString);
+                            Converter converterAB = new Converter(mUnitCategory, mUnitAString, mUnitBString);
                             mConverterViewModel.insert(converterAB);
-                            Toast.makeText(getContext(), unitAString + " : " + unitBString + " --> Favorites", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getContext(), mUnitAString + " : " + mUnitBString + " --> Favorites", Toast.LENGTH_SHORT).show();
                             break;
 
                         case 1:
-                            Converter converterBA = new Converter(unitCategory, unitBString, unitAString);
+                            Converter converterBA = new Converter(mUnitCategory, mUnitBString, mUnitAString);
                             mConverterViewModel.insert(converterBA);
-                            Toast.makeText(getContext(), unitBString + " : " + unitAString + " --> Favorites", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getContext(), mUnitBString + " : " + mUnitAString + " --> Favorites", Toast.LENGTH_SHORT).show();
                             break;
 
                     }
@@ -181,19 +181,53 @@ public class ConverterTabFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                if (unitAString != null && unitBString != null) {
+                if (mUnitAString != null && mUnitBString != null) {
                     switch (mSwapUnits) {
+//                        case 0:
+//                            setConverterBoxLogic(toUnit, fromUnit);
+//                            setConverterBoxTitles(unitBString, unitAString);
+//                            mSwapUnits = 1;
+//                            break;
+//
+//                        case 1:
+//                            setConverterBoxLogic(fromUnit, toUnit);
+//                            setConverterBoxTitles(unitAString, unitBString);
+//                            mSwapUnits = 0;
+//                            break;
+
+
                         case 0:
-                            setConverterBoxLogic(toUnit, fromUnit);
-                            setConverterBoxTitles(unitBString, unitAString);
+
+                            if(mUnitCategory.equals("Currency")) {
+                                String currencyPair = mUnitBString + "_" + mUnitAString;
+                                setUpTargetCurrency(currencyPair, mUnitBString, mUnitAString);
+                                mSwapUnits = 1;
+
+                            }
+
+                            else {
+                                setConverterBoxLogic(toUnit, fromUnit);
+                                setConverterBoxTitles(mUnitBString, mUnitAString);
+                            }
                             mSwapUnits = 1;
                             break;
 
                         case 1:
-                            setConverterBoxLogic(fromUnit, toUnit);
-                            setConverterBoxTitles(unitAString, unitBString);
-                            mSwapUnits = 0;
-                            break;
+
+                            if(mUnitCategory.equals("Currency")) {
+                                String currencyPair = mUnitAString + "_" + mUnitBString;
+                                setUpTargetCurrency(currencyPair, mUnitAString, mUnitBString);
+                                mSwapUnits = 0;
+
+                            }
+
+                            else {
+                                setConverterBoxLogic(fromUnit, toUnit);
+                                setConverterBoxTitles(mUnitAString, mUnitBString);
+                                mSwapUnits = 0;
+                                break;
+                            }
+
                     }
                 }
                 else {
@@ -226,7 +260,7 @@ public class ConverterTabFragment extends Fragment {
 
                     mSpinnerCategorySelection.unitSpinnerCategory((String)text);
                     setSpinnerScrollViewFragment(R.layout.spinner_scrollview_distance);
-                    unitCategory = (String) text;
+                    mUnitCategory = (String) text;
 
                 }
 
@@ -235,7 +269,7 @@ public class ConverterTabFragment extends Fragment {
 //                    toast.show();
                     mSpinnerCategorySelection.unitSpinnerCategory((String)text);
                     setSpinnerScrollViewFragment(R.layout.spinner_scrollview_area);
-                    unitCategory = (String) text;
+                    mUnitCategory = (String) text;
                 }
 
                 if (text.equals(getString(R.string.spinner_currency_title))) {
@@ -244,7 +278,7 @@ public class ConverterTabFragment extends Fragment {
 
                     mSpinnerCategorySelection.unitSpinnerCategory((String)text);
                     setSpinnerScrollViewFragment(R.layout.spinner_scrollview_currency);
-                    unitCategory = (String) text;
+                    mUnitCategory = (String) text;
 
                 }
             }
@@ -273,8 +307,8 @@ public class ConverterTabFragment extends Fragment {
 
                 setConverterBoxTitles(converterUnitAName, converterUnitBName);
 
-                unitAString = converterUnitAName;
-                unitBString = converterUnitBName;
+                mUnitAString = converterUnitAName;
+                mUnitBString = converterUnitBName;
 
                 if(unitCategory.equals("Currency")) {
                     String currencyPair = converterUnitAName +"_" + converterUnitBName;
