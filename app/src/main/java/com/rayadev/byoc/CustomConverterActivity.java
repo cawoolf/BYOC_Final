@@ -135,8 +135,11 @@ public class CustomConverterActivity extends AppCompatActivity {
         mBuildButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                hideKeyboard(CustomConverterActivity.this);
-                buildConverter();
+
+                if(allConverterDataValid()){
+                    hideKeyboard(CustomConverterActivity.this);
+                    buildConverter();
+                }
 
             }
         });
@@ -225,19 +228,25 @@ public class CustomConverterActivity extends AppCompatActivity {
             }
         });
 
+
+        //Last field to input, and runs build Converter on Done click.
         mUnitBValue.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) || (actionId == EditorInfo.IME_ACTION_DONE)) {
-//                   mMasterCustomLayout.setVisibility(View.VISIBLE);
+                if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) || (actionId == EditorInfo.IME_ACTION_DONE) ||(actionId == EditorInfo.IME_ACTION_NEXT)) {
+
+
+//                    //mMasterCustomLayout.setVisibility(View.VISIBLE);
                     mUnitAInputEditText.clearFocus();
                     mUnitBInputEditText.clearFocus();
 
-                    //Needed so that the main UI returns when converter UI loses focus.
+//                    //Needed so that the main UI returns when converter UI loses focus.
                     InputMethodManager imm = (InputMethodManager)v.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
                     imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
 
-                    buildConverter();
+                    if(allConverterDataValid()) {
+                        buildConverter();
+                    }
 
                 }
                 return false;
@@ -281,6 +290,26 @@ public class CustomConverterActivity extends AppCompatActivity {
             }
         });
 
+
+    }
+
+    private boolean allConverterDataValid(){
+
+        //Checks if the user has input all data for the Converter
+        boolean a = mUnitAName.getText().toString().equals("Unit A Name");
+        boolean av = mUnitAValue.getText().toString().equals("");
+        boolean b = mUnitBName.getText().toString().equals("Unit B Name");
+        boolean bv = mUnitBValue.getText().toString().equals("");
+
+        Log.i("CTAG",mUnitAName.getText().toString() + "" );
+
+        if(a || av || b || bv) {
+            Toast.makeText(CustomConverterActivity.this, "Input all fields for the Converter.", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+        else {
+            return true;
+        }
 
     }
 
@@ -423,14 +452,14 @@ public class CustomConverterActivity extends AppCompatActivity {
         mUnitAInputEditText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(CustomConverterActivity.this, "Input fields for the Converter.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(CustomConverterActivity.this, "Input all fields for the Converter.", Toast.LENGTH_SHORT).show();
             }
         });
 
         mUnitBInputEditText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(CustomConverterActivity.this, "Input fields for the Converter.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(CustomConverterActivity.this, "Input all fields for the Converter.", Toast.LENGTH_SHORT).show();
             }
         });
     }
