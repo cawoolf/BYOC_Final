@@ -5,7 +5,9 @@ Keep up with this project enough during work so that you don't loose Android ski
 Update Connection With Being to get consent for viewing an Ad
 
 Working:
-    > Currency and Currency swap logic on Converter Tab. Run actual currency conversions.
+    > Text overflow issue on Custom Converter question.
+    > Swap units for Custom Converter
+    > Add Custom Converter to Favorites.
 
 
 Clean up UI
@@ -13,13 +15,9 @@ Clean up UI
     > Set max number of decimals on all converters for UI
     > Set text overflow limit on custom converter.
     > Info page on options menu
-    > Preload some favorites for the user, to imply that favorites can be added.
-        > Or show a toast that tells you to add favorites from the converter tab.
-            > Yes!
 
 Logic punch list
     > Save CustomConverter to favorites
-
 
 Finish adding data on Spinner drop downs
     > Make sure all data loads correctly.
@@ -41,6 +39,11 @@ Other Bugs
         > on Converter tab, always load converter if any two units are selected.
         > Don't display toast when favorites is set to home tab.
         > Preload some favorites for the user, to imply that favorites can be added.
+        > Currency and Currency swap logic on Converter Tab. Run actual currency conversions.
+        > Preload some favorites for the user, to imply that favorites can be added.
+                > Or show a toast that tells you to add favorites from the converter tab.
+                    > Only does this on a fresh install.
+                    > Yes!
 
 Create App Icon
 

@@ -9,6 +9,9 @@ import android.content.Context;
 import android.os.Bundle;
 import android.os.VibrationEffect;
 import android.os.Vibrator;
+import android.text.Editable;
+import android.text.InputFilter;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
@@ -138,13 +141,22 @@ public class CustomConverterActivity extends AppCompatActivity {
             }
         });
 
+        final int[] firstAClick = {0};
         mUnitAName.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
                 if(hasFocus) {
-                    mUnitAName.setText("");
+
+                    if(firstAClick[0] == 0) {
+                        mUnitAName.setText("");
+                        firstAClick[0] = 1;
+                    }
                     mBottomUI.setVisibility(View.INVISIBLE);
                     mConverterUI.setVisibility(View.INVISIBLE);
+
+                    InputFilter[] filterArray = new InputFilter[1];
+                    filterArray[0] = new InputFilter.LengthFilter(6);
+                    mUnitAName.setFilters(filterArray);
                 }
 
                 else {
@@ -155,13 +167,21 @@ public class CustomConverterActivity extends AppCompatActivity {
             }
         });
 
+        final int[] firstBClick = {0};
         mUnitBName.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
                 if(hasFocus) {
-                    mUnitBName.setText("");
+                    if(firstBClick[0] == 0) {
+                        mUnitBName.setText("");
+                        firstBClick[0] = 1;
+                    }
                     mBottomUI.setVisibility(View.INVISIBLE);
                     mConverterUI.setVisibility(View.INVISIBLE);
+
+                    InputFilter[] filterArray = new InputFilter[1];
+                    filterArray[0] = new InputFilter.LengthFilter(6);
+                    mUnitBName.setFilters(filterArray);
                 }
 
                 else {
