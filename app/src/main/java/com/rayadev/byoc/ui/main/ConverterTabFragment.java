@@ -183,18 +183,6 @@ public class ConverterTabFragment extends Fragment {
 
                 if (mUnitAString != null && mUnitBString != null) {
                     switch (mSwapUnits) {
-//                        case 0:
-//                            setConverterBoxLogic(toUnit, fromUnit);
-//                            setConverterBoxTitles(unitBString, unitAString);
-//                            mSwapUnits = 1;
-//                            break;
-//
-//                        case 1:
-//                            setConverterBoxLogic(fromUnit, toUnit);
-//                            setConverterBoxTitles(unitAString, unitBString);
-//                            mSwapUnits = 0;
-//                            break;
-
 
                         case 0:
 

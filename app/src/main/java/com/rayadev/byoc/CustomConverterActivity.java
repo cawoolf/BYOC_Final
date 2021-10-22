@@ -225,6 +225,8 @@ public class CustomConverterActivity extends AppCompatActivity {
             }
         });
 
+
+       //Closes keyboard, and clears focus on DONE click for converter UI
         mUnitAInputEditText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
@@ -232,30 +234,52 @@ public class CustomConverterActivity extends AppCompatActivity {
 //                    mMasterCustomLayout.setVisibility(View.VISIBLE);
                     mUnitAInputEditText.clearFocus();
                     mUnitBInputEditText.clearFocus();
-//
+
                     InputMethodManager imm = (InputMethodManager)v.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
                     imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
+                    clearUserInput();
                 }
                 return false;
             }
         });
 
+        //Closes keyboard, and clears focus on DONE click for converter UI
         mUnitBInputEditText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) || (actionId == EditorInfo.IME_ACTION_DONE)) {
 //                   mMasterCustomLayout.setVisibility(View.VISIBLE);
-                    mUnitBInputEditText.clearFocus();
                     mUnitAInputEditText.clearFocus();
+                    mUnitBInputEditText.clearFocus();
 
                     //Needed so that the main UI returns when converter UI loses focus.
                     InputMethodManager imm = (InputMethodManager)v.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
                     imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
+                    clearUserInput();
 
                 }
                 return false;
             }
         });
+
+       mUnitBValue.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+           @Override
+           public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+               if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) || (actionId == EditorInfo.IME_ACTION_DONE)) {
+//                   mMasterCustomLayout.setVisibility(View.VISIBLE);
+                   mUnitAInputEditText.clearFocus();
+                   mUnitBInputEditText.clearFocus();
+
+                   //Needed so that the main UI returns when converter UI loses focus.
+                   InputMethodManager imm = (InputMethodManager)v.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+                   imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
+
+                   buildConverter();
+
+               }
+               return false;
+           }
+       });
 
     }
 

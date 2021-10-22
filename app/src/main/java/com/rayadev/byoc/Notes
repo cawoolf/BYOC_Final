@@ -5,15 +5,13 @@ Keep up with this project enough during work so that you don't loose Android ski
 Update Connection With Being to get consent for viewing an Ad
 
 Working:
-    > Text overflow issue on Custom Converter question.
     > Swap units for Custom Converter
     > Add Custom Converter to Favorites.
 
 
 Clean up UI
-    > Text overflow issue on Custom Converter question.
+    > Custom converter input B clears text on focus change.
     > Set max number of decimals on all converters for UI
-    > Set text overflow limit on custom converter.
     > Info page on options menu
 
 Logic punch list
@@ -44,6 +42,7 @@ Other Bugs
                 > Or show a toast that tells you to add favorites from the converter tab.
                     > Only does this on a fresh install.
                     > Yes!
+        > Text overflow issue on Custom Converter question.
 
 Create App Icon
 
