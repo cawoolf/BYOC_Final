@@ -78,6 +78,7 @@ public class CustomConverterActivity extends AppCompatActivity {
         linkViews();
         setChangeListeners();
         keyboardManager();
+        suppressKeyBoard();
 
         Toast.makeText(this, "1) Input Values For Units" + "\n" + "2) Click Build!", Toast.LENGTH_LONG).show();
     }
@@ -237,7 +238,7 @@ public class CustomConverterActivity extends AppCompatActivity {
 
                     InputMethodManager imm = (InputMethodManager)v.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
                     imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
-                    clearUserInput();
+//                    clearUserInput();
                 }
                 return false;
             }
@@ -255,12 +256,13 @@ public class CustomConverterActivity extends AppCompatActivity {
                     //Needed so that the main UI returns when converter UI loses focus.
                     InputMethodManager imm = (InputMethodManager)v.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
                     imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
-                    clearUserInput();
+//                    clearUserInput();
 
                 }
                 return false;
             }
         });
+
 
        mUnitBValue.setOnEditorActionListener(new TextView.OnEditorActionListener() {
            @Override
@@ -284,6 +286,8 @@ public class CustomConverterActivity extends AppCompatActivity {
     }
 
     private void buildConverter() {
+
+        enableKeyboard();
 
         mUnitATitleTextView.setText(mUnitAName.getText().toString());
         mUnitBTitleTextView.setText(mUnitBName.getText().toString());
@@ -408,5 +412,37 @@ public class CustomConverterActivity extends AppCompatActivity {
             view = new View(activity);
         }
         imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+    }
+
+    private void suppressKeyBoard() {
+        mUnitAInputEditText.setShowSoftInputOnFocus(false);
+        mUnitBInputEditText.setShowSoftInputOnFocus(false);
+
+//        Toast.makeText(getContext(), "Select Units from drop down above.", Toast.LENGTH_LONG).show();
+
+
+        mUnitAInputEditText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(CustomConverterActivity.this, "Input fields for the Converter.", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        mUnitBInputEditText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(CustomConverterActivity.this, "Input fields for the Converter.", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void enableKeyboard() {
+
+        mUnitAInputEditText.setShowSoftInputOnFocus(true);
+        mUnitBInputEditText.setShowSoftInputOnFocus(true);
+        mUnitAInputEditText.setOnClickListener(null);
+        mUnitBInputEditText.setOnClickListener(null);
+
+
     }
 }
