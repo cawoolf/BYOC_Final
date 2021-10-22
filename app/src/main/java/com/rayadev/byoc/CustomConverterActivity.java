@@ -335,7 +335,7 @@ public class CustomConverterActivity extends AppCompatActivity {
                     mConverterUI.setVisibility(View.VISIBLE);
                     mBottomUI.setVisibility(View.VISIBLE);
 
-                    if(mUnitAInputEditText.hasFocus() || mUnitBInputEditText.hasFocus()) {
+                    if(mUnitAInputEditText.hasFocus() || mUnitBInputEditText.hasFocus() && isVisible) {
                         mMasterCustomLayout.setVisibility(View.GONE);
                     }
                     else{

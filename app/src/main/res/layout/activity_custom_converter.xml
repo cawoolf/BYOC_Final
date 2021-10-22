@@ -237,6 +237,7 @@
 
                 android:gravity="center_vertical"
 
+                android:maxLines="1"
                 android:layout_marginStart="6dp"
 
                 />
@@ -270,6 +271,8 @@
                 android:layout_height="match_parent"
 
                 android:inputType="numberDecimal"
+                android:maxLines="1"
+                android:singleLine="true"
 
                 android:layout_weight="1"/>
 
