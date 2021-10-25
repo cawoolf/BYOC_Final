@@ -81,6 +81,8 @@ public class CustomConverterActivity extends AppCompatActivity {
         suppressKeyBoard();
 
         Toast.makeText(this, "1) Input Values For Units" + "\n" + "2) Click Build!", Toast.LENGTH_LONG).show();
+        mUnitATitleTextView.setText("Enter Unit Name Above");
+        mUnitBTitleTextView.setText("Enter Unit Name Above");
     }
 
     private void setUpToolbar() {
@@ -216,7 +218,7 @@ public class CustomConverterActivity extends AppCompatActivity {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
                 if(hasFocus) {
-                    mUnitBValue.setText("");
+//                    mUnitBValue.setText("");
                     mBottomUI.setVisibility(View.INVISIBLE);
                     mConverterUI.setVisibility(View.INVISIBLE);
                 }
@@ -296,14 +298,16 @@ public class CustomConverterActivity extends AppCompatActivity {
     private boolean allConverterDataValid(){
 
         //Checks if the user has input all data for the Converter
-        boolean a = mUnitAName.getText().toString().equals("Unit A Name");
+        boolean a = mUnitAName.getText().toString().equals("Unit Name A");
+        boolean a_b = mUnitAName.getText().toString().equals("");
         boolean av = mUnitAValue.getText().toString().equals("");
-        boolean b = mUnitBName.getText().toString().equals("Unit B Name");
+        boolean b = mUnitBName.getText().toString().equals("Unit Name B");
+        boolean b_b = mUnitBName.getText().toString().equals("");
         boolean bv = mUnitBValue.getText().toString().equals("");
 
-        Log.i("CTAG",mUnitAName.getText().toString() + "" );
+        Log.i("CTAG",mUnitAName.getText().toString() + "" + a);
 
-        if(a || av || b || bv) {
+        if(a || a_b || av || b || b_b || bv) {
             Toast.makeText(CustomConverterActivity.this, "Input all fields for the Converter.", Toast.LENGTH_SHORT).show();
             return false;
         }
