@@ -11,8 +11,9 @@ public class CustomConverterUtil extends ConverterUtil{
     }
 
     //Need to get the ratios correct here.
-    public double convertCustomUnits(double input, double multiplier) {
-        return input * multiplier;
+    public double convertABCustomUnits(double valueA, double valueB, double input) {
+        double ratio = valueB/valueA;
+        return input * ratio;
 
     }
 

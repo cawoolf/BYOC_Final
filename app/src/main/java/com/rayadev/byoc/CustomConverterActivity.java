@@ -54,6 +54,7 @@ public class CustomConverterActivity extends AppCompatActivity {
     private TextView mUnitATitleTextView, mUnitBTitleTextView, mUnitAQuestionTextView, mUnitBQuestionTextView, mValueUnitAQuestionTextView;
     private EditText mUnitAInputEditText, mUnitBInputEditText;
     private ImageButton mConverterInfoButton, mConverterSwapButton;
+    private int mSwapUnits = 0;
 
     private LinearLayout mBuildButton;
 
@@ -76,6 +77,7 @@ public class CustomConverterActivity extends AppCompatActivity {
 
         setUpToolbar();
         linkViews();
+        setOnClicks();
         setChangeListeners();
         keyboardManager();
         suppressKeyBoard();
@@ -130,6 +132,31 @@ public class CustomConverterActivity extends AppCompatActivity {
         mVibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
 
     }
+
+    private void setOnClicks() {
+        mConverterSwapButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(allConverterDataValid()) {
+                    switch (mSwapUnits) {
+                        case 0:
+                            mSwapUnits = 1;
+                            buildConverter();
+
+                            break;
+                        case 1:
+                            mSwapUnits = 0;
+                            buildConverter();
+                            break;
+
+                    }
+
+                }
+
+            }
+        });
+    }
+
 
     private void setChangeListeners() {
 
@@ -321,15 +348,35 @@ public class CustomConverterActivity extends AppCompatActivity {
 
         enableKeyboard();
 
-        mUnitATitleTextView.setText(mUnitAName.getText().toString());
-        mUnitBTitleTextView.setText(mUnitBName.getText().toString());
-
-        mUnitAConverterName = mUnitAInputEditText.getText().toString();
-        mUnitBConverterName = mUnitBInputEditText.getText().toString();
-
         try {
-            mUnitAConverterValue = Double.parseDouble(mUnitAValue.getText().toString());
-            mUnitBConverterValue = Double.parseDouble(mUnitBValue.getText().toString());
+            String unitAName = "";
+            String unitBName ="";
+            double unitAValue = 0;
+            double unitBValue = 0;
+
+            if(mSwapUnits == 0) {
+                unitAName = mUnitAName.getText().toString();
+                unitBName = mUnitBName.getText().toString();
+                unitAValue = Double.parseDouble(mUnitAValue.getText().toString());
+                unitBValue = Double.parseDouble(mUnitBValue.getText().toString());
+
+            }
+            else if (mSwapUnits == 1) {
+                unitAName = mUnitBName.getText().toString();
+                unitBName = mUnitAName.getText().toString();
+                unitAValue = Double.parseDouble(mUnitBValue.getText().toString());
+                unitBValue = Double.parseDouble(mUnitAValue.getText().toString());
+            }
+
+            Log.i("CTAG", unitAValue + "");
+            mUnitATitleTextView.setText(unitAName);
+            mUnitBTitleTextView.setText(unitBName);
+
+            mUnitAConverterName = mUnitAInputEditText.getText().toString();
+            mUnitBConverterName = mUnitBInputEditText.getText().toString();
+
+            mUnitAConverterValue = unitAValue;
+            mUnitBConverterValue = unitBValue;
             mCustomConverter = new Converter(mUnitAConverterName, mUnitBConverterName, mUnitAConverterValue, mUnitBConverterValue);
             setConverterBoxLogic();
 
@@ -340,9 +387,36 @@ public class CustomConverterActivity extends AppCompatActivity {
             mVibrator.cancel();
             mVibrator.vibrate(mVibrationEffect);
         }
-        catch (Exception e) {
+
+
+        catch(Exception e) {
             Toast.makeText(this, "Input Values for Units", Toast.LENGTH_SHORT).show();
+
         }
+
+
+//        mUnitATitleTextView.setText(mUnitAName.getText().toString());
+//        mUnitBTitleTextView.setText(mUnitBName.getText().toString());
+//
+//        mUnitAConverterName = mUnitAInputEditText.getText().toString();
+//        mUnitBConverterName = mUnitBInputEditText.getText().toString();
+//
+//        try {
+//            mUnitAConverterValue = Double.parseDouble(mUnitAValue.getText().toString());
+//            mUnitBConverterValue = Double.parseDouble(mUnitBValue.getText().toString());
+//            mCustomConverter = new Converter(mUnitAConverterName, mUnitBConverterName, mUnitAConverterValue, mUnitBConverterValue);
+//            setConverterBoxLogic();
+//
+//            // this effect creates the vibration of default amplitude for 1000ms(1 sec)
+//            mVibrationEffect = VibrationEffect.createOneShot(75,75);
+//
+//            // it is safe to cancel other vibrations currently taking place
+//            mVibrator.cancel();
+//            mVibrator.vibrate(mVibrationEffect);
+//        }
+//        catch (Exception e) {
+//            Toast.makeText(this, "Input Values for Units", Toast.LENGTH_SHORT).show();
+//        }
 
 
 
@@ -411,8 +485,10 @@ public class CustomConverterActivity extends AppCompatActivity {
 
         final MyTextWatcherUtils[] myTextWatcherUtils = new MyTextWatcherUtils[2];
 
-        myTextWatcherUtils[0] = new MyTextWatcherUtils(1, mUnitAInputEditText, mUnitBInputEditText, fromUnit_toUnit);
-        myTextWatcherUtils[1] = new MyTextWatcherUtils(2, mUnitAInputEditText, mUnitBInputEditText, toUnit_fromUnit);
+
+
+            myTextWatcherUtils[0] = new MyTextWatcherUtils(1, mUnitAInputEditText, mUnitBInputEditText, fromUnit_toUnit);
+            myTextWatcherUtils[1] = new MyTextWatcherUtils(2, mUnitAInputEditText, mUnitBInputEditText, toUnit_fromUnit);
 
         myTextWatcherUtils[0].setUnitEditTextWatcher(mUnitAInputEditText);
         myTextWatcherUtils[1].setUnitEditTextWatcher(mUnitBInputEditText);

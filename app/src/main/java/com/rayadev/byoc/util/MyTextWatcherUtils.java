@@ -117,7 +117,7 @@ public class MyTextWatcherUtils {
                     double unitAValue = ((CustomConverterUtil) converter).getUnitAValue();
                     double unitBValue = ((CustomConverterUtil) converter).getUnitBValue();
 
-                    result = ((CustomConverterUtil) converter).convertCustomUnits(input, unitBValue);
+                    result = ((CustomConverterUtil) converter).convertABCustomUnits(unitAValue, unitBValue, input);
                     Log.i("CTAG", "AB Ran");
 
                 }
@@ -130,7 +130,14 @@ public class MyTextWatcherUtils {
 
                 //Handles the text output for small results.
                 if(result < 1) {
-                    result_String = new DecimalFormat("0.########E00").format(result);
+                    if(result_String.length() < 9)
+                    {
+                        result_String = new DecimalFormat("0.#######").format(result);
+                    }
+                    else {
+                        result_String = new DecimalFormat("0.#######E00").format(result);
+                    }
+
                 }
                 else {
 
@@ -194,7 +201,14 @@ public class MyTextWatcherUtils {
 
                 //Handles the text output for small results.
                 if(result < 1) {
-                    result_String = new DecimalFormat("0.#######E00").format(result);
+                    if(result_String.length() < 9)
+                    {
+                        result_String = new DecimalFormat("0.#######").format(result);
+                    }
+                    else {
+                        result_String = new DecimalFormat("0.#######E00").format(result);
+                    }
+
                 }
                 else {
 
