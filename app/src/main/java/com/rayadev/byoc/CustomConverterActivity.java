@@ -1,24 +1,16 @@
 package com.rayadev.byoc;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
 import android.os.VibrationEffect;
 import android.os.Vibrator;
-import android.text.Editable;
 import android.text.InputFilter;
-import android.text.TextWatcher;
 import android.util.Log;
 import android.view.KeyEvent;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -26,15 +18,13 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.material.textfield.TextInputLayout;
-import com.rayadev.byoc.R;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+
 import com.rayadev.byoc.model.Converter;
-import com.rayadev.byoc.util.ConverterUtil;
 import com.rayadev.byoc.util.CustomConverterUtil;
 import com.rayadev.byoc.util.KeyboardUtils;
 import com.rayadev.byoc.util.MyTextWatcherUtils;
-
-import org.jetbrains.annotations.NotNull;
 
 /*Activity that gets triggered by the wrench on the ConverterTab
 
