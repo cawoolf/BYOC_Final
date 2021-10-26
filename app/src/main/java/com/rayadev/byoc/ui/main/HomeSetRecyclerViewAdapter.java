@@ -58,9 +58,9 @@ public class HomeSetRecyclerViewAdapter extends RecyclerView.Adapter<HomeSetRecy
 //            holder.converterID = mConverter.getConverterID();
             holder.unitAName = mConverter.getUnitAString();
             holder.unitBName = mConverter.getUnitBString();
-//            holder.unitAValue = mConverter.getConverterUnitA_Value();
-//            holder.unitBValue = mConverter.getConverterUnitB_Value();
-                holder.unitCategory = mConverter.getUnitCategory();
+            holder.unitAValue = mConverter.getUnitAValue();
+            holder.unitBValue = mConverter.getUnitBValue();
+            holder.unitCategory = mConverter.getUnitCategory();
 
 //            if (position%2 == 0) {
 //                holder.mConverterImageView.setImageResource(R.drawable.converter_icon_weight);
@@ -140,7 +140,7 @@ public class HomeSetRecyclerViewAdapter extends RecyclerView.Adapter<HomeSetRecy
                 @Override
                 public void onClick(View v) {
 
-                    mClickListener.onConverterIconClick(unitAName, unitBName, unitCategory);
+                    mClickListener.onConverterIconClick(unitAName, unitBName, unitCategory, unitAValue, unitBValue);
                 }
             });
 
@@ -163,7 +163,7 @@ public class HomeSetRecyclerViewAdapter extends RecyclerView.Adapter<HomeSetRecy
         //Passes all the Converter info to the fragment
 
         //Pass the catgory up so that we can switch between custom, currency, and favorites converters.
-        void onConverterIconClick(String converterUnitA_Name, String converterUnitB_Name, String converterCategory);
+        void onConverterIconClick(String converterUnitA_Name, String converterUnitB_Name, String converterCategory, double converterUnitA_Value, double converterUnitB_Value);
         void onConverterLongClick(int converterID); //Need to get Converter ID to pass to the delete operation.
     }
 

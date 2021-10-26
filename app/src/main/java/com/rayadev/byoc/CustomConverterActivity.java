@@ -20,8 +20,10 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.rayadev.byoc.model.Converter;
+import com.rayadev.byoc.model.ConverterViewModel;
 import com.rayadev.byoc.util.CustomConverterUtil;
 import com.rayadev.byoc.util.KeyboardUtils;
 import com.rayadev.byoc.util.MyTextWatcherUtils;
@@ -60,6 +62,8 @@ public class CustomConverterActivity extends AppCompatActivity {
     private Vibrator mVibrator;
     private VibrationEffect mVibrationEffect;
 
+    private ConverterViewModel mConverterViewModel;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -75,6 +79,8 @@ public class CustomConverterActivity extends AppCompatActivity {
         Toast.makeText(this, "1) Input Values For Units" + "\n" + "2) Click Build!", Toast.LENGTH_LONG).show();
         mUnitATitleTextView.setText("Enter Unit Name Above");
         mUnitBTitleTextView.setText("Enter Unit Name Above");
+
+        mConverterViewModel = new ViewModelProvider(this).get(ConverterViewModel.class);
     }
 
     private void setUpToolbar() {
@@ -143,6 +149,15 @@ public class CustomConverterActivity extends AppCompatActivity {
 
                 }
 
+            }
+        });
+
+        mAddConverterButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Converter converter = new Converter("Custom", "Unit A", "Unit B", 1, 42);
+                mConverterViewModel.insert(converter);
             }
         });
     }
@@ -480,8 +495,8 @@ public class CustomConverterActivity extends AppCompatActivity {
 
 
 
-            myTextWatcherUtils[0] = new MyTextWatcherUtils(1, mUnitAInputEditText, mUnitBInputEditText, fromUnit_toUnit);
-            myTextWatcherUtils[1] = new MyTextWatcherUtils(2, mUnitAInputEditText, mUnitBInputEditText, toUnit_fromUnit);
+        myTextWatcherUtils[0] = new MyTextWatcherUtils(1, mUnitAInputEditText, mUnitBInputEditText, fromUnit_toUnit);
+        myTextWatcherUtils[1] = new MyTextWatcherUtils(2, mUnitAInputEditText, mUnitBInputEditText, toUnit_fromUnit);
 
         myTextWatcherUtils[0].setUnitEditTextWatcher(mUnitAInputEditText);
         myTextWatcherUtils[1].setUnitEditTextWatcher(mUnitBInputEditText);

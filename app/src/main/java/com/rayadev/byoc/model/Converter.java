@@ -33,6 +33,14 @@ public class Converter {
         this.unitBValue = unitBValue;
     }
 
+    public Converter(String unitCategory, String unitAString, String unitBString,double unitAValue, double unitBValue) {
+        this.unitAString = unitAString;
+        this.unitBString = unitBString;
+        this.unitAValue = unitAValue;
+        this.unitBValue = unitBValue;
+        this.unitCategory = unitCategory;
+    }
+
 
     public int getConverterID() {
         return converterID;
@@ -50,7 +58,6 @@ public class Converter {
         return unitCategory;
     }
 
-
     public double getUnitAValue() {
         return unitAValue;
     }
@@ -58,4 +65,6 @@ public class Converter {
     public double getUnitBValue() {
         return unitBValue;
     }
+
+
 }

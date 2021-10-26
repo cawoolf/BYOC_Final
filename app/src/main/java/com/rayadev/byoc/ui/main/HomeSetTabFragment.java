@@ -27,6 +27,7 @@ import com.rayadev.byoc.model.Converter;
 import com.rayadev.byoc.model.Currency;
 import com.rayadev.byoc.util.ConverterUtil;
 import com.rayadev.byoc.model.ConverterViewModel;
+import com.rayadev.byoc.util.CustomConverterUtil;
 import com.rayadev.byoc.util.KeyboardUtils;
 import com.rayadev.byoc.util.MyTextWatcherUtils;
 
@@ -111,10 +112,14 @@ public class HomeSetTabFragment extends Fragment implements HomeSetRecyclerViewA
 
                         }
 
-                        else {
-                            setConverterBoxLogic(toUnit, fromUnit);
-                            setConverterBoxTitles(mUnitBName, mUnitAName);
+                        else if(mUnitCategory.equals("Custom")) {
+
                         }
+                        else {
+                                setConverterBoxLogic(toUnit, fromUnit);
+                                setConverterBoxTitles(mUnitBName, mUnitAName);
+                            }
+
                         mSwapUnits = 1;
                         break;
 
@@ -124,6 +129,10 @@ public class HomeSetTabFragment extends Fragment implements HomeSetRecyclerViewA
                             String currencyPair = mUnitAName + "_" + mUnitBName;
                             setUpTargetCurrency(currencyPair, mUnitAName, mUnitBName);
                             mSwapUnits = 0;
+
+                        }
+
+                        else if(mUnitCategory.equals("Custom")) {
 
                         }
 
@@ -181,7 +190,7 @@ public class HomeSetTabFragment extends Fragment implements HomeSetRecyclerViewA
 
     //Sets the Converter data into the fragment Converter UI.
     @Override
-    public void onConverterIconClick(String unitAName, String unitBName, String unitCategory) {
+    public void onConverterIconClick(String unitAName, String unitBName, String unitCategory, double unitAValue, double unitBValue) {
 
         setConverterBoxTitles(unitAName, unitBName);
         mUnitAName = unitAName;
@@ -201,7 +210,9 @@ public class HomeSetTabFragment extends Fragment implements HomeSetRecyclerViewA
         }
 
         else if(unitCategory.equals("Custom")) {
-            //run logic for custom
+            CustomConverterUtil fromUnit_toUnit = new CustomConverterUtil(unitAValue, unitBValue);
+            CustomConverterUtil toUnit_fromUnit = new CustomConverterUtil(unitAValue, unitBValue);
+            setCustomConverterBoxLogic(fromUnit_toUnit, toUnit_fromUnit);
         }
 
         else {
@@ -274,6 +285,34 @@ public class HomeSetTabFragment extends Fragment implements HomeSetRecyclerViewA
         mUnitBInputEditText.clearFocus();
 
         clearUserInput();
+
+        myTextWatcherUtils[0].setUnitEditTextWatcher(mUnitAInputEditText);
+        myTextWatcherUtils[1].setUnitEditTextWatcher(mUnitBInputEditText);
+
+        keyboardManager();
+
+        mUnitBInputEditText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                clearUserInput();
+            }
+        });
+
+        mUnitBInputEditText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                clearUserInput();
+            }
+        });
+
+    }
+
+    private void setCustomConverterBoxLogic(CustomConverterUtil fromUnit_toUnit, CustomConverterUtil toUnit_fromUnit) {
+        final MyTextWatcherUtils[] myTextWatcherUtils = new MyTextWatcherUtils[2];
+
+
+        myTextWatcherUtils[0] = new MyTextWatcherUtils(1, mUnitAInputEditText, mUnitBInputEditText, fromUnit_toUnit);
+        myTextWatcherUtils[1] = new MyTextWatcherUtils(2, mUnitAInputEditText, mUnitBInputEditText, toUnit_fromUnit);
 
         myTextWatcherUtils[0].setUnitEditTextWatcher(mUnitAInputEditText);
         myTextWatcherUtils[1].setUnitEditTextWatcher(mUnitBInputEditText);
