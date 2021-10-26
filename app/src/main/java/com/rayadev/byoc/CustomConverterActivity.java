@@ -156,6 +156,8 @@ public class CustomConverterActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                //Example add
+                //Get data from edit texts.
                 Converter converter = new Converter("Custom", "Unit A", "Unit B", 1, 42);
                 mConverterViewModel.insert(converter);
             }

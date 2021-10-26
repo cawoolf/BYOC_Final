@@ -113,7 +113,7 @@ public class HomeSetTabFragment extends Fragment implements HomeSetRecyclerViewA
                         }
 
                         else if(mUnitCategory.equals("Custom")) {
-
+                            //Do custom swap logic
                         }
                         else {
                                 setConverterBoxLogic(toUnit, fromUnit);
@@ -133,7 +133,7 @@ public class HomeSetTabFragment extends Fragment implements HomeSetRecyclerViewA
                         }
 
                         else if(mUnitCategory.equals("Custom")) {
-
+                            //Do custom swap logic
                         }
 
                         else {
