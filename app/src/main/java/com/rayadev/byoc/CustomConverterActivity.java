@@ -231,6 +231,9 @@ public class CustomConverterActivity extends AppCompatActivity {
                     mUnitAValue.setText("1");
                     mBottomUI.setVisibility(View.INVISIBLE);
                     mConverterUI.setVisibility(View.INVISIBLE);
+                    InputFilter[] filterArray = new InputFilter[1];
+                    filterArray[0] = new InputFilter.LengthFilter(8);
+                    mUnitAValue.setFilters(filterArray);
                 }
 
                 else {
@@ -470,8 +473,8 @@ public class CustomConverterActivity extends AppCompatActivity {
     //Here if unitCategory equals currency, need to use a different set of constructors.
     private void setConverterBoxLogic() {
 
-        mUnitAInputEditText.clearFocus();
-        mUnitBInputEditText.clearFocus();
+//        mUnitAInputEditText.clearFocus();
+//        mUnitBInputEditText.clearFocus();
         clearUserInput();
 
 

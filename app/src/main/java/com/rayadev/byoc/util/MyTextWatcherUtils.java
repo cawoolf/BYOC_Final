@@ -96,7 +96,10 @@ public class MyTextWatcherUtils {
                 double input = Double.parseDouble(viewA.getText().toString());
 
                 double result = input * currencyValue;
-                viewB.setText(String.valueOf(result));
+//                String text_Result = String.valueOf(result);
+
+                String text_Result = new DecimalFormat("########.###").format(result);
+                viewB.setText(text_Result);
 
             } else {
                 viewB.setText("");
@@ -144,6 +147,7 @@ public class MyTextWatcherUtils {
                     result_String = new DecimalFormat("#########.###").format(result);
                 }
 
+                //Handles text output for large results
                 if(result_String.length() > 12){
                     result_String = new DecimalFormat("#######.###E00").format(result);
                 }
@@ -169,7 +173,9 @@ public class MyTextWatcherUtils {
                 double input = Double.parseDouble(viewB.getText().toString());
 
                 double result = input * (1/currencyValue);
-                viewA.setText(String.valueOf(result));
+
+                String text_Result = new DecimalFormat("########.###").format(result);
+                viewA.setText(text_Result);
 
             } else {
                 viewA.setText("");
