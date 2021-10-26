@@ -7,6 +7,9 @@ import android.widget.EditText;
 
 import com.rayadev.byoc.util.ConverterUtil;
 
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
+
 public class MyTextWatcherUtils {
 
     private EditText viewA, viewB;
@@ -122,7 +125,22 @@ public class MyTextWatcherUtils {
                     result = converter.convert(input);
 
                 }
-                viewB.setText(String.valueOf(result));
+
+                String result_String = String.valueOf(result);
+
+                //Handles the text output for small results.
+                if(result < 1) {
+                    result_String = new DecimalFormat("0.########E00").format(result);
+                }
+                else {
+
+                    result_String = new DecimalFormat("#########.###").format(result);
+                }
+
+                if(result_String.length() > 12){
+                    result_String = new DecimalFormat("#######.###E00").format(result);
+                }
+                viewB.setText(result_String);
             }
 
 
@@ -171,7 +189,24 @@ public class MyTextWatcherUtils {
                     result = converter.convert(input);
 
                 }
-                viewA.setText(String.valueOf(result));
+
+                String result_String = String.valueOf(result);
+
+                //Handles the text output for small results.
+                if(result < 1) {
+                    result_String = new DecimalFormat("0.#######E00").format(result);
+                }
+                else {
+
+                    result_String = new DecimalFormat("#########.###").format(result);
+                }
+
+                if(result_String.length() > 12){
+                    result_String = new DecimalFormat("#######.###E00").format(result);
+                }
+                viewA.setText(result_String);
+
+
             } else {
                 viewA.setText("");
 

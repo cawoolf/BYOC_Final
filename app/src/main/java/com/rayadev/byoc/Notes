@@ -7,8 +7,6 @@ Update Connection With Being to get consent for viewing an Ad
 Working:
     > Swap units for Custom Converter
     > Add Custom Converter to Favorites.
-    > Build Converter bug when units are not selected.
-
 
 Clean up UI
     > Custom converter input B clears text on focus change.
@@ -44,6 +42,7 @@ Other Bugs
                     > Only does this on a fresh install.
                     > Yes!
         > Text overflow issue on Custom Converter question.
+        > Build Converter bug when units are not selected.
 
 Create App Icon
 
