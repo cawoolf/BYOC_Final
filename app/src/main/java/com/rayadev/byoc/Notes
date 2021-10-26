@@ -8,9 +8,6 @@ Working:
     > Add Custom Converter to Favorites.
 
 Clean up UI
-    > Custom converter input B clears text on focus change.
-    > Set max number of decimals on all converters for UI
-        > Including Currency
     > Info page on options menu
 
 Logic punch list
@@ -45,8 +42,9 @@ Other Bugs
         > Build Converter bug when units are not selected.
         > Decimal length output formatting
         > A bug when unit A Value is anything other than 1 on Custom Converter.
-        > Swap units for Custom Converter
-
+        > Swap units for Custom
+        > Set max number of decimals on all converters for UI
+                > Including Currency
 Create App Icon
 
 Publish.
