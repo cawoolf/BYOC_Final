@@ -167,6 +167,8 @@ public class CustomConverterActivity extends AppCompatActivity {
 //                Converter converter = new Converter("Custom", "Unit A", "Unit B", 1, 42);
                 Converter converter = new Converter("Custom", unitAName, unitBName, unitAValue, unitBValue);
                 mConverterViewModel.insert(converter);
+
+                Toast.makeText(CustomConverterActivity.this, unitAName + " : " + unitBName + "--> Favorites", Toast.LENGTH_SHORT).show();
                 }
             }
         });
