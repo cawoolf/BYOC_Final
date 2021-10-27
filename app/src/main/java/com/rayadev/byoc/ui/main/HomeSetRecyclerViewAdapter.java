@@ -165,7 +165,7 @@ public class HomeSetRecyclerViewAdapter extends RecyclerView.Adapter<HomeSetRecy
     public interface ConverterClickListener {
         //Passes all the Converter info to the fragment
 
-        //Pass the catgory up so that we can switch between custom, currency, and favorites converters.
+        //Pass the category up so that we can switch between custom, currency, and favorites converters.
         void onConverterIconClick(String converterUnitA_Name, String converterUnitB_Name, String converterCategory, double converterUnitA_Value, double converterUnitB_Value);
         void onConverterLongClick(int converterID); //Need to get Converter ID to pass to the delete operation.
     }

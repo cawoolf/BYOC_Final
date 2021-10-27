@@ -51,6 +51,7 @@ public class HomeSetTabFragment extends Fragment implements HomeSetRecyclerViewA
     //Globals for Converter
     private ConverterUtil.Unit fromUnit, toUnit;
     private String mUnitAName, mUnitBName;
+    private double mUnitAValue, mUnitBValue;
     private String mUnitCategory;
     private int mSwapUnits = 0;
 
@@ -108,12 +109,17 @@ public class HomeSetTabFragment extends Fragment implements HomeSetRecyclerViewA
                         if(mUnitCategory.equals("Currency")) {
                             String currencyPair = mUnitBName + "_" + mUnitAName;
                             setUpTargetCurrency(currencyPair, mUnitBName, mUnitAName);
-                            mSwapUnits = 1;
+
 
                         }
 
                         else if(mUnitCategory.equals("Custom")) {
-                            //Do custom swap logic
+                            setConverterBoxTitles(mUnitBName, mUnitAName);
+                            CustomConverterUtil fromUnit_toUnit = new CustomConverterUtil(mUnitBValue, mUnitAValue);
+                            CustomConverterUtil toUnit_fromUnit = new CustomConverterUtil(mUnitBValue, mUnitAValue);
+                            setCustomConverterBoxLogic(fromUnit_toUnit, toUnit_fromUnit);
+
+
                         }
                         else {
                                 setConverterBoxLogic(toUnit, fromUnit);
@@ -128,20 +134,24 @@ public class HomeSetTabFragment extends Fragment implements HomeSetRecyclerViewA
                         if(mUnitCategory.equals("Currency")) {
                             String currencyPair = mUnitAName + "_" + mUnitBName;
                             setUpTargetCurrency(currencyPair, mUnitAName, mUnitBName);
-                            mSwapUnits = 0;
 
                         }
 
                         else if(mUnitCategory.equals("Custom")) {
-                            //Do custom swap logic
+                            setConverterBoxTitles(mUnitAName, mUnitBName);
+                            CustomConverterUtil fromUnit_toUnit = new CustomConverterUtil(mUnitAValue, mUnitBValue);
+                            CustomConverterUtil toUnit_fromUnit = new CustomConverterUtil(mUnitAValue, mUnitBValue);
+                            setCustomConverterBoxLogic(fromUnit_toUnit, toUnit_fromUnit);
+
                         }
 
                         else {
                             setConverterBoxLogic(fromUnit, toUnit);
                             setConverterBoxTitles(mUnitAName, mUnitBName);
-                            mSwapUnits = 0;
-                            break;
                         }
+
+                        mSwapUnits = 0;
+                        break;
 
                 }
 
@@ -195,6 +205,8 @@ public class HomeSetTabFragment extends Fragment implements HomeSetRecyclerViewA
         setConverterBoxTitles(unitAName, unitBName);
         mUnitAName = unitAName;
         mUnitBName = unitBName;
+        mUnitAValue = unitAValue;
+        mUnitBValue = unitBValue;
         mUnitCategory = unitCategory;
 
         if(unitCategory.equals("Currency")) {
@@ -210,8 +222,8 @@ public class HomeSetTabFragment extends Fragment implements HomeSetRecyclerViewA
         }
 
         else if(unitCategory.equals("Custom")) {
-            CustomConverterUtil fromUnit_toUnit = new CustomConverterUtil(unitAValue, unitBValue);
-            CustomConverterUtil toUnit_fromUnit = new CustomConverterUtil(unitAValue, unitBValue);
+            CustomConverterUtil fromUnit_toUnit = new CustomConverterUtil(mUnitAValue, mUnitBValue);
+            CustomConverterUtil toUnit_fromUnit = new CustomConverterUtil(mUnitAValue, mUnitBValue);
             setCustomConverterBoxLogic(fromUnit_toUnit, toUnit_fromUnit);
         }
 
@@ -308,8 +320,10 @@ public class HomeSetTabFragment extends Fragment implements HomeSetRecyclerViewA
     }
 
     private void setCustomConverterBoxLogic(CustomConverterUtil fromUnit_toUnit, CustomConverterUtil toUnit_fromUnit) {
-        final MyTextWatcherUtils[] myTextWatcherUtils = new MyTextWatcherUtils[2];
 
+        clearUserInput();
+
+        final MyTextWatcherUtils[] myTextWatcherUtils = new MyTextWatcherUtils[2];
 
         myTextWatcherUtils[0] = new MyTextWatcherUtils(1, mUnitAInputEditText, mUnitBInputEditText, fromUnit_toUnit);
         myTextWatcherUtils[1] = new MyTextWatcherUtils(2, mUnitAInputEditText, mUnitBInputEditText, toUnit_fromUnit);
