@@ -156,10 +156,18 @@ public class CustomConverterActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                boolean valid = allConverterDataValid();
                 //Example add
                 //Get data from edit texts.
-                Converter converter = new Converter("Custom", "Unit A", "Unit B", 1, 42);
+                if(valid) {
+                    String unitAName = mUnitAName.getText().toString();
+                    String unitBName = mUnitBName.getText().toString();
+                    double unitAValue = Double.valueOf(mUnitAValue.getText().toString());
+                    double unitBValue = Double.valueOf(mUnitBValue.getText().toString());
+//                Converter converter = new Converter("Custom", "Unit A", "Unit B", 1, 42);
+                Converter converter = new Converter("Custom", unitAName, unitBName, unitAValue, unitBValue);
                 mConverterViewModel.insert(converter);
+                }
             }
         });
     }
