@@ -160,15 +160,11 @@ public class CustomConverterActivity extends AppCompatActivity {
                 //Example add
                 //Get data from edit texts.
                 if(valid) {
-                    String unitAName = mUnitAName.getText().toString();
-                    String unitBName = mUnitBName.getText().toString();
-                    double unitAValue = Double.valueOf(mUnitAValue.getText().toString());
-                    double unitBValue = Double.valueOf(mUnitBValue.getText().toString());
-//                Converter converter = new Converter("Custom", "Unit A", "Unit B", 1, 42);
-                Converter converter = new Converter("Custom", unitAName, unitBName, unitAValue, unitBValue);
-                mConverterViewModel.insert(converter);
 
-                Toast.makeText(CustomConverterActivity.this, unitAName + " : " + unitBName + "--> Favorites", Toast.LENGTH_SHORT).show();
+                    Converter converter = new Converter("Custom", mUnitAConverterName, mUnitBConverterName, mUnitAConverterValue, mUnitBConverterValue);
+                    mConverterViewModel.insert(converter);
+
+                Toast.makeText(CustomConverterActivity.this, mUnitAConverterName + " : " + mUnitBConverterName + "--> Favorites", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -369,34 +365,34 @@ public class CustomConverterActivity extends AppCompatActivity {
         enableKeyboard();
 
         try {
-            String unitAName = "";
-            String unitBName ="";
-            double unitAValue = 0;
-            double unitBValue = 0;
+//            String mUnitAConverterName = "";
+//            String unitBName ="";
+//            double unitAValue = 0;
+//            double unitBValue = 0;
 
             if(mSwapUnits == 0) {
-                unitAName = mUnitAName.getText().toString();
-                unitBName = mUnitBName.getText().toString();
-                unitAValue = Double.parseDouble(mUnitAValue.getText().toString());
-                unitBValue = Double.parseDouble(mUnitBValue.getText().toString());
+                mUnitAConverterName = mUnitAName.getText().toString();
+                mUnitBConverterName = mUnitBName.getText().toString();
+                mUnitAConverterValue = Double.parseDouble(mUnitAValue.getText().toString());
+                mUnitBConverterValue = Double.parseDouble(mUnitBValue.getText().toString());
 
             }
             else if (mSwapUnits == 1) {
-                unitAName = mUnitBName.getText().toString();
-                unitBName = mUnitAName.getText().toString();
-                unitAValue = Double.parseDouble(mUnitBValue.getText().toString());
-                unitBValue = Double.parseDouble(mUnitAValue.getText().toString());
+                mUnitAConverterName = mUnitBName.getText().toString();
+                mUnitBConverterName = mUnitAName.getText().toString();
+                mUnitAConverterValue = Double.parseDouble(mUnitBValue.getText().toString());
+                mUnitBConverterValue = Double.parseDouble(mUnitAValue.getText().toString());
             }
 
-            Log.i("CTAG", unitAValue + "");
-            mUnitATitleTextView.setText(unitAName);
-            mUnitBTitleTextView.setText(unitBName);
+            Log.i("CTAG", mUnitAConverterValue + "");
+            mUnitATitleTextView.setText(mUnitAConverterName);
+            mUnitBTitleTextView.setText(mUnitBConverterName);
 
-            mUnitAConverterName = mUnitAInputEditText.getText().toString();
-            mUnitBConverterName = mUnitBInputEditText.getText().toString();
-
-            mUnitAConverterValue = unitAValue;
-            mUnitBConverterValue = unitBValue;
+//            mUnitAConverterName = mUnitAInputEditText.getText().toString();
+//            mUnitBConverterName = mUnitBInputEditText.getText().toString();
+//
+//            mUnitAConverterValue = unitAValue;
+//            mUnitBConverterValue = unitBValue;
             mCustomConverter = new Converter(mUnitAConverterName, mUnitBConverterName, mUnitAConverterValue, mUnitBConverterValue);
             setConverterBoxLogic();
 
