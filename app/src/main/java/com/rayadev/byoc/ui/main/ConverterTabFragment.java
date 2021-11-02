@@ -224,7 +224,10 @@ public class ConverterTabFragment extends Fragment {
 
     private void buildSpinner(View view) {
 
-        String[] units = {getString(R.string.spinner_distance_title), getString(R.string.spinner_area_title), getString(R.string.spinner_time_title), getString(R.string.spinner_volume_title), getString(R.string.spinner_weight_title), getString(R.string.spinner_currency_title)};
+//        String[] units = {getString(R.string.spinner_distance_title), getString(R.string.spinner_area_title), getString(R.string.spinner_time_title), getString(R.string.spinner_volume_title), getString(R.string.spinner_weight_title), getString(R.string.spinner_currency_title)};
+
+        //Alphabetized
+        String[]units = {getString(R.string.spinner_area_title), getString(R.string.spinner_currency_title), getString(R.string.spinner_distance_title), getString(R.string.spinner_time_title), getString(R.string.spinner_volume_title), getString(R.string.spinner_weight_title)};
 
         Spinner spinner = (Spinner) view.findViewById(R.id.spinner2);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this.getActivity(), android.R.layout.simple_spinner_item, units);
