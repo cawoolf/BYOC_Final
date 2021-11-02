@@ -29,6 +29,16 @@
     <string name="spinner_weight_title">Weight</string>
     <string name="spinner_currency_title">Currency</string>
 
+    <!-- Area Preset Units -->
+    <string name="area_hectare">Hectare</string>
+    <string name="area_square_kilometer">Sq Kilometer</string>
+    <string name="area_square_meter">Sq Meter</string>
+    <String name="area_square_centimeter">Sq Centimeter</String>
+    <string name="area_acre">Acre</string>
+    <String name="area_square_mile">Sq Mile</String>
+    <String name="area_square_foot">Sq Foot</String>
+    <String name="area_square_inch">Sq Inch</String>
+
     <!--Currency Preset Units -->
     <string name="currency_USD">USD</string>
     <string name="currency_CAD">CAD</string>

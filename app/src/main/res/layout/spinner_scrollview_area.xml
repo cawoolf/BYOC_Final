@@ -24,28 +24,32 @@
                 android:orientation="vertical">
 
                 <TextView
+                    android:id="@+id/AA1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Item 2 Item 2 Item 2"
+                    android:text="@string/area_hectare"
                     style="@style/srollview_textview_style"/>
 
                 <TextView
+                    android:id="@+id/AA2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Item 1 Item 1 Item 1 "
+                    android:text="@string/area_square_kilometer"
                     style="@style/srollview_textview_style"/>
 
                 <TextView
+                    android:id="@+id/AA3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="16dp"
-                    android:text="Item 1 Item 1 Item 1 "
+                    android:text="@string/area_square_meter"
                     style="@style/srollview_textview_style"/>
 
                 <TextView
+                    android:id="@+id/AA4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Item 1 Item 1 Item 1 "
+                    android:text=""
                     style="@style/srollview_textview_style"/>
 
                 <TextView
