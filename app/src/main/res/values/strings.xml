@@ -25,6 +25,7 @@
     <string name="spinner_distance_title">Distance</string>
     <string name="spinner_area_title">Area</string>
     <string name="spinner_time_title">Time</string>
+    <string name="spinner_temperature_title">Temperature</string>
     <string name="spinner_volume_title">Volume</string>
     <string name="spinner_weight_title">Weight</string>
     <string name="spinner_currency_title">Currency</string>
@@ -55,6 +56,11 @@
     <string name="distance_yard">Yard</string>
     <string name="distance_foot">Foot</string>
     <string name="distance_inch">Inch</string>
+
+    <!-- Temperature Preset Units -->
+    <string name="temperature_fahrenheit">Fahrenheit</string>
+    <string name="temperature_celsius">Celsius</string>
+    <string name="temperature_kelvin">Kelvin</string>
 
     <!-- Time Preset Units -->
     <string name="time_decade">Decade</string>
