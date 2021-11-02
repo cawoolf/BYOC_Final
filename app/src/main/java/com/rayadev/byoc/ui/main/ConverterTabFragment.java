@@ -242,16 +242,6 @@ public class ConverterTabFragment extends Fragment {
                 CharSequence text = selected;
 //                int duration = Toast.LENGTH_SHORT;
 
-                if (text.equals(getString(R.string.spinner_distance_title))) {
-//                    Toast toast = Toast.makeText(context, "CATEGORY: " + text, duration);
-//                    toast.show();
-
-                    mSpinnerCategorySelection.unitSpinnerCategory((String)text);
-                    setSpinnerScrollViewFragment(R.layout.spinner_scrollview_distance);
-                    mUnitCategory = (String) text;
-
-                }
-
                 if (text.equals(getString(R.string.spinner_area_title))) {
 //                    Toast toast = Toast.makeText(context, "CATEGORY: " + text, duration);
 //                    toast.show();
@@ -269,6 +259,26 @@ public class ConverterTabFragment extends Fragment {
                     mUnitCategory = (String) text;
 
                 }
+
+
+                if (text.equals(getString(R.string.spinner_distance_title))) {
+//                    Toast toast = Toast.makeText(context, "CATEGORY: " + text, duration);
+//                    toast.show();
+
+                    mSpinnerCategorySelection.unitSpinnerCategory((String)text);
+                    setSpinnerScrollViewFragment(R.layout.spinner_scrollview_distance);
+                    mUnitCategory = (String) text;
+
+                }
+
+                if(text.equals(getString(R.string.spinner_time_title))) {
+                    mSpinnerCategorySelection.unitSpinnerCategory((String)text);
+                    setSpinnerScrollViewFragment(R.layout.spinner_scrollview_time);
+                    mUnitCategory = (String) text;
+
+                }
+
+
             }
 
             @Override

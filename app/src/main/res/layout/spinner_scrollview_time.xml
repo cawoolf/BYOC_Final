@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    style="@style/custom_scrollview_style">
+
+    <LinearLayout
+        android:id="@+id/masterAreaLinearLayout_Preset_ScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:visibility="visible"
+        >
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/TA1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/time_decade"
+                    style="@style/srollview_textview_style"/>
+
+                <TextView
+                    android:id="@+id/TA2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/time_year"
+                    style="@style/srollview_textview_style"/>
+
+                <TextView
+                    android:id="@+id/TA3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:text="@string/time_month"
+                    style="@style/srollview_textview_style"/>
+
+                <TextView
+                    android:id="@+id/TA4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/time_week"
+                    style="@style/srollview_textview_style"/>
+
+                <TextView
+                    android:id="@+id/TA5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/time_day"
+                    style="@style/srollview_textview_style"/>
+
+                <TextView
+                    android:id="@+id/TA6"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/time_hour"
+                    style="@style/srollview_textview_style"/>
+
+                <TextView
+                    android:id="@+id/TA7"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/time_day"
+                    style="@style/srollview_textview_style"/>
+
+                <TextView
+                    android:id="@+id/TA8"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/time_second"
+                    style="@style/srollview_textview_style"/>
+
+
+            </LinearLayout>
+        </ScrollView>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/TB1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/time_decade"
+                    style="@style/srollview_textview_style"/>
+
+                <TextView
+                    android:id="@+id/TB2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/time_year"
+                    style="@style/srollview_textview_style"/>
+
+                <TextView
+                    android:id="@+id/TB3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/time_month"
+                    style="@style/srollview_textview_style"/>
+
+                <TextView
+                    android:id="@+id/TB4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/time_week"
+                    style="@style/srollview_textview_style"/>
+
+                <TextView
+                    android:id="@+id/TB5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/time_day"
+                    style="@style/srollview_textview_style"/>
+
+                <TextView
+                    android:id="@+id/TB6"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/time_hour"
+                    style="@style/srollview_textview_style"/>
+
+                <TextView
+                    android:id="@+id/TB7"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/time_minute"
+                    style="@style/srollview_textview_style"/>
+
+                <TextView
+                    android:id="@+id/TB8"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/time_second"
+                    style="@style/srollview_textview_style"/>
+
+
+            </LinearLayout>
+
+
+        </ScrollView>
+
+    </LinearLayout>
+
+</LinearLayout>
