@@ -5,10 +5,8 @@ Keep up with this project enough during work so that you don't loose Android ski
 Update Connection With Being to get consent for viewing an Ad
 
 Working:
-    > Add Custom Converter to Favorites.
-    > More UI for Custom Converter
-        > Swap unit name button
-        > Reset all fields button
+    > Reset all fields button
+    > Swap field names button
 
 Clean up UI
     > Info page on options menu
@@ -48,6 +46,10 @@ Other Bugs
         > Swap units for Custom
         > Set max number of decimals on all converters for UI
                 > Including Currency
+
+        > Add Custom Converter to Favorites.
+        > More UI for Custom Converter
+            > Swap unit name button
 Create App Icon
 
 Publish.

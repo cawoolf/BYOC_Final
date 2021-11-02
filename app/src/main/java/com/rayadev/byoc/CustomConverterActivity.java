@@ -365,10 +365,6 @@ public class CustomConverterActivity extends AppCompatActivity {
         enableKeyboard();
 
         try {
-//            String mUnitAConverterName = "";
-//            String unitBName ="";
-//            double unitAValue = 0;
-//            double unitBValue = 0;
 
             if(mSwapUnits == 0) {
                 mUnitAConverterName = mUnitAName.getText().toString();
@@ -388,11 +384,6 @@ public class CustomConverterActivity extends AppCompatActivity {
             mUnitATitleTextView.setText(mUnitAConverterName);
             mUnitBTitleTextView.setText(mUnitBConverterName);
 
-//            mUnitAConverterName = mUnitAInputEditText.getText().toString();
-//            mUnitBConverterName = mUnitBInputEditText.getText().toString();
-//
-//            mUnitAConverterValue = unitAValue;
-//            mUnitBConverterValue = unitBValue;
             mCustomConverter = new Converter(mUnitAConverterName, mUnitBConverterName, mUnitAConverterValue, mUnitBConverterValue);
             setConverterBoxLogic();
 
@@ -402,6 +393,8 @@ public class CustomConverterActivity extends AppCompatActivity {
             // it is safe to cancel other vibrations currently taking place
             mVibrator.cancel();
             mVibrator.vibrate(mVibrationEffect);
+
+//            Toast.makeText(this, "Converter Built..", Toast.LENGTH_SHORT).show();
         }
 
 
@@ -410,38 +403,11 @@ public class CustomConverterActivity extends AppCompatActivity {
 
         }
 
-
-//        mUnitATitleTextView.setText(mUnitAName.getText().toString());
-//        mUnitBTitleTextView.setText(mUnitBName.getText().toString());
-//
-//        mUnitAConverterName = mUnitAInputEditText.getText().toString();
-//        mUnitBConverterName = mUnitBInputEditText.getText().toString();
-//
-//        try {
-//            mUnitAConverterValue = Double.parseDouble(mUnitAValue.getText().toString());
-//            mUnitBConverterValue = Double.parseDouble(mUnitBValue.getText().toString());
-//            mCustomConverter = new Converter(mUnitAConverterName, mUnitBConverterName, mUnitAConverterValue, mUnitBConverterValue);
-//            setConverterBoxLogic();
-//
-//            // this effect creates the vibration of default amplitude for 1000ms(1 sec)
-//            mVibrationEffect = VibrationEffect.createOneShot(75,75);
-//
-//            // it is safe to cancel other vibrations currently taking place
-//            mVibrator.cancel();
-//            mVibrator.vibrate(mVibrationEffect);
-//        }
-//        catch (Exception e) {
-//            Toast.makeText(this, "Input Values for Units", Toast.LENGTH_SHORT).show();
-//        }
-
-
-
     }
 
     private void keyboardManager() {
 
         //Keyboard opens when Converter Icon is clicked
-//        mUnitAInputEditText.requestFocus();
         InputMethodManager imm = (InputMethodManager) this.getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.showSoftInput(mUnitAInputEditText, InputMethodManager.SHOW_IMPLICIT);
 

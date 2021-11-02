@@ -286,14 +286,16 @@
             android:gravity="center"
             android:padding="5dp">
             <ImageView
-                android:visibility="invisible"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_baseline_swap_horiz_24"
+                android:layout_width="46dp"
+                android:layout_height="46dp"
+                android:padding="4dp"
+                android:background="@drawable/spinner_shape"
+                android:src="@drawable/ic_baseline_loop_24"
                 app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/custom_converter_buildButton_LinearLayout"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
-                android:layout_marginStart="15dp"/>
+               />
 
         <LinearLayout
             android:id="@+id/custom_converter_buildButton_LinearLayout"
@@ -335,6 +337,18 @@
                 android:layout_marginStart="5dp"/>
 
         </LinearLayout>
+
+            <ImageView
+                android:layout_width="46dp"
+                android:layout_height="46dp"
+                android:padding="4dp"
+                android:background="@drawable/spinner_shape"
+                android:src="@drawable/ic_baseline_cancel_24"
+                app:layout_constraintStart_toEndOf="@id/custom_converter_buildButton_LinearLayout"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     </LinearLayout>
