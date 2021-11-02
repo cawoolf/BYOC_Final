@@ -49,31 +49,35 @@
                     android:id="@+id/AA4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text=""
+                    android:text="@string/area_square_centimeter"
                     style="@style/srollview_textview_style"/>
 
                 <TextView
+                    android:id="@+id/AA5"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Item 1 Item 1 Item 1 "
+                    android:text="@string/area_acre"
                     style="@style/srollview_textview_style"/>
 
                 <TextView
+                    android:id="@+id/AA6"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Item 1 Item 1 Item 1 "
+                    android:text="@string/area_square_mile"
                     style="@style/srollview_textview_style"/>
 
                 <TextView
+                    android:id="@+id/AA7"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Item 1 Item 1 Item 1 "
+                    android:text="@string/area_square_foot"
                     style="@style/srollview_textview_style"/>
 
                 <TextView
+                    android:id="@+id/AA8"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Item 1 Item 1 Item 1 "
+                    android:text="@string/area_square_inch"
                     style="@style/srollview_textview_style"/>
 
 
@@ -91,51 +95,59 @@
                 android:orientation="vertical">
 
                 <TextView
+                    android:id="@+id/AB1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Item 1 Item 1 Item 1 "
+                    android:text="@string/area_hectare"
                     style="@style/srollview_textview_style"/>
 
                 <TextView
+                    android:id="@+id/AB2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Item 1 Item 1 Item 1 "
+                    android:text="@string/area_square_kilometer"
                     style="@style/srollview_textview_style"/>
 
                 <TextView
+                    android:id="@+id/AB3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Item 1 Item 1 Item 1 "
+                    android:text="@string/area_square_meter"
                     style="@style/srollview_textview_style"/>
 
                 <TextView
+                    android:id="@+id/AB4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Item 1 Item 1 Item 1 "
+                    android:text="@string/area_square_centimeter"
                     style="@style/srollview_textview_style"/>
 
                 <TextView
+                    android:id="@+id/AB5"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Item 1 Item 1 Item 1 "
+                    android:text="@string/area_acre"
                     style="@style/srollview_textview_style"/>
 
                 <TextView
+                    android:id="@+id/AB6"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Item 1 Item 1 Item 1 "
+                    android:text="@string/area_square_mile"
                     style="@style/srollview_textview_style"/>
 
                 <TextView
+                    android:id="@+id/AB7"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Item 1 Item 1 Item 1 "
+                    android:text="@string/area_square_foot"
                     style="@style/srollview_textview_style"/>
 
                 <TextView
+                    android:id="@+id/AB8"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Item 1 Item 1 Item 1 "
+                    android:text="@string/area_square_inch"
                     style="@style/srollview_textview_style"/>
 
 
