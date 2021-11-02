@@ -286,6 +286,7 @@
             android:gravity="center"
             android:padding="5dp">
             <ImageView
+                android:id="@+id/custom_converter_swapInputNames_button"
                 android:layout_width="46dp"
                 android:layout_height="46dp"
                 android:padding="4dp"
@@ -339,6 +340,7 @@
         </LinearLayout>
 
             <ImageView
+                android:id="@+id/custom_converter_clearAllInputs_Button"
                 android:layout_width="46dp"
                 android:layout_height="46dp"
                 android:padding="4dp"

@@ -39,14 +39,16 @@ public class CustomConverterActivity extends AppCompatActivity {
     private LinearLayout mMasterCustomLayout;
 
     //EditTexts for user input
-    private EditText mUnitAName, mUnitAValue, mUnitBName, mUnitBValue;
+    private EditText mUnitANameInput, mUnitAValueInput, mUnitBNameInput, mUnitBValueInput;
 
     //Views for the converter UI
     private View mConverterUI;
     private TextView mUnitATitleTextView, mUnitBTitleTextView, mUnitAQuestionTextView, mUnitBQuestionTextView, mValueUnitAQuestionTextView;
     private EditText mUnitAInputEditText, mUnitBInputEditText;
     private ImageButton mConverterInfoButton, mConverterSwapButton;
+    private ImageView mSwapInputNamesButton, mClearInputFieldsButton;
     private int mSwapUnits = 0;
+    private boolean mSwapClicked = false;
 
     private LinearLayout mBuildButton;
 
@@ -110,10 +112,10 @@ public class CustomConverterActivity extends AppCompatActivity {
         mConverterSwapButton = mConverterUI.findViewById(R.id.cardView_SwapButton);
 
         //User inputs
-        mUnitAName = findViewById(R.id.custom_converter_unitAName_EditText);
-        mUnitAValue = findViewById(R.id.custom_converter_unitAValue_EditText);
-        mUnitBName = findViewById(R.id.custom_converter_unitBName_EditText);
-        mUnitBValue = findViewById(R.id.custom_converter_unitBValue_EditText);
+        mUnitANameInput = findViewById(R.id.custom_converter_unitAName_EditText);
+        mUnitAValueInput = findViewById(R.id.custom_converter_unitAValue_EditText);
+        mUnitBNameInput = findViewById(R.id.custom_converter_unitBName_EditText);
+        mUnitBValueInput = findViewById(R.id.custom_converter_unitBValue_EditText);
         mUnitAQuestionTextView = findViewById(R.id.custom_converter_unitAQuestion_TextView);
         mUnitBQuestionTextView = findViewById(R.id.custom_converter_unitBQuestion_TextView);
         mValueUnitAQuestionTextView = findViewById(R.id.custom_converter_valueAQuestion_TextView);
@@ -122,8 +124,10 @@ public class CustomConverterActivity extends AppCompatActivity {
         mBottomUI = findViewById(R.id.custom_convertertab_BottomUI_LinearLayout);
         mAddConverterButton = findViewById(R.id.custom_add_converter_button);
 
-        //Build Button click
+        //Build Buttons
         mBuildButton = findViewById(R.id.custom_converter_buildButton_LinearLayout);
+        mSwapInputNamesButton = findViewById(R.id.custom_converter_swapInputNames_button);
+        mClearInputFieldsButton = findViewById(R.id.custom_converter_clearAllInputs_Button);
 
         mVibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
 
@@ -133,6 +137,8 @@ public class CustomConverterActivity extends AppCompatActivity {
         mConverterSwapButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                mSwapClicked = true;
                 if(allConverterDataValid()) {
                     switch (mSwapUnits) {
                         case 0:
@@ -168,6 +174,47 @@ public class CustomConverterActivity extends AppCompatActivity {
                 }
             }
         });
+
+        mClearInputFieldsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mUnitANameInput.setText("");
+                mUnitBNameInput.setText("");
+                mUnitAValueInput.setText("1");
+                mUnitBValueInput.setText("");
+
+                //Resets the text.
+                mUnitAQuestionTextView.setText("Unit A");
+                mUnitBQuestionTextView.setText("Unit B's");
+                mValueUnitAQuestionTextView.setText(mUnitAValueInput.getText().toString());
+
+//                Toast.makeText(CustomConverterActivity.this, "Inputs Cleared", Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
+        mSwapInputNamesButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String unitANameHolder = mUnitANameInput.getText().toString();
+                String unitBNameHolder = mUnitBNameInput.getText().toString();
+
+                mUnitANameInput.setText(unitBNameHolder);
+                mUnitBNameInput.setText(unitANameHolder);
+
+                mUnitAQuestionTextView.setText(unitBNameHolder);
+                mUnitBQuestionTextView.setText(unitANameHolder);
+
+                //Clears and rests values as well.
+                mUnitAValueInput.setText("1");
+                mUnitBValueInput.setText("");
+                mValueUnitAQuestionTextView.setText(mUnitAValueInput.getText().toString());
+
+
+
+
+            }
+        });
     }
 
 
@@ -187,13 +234,13 @@ public class CustomConverterActivity extends AppCompatActivity {
         });
 
         final int[] firstAClick = {0};
-        mUnitAName.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+        mUnitANameInput.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
                 if(hasFocus) {
 
                     if(firstAClick[0] == 0) {
-                        mUnitAName.setText("");
+                        mUnitANameInput.setText("");
                         firstAClick[0] = 1;
                     }
                     mBottomUI.setVisibility(View.INVISIBLE);
@@ -201,24 +248,24 @@ public class CustomConverterActivity extends AppCompatActivity {
 
                     InputFilter[] filterArray = new InputFilter[1];
                     filterArray[0] = new InputFilter.LengthFilter(6);
-                    mUnitAName.setFilters(filterArray);
+                    mUnitANameInput.setFilters(filterArray);
                 }
 
                 else {
                     mBottomUI.setVisibility(View.VISIBLE);
                     mConverterUI.setVisibility(View.VISIBLE);
-                    mUnitAQuestionTextView.setText((mUnitAName.getText().toString()));
+                    mUnitAQuestionTextView.setText((mUnitANameInput.getText().toString()));
                 }
             }
         });
 
         final int[] firstBClick = {0};
-        mUnitBName.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+        mUnitBNameInput.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
                 if(hasFocus) {
                     if(firstBClick[0] == 0) {
-                        mUnitBName.setText("");
+                        mUnitBNameInput.setText("");
                         firstBClick[0] = 1;
                     }
                     mBottomUI.setVisibility(View.INVISIBLE);
@@ -226,38 +273,38 @@ public class CustomConverterActivity extends AppCompatActivity {
 
                     InputFilter[] filterArray = new InputFilter[1];
                     filterArray[0] = new InputFilter.LengthFilter(6);
-                    mUnitBName.setFilters(filterArray);
+                    mUnitBNameInput.setFilters(filterArray);
                 }
 
                 else {
                     mBottomUI.setVisibility(View.VISIBLE);
                     mConverterUI.setVisibility(View.VISIBLE);
-                    mUnitBQuestionTextView.setText((mUnitBName.getText().toString()));
+                    mUnitBQuestionTextView.setText((mUnitBNameInput.getText().toString()));
                 }
             }
         });
 
-        mUnitAValue.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+        mUnitAValueInput.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
                 if(hasFocus) {
-                    mUnitAValue.setText("1");
+                    mUnitAValueInput.setText("1");
                     mBottomUI.setVisibility(View.INVISIBLE);
                     mConverterUI.setVisibility(View.INVISIBLE);
                     InputFilter[] filterArray = new InputFilter[1];
                     filterArray[0] = new InputFilter.LengthFilter(8);
-                    mUnitAValue.setFilters(filterArray);
+                    mUnitAValueInput.setFilters(filterArray);
                 }
 
                 else {
                     mBottomUI.setVisibility(View.VISIBLE);
                     mConverterUI.setVisibility(View.VISIBLE);
-                    mValueUnitAQuestionTextView.setText(mUnitAValue.getText().toString());
+                    mValueUnitAQuestionTextView.setText(mUnitAValueInput.getText().toString());
                 }
             }
         });
 
-        mUnitBValue.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+        mUnitBValueInput.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View v, boolean hasFocus) {
                 if(hasFocus) {
@@ -275,7 +322,7 @@ public class CustomConverterActivity extends AppCompatActivity {
 
 
         //Last field to input, and runs build Converter on Done click.
-        mUnitBValue.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+        mUnitBValueInput.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
                 if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) || (actionId == EditorInfo.IME_ACTION_DONE) ||(actionId == EditorInfo.IME_ACTION_NEXT)) {
@@ -289,9 +336,9 @@ public class CustomConverterActivity extends AppCompatActivity {
                     InputMethodManager imm = (InputMethodManager)v.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
                     imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
 
-                    if(allConverterDataValid()) {
-                        buildConverter();
-                    }
+//                    if(allConverterDataValid()) {
+//                        buildConverter();
+//                    }
 
                 }
                 return false;
@@ -341,14 +388,14 @@ public class CustomConverterActivity extends AppCompatActivity {
     private boolean allConverterDataValid(){
 
         //Checks if the user has input all data for the Converter
-        boolean a = mUnitAName.getText().toString().equals("Unit Name A");
-        boolean a_b = mUnitAName.getText().toString().equals("");
-        boolean av = mUnitAValue.getText().toString().equals("");
-        boolean b = mUnitBName.getText().toString().equals("Unit Name B");
-        boolean b_b = mUnitBName.getText().toString().equals("");
-        boolean bv = mUnitBValue.getText().toString().equals("");
+        boolean a = mUnitANameInput.getText().toString().equals("Unit Name A");
+        boolean a_b = mUnitANameInput.getText().toString().equals("");
+        boolean av = mUnitAValueInput.getText().toString().equals("");
+        boolean b = mUnitBNameInput.getText().toString().equals("Unit Name B");
+        boolean b_b = mUnitBNameInput.getText().toString().equals("");
+        boolean bv = mUnitBValueInput.getText().toString().equals("");
 
-        Log.i("CTAG",mUnitAName.getText().toString() + "" + a);
+        Log.i("CTAG",mUnitANameInput.getText().toString() + "" + a);
 
         if(a || a_b || av || b || b_b || bv) {
             Toast.makeText(CustomConverterActivity.this, "Input all fields for the Converter.", Toast.LENGTH_SHORT).show();
@@ -367,17 +414,17 @@ public class CustomConverterActivity extends AppCompatActivity {
         try {
 
             if(mSwapUnits == 0) {
-                mUnitAConverterName = mUnitAName.getText().toString();
-                mUnitBConverterName = mUnitBName.getText().toString();
-                mUnitAConverterValue = Double.parseDouble(mUnitAValue.getText().toString());
-                mUnitBConverterValue = Double.parseDouble(mUnitBValue.getText().toString());
+                mUnitAConverterName = mUnitANameInput.getText().toString();
+                mUnitBConverterName = mUnitBNameInput.getText().toString();
+                mUnitAConverterValue = Double.parseDouble(mUnitAValueInput.getText().toString());
+                mUnitBConverterValue = Double.parseDouble(mUnitBValueInput.getText().toString());
 
             }
             else if (mSwapUnits == 1) {
-                mUnitAConverterName = mUnitBName.getText().toString();
-                mUnitBConverterName = mUnitAName.getText().toString();
-                mUnitAConverterValue = Double.parseDouble(mUnitBValue.getText().toString());
-                mUnitBConverterValue = Double.parseDouble(mUnitAValue.getText().toString());
+                mUnitAConverterName = mUnitBNameInput.getText().toString();
+                mUnitBConverterName = mUnitANameInput.getText().toString();
+                mUnitAConverterValue = Double.parseDouble(mUnitBValueInput.getText().toString());
+                mUnitBConverterValue = Double.parseDouble(mUnitAValueInput.getText().toString());
             }
 
             Log.i("CTAG", mUnitAConverterValue + "");
@@ -387,14 +434,24 @@ public class CustomConverterActivity extends AppCompatActivity {
             mCustomConverter = new Converter(mUnitAConverterName, mUnitBConverterName, mUnitAConverterValue, mUnitBConverterValue);
             setConverterBoxLogic();
 
-            // this effect creates the vibration of default amplitude for 1000ms(1 sec)
-            mVibrationEffect = VibrationEffect.createOneShot(75,75);
+            //If swapped was not clicked.. Vibrate
+            if(!mSwapClicked) {
+                // this effect creates the vibration of default amplitude for 1000ms(1 sec)
+                mVibrationEffect = VibrationEffect.createOneShot(75, 75);
+                // it is safe to cancel other vibrations currently taking place
+                mVibrator.cancel();
+                mVibrator.vibrate(mVibrationEffect);
 
-            // it is safe to cancel other vibrations currently taking place
-            mVibrator.cancel();
-            mVibrator.vibrate(mVibrationEffect);
+                //Resets so that vibrate will occur on next buildConverter()
+                mSwapClicked = false;
 
-//            Toast.makeText(this, "Converter Built..", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(this, "Converter Built..", Toast.LENGTH_SHORT).show();
+            }
+            else {
+                mSwapClicked = false;
+            }
+
+
         }
 
 
