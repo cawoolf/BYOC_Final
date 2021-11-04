@@ -112,13 +112,13 @@ public class MainActivity extends AppCompatActivity implements HomeSetTabFragmen
 
            updates = updates +1;
            editor.putInt("updates", updates).apply();
-           Log.i("DTAG", "Update" + "\n" + "Old Date: " + oldDateSeconds + "\n" + "New Date: " + currentDateSeconds + "\n" +
+           Log.i("CTAG", "Update" + "\n" + "Old Date: " + oldDateSeconds + "\n" + "New Date: " + currentDateSeconds + "\n" +
                     "\n" + "Time Elapsed: " + diff + "\n" + "Total updates: " + updates);
 
 
        }
         else {
-           Log.i("DTAG", "No Update" + "\n" + "Old Date: " + oldDateSeconds + "\n" + "New Date: " + currentDateSeconds
+           Log.i("CTAG", "No Update" + "\n" + "Old Date: " + oldDateSeconds + "\n" + "New Date: " + currentDateSeconds
            + "\n" + "Time Elapsed: " + diff + "\n" + "Total updates: " + updates);
 
        }
@@ -161,7 +161,7 @@ public class MainActivity extends AppCompatActivity implements HomeSetTabFragmen
             currencyUtil.loadCurrencyData(converterViewModel);
         } catch (JSONException e) {
 
-            Log.i("BTAG", e.toString());
+            Log.i("CTAG", e.toString());
 
         }
 

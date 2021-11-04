@@ -61,15 +61,30 @@ public class SpinnerScrollViewFragment extends Fragment {
 
         //Get the set of unit View IDs based on the layout being used.
         //Declare all of this in an arrays resource file.
+        Log.i("STAG", layoutID +"");
+
+        if(layoutID == R.layout.spinner_scrollview_area) {
+            mUnitCategory = getString(R.string.spinner_area_title);
+
+            int[] areaScrollViewA_ViewIDs = {R.id.AA1, R.id.AA2, R.id.AA3, R.id.AA4, R.id.AA5,
+            R.id.AA6, R.id.AA7, R.id.AA8};
+
+            int[] areaScrollViewB_ViewIDs = {R.id.AB1, R.id.AB2, R.id.AB3, R.id.AB4, R.id.AB5,
+            R.id.AB6, R.id.AB7,R.id.AB8};
+
+            linkSpinnerViews(view, areaScrollViewA_ViewIDs, areaScrollViewB_ViewIDs);
+
+        }
+
 
         if(layoutID == R.layout.spinner_scrollview_distance) {
 
-            mUnitCategory = "Distance";
+            mUnitCategory = getString(R.string.spinner_distance_title);
 
-            int[] distanceScrollViewA_ViewIDs = new int[]{R.id.DA1, R.id.DA2, R.id.DA3, R.id.DA4,
+            int[] distanceScrollViewA_ViewIDs = {R.id.DA1, R.id.DA2, R.id.DA3, R.id.DA4,
                     R.id.DA5, R.id.DA6, R.id.DA7, R.id.DA8};
 
-            int[] distanceScrollViewB_ViewIDs = new int[]{R.id.DB1, R.id.DB2, R.id.DB3, R.id.DB4,
+            int[] distanceScrollViewB_ViewIDs = {R.id.DB1, R.id.DB2, R.id.DB3, R.id.DB4,
                     R.id.DB5, R.id.DB6, R.id.DB7, R.id.DB8};
 
             linkSpinnerViews(view, distanceScrollViewA_ViewIDs, distanceScrollViewB_ViewIDs);
@@ -78,15 +93,27 @@ public class SpinnerScrollViewFragment extends Fragment {
 
         if(layoutID == R.layout.spinner_scrollview_currency) {
 
-            mUnitCategory = "Currency";
+            mUnitCategory = getString(R.string.spinner_currency_title);
 
-            int[] currencyScrollViewA_ViewIDs = new int[] {R.id.CURA1, R.id.CURA2, R.id.CURA3,
+            int[] currencyScrollViewA_ViewIDs = {R.id.CURA1, R.id.CURA2, R.id.CURA3,
             R.id.CURA4};
 
-            int[] currencyScrollViewB_ViewIds = new int[] {R.id.CURB1, R.id.CURB2, R.id.CURB3, R.id.CURB3,
+            int[] currencyScrollViewB_ViewIds = {R.id.CURB1, R.id.CURB2, R.id.CURB3, R.id.CURB3,
             R.id.CURB4};
 
             linkSpinnerViews(view, currencyScrollViewA_ViewIDs, currencyScrollViewB_ViewIds);
+        }
+
+        if(layoutID == R.layout.spinner_scrollview_weight) {
+            mUnitCategory = getString(R.string.spinner_weight_title);
+
+            int [] weightScrollViewA_ViewIDs = {R.id.WA1, R.id.WA2, R.id.WA3, R.id.WA4,
+                R.id.WA5, R.id.WA6};
+
+            int[] weightScrollViewB_ViewIDs = {R.id.WB1, R.id.WB2, R.id.WB3, R.id.WB4, R.id.WB5, R.id.WB6};
+
+            linkSpinnerViews(view, weightScrollViewA_ViewIDs, weightScrollViewB_ViewIDs);
+
         }
 
 //        if(layoutID == R.layout.spinner_scrollview_area) {

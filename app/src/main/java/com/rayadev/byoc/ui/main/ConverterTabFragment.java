@@ -241,6 +241,7 @@ public class ConverterTabFragment extends Fragment {
                 Context context = parentView.getContext();
                 CharSequence text = selected;
 //                int duration = Toast.LENGTH_SHORT;
+                Log.i("STAG", text.toString());
 
                 if (text.equals(getString(R.string.spinner_area_title))) {
 //                    Toast toast = Toast.makeText(context, "CATEGORY: " + text, duration);
@@ -329,7 +330,7 @@ public class ConverterTabFragment extends Fragment {
                 mUnitAString = converterUnitAName;
                 mUnitBString = converterUnitBName;
 
-                if(unitCategory.equals("Currency")) {
+                if(unitCategory.equals(getString(R.string.spinner_currency_title))) {
                     String currencyPair = converterUnitAName +"_" + converterUnitBName;
                     setUpTargetCurrency(currencyPair, converterUnitAName, converterUnitBName);
 
