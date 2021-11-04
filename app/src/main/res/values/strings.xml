@@ -72,6 +72,15 @@
     <string name="time_minute">Minute</string>
     <string name="time_second">Second</string>
 
+    <!-- Volume Preset Units -->
+
+    <!-- Weight Preset Units -->
+    <string name="weight_metric_ton">Metric Ton</string>
+    <string name="weight_kilogram">Kilogram</string>
+    <string name ="weight_gram">Gram</string>
+    <string name ="weight_ton">Ton</string>
+    <string name ="weight_pound">Pound</string>
+    <string name ="weight_ounce">Ounce</string>
 
 
 </resources>
