@@ -11,10 +11,8 @@ Finish adding data on Spinner drop downs
 Clean up UI
     > Info page on options menu
 
-
 Other Bugs
     > Millimeter data bug. Fix units.
-    > Can't click CURB4 TextView on spinner.
 
    Fixed
         > Weird spinner text.
@@ -46,6 +44,7 @@ Other Bugs
         > Reset all fields button
         > Swap field names button
         > Save CustomConverter to favorites
+        > Can't click CURB4 TextView on spinner.
 
 Create App Icon
 
