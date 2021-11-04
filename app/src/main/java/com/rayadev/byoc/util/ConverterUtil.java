@@ -1,12 +1,7 @@
 package com.rayadev.byoc.util;
 
 
-import android.content.Context;
-import android.content.res.Resources;
 import android.util.Log;
-
-import com.rayadev.byoc.MainActivity;
-import com.rayadev.byoc.R;
 
 public class ConverterUtil {
 
