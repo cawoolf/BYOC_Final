@@ -57,6 +57,7 @@ public class ConverterUtil {
         WEEK,
         DAY,
         HOUR,
+        MINUTE,
         SECOND,
 
         //Volume
@@ -122,8 +123,6 @@ public class ConverterUtil {
 
     }
 
-
-
     // What can I multiply by to get me from my fromUnit to my toUnit?
     public double multiplier;
 
@@ -134,8 +133,13 @@ public class ConverterUtil {
         //Initialize constant to prevent crash.
         double constant = 1;
 
-        //Just using distance for now.
         switch (from) {
+
+            //AREA CASE STATEMENTS
+
+            //CURRENCY ***Has own Util***
+
+            //DISTANCE CASE STATEMENTS
             case INCH:
                 if (to == Unit.CENTIMETER) {
                     constant = 2.54;
@@ -258,6 +262,45 @@ public class ConverterUtil {
                  else if (to == Unit.KILOMETER) {
                     constant = 1e-6;
                 }
+
+            //TEMPERATURE CASE STATEMENTS
+//          Temperature follows a formula not ratio.. Derp. Needs its own util sorta thing.
+//           case FAHRENHEIT:
+//                if(to == Unit.CELSIUS) {
+//                    constant = 1;
+//                }
+
+            //TIME CASE STATEMENTS
+            case DECADE:
+                if(to == Unit.YEAR) {
+                    constant = 10;
+                }
+                if(to == Unit.MONTH) {
+
+                }
+                if(to == Unit.WEEK) {
+
+                }
+                if(to == Unit.DAY) {
+
+                }
+                if(to == Unit.HOUR) {
+
+                }
+                if(to == Unit.MINUTE) {
+
+                }
+                if (to == Unit.SECOND) {
+
+                }
+            case YEAR:
+                if(to == Unit.DECADE) {
+                    constant = 0.10;
+                }
+
+            //VOLUME CASE STATEMENTS
+
+            //WEIGHT CASE STATEMENTS
         }
 
         multiplier = constant;
