@@ -131,8 +131,9 @@ public class ConverterUtil {
     public ConverterUtil(Unit from, Unit to) {  //Add a category constant to this..IE distance ect.
 
 
+        //Initialize constant to prevent crash.
         double constant = 1;
-        // Set the multiplier, else if fromUnit = toUnit, then it is 1
+
         //Just using distance for now.
         switch (from) {
             case INCH:
@@ -240,7 +241,7 @@ public class ConverterUtil {
                     constant = 0.621371;
                 }
                 break;
-            case MILLIMETER: //Some bugs with converting Millimeter.. Oh each other UNIT now needs a MILLIMETER
+            case MILLIMETER: //Some bugs with converting Millimeter.. Oh each other case UNIT now needs a MILLIMETER
                 if (to == Unit.INCH) {
                     constant = 0.0393701;
                 } else if (to == Unit.CENTIMETER) {
