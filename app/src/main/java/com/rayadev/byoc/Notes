@@ -5,17 +5,12 @@ Keep up with this project enough during work so that you don't loose Android ski
 Update Connection With Being to get consent for viewing an Ad
 
 Working:
-    > Reset all fields button
-    > Swap field names button
+Finish adding data on Spinner drop downs
+    > Make sure all data loads correctly.
 
 Clean up UI
     > Info page on options menu
 
-Logic punch list
-    > Save CustomConverter to favorites
-
-Finish adding data on Spinner drop downs
-    > Make sure all data loads correctly.
 
 Other Bugs
     > Millimeter data bug. Fix units.
@@ -46,10 +41,12 @@ Other Bugs
         > Swap units for Custom
         > Set max number of decimals on all converters for UI
                 > Including Currency
-
         > Add Custom Converter to Favorites.
         > More UI for Custom Converter
-            > Swap unit name button
+        > Reset all fields button
+        > Swap field names button
+        > Save CustomConverter to favorites
+
 Create App Icon
 
 Publish.
