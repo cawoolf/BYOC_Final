@@ -27,62 +27,67 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/DA1"
+                    android:id="@+id/VA1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text= "@string/distance_kilometer"
+                    android:text= "@string/volume_gallon"
                     style="@style/srollview_textview_style"
                     />
 
                 <TextView
-                    android:id="@+id/DA2"
+                    android:id="@+id/VA2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/distance_meter"
+                    android:text="@string/volume_quart"
                     style="@style/srollview_textview_style"/>
 
                 <TextView
-                    android:id="@+id/DA3"
+                    android:id="@+id/VA3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/distance_centimeter"
+                    android:text="@string/volume_fluid_ounce"
                     style="@style/srollview_textview_style"/>
 
                 <TextView
-                    android:id="@+id/DA4"
+                    android:id="@+id/VA4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/distance_millimeter"
+                    android:text="@string/volume_cup"
                     style="@style/srollview_textview_style"/>
 
                 <TextView
-                    android:id="@+id/DA5"
+                    android:id="@+id/VA5"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-
-                    android:text="@string/distance_miles"
+                    android:text="@string/volume_tablespoon"
                     style="@style/srollview_textview_style"/>
 
                 <TextView
-                    android:id="@+id/DA6"
+                    android:id="@+id/VA6"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/distance_yard"
+                    android:text="@string/volume_cubic_meter"
                     style="@style/srollview_textview_style"/>
 
                 <TextView
-                    android:id="@+id/DA7"
+                    android:id="@+id/VA7"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/distance_foot"
+                    android:text="@string/volume_litre"
                     style="@style/srollview_textview_style"/>
 
                 <TextView
-                    android:id="@+id/DA8"
+                    android:id="@+id/VA8"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:text="@string/volume_centiliter"
+                    style="@style/srollview_textview_style"/>
 
-                    android:text="@string/distance_inch"
+                <TextView
+                    android:id="@+id/VA9"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/volume_milliliter"
                     style="@style/srollview_textview_style"/>
             </LinearLayout>
 
@@ -99,60 +104,66 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/DB1"
+                    android:id="@+id/VB1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text= "@string/distance_kilometer"
+                    android:text= "@string/volume_gallon"
                     style="@style/srollview_textview_style"/>
 
                 <TextView
-                    android:id="@+id/DB2"
+                    android:id="@+id/VB2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/distance_meter"
+                    android:text="@string/volume_quart"
                     style="@style/srollview_textview_style"/>
 
                 <TextView
-                    android:id="@+id/DB3"
+                    android:id="@+id/VB3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/distance_centimeter"
+                    android:text="@string/volume_fluid_ounce"
                     style="@style/srollview_textview_style"/>
 
                 <TextView
-                    android:id="@+id/DB4"
+                    android:id="@+id/VB4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/distance_millimeter"
+                    android:text="@string/volume_cup"
                     style="@style/srollview_textview_style"/>
 
                 <TextView
-                    android:id="@+id/DB5"
+                    android:id="@+id/VB5"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-
-                    android:text="@string/distance_miles"
+                    android:text="@string/volume_tablespoon"
                     style="@style/srollview_textview_style"/>
 
                 <TextView
-                    android:id="@+id/DB6"
+                    android:id="@+id/VB6"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/distance_yard"
+                    android:text="@string/volume_teaspoon"
                     style="@style/srollview_textview_style"/>
 
                 <TextView
-                    android:id="@+id/DB7"
+                    android:id="@+id/VB7"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/distance_foot"
+                    android:text="@string/volume_litre"
                     style="@style/srollview_textview_style"/>
 
                 <TextView
-                    android:id="@+id/DB8"
+                    android:id="@+id/VB8"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/distance_inch"
+                    android:text="@string/volume_centiliter"
+                    style="@style/srollview_textview_style"/>
+
+                <TextView
+                    android:id="@+id/VB9"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/volume_milliliter"
                     style="@style/srollview_textview_style"/>
 
             </LinearLayout>

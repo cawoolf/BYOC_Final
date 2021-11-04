@@ -73,6 +73,16 @@
     <string name="time_second">Second</string>
 
     <!-- Volume Preset Units -->
+    <string name="volume_gallon">Gallon</string>
+    <string name="volume_quart">Quart</string>
+    <string name="volume_fluid_ounce">Fluid Ounce</string>
+    <string name="volume_cup">Cup</string>
+    <string name="volume_tablespoon">Tablespoon</string>
+    <string name="volume_teaspoon">Teaspoon</string>
+    <string name="volume_cubic_meter">Cubic Meter</string>
+    <string name="volume_litre">Litre</string>
+    <string name="volume_centiliter">Centiliter</string>
+    <string name="volume_milliliter">Milliliter</string>
 
     <!-- Weight Preset Units -->
     <string name="weight_metric_ton">Metric Tonne</string>

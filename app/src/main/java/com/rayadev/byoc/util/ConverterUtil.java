@@ -1,6 +1,13 @@
 package com.rayadev.byoc.util;
 
 
+import android.content.Context;
+import android.content.res.Resources;
+import android.util.Log;
+
+import com.rayadev.byoc.MainActivity;
+import com.rayadev.byoc.R;
+
 public class ConverterUtil {
 
 
@@ -10,6 +17,18 @@ public class ConverterUtil {
 
     //Reference points for the units.
     public enum Unit {
+
+        //Test Unit
+        TEST_UNIT,
+
+        //Area
+        SQ_KILOMETER,
+        SQ_METER,
+        SQ_CENTIMETER,
+        ACRE,
+        SQ_MILE,
+        SQ_FOOT,
+        SQ_INCH,
 
         //Distance
         INCH,
@@ -23,29 +42,97 @@ public class ConverterUtil {
 
         //Currency
         USD,
-        CAD,
         EUR,
-        NZD;
+        CAD,
+        MXN,
+        JPY,
+        AUD,
+        NZD,
+        CNY,
+
+        //Temperature
+        CELSIUS,
+        FAHRENHEIT,
+        KELVIN,
+
+        //Time
+        DECADE,
+        YEAR,
+        MONTH,
+        WEEK,
+        DAY,
+        HOUR,
+        SECOND,
+
+        //Volume
+        GALLON,
+        QUART,
+        FLUID_OUNCE,
+        CUP,
+        TABLESPOON,
+        CUBIC_METER,
+        LITRE,
+        CENTILITER,
+        MILLILITER,
+
+        //Weight
+        METRIC_TONNE,
+        KILOGRAM,
+        GRAM,
+        TON,
+        POUND,
+        OUNCE;
 
         // Helper method to select the unit, and convert text to one of the above constants
         public static Unit fromString(String text) {
-            if (text != null) {
+
+
+            Unit foundUnit = TEST_UNIT;
+
+            if(text.contains("")){
+                foundUnit = sortIrregularUnitName(text);
+                return foundUnit;
+            }
+            else if (text != null) {
                 for (Unit unit : Unit.values()) {
                     if (text.equalsIgnoreCase(unit.toString())) {
-                        return unit;
+                        foundUnit = unit;
                     }
                 }
+
+                return foundUnit;
             }
             throw new IllegalArgumentException("Cannot find a value for " + text);
         }
+
+        //Handles the space " " in the text for Sq Kilometer... ext. Sets the proper enum Unit.
+        private static Unit sortIrregularUnitName(String text) {
+
+            Unit unit = TEST_UNIT;
+            String[] irregularUnitNames = {"Sq Kilometer", "Sq Meter", "Sq Centimeter",
+                    "Sq Mile", "Sq Foot", "Sq Inch","Fluid Ounce", "Cubic Meter", "Metric Tonne"};
+            Unit[] unitEnums = {SQ_KILOMETER, SQ_METER, SQ_CENTIMETER, SQ_MILE, SQ_FOOT, FLUID_OUNCE, CUBIC_METER, METRIC_TONNE};
+
+            for(int i = 0; i < irregularUnitNames.length; i++) {
+                String unitString = irregularUnitNames[i];
+                if(text.equals(unitString)) {
+                    unit = unitEnums[i];
+                    Log.i("UTAG", "Irregular Unit Name" + unit.toString());
+                    return unit;
+                }
+            }
+
+            return unit;
+        }
+
     }
+
+
 
     // What can I multiply by to get me from my fromUnit to my toUnit?
     public double multiplier;
 
-    //Constructor that creates the proper conversion ratios for the resutls.
-
-
+    //Constructor that creates the proper conversion ratios for the results.
     public ConverterUtil(Unit from, Unit to) {  //Add a category constant to this..IE distance ect.
 
 
