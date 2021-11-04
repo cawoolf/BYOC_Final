@@ -96,10 +96,10 @@ public class SpinnerScrollViewFragment extends Fragment {
             mUnitCategory = getString(R.string.spinner_currency_title);
 
             int[] currencyScrollViewA_ViewIDs = {R.id.CURA1, R.id.CURA2, R.id.CURA3,
-            R.id.CURA4};
+            R.id.CURA4, R.id.CURA5, R.id.CURA6, R.id.CURA7, R.id.CURA8};
 
-            int[] currencyScrollViewB_ViewIds = {R.id.CURB1, R.id.CURB2, R.id.CURB3, R.id.CURB3,
-            R.id.CURB4};
+            int[] currencyScrollViewB_ViewIds = {R.id.CURB1, R.id.CURB2, R.id.CURB3,
+            R.id.CURB4, R.id.CURB5, R.id.CURB6, R.id.CURB7, R.id.CURB8};
 
             linkSpinnerViews(view, currencyScrollViewA_ViewIDs, currencyScrollViewB_ViewIds);
         }
@@ -148,10 +148,6 @@ public class SpinnerScrollViewFragment extends Fragment {
             linkSpinnerViews(view, weightScrollViewA_ViewIDs, weightScrollViewB_ViewIDs);
 
         }
-
-//        if(layoutID == R.layout.spinner_scrollview_area) {
-//            int areaScrollViewA_ViewIDs = int int[] {R.id.D}
-//        }
 
 
     }

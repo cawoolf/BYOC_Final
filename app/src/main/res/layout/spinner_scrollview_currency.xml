@@ -51,32 +51,36 @@
                     android:id="@+id/CURA4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:text="@string/currency_MXN"
+                    style="@style/srollview_textview_style"/>
+
+                <TextView
+                    android:id="@+id/CURA5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/currency_AUD"
+                    style="@style/srollview_textview_style"/>
+
+                <TextView
+                    android:id="@+id/CURA6"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:text="@string/currency_NZD"
                     style="@style/srollview_textview_style"/>
 
                 <TextView
+                    android:id="@+id/CURA7"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Item 1 Item 1 Item 1 "
+                    android:text="@string/currency_JPY"
                     style="@style/srollview_textview_style"/>
 
                 <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Item 1 Item 1 Item 1 "
-                    style="@style/srollview_textview_style"/>
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Item 1 Item 1 Item 1 "
-                    style="@style/srollview_textview_style"/>
-
-                <TextView
+                    android:id="@+id/CURA8"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="16dp"
-                    android:text="Item 1 Item 1 Item 1 "
+                    android:text="@string/currency_CNY"
                     style="@style/srollview_textview_style"/>
 
 
@@ -120,32 +124,36 @@
                     android:id="@+id/CURB4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/currency_NZD"
+                    android:text="@string/currency_MXN"
                     style="@style/srollview_textview_style"
                   />
 
                 <TextView
+                    android:id="@+id/CURB5"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Item 1 Item 1 Item 1 "
+                    android:text="@string/currency_AUD"
                     style="@style/srollview_textview_style"/>
 
                 <TextView
+                    android:id="@+id/CURB6"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Item 1 Item 1 Item 1 "
+                    android:text="@string/currency_NZD"
                     style="@style/srollview_textview_style"/>
 
                 <TextView
+                    android:id="@+id/CURB7"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Item 1 Item 1 Item 1 "
+                    android:text="@string/currency_JPY"
                     style="@style/srollview_textview_style"/>
 
                 <TextView
+                    android:id="@+id/CURB8"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Item 1 Item 1 Item 1 "
+                    android:text="@string/currency_CNY"
                     style="@style/srollview_textview_style"/>
 
 

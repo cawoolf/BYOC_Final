@@ -339,6 +339,7 @@ public class ConverterTabFragment extends Fragment {
 
                 if(unitCategory.equals(getString(R.string.spinner_currency_title))) {
                     String currencyPair = converterUnitAName +"_" + converterUnitBName;
+                    Log.i("CCTAG", currencyPair+"");
                     setUpTargetCurrency(currencyPair, converterUnitAName, converterUnitBName);
 
                 }

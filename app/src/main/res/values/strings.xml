@@ -44,9 +44,14 @@
 
     <!--Currency Preset Units -->
     <string name="currency_USD">USD</string>
-    <string name="currency_CAD">CAD</string>
     <string name="currency_EUR">EUR</string>
+    <string name="currency_CAD">CAD</string>
+    <string name="currency_MXN">MXN</string>
+    <string name="currency_AUD">AUD</string>
     <string name="currency_NZD">NZD</string>
+    <string name="currency_JPY">JPY</string>
+    <string name="currency_CNY">CNY</string>
+
 
     <!-- Distance Preset Units -->
     <string name="distance_kilometer">Kilometer</string>

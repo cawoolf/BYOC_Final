@@ -35,6 +35,8 @@ public class CurrencyUtil{
                 .build();
         mCurrencyAPI = retrofit.create(CurrencyAPI.class);
 
+        //The size of this HashSet determines the number of requests to the API
+        //Use a HashSet so we know that all pairs are unique.
         HashSet<String> currencySet = buildCurrencyHashSet();
 
         for(String pair: currencySet) {
@@ -53,7 +55,7 @@ public class CurrencyUtil{
         //Pass that argument into the String url for Retrofit.
 
         HashSet<String> pairs = new HashSet<>();
-        String[] currencies = new String[]{"USD", "CAD", "EUR", "NZD"};
+        String[] currencies = new String[]{"USD", "EUR","CAD","MXN","JPY","AUD","NZD","CNY"};
 
         //Create unique set of all currency pairs in currencies
         for (String c : currencies) {
@@ -99,7 +101,7 @@ public class CurrencyUtil{
     }
 
     //Makes the API call from the given currency HashSet value.
-    //The returned data is asynchronous. How to get it out.
+    //Inserts into a database using ConverterViewModel
     private void runCurrencyAPIRequest(String mCurrencyPair, ConverterViewModel converterViewModel) throws JSONException {
 
         Call call = mCurrencyAPI.getCurrency(getUrlString(mAPIKey, mCurrencyPair));
