@@ -78,7 +78,7 @@ public class CustomConverterActivity extends AppCompatActivity {
         keyboardManager();
         suppressKeyBoard();
 
-        Toast.makeText(this, "1) Input Values For Units" + "\n" + "2) Click Build!", Toast.LENGTH_LONG).show();
+        Toast.makeText(this, "1) Input Values For Units" + "\n" + "2) Click Build Converter!", Toast.LENGTH_LONG).show();
         mUnitATitleTextView.setText("Enter Unit Name Above");
         mUnitBTitleTextView.setText("Enter Unit Name Above");
 

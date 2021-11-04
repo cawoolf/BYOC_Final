@@ -75,7 +75,7 @@
     <!-- Volume Preset Units -->
 
     <!-- Weight Preset Units -->
-    <string name="weight_metric_ton">Metric Ton</string>
+    <string name="weight_metric_ton">Metric Tonne</string>
     <string name="weight_kilogram">Kilogram</string>
     <string name ="weight_gram">Gram</string>
     <string name ="weight_ton">Ton</string>

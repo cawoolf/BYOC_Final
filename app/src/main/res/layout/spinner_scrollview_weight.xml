@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/custom_scrollview_style"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
 
-    style="@style/custom_scrollview_style">
+    android:orientation="vertical">
 
     <LinearLayout
         android:id="@+id/masterAreaLinearLayout_Preset_ScrollView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:visibility="visible"
-        >
+        android:visibility="visible">
 
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1">
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -25,62 +25,61 @@
 
                 <TextView
                     android:id="@+id/WA1"
+                    style="@style/srollview_textview_style"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/weight_metric_ton"
-                    style="@style/srollview_textview_style"/>
+                    android:text="@string/weight_metric_ton" />
 
                 <TextView
                     android:id="@+id/WA2"
+                    style="@style/srollview_textview_style"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/weight_kilogram"
-                    style="@style/srollview_textview_style"/>
+                    android:text="@string/weight_kilogram" />
 
                 <TextView
                     android:id="@+id/WA3"
+                    style="@style/srollview_textview_style"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="16dp"
-                    android:text="@string/weight_gram"
-                    style="@style/srollview_textview_style"/>
+                    android:text="@string/weight_gram" />
 
                 <TextView
                     android:id="@+id/WA4"
+                    style="@style/srollview_textview_style"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/weight_ton"
-                    style="@style/srollview_textview_style"/>
+                    android:text="@string/weight_ton" />
 
                 <TextView
                     android:id="@+id/WA5"
+                    style="@style/srollview_textview_style"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/weight_pound"
-                    style="@style/srollview_textview_style"/>
+                    android:text="@string/weight_pound" />
 
                 <TextView
                     android:id="@+id/WA6"
+                    style="@style/srollview_textview_style"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/weight_ounce"
-                    style="@style/srollview_textview_style"/>
+                    android:text="@string/weight_ounce" />
 
                 <TextView
-                    android:visibility="gone"
                     android:id="@+id/AA7"
+                    style="@style/srollview_textview_style"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/area_square_foot"
-                    style="@style/srollview_textview_style"/>
+                    android:visibility="gone" />
 
                 <TextView
-                    android:visibility="gone"
                     android:id="@+id/AA8"
+                    style="@style/srollview_textview_style"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/area_square_inch"
-                    style="@style/srollview_textview_style"/>
+                    android:visibility="gone" />
 
 
             </LinearLayout>
@@ -98,61 +97,61 @@
 
                 <TextView
                     android:id="@+id/WB1"
+                    style="@style/srollview_textview_style"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/weight_metric_ton"
-                    style="@style/srollview_textview_style"/>
+                    android:text="@string/weight_metric_ton" />
 
                 <TextView
                     android:id="@+id/WB2"
+                    style="@style/srollview_textview_style"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/weight_kilogram"
-                    style="@style/srollview_textview_style"/>
+                    android:text="@string/weight_kilogram" />
 
                 <TextView
                     android:id="@+id/WB3"
+                    style="@style/srollview_textview_style"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/weight_gram"
-                    style="@style/srollview_textview_style"/>
+                    android:text="@string/weight_gram" />
 
                 <TextView
                     android:id="@+id/WB4"
+                    style="@style/srollview_textview_style"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/weight_ton"
-                    style="@style/srollview_textview_style"/>
+                    android:text="@string/weight_ton" />
 
                 <TextView
                     android:id="@+id/WB5"
+                    style="@style/srollview_textview_style"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/weight_pound"
-                    style="@style/srollview_textview_style"/>
+                    android:text="@string/weight_pound" />
 
                 <TextView
                     android:id="@+id/WB6"
+                    style="@style/srollview_textview_style"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/weight_ounce"
-                    style="@style/srollview_textview_style"/>
+                    android:text="@string/weight_ounce" />
 
                 <TextView
-                    android:visibility="gone"
                     android:id="@+id/WB7"
+                    style="@style/srollview_textview_style"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/area_square_foot"
-                    style="@style/srollview_textview_style"/>
+                    android:visibility="gone" />
 
                 <TextView
-                    android:visibility="gone"
                     android:id="@+id/AB8"
+                    style="@style/srollview_textview_style"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/area_square_inch"
-                    style="@style/srollview_textview_style"/>
+                    android:visibility="gone" />
 
 
             </LinearLayout>
