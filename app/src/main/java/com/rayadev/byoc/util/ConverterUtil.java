@@ -85,7 +85,7 @@ public class ConverterUtil {
 
             Unit foundUnit = TEST_UNIT;
 
-            if(text.contains("")){
+            if(text.contains(" ")){
                 foundUnit = sortIrregularUnitName(text);
                 return foundUnit;
             }
@@ -262,6 +262,7 @@ public class ConverterUtil {
                  else if (to == Unit.KILOMETER) {
                     constant = 1e-6;
                 }
+                break;
 
             //TEMPERATURE CASE STATEMENTS
 //          Temperature follows a formula not ratio.. Derp. Needs its own util sorta thing.
@@ -293,10 +294,12 @@ public class ConverterUtil {
                 if (to == Unit.SECOND) {
 
                 }
+                break;
             case YEAR:
                 if(to == Unit.DECADE) {
                     constant = 0.10;
                 }
+                break;
 
             //VOLUME CASE STATEMENTS
 
