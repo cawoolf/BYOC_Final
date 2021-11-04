@@ -107,9 +107,9 @@ public class ConverterUtil {
             Unit unit = TEST_UNIT;
             String[] irregularUnitNames = {"Sq Kilometer", "Sq Meter", "Sq Centimeter",
                     "Sq Mile", "Sq Foot", "Sq Inch","Fluid Ounce", "Cubic Meter", "Metric Tonne"};
-            Unit[] unitEnums = {SQ_KILOMETER, SQ_METER, SQ_CENTIMETER, SQ_MILE, SQ_FOOT, FLUID_OUNCE, CUBIC_METER, METRIC_TONNE};
+            Unit[] unitEnums = {SQ_KILOMETER, SQ_METER, SQ_CENTIMETER, SQ_MILE, SQ_FOOT, SQ_INCH, FLUID_OUNCE, CUBIC_METER, METRIC_TONNE};
 
-            for(int i = 0; i < irregularUnitNames.length; i++) {
+            for(int i = 0; i <= irregularUnitNames.length; i++) {
                 String unitString = irregularUnitNames[i];
                 if(text.equals(unitString)) {
                     unit = unitEnums[i];

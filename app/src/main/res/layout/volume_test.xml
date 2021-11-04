@@ -1,22 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
 
+    android:elevation="1dp"
     style="@style/custom_scrollview_style">
 
     <LinearLayout
-        android:id="@+id/masterAreaLinearLayout_Preset_ScrollView"
+        android:id="@+id/masterDistanceLinearLayout_Preset_ScrollView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:visibility="visible"
-        >
+
+        android:baselineAligned="false">
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_weight="1">
             <LinearLayout
                 android:layout_width="match_parent"
@@ -24,68 +27,75 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/Temp_A1"
+                    android:id="@+id/VA1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/temperature_celsius"
+                    android:text= "@string/volume_gallon"
+                    style="@style/srollview_textview_style"
+                    />
+
+                <TextView
+                    android:id="@+id/VA2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/volume_quart"
                     style="@style/srollview_textview_style"/>
 
                 <TextView
-                    android:id="@+id/Temp_A2"
+                    android:id="@+id/VA3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/temperature_fahrenheit"
+                    android:text="@string/volume_fluid_ounce"
                     style="@style/srollview_textview_style"/>
 
                 <TextView
-                    android:id="@+id/Temp_A3"
+                    android:id="@+id/VA4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/temperature_kelvin"
+                    android:text="@string/volume_cup"
                     style="@style/srollview_textview_style"/>
 
                 <TextView
-                    android:visibility="gone"
+                    android:id="@+id/VA5"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/area_square_centimeter"
+                    android:text="@string/volume_tablespoon"
                     style="@style/srollview_textview_style"/>
 
                 <TextView
-                    android:visibility="gone"
+                    android:id="@+id/VA6"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/area_acre"
+                    android:text="@string/volume_cubic_meter"
                     style="@style/srollview_textview_style"/>
 
                 <TextView
-                    android:visibility="gone"
+                    android:id="@+id/VA7"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/area_square_mile"
+                    android:text="@string/volume_litre"
                     style="@style/srollview_textview_style"/>
 
                 <TextView
-                    android:visibility="gone"
+                    android:id="@+id/VA8"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/area_square_foot"
+                    android:text="@string/volume_centiliter"
                     style="@style/srollview_textview_style"/>
 
                 <TextView
-                    android:visibility="gone"
+                    android:id="@+id/VA9"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/area_square_inch"
+                    android:text="@string/volume_milliliter"
                     style="@style/srollview_textview_style"/>
-
-
             </LinearLayout>
+
         </ScrollView>
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_weight="1">
 
             <LinearLayout
@@ -94,64 +104,69 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/Temp_B1"
+                    android:id="@+id/VB1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/temperature_celsius"
+                    android:text= "@string/volume_gallon"
                     style="@style/srollview_textview_style"/>
 
                 <TextView
-                    android:id="@+id/Temp_B2"
+                    android:id="@+id/VB2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/temperature_fahrenheit"
+                    android:text="@string/volume_quart"
                     style="@style/srollview_textview_style"/>
 
                 <TextView
-                    android:id="@+id/Temp_B3"
+                    android:id="@+id/VB3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/temperature_kelvin"
+                    android:text="@string/volume_fluid_ounce"
                     style="@style/srollview_textview_style"/>
 
                 <TextView
-                    android:visibility="gone"
+                    android:id="@+id/VB4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/area_square_centimeter"
+                    android:text="@string/volume_cup"
                     style="@style/srollview_textview_style"/>
 
                 <TextView
-                    android:visibility="gone"
+                    android:id="@+id/VB5"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/area_acre"
+                    android:text="@string/volume_tablespoon"
                     style="@style/srollview_textview_style"/>
 
                 <TextView
-                    android:visibility="gone"
+                    android:id="@+id/VB6"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/area_square_mile"
+                    android:text="@string/volume_teaspoon"
                     style="@style/srollview_textview_style"/>
 
                 <TextView
-                    android:visibility="gone"
+                    android:id="@+id/VB7"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/area_square_foot"
+                    android:text="@string/volume_litre"
                     style="@style/srollview_textview_style"/>
 
                 <TextView
-                    android:visibility="gone"
+                    android:id="@+id/VB8"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/area_square_inch"
+                    android:text="@string/volume_centiliter"
                     style="@style/srollview_textview_style"/>
 
+                <TextView
+                    android:id="@+id/VB9"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/volume_milliliter"
+                    style="@style/srollview_textview_style"/>
 
             </LinearLayout>
-
 
         </ScrollView>
 

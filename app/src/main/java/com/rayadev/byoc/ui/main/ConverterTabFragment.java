@@ -62,7 +62,7 @@ public class ConverterTabFragment extends Fragment {
 
     public ConverterTabFragment() {
         //Sets the initial spinner category to distance.
-        this.spinnerID = R.layout.spinner_scrollview_distance;
+//        this.spinnerID = R.layout.spinner_scrollview_distance;
 
     }
 
@@ -234,6 +234,11 @@ public class ConverterTabFragment extends Fragment {
         adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
         spinner.setAdapter(adapter);
 
+        //Sets the initial spinner category to distance.
+        if(mFreshFragment) {
+            spinner.setSelection(2);
+        }
+
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parentView, View view, int position, long id) {
@@ -242,6 +247,8 @@ public class ConverterTabFragment extends Fragment {
                 CharSequence text = selected;
 //                int duration = Toast.LENGTH_SHORT;
                 Log.i("STAG", text.toString());
+
+
 
                 if (text.equals(getString(R.string.spinner_area_title))) {
 //                    Toast toast = Toast.makeText(context, "CATEGORY: " + text, duration);
@@ -286,14 +293,14 @@ public class ConverterTabFragment extends Fragment {
 
                 }
 
-                if(text.equals(R.string.spinner_volume_title)) {
+                if(text.equals("Volume")) {
                     mSpinnerCategorySelection.unitSpinnerCategory((String)text);
                     setSpinnerScrollViewFragment(R.layout.spinner_scrollview_volume);
                     mUnitCategory = (String) text;
 
                 }
 
-                if(text.equals(R.string.spinner_weight_title)) {
+                if(text.equals("Weight")) {
                     mSpinnerCategorySelection.unitSpinnerCategory((String)text);
                     setSpinnerScrollViewFragment(R.layout.spinner_scrollview_weight);
                     mUnitCategory = (String) text;

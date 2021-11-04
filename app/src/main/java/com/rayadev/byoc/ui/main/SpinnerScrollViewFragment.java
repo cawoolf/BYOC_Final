@@ -104,6 +104,39 @@ public class SpinnerScrollViewFragment extends Fragment {
             linkSpinnerViews(view, currencyScrollViewA_ViewIDs, currencyScrollViewB_ViewIds);
         }
 
+        if(layoutID == R.layout.spinner_scrollview_temperature) {
+
+            mUnitCategory = getString(R.string.spinner_temperature_title);
+
+            int[] scrollViewA_IDs = {R.id.Temp_A1, R.id.Temp_A2, R.id.Temp_A3};
+            int[] scrollViewB_IDs = {R.id.Temp_B1, R.id.Temp_B2, R.id.Temp_B3};
+
+            linkSpinnerViews(view, scrollViewA_IDs, scrollViewB_IDs);
+        }
+
+        if(layoutID == R.layout.spinner_scrollview_time) {
+            mUnitCategory = getString(R.string.spinner_time_title);
+            int[] scrollViewA_IDs = {R.id.TA1, R.id.TA2, R.id.TA3, R.id.TA4, R.id.TA5,
+                    R.id.TA6, R.id.TA7, R.id.TA8};
+            int[] scrollViewB_IDs = {R.id.TB1, R.id.TB2, R.id.TB3, R.id.TB4,
+                    R.id.TB5, R.id.TB6, R.id.TB7, R.id.TB8};
+
+            linkSpinnerViews(view, scrollViewA_IDs, scrollViewB_IDs);
+
+        }
+
+        if(layoutID == R.layout.spinner_scrollview_volume) {
+            mUnitCategory = getString(R.string.spinner_volume_title);
+
+            int[] scrollViewA_IDs = {R.id.VA1, R.id.VA2, R.id.VA3, R.id.VA4, R.id.VA5,
+            R.id.VA6, R.id.VA8, R.id.VA9};
+            int[] scrollViewB_IDs = {R.id.VB1, R.id.VB2, R.id.VB3, R.id.VB4, R.id.VB5, R.id.VB6,
+            R.id.VB7, R.id.VB8};
+
+            linkSpinnerViews(view, scrollViewA_IDs, scrollViewB_IDs);
+
+        }
+
         if(layoutID == R.layout.spinner_scrollview_weight) {
             mUnitCategory = getString(R.string.spinner_weight_title);
 
