@@ -145,28 +145,28 @@ public class ConverterUtil {
                     constant = 0.01;
                 }
                 else if(to == Unit.SQ_METER) {
-
+                    constant = 10000;
                 }
                 else if(to == Unit.SQ_CENTIMETER) {
-
+                    constant = 1e+8;
                 }
                 else if(to == Unit.ACRE) {
-
+                    constant = 2.47105;
                 }
                 else if(to == Unit.SQ_MILE) {
-
+                    constant = 0.00386102;
                 }
                 else if(to == Unit.SQ_FOOT){
-
+                    constant = 107639;
                 }
                 else if(to == Unit.SQ_INCH) {
-
+                    constant = 1.55e+7;
                 }
                 break;
 
             case SQ_KILOMETER:
                 if(to == Unit.HECTARE){
-
+                    constant = 100;
                 }
                 else if(to == Unit.SQ_KILOMETER){
                     //SQ_KILOMETER Same Unit, constant = 1;
@@ -174,31 +174,31 @@ public class ConverterUtil {
                 }
 
                 else if(to == Unit.SQ_METER) {
-
+                    constant = 1000000;
                 }
                 else if(to == Unit.SQ_CENTIMETER){
-
+                    constant = 1e+10;
                 }
                 else if(to == Unit.ACRE) {
-
+                    constant = 247.105;
                 }
                 else if(to == Unit.SQ_MILE){
-
+                    constant = 0.386102;
                 }
                 else if(to == Unit.SQ_FOOT){
-
+                    constant = 1.076e+7;
                 }
                 else if(to == Unit.SQ_INCH){
-
+                    constant = 1.55e+9;
                 }
                 break;
 
             case SQ_METER:
                 if(to == Unit.HECTARE){
-
+                    constant = 0.0001;
                 }
                 else if(to == Unit.SQ_KILOMETER){
-
+                    constant = 1e-6;
                 }
                 else if(to == Unit. SQ_METER){
                     //Same Unit
@@ -206,103 +206,101 @@ public class ConverterUtil {
                 }
 
                 else if(to == Unit.SQ_CENTIMETER){
-
+                    constant = 10000;
                 }
                 else if(to == Unit.ACRE){
-
+                    constant = 0.000247105;
                 }
                 else if(to == Unit.SQ_MILE){
-
+                    constant = 3.86102e-7;
                 }
                 else if(to == Unit.SQ_FOOT){
-
+                    constant = 10.7639;
                 }
                 else if(to == Unit.SQ_INCH) {
-
+                    constant = 1550;
                 }
                 break;
+
             case SQ_CENTIMETER:
                 if(to == Unit.HECTARE) {
-
+                    constant = 1e-8;
                 }
                 else if(to == Unit.SQ_KILOMETER){
-
+                    constant = 1e-10;
                 }
                 else if(to == Unit.SQ_METER){
-
+                    constant = 0.0001;
                 }
                 else if(to == Unit.SQ_CENTIMETER){
                     //Same Unit
                     constant = 1;
                 }
                 else if(to == Unit.ACRE) {
-
+                    constant = 2.47105e-8;
                 }
                 else if(to == Unit.SQ_MILE){
-
+                    constant = 3.86102e-11;
                 }
                 else if(to == Unit.SQ_FOOT){
-
+                    constant = 0.00107639;
                 }
                 else if(to == Unit.SQ_INCH){
-
+                    constant = 0.155;
                 }
                 break;
             case ACRE:
                 if(to == Unit.HECTARE){
-
+                    constant = 0.404686;
                 }
                 else if(to == Unit.SQ_KILOMETER){
-
+                    constant = 0.00404686;
                 }
                 else if(to == Unit.SQ_METER){
-
+                    constant = 4046.86;
                 }
                 else if(to == Unit.SQ_CENTIMETER){
-
+                    constant = 4.047e+7;
                 }
                 else if(to == Unit.ACRE){
                     //Same Unit
                     constant = 1;
                 }
                 else if(to == Unit.SQ_MILE){
-
+                    constant = 0.0015625;
                 }
                 else if(to == Unit.SQ_FOOT){
-
+                    constant = 43560;
                 }
                 else if(to == Unit.SQ_INCH){
-
+                    constant = 6.273e+6;
                 }
                 break;
             case SQ_MILE:
                 if(to == Unit.HECTARE){
-
+                    constant = 258.999;
                 }
                 else if(to == Unit.SQ_KILOMETER){
-
+                    constant = 2.58999;
                 }
                 else if(to == Unit.SQ_METER) {
-
+                    constant = 2.59e+6;
                 }
                 else if(to == Unit.SQ_CENTIMETER){
-
+                    constant = 2.59e+10;
                 }
                 else if(to == Unit.ACRE){
-
+                    constant = 640;
                 }
                 else if(to == Unit.SQ_MILE) {
                     //Same Unit
                     constant = 1;
                 }
                 else if(to == Unit.SQ_FOOT){
-
+                    constant = 2.788e+7;
                 }
                 else if(to == Unit.SQ_INCH){
-
-                }
-                else if(to == Unit.SQ_INCH){
-
+                    constant = 4.014e+9;
                 }
                 break;
 
