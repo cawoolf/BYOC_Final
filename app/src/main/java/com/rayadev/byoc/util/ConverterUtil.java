@@ -17,6 +17,7 @@ public class ConverterUtil {
         TEST_UNIT,
 
         //Area
+        HECTARE,
         SQ_KILOMETER,
         SQ_METER,
         SQ_CENTIMETER,
@@ -136,6 +137,230 @@ public class ConverterUtil {
         switch (from) {
 
             //AREA CASE STATEMENTS
+            case HECTARE:
+                if(to == Unit.HECTARE) {
+                    //HECTARE Same Unit, constant = 1;
+                }
+                else if(to == Unit.SQ_KILOMETER) {
+                    constant = 0.01;
+                }
+                else if(to == Unit.SQ_METER) {
+
+                }
+                else if(to == Unit.SQ_CENTIMETER) {
+
+                }
+                else if(to == Unit.ACRE) {
+
+                }
+                else if(to == Unit.SQ_MILE) {
+
+                }
+                else if(to == Unit.SQ_FOOT){
+
+                }
+                else if(to == Unit.SQ_INCH) {
+
+                }
+                break;
+
+            case SQ_KILOMETER:
+                if(to == Unit.HECTARE){
+
+                }
+                else if(to == Unit.SQ_KILOMETER){
+                    //SQ_KILOMETER Same Unit, constant = 1;
+                    constant = 1;
+                }
+
+                else if(to == Unit.SQ_METER) {
+
+                }
+                else if(to == Unit.SQ_CENTIMETER){
+
+                }
+                else if(to == Unit.ACRE) {
+
+                }
+                else if(to == Unit.SQ_MILE){
+
+                }
+                else if(to == Unit.SQ_FOOT){
+
+                }
+                else if(to == Unit.SQ_INCH){
+
+                }
+                break;
+
+            case SQ_METER:
+                if(to == Unit.HECTARE){
+
+                }
+                else if(to == Unit.SQ_KILOMETER){
+
+                }
+                else if(to == Unit. SQ_METER){
+                    //Same Unit
+                    constant = 1;
+                }
+
+                else if(to == Unit.SQ_CENTIMETER){
+
+                }
+                else if(to == Unit.ACRE){
+
+                }
+                else if(to == Unit.SQ_MILE){
+
+                }
+                else if(to == Unit.SQ_FOOT){
+
+                }
+                else if(to == Unit.SQ_INCH) {
+
+                }
+                break;
+            case SQ_CENTIMETER:
+                if(to == Unit.HECTARE) {
+
+                }
+                else if(to == Unit.SQ_KILOMETER){
+
+                }
+                else if(to == Unit.SQ_METER){
+
+                }
+                else if(to == Unit.SQ_CENTIMETER){
+                    //Same Unit
+                    constant = 1;
+                }
+                else if(to == Unit.ACRE) {
+
+                }
+                else if(to == Unit.SQ_MILE){
+
+                }
+                else if(to == Unit.SQ_FOOT){
+
+                }
+                else if(to == Unit.SQ_INCH){
+
+                }
+                break;
+            case ACRE:
+                if(to == Unit.HECTARE){
+
+                }
+                else if(to == Unit.SQ_KILOMETER){
+
+                }
+                else if(to == Unit.SQ_METER){
+
+                }
+                else if(to == Unit.SQ_CENTIMETER){
+
+                }
+                else if(to == Unit.ACRE){
+                    //Same Unit
+                    constant = 1;
+                }
+                else if(to == Unit.SQ_MILE){
+
+                }
+                else if(to == Unit.SQ_FOOT){
+
+                }
+                else if(to == Unit.SQ_INCH){
+
+                }
+                break;
+            case SQ_MILE:
+                if(to == Unit.HECTARE){
+
+                }
+                else if(to == Unit.SQ_KILOMETER){
+
+                }
+                else if(to == Unit.SQ_METER) {
+
+                }
+                else if(to == Unit.SQ_CENTIMETER){
+
+                }
+                else if(to == Unit.ACRE){
+
+                }
+                else if(to == Unit.SQ_MILE) {
+                    //Same Unit
+                    constant = 1;
+                }
+                else if(to == Unit.SQ_FOOT){
+
+                }
+                else if(to == Unit.SQ_INCH){
+
+                }
+                else if(to == Unit.SQ_INCH){
+
+                }
+                break;
+
+            case SQ_FOOT:
+                if(to == Unit.HECTARE){
+
+                }
+                else if(to == Unit.SQ_KILOMETER){
+
+                }
+                else if(to == Unit.SQ_METER){
+
+                }
+                else if(to == Unit.SQ_CENTIMETER){
+
+                }
+                else if(to == Unit.ACRE){
+
+                }
+                else if(to == Unit.SQ_MILE){
+
+                }
+                else if(to == Unit.SQ_FOOT){
+                    //Same Unit
+                    constant = 1;
+                }
+                else if(to == Unit.SQ_INCH){
+
+                }
+                break;
+            case SQ_INCH:
+                if(to == Unit.HECTARE){
+
+                }
+                else if(to == Unit.SQ_KILOMETER) {
+
+                }
+                else if(to == Unit.SQ_METER){
+
+                }
+                else if(to == Unit.SQ_CENTIMETER){
+
+                }
+                else if(to == Unit.ACRE){
+
+                }
+                else if(to == Unit.SQ_MILE){
+
+                }
+                else if(to == Unit.SQ_FOOT){
+
+                }
+                else if(to == Unit.SQ_INCH){
+                    //Same Unit
+                    constant = 1;
+                }
+                break;
+
 
             //CURRENCY ***Has own Util***
 
