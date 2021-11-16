@@ -293,14 +293,14 @@ public class ConverterTabFragment extends Fragment {
 
                 }
 
-                if(text.equals("Volume")) {
+                if(text.equals(getString(R.string.spinner_volume_title))) {
                     mSpinnerCategorySelection.unitSpinnerCategory((String)text);
                     setSpinnerScrollViewFragment(R.layout.spinner_scrollview_volume);
                     mUnitCategory = (String) text;
 
                 }
 
-                if(text.equals("Weight")) {
+                if(text.equals(getString(R.string.spinner_weight_title))) {
                     mSpinnerCategorySelection.unitSpinnerCategory((String)text);
                     setSpinnerScrollViewFragment(R.layout.spinner_scrollview_weight);
                     mUnitCategory = (String) text;
