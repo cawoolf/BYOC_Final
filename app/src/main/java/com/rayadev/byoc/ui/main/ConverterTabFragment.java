@@ -183,10 +183,12 @@ public class ConverterTabFragment extends Fragment {
 
                         case 0:
 
+//                            if(mUnitCategory.equals(getString(R.string.spinner_currency_title))) getString doesnt work here for some reason!
                             if(mUnitCategory.equals("Currency")) {
                                 String currencyPair = mUnitBString + "_" + mUnitAString;
                                 setUpTargetCurrency(currencyPair, mUnitBString, mUnitAString);
                                 mSwapUnits = 1;
+                                Log.i("STAG", "Currency swap case 0");
 
                             }
 
@@ -203,6 +205,7 @@ public class ConverterTabFragment extends Fragment {
                                 String currencyPair = mUnitAString + "_" + mUnitBString;
                                 setUpTargetCurrency(currencyPair, mUnitAString, mUnitBString);
                                 mSwapUnits = 0;
+                                Log.i("STAG", "Currency swap case 1");
 
                             }
 
