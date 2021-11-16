@@ -43,8 +43,9 @@ public class MyTextWatcherUtils {
         this.viewB = viewB;
         this.currencyValue = currencyValue;
 
-        viewA.setInputType(InputType.TYPE_NUMBER_FLAG_DECIMAL);
-        viewB.setInputType(InputType.TYPE_NUMBER_FLAG_DECIMAL);
+        //Favorites keyboard gets all weird when you mess with the flag here. Displays regular text
+        viewA.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_DECIMAL);
+        viewB.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_DECIMAL);
 
     }
 
@@ -55,6 +56,10 @@ public class MyTextWatcherUtils {
         this.viewB = viewB;
         this.tempUserInput = tempUserInput;
         this.tempCombos = tempCombos;
+
+        //Allows for negative number on keyboard input
+        viewA.setInputType(InputType.TYPE_CLASS_NUMBER| InputType.TYPE_NUMBER_FLAG_SIGNED);
+        viewB.setInputType(InputType.TYPE_CLASS_NUMBER| InputType.TYPE_NUMBER_FLAG_SIGNED);
 
 
     }
