@@ -259,13 +259,122 @@ public class MyTextWatcherUtils {
 
     private void runTempConversionAB() {
         Log.i("TW", "Inside TW AB");
+
+        String editTextAInputString = String.valueOf(viewA.getText());
+
+        if (!editTextAInputString.equals("") && !editTextAInputString.equals(".")) {
+            double input = Double.parseDouble(viewA.getText().toString());
+            double result = getTempConversion(input, tempUserInput);
+
+            String result_String = String.valueOf(result);
+
+            //Handles the text output for small results.
+            if(result < 1) {
+                if(result_String.length() < 9)
+                {
+                    result_String = new DecimalFormat("0.#######").format(result);
+                }
+                else {
+                    result_String = new DecimalFormat("0.#######E00").format(result);
+                }
+
+            }
+            else {
+
+                result_String = new DecimalFormat("#########.###").format(result);
+            }
+
+            //Handles text output for large results
+            if(result_String.length() > 12){
+                result_String = new DecimalFormat("#######.###E00").format(result);
+            }
+            viewB.setText(result_String);
+        }
+        else {
+            viewB.setText("");
+
+        }
+
+
     }
 
     private void runTempConversionBA() {
         Log.i("TW", "Inside TW BA");
+        String editTextAInputString = String.valueOf(viewB.getText());
+
+        if (!editTextAInputString.equals("") && !editTextAInputString.equals(".")) {
+            double input = Double.parseDouble(viewB.getText().toString());
+            double result = getTempConversion(input, tempUserInput);
+
+            String result_String = String.valueOf(result);
+
+            //Handles the text output for small results.
+            if(result < 1) {
+                if(result_String.length() < 9)
+                {
+                    result_String = new DecimalFormat("0.#######").format(result);
+                }
+                else {
+                    result_String = new DecimalFormat("0.#######E00").format(result);
+                }
+
+            }
+            else {
+
+                result_String = new DecimalFormat("#########.###").format(result);
+            }
+
+            //Handles text output for large results
+            if(result_String.length() > 12){
+                result_String = new DecimalFormat("#######.###E00").format(result);
+            }
+            viewA.setText(result_String);
+        }
+        else {
+            viewA.setText("");
+
+        }
 
     }
 
+    private double getTempConversion(double input, String tempUserInput) {
+        double result = 0.0;
+        String foundTemp = "";
+        for(int i = 0; i < tempCombos.length; i++){
+            if(tempUserInput.equals(tempCombos[i])) {
+                foundTemp = tempUserInput;
+            }
+        }
+
+        //Fahrenheit to Celsius
+        if(foundTemp.equals(tempCombos[0])) {
+            result = ((50*input) - 32) * 0.5556;
+
+        }
+        //F to K
+        if(foundTemp.equals(tempCombos[1])) {
+            result = 0.556 * (input + 459.67);
+        }
+        //C to F
+        if(foundTemp.equals(tempCombos[2])){
+            result = (1.8*input) + 32;
+        }
+        //C to K
+        if(foundTemp.equals(tempCombos[3])){
+            result = input + 273.15;
+        }
+        //K to F
+        if (foundTemp.equals(tempCombos[4])){
+            result = ((input - 273.15) * 1.8) + 32;
+        }
+        //K to C
+        if(foundTemp.equals(tempCombos[5])){
+            result = input = 273.15;
+        }
+
+        return result;
+
+    }
 
 
 }
