@@ -33,6 +33,10 @@ public class MyTextWatcherUtils {
         this.viewA = viewA;
         this.viewB = viewB;
 
+        //Favorites keyboard gets all weird when you mess with the flag here. Displays regular text
+        viewA.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_DECIMAL);
+        viewB.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_DECIMAL);
+
     }
 
 
@@ -82,7 +86,6 @@ public class MyTextWatcherUtils {
                         if(viewA.isFocused()) {
                             runConversionAB(converter);
                         }
-
                         break;
                     case 2:
                         if(viewB.isFocused()) {
@@ -123,9 +126,10 @@ public class MyTextWatcherUtils {
 
         //Currency provides a null converter
         //Temp does as well.. Should be able to use same constructor
+        final boolean b = !editTextAInputString.equals("") && !editTextAInputString.equals(".") && !editTextAInputString.equals("-");
         if(converter == null) {
 
-            if (!editTextAInputString.equals("") && !editTextAInputString.equals(".")) {
+            if (b) {
                 double input = Double.parseDouble(viewA.getText().toString());
 
                 double result = input * currencyValue;
@@ -143,8 +147,7 @@ public class MyTextWatcherUtils {
 
         else {
 
-
-            if (!editTextAInputString.equals("") && !editTextAInputString.equals(".")) {
+            if (b) {
                 double input = Double.parseDouble(viewA.getText().toString());
                 double result;
 
@@ -201,8 +204,9 @@ public class MyTextWatcherUtils {
         String editTextBInputString = String.valueOf(viewB.getText());
 
         //Currency provides a null converter
+        boolean b = !editTextBInputString.equals("") && !editTextBInputString.equals(".") && !editTextBInputString.equals("-");
         if(converter == null) {
-            if (!editTextBInputString.equals("") && !editTextBInputString.equals(".")) {
+            if (b) {
                 double input = Double.parseDouble(viewB.getText().toString());
 
                 double result = input * (1/currencyValue);
@@ -218,7 +222,7 @@ public class MyTextWatcherUtils {
         }
 
         else {
-            if (!editTextBInputString.equals("") && !editTextBInputString.equals(".")) {
+            if (b) {
                 double input = Double.parseDouble(viewB.getText().toString());
                 double result;
 
