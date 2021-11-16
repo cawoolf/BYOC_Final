@@ -15,7 +15,6 @@ public class MyTextWatcherUtils {
     private EditText viewA, viewB;
     private ConverterUtil converter;
     private int userSelection;
-    private double baseCurrency;
     private double currencyValue;
 
     private TextWatcher mTextWatcher;
@@ -32,12 +31,11 @@ public class MyTextWatcherUtils {
     }
 
 
-    public MyTextWatcherUtils(int userSelection, EditText viewA, EditText viewB, double baseCurrency, double currencyValue) {
+    public MyTextWatcherUtils(int userSelection, EditText viewA, EditText viewB, double currencyValue) {
 
         this.userSelection = userSelection;
         this.viewA = viewA;
         this.viewB = viewB;
-        this.baseCurrency = baseCurrency;
         this.currencyValue = currencyValue;
 
     }
@@ -90,6 +88,7 @@ public class MyTextWatcherUtils {
         String editTextAInputString = String.valueOf(viewA.getText());
 
         //Currency provides a null converter
+        //Temp does as well.. Should be able to use same constructor
         if(converter == null) {
 
             if (!editTextAInputString.equals("") && !editTextAInputString.equals(".")) {

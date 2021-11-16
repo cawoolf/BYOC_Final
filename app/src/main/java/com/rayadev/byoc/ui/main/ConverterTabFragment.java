@@ -380,6 +380,9 @@ public class ConverterTabFragment extends Fragment {
     //Will come from the SpinnerInterface
     private void setUpTargetTemperature(String tempA, String tempB) {
         Log.i("STAG", "setUpTargetTemp() called");
+        enableKeyboard();
+
+
     }
 
     private void setConverterBoxTitles(String unitAText, String unitBText) {
@@ -525,8 +528,8 @@ public class ConverterTabFragment extends Fragment {
 
         clearUserInput();
 
-        MyTextWatcherUtils utilA = new MyTextWatcherUtils(1, mUnitAInputEditText, mUnitBInputEditText, 1, currencyValue);
-        MyTextWatcherUtils utilB = new MyTextWatcherUtils(2,  mUnitAInputEditText, mUnitBInputEditText, 1, currencyValue);
+        MyTextWatcherUtils utilA = new MyTextWatcherUtils(1, mUnitAInputEditText, mUnitBInputEditText, currencyValue);
+        MyTextWatcherUtils utilB = new MyTextWatcherUtils(2,  mUnitAInputEditText, mUnitBInputEditText,currencyValue);
 
 
         utilA.setUnitEditTextWatcher(mUnitAInputEditText);
