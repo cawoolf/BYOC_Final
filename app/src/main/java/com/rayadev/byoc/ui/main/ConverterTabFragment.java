@@ -194,6 +194,7 @@ public class ConverterTabFragment extends Fragment {
 
                             if(mUnitCategory.equals("Temperature")) {
                                 Log.i("STAG", "Temperature swap case 0");
+                                setUpTargetTemperature(mUnitBString, mUnitAString);
                             }
 
                             else {
@@ -214,6 +215,7 @@ public class ConverterTabFragment extends Fragment {
                             }
                             if(mUnitCategory.equals("Temperature")) {
                                 Log.i("STAG", "Temperature swap case 1");
+                                setUpTargetTemperature(mUnitAString, mUnitBString);
 
                             }
 
@@ -355,6 +357,10 @@ public class ConverterTabFragment extends Fragment {
                     setUpTargetCurrency(currencyPair, converterUnitAName, converterUnitBName);
 
                 }
+                if(unitCategory.equals((getString(R.string.spinner_temperature_title)))) {
+                    Log.i("STAG", "Temperature Spinner");
+                    setUpTargetTemperature(mUnitAString, mUnitBString);
+                }
                 else {
 
                     setConverterBoxLogic(fromUnit, toUnit);
@@ -372,7 +378,9 @@ public class ConverterTabFragment extends Fragment {
     }
 
     //Will come from the SpinnerInterface
-
+    private void setUpTargetTemperature(String tempA, String tempB) {
+        Log.i("STAG", "setUpTargetTemp() called");
+    }
 
     private void setConverterBoxTitles(String unitAText, String unitBText) {
 
