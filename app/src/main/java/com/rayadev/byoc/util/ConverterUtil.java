@@ -317,6 +317,8 @@ public class ConverterUtil {
                     constant = 1.5783e-5;
                 } else if (to == Unit.KILOMETER) {
                     constant = 2.54e-5;
+                } else if (to == Unit.MILLIMETER) {
+                    constant = 25.4;
                 }
                 break;
             case CENTIMETER:
@@ -332,6 +334,8 @@ public class ConverterUtil {
                     constant = 6.2137e-6;
                 } else if (to == Unit.KILOMETER) {
                     constant = 1e-5;
+                } else if (to == Unit.MILLIMETER) {
+                    constant = 10;
                 }
                 break;
             case FOOT:
@@ -347,6 +351,8 @@ public class ConverterUtil {
                     constant = 0.000189394;
                 } else if (to == Unit.KILOMETER) {
                     constant = 0.0003048;
+                } else if (to == Unit.MILLIMETER) {
+                    constant = 304.8;
                 }
                 break;
             case YARD:
@@ -362,6 +368,8 @@ public class ConverterUtil {
                     constant = 0.000568182;
                 } else if (to == Unit.KILOMETER) {
                     constant = 0.0009144;
+                } else if (to == Unit.MILLIMETER) {
+                    constant = 914.4;
                 }
                 break;
             case METER:
@@ -377,6 +385,8 @@ public class ConverterUtil {
                     constant = 0.000621371;
                 } else if (to == Unit.KILOMETER) {
                     constant = 0.001;
+                } else if (to == Unit.MILLIMETER) {
+                    constant = 1000;
                 }
                 break;
             case MILE:
@@ -392,6 +402,8 @@ public class ConverterUtil {
                     constant = 1609.34;
                 } else if (to == Unit.KILOMETER) {
                     constant = 1.60934;
+                } else if (to == Unit.MILLIMETER) {
+                    constant = 1.609e+6;
                 }
                 break;
             case KILOMETER:
@@ -407,6 +419,8 @@ public class ConverterUtil {
                     constant = 1000;
                 } else if (to == Unit.MILE) {
                     constant = 0.621371;
+                } else if (to == Unit.MILLIMETER) {
+                    constant = 1000000;
                 }
                 break;
             case MILLIMETER: //Some bugs with converting Millimeter.. Oh each other case UNIT now needs a MILLIMETER
@@ -424,6 +438,8 @@ public class ConverterUtil {
                     constant = 6.2137e-7;
                 } else if (to == Unit.KILOMETER) {
                     constant = 1e-6;
+                } else if (to == Unit.MILLIMETER) {
+                    constant = 1;
                 }
                 break;
 
