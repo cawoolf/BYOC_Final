@@ -1,6 +1,7 @@
 package com.rayadev.byoc.util;
 
 import android.text.Editable;
+import android.text.InputType;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.widget.EditText;
@@ -42,14 +43,20 @@ public class MyTextWatcherUtils {
         this.viewB = viewB;
         this.currencyValue = currencyValue;
 
+        viewA.setInputType(InputType.TYPE_NUMBER_FLAG_DECIMAL);
+        viewB.setInputType(InputType.TYPE_NUMBER_FLAG_DECIMAL);
+
     }
 
+    //Constructor for temp
     public MyTextWatcherUtils(int userSelection, EditText viewA, EditText viewB, String tempUserInput, String[] tempCombos) {
         this.userSelection = userSelection;
         this.viewA = viewA;
         this.viewB = viewB;
         this.tempUserInput = tempUserInput;
         this.tempCombos = tempCombos;
+
+
     }
 
     public void setUnitEditTextWatcher(EditText userInputEditText) {
@@ -348,7 +355,7 @@ public class MyTextWatcherUtils {
 
         //Fahrenheit to Celsius
         if(foundTemp.equals(tempCombos[0])) {
-            result = ((50*input) - 32) * 0.5556;
+            result = (input - 32) * 0.5556;
 
         }
         //F to K
@@ -369,7 +376,7 @@ public class MyTextWatcherUtils {
         }
         //K to C
         if(foundTemp.equals(tempCombos[5])){
-            result = input = 273.15;
+            result = input - 273.15;
         }
 
         return result;
