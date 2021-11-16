@@ -267,6 +267,7 @@ public class ConverterTabFragment extends Fragment {
                 if (text.equals(getString(R.string.spinner_area_title))) {
 //                    Toast toast = Toast.makeText(context, "CATEGORY: " + text, duration);
 //                    toast.show();
+                    mFreshFragment = true;
                     mSpinnerCategorySelection.unitSpinnerCategory((String)text);
                     setSpinnerScrollViewFragment(R.layout.spinner_scrollview_area);
                     mUnitCategory = (String) text;
@@ -275,7 +276,7 @@ public class ConverterTabFragment extends Fragment {
                 if (text.equals(getString(R.string.spinner_currency_title))) {
 //                    Toast toast = Toast.makeText(context, "CATEGORY: " + text, duration);
 //                    toast.show();
-
+                    mFreshFragment = true;
                     mSpinnerCategorySelection.unitSpinnerCategory((String)text);
                     setSpinnerScrollViewFragment(R.layout.spinner_scrollview_currency);
                     mUnitCategory = (String) text;
@@ -286,7 +287,7 @@ public class ConverterTabFragment extends Fragment {
                 if (text.equals(getString(R.string.spinner_distance_title))) {
 //                    Toast toast = Toast.makeText(context, "CATEGORY: " + text, duration);
 //                    toast.show();
-
+                    mFreshFragment = true;
                     mSpinnerCategorySelection.unitSpinnerCategory((String)text);
                     setSpinnerScrollViewFragment(R.layout.spinner_scrollview_distance);
                     mUnitCategory = (String) text;
@@ -294,6 +295,7 @@ public class ConverterTabFragment extends Fragment {
                 }
 
                 if(text.equals(getString(R.string.spinner_temperature_title))) {
+                    mFreshFragment = true;
                     mSpinnerCategorySelection.unitSpinnerCategory((String)text);
                     setSpinnerScrollViewFragment(R.layout.spinner_scrollview_temperature);
                     mUnitCategory = (String) text;
@@ -301,6 +303,7 @@ public class ConverterTabFragment extends Fragment {
                 }
 
                 if(text.equals(getString(R.string.spinner_time_title))) {
+                    mFreshFragment = true;
                     mSpinnerCategorySelection.unitSpinnerCategory((String)text);
                     setSpinnerScrollViewFragment(R.layout.spinner_scrollview_time);
                     mUnitCategory = (String) text;
@@ -308,6 +311,7 @@ public class ConverterTabFragment extends Fragment {
                 }
 
                 if(text.equals(getString(R.string.spinner_volume_title))) {
+                    mFreshFragment = true;
                     mSpinnerCategorySelection.unitSpinnerCategory((String)text);
                     setSpinnerScrollViewFragment(R.layout.spinner_scrollview_volume);
                     mUnitCategory = (String) text;
@@ -315,6 +319,7 @@ public class ConverterTabFragment extends Fragment {
                 }
 
                 if(text.equals(getString(R.string.spinner_weight_title))) {
+                    mFreshFragment = true;
                     mSpinnerCategorySelection.unitSpinnerCategory((String)text);
                     setSpinnerScrollViewFragment(R.layout.spinner_scrollview_weight);
                     mUnitCategory = (String) text;
@@ -414,6 +419,11 @@ public class ConverterTabFragment extends Fragment {
                 clearUserInput();
             }
         });
+
+        if(mFreshFragment) {
+            displayFocusedKeyboard();
+        }
+        mFreshFragment = false;
 
 
 
@@ -602,6 +612,11 @@ public class ConverterTabFragment extends Fragment {
                 clearUserInput();
             }
         });
+
+        if(mFreshFragment) {
+            displayFocusedKeyboard();
+        }
+        mFreshFragment = false;
 
     }
 
