@@ -380,8 +380,61 @@ public class ConverterTabFragment extends Fragment {
     //Will come from the SpinnerInterface
     private void setUpTargetTemperature(String tempA, String tempB) {
         Log.i("STAG", "setUpTargetTemp() called");
-        enableKeyboard();
 
+        enableKeyboard();
+        mUnitAInputEditText.clearFocus();
+        mUnitBInputEditText.clearFocus();
+
+        clearUserInput();
+
+        String userInput = tempA + tempB;
+        String userInputReversed = tempB + tempA;
+        String[] tempCombos = getTempCombos();
+
+
+        //Special user choice to deal with reversed temperature
+        MyTextWatcherUtils utilA = new MyTextWatcherUtils(3, mUnitAInputEditText, mUnitBInputEditText, userInput, tempCombos);
+        MyTextWatcherUtils utilB = new MyTextWatcherUtils(4,  mUnitAInputEditText, mUnitBInputEditText, userInputReversed, tempCombos);
+
+
+        utilA.setUnitEditTextWatcher(mUnitAInputEditText);
+        utilB.setUnitEditTextWatcher(mUnitBInputEditText);
+
+
+        mUnitBInputEditText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                clearUserInput();
+            }
+        });
+
+        mUnitBInputEditText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                clearUserInput();
+            }
+        });
+
+
+
+    }
+
+    private String[] getTempCombos(){
+
+
+        String FtoC = getString(R.string.temperature_fahrenheit) + getString(R.string.temperature_celsius);
+        String FtoK = getString(R.string.temperature_fahrenheit)+getString(R.string.temperature_kelvin);
+
+        String CtoF = getString(R.string.temperature_celsius)+getString(R.string.temperature_fahrenheit);
+        String CtoK = getString(R.string.temperature_celsius) + getString(R.string.temperature_kelvin);
+
+        String KtoF = getString(R.string.temperature_kelvin) + getString(R.string.temperature_fahrenheit);
+        String KtoC = getString(R.string.temperature_kelvin) + getString(R.string.temperature_celsius);
+
+        String[] tempCombos = {FtoC,FtoK, CtoF, CtoK, KtoF, KtoC};
+
+
+        return tempCombos;
 
     }
 

@@ -4,6 +4,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.rayadev.byoc.util.ConverterUtil;
 
@@ -16,6 +17,9 @@ public class MyTextWatcherUtils {
     private ConverterUtil converter;
     private int userSelection;
     private double currencyValue;
+
+    private String tempUserInput;
+    private String[] tempCombos;
 
     private TextWatcher mTextWatcher;
 
@@ -38,6 +42,14 @@ public class MyTextWatcherUtils {
         this.viewB = viewB;
         this.currencyValue = currencyValue;
 
+    }
+
+    public MyTextWatcherUtils(int userSelection, EditText viewA, EditText viewB, String tempUserInput, String[] tempCombos) {
+        this.userSelection = userSelection;
+        this.viewA = viewA;
+        this.viewB = viewB;
+        this.tempUserInput = tempUserInput;
+        this.tempCombos = tempCombos;
     }
 
     public void setUnitEditTextWatcher(EditText userInputEditText) {
@@ -65,6 +77,16 @@ public class MyTextWatcherUtils {
                             runConversionBA(converter);
                         }
                         break;
+
+                    case 3:
+                        if(viewA.isFocused()) {
+                            runTempConversionAB();
+                        }
+                        break;
+                    case 4:
+                        if(viewB.isFocused()) {
+                            runTempConversionBA();
+                        }
                 }
 
 
@@ -234,6 +256,16 @@ public class MyTextWatcherUtils {
         }
 
     }
+
+    private void runTempConversionAB() {
+        Log.i("TW", "Inside TW AB");
+    }
+
+    private void runTempConversionBA() {
+        Log.i("TW", "Inside TW BA");
+
+    }
+
 
 
 }
