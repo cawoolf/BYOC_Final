@@ -56,9 +56,11 @@
                 android:layout_height="@dimen/converter_cardview_edit_text_height"
                 android:layout_weight="1"
 
+
                 android:background="@drawable/edit_text_border_square"
                 android:padding="10dp"
                 android:textSize="@dimen/converter_cardview_edit_text_textsize"
+
 
                 android:inputType="numberDecimal"
                 android:imeOptions="actionDone"

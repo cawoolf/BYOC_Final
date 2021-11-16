@@ -274,7 +274,7 @@ public class MyTextWatcherUtils {
 
         String editTextAInputString = String.valueOf(viewA.getText());
 
-        if (!editTextAInputString.equals("") && !editTextAInputString.equals(".")) {
+        if (!editTextAInputString.equals("") && !editTextAInputString.equals(".") && !editTextAInputString.equals("-")) {
             double input = Double.parseDouble(viewA.getText().toString());
             double result = getTempConversion(input, tempUserInput);
 
@@ -314,7 +314,7 @@ public class MyTextWatcherUtils {
         Log.i("TW", "Inside TW BA");
         String editTextAInputString = String.valueOf(viewB.getText());
 
-        if (!editTextAInputString.equals("") && !editTextAInputString.equals(".")) {
+        if (!editTextAInputString.equals("") && !editTextAInputString.equals(".") && !editTextAInputString.equals("-")) {
             double input = Double.parseDouble(viewB.getText().toString());
             double result = getTempConversion(input, tempUserInput);
 
