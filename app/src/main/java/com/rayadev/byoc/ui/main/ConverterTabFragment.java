@@ -183,7 +183,7 @@ public class ConverterTabFragment extends Fragment {
 
                         case 0:
 
-//                            if(mUnitCategory.equals(getString(R.string.spinner_currency_title))) getString doesnt work here for some reason!
+//                            if(mUnitCategory.equals(getString(R.string.spinner_currency_title))) getString doesn't work here for some reason!
                             if(mUnitCategory.equals("Currency")) {
                                 String currencyPair = mUnitBString + "_" + mUnitAString;
                                 setUpTargetCurrency(currencyPair, mUnitBString, mUnitAString);
@@ -192,10 +192,14 @@ public class ConverterTabFragment extends Fragment {
 
                             }
 
+                            if(mUnitCategory.equals("Temperature")) {
+                                Log.i("STAG", "Temperature swap case 0");
+                            }
+
                             else {
                                 setConverterBoxLogic(toUnit, fromUnit);
-                                setConverterBoxTitles(mUnitBString, mUnitAString);
                             }
+                            setConverterBoxTitles(mUnitBString, mUnitAString);
                             mSwapUnits = 1;
                             break;
 
@@ -208,13 +212,18 @@ public class ConverterTabFragment extends Fragment {
                                 Log.i("STAG", "Currency swap case 1");
 
                             }
+                            if(mUnitCategory.equals("Temperature")) {
+                                Log.i("STAG", "Temperature swap case 1");
+
+                            }
 
                             else {
                                 setConverterBoxLogic(fromUnit, toUnit);
-                                setConverterBoxTitles(mUnitAString, mUnitBString);
-                                mSwapUnits = 0;
-                                break;
+
                             }
+                            setConverterBoxTitles(mUnitAString, mUnitBString);
+                            mSwapUnits = 0;
+                            break;
 
                     }
                 }
