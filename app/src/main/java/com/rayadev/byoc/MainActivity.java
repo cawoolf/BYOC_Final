@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity implements HomeSetTabFragmen
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        
+
         initializeUI();
         setUpCurrency();
         setUpFavoritesExamples();
@@ -75,7 +75,7 @@ public class MainActivity extends AppCompatActivity implements HomeSetTabFragmen
         setUpPageAdapter(mTabLayout);
         mHomeTabChoice = checkFavoritesPrefs();
 
-        if(!mHomeTabChoice) {
+        if (!mHomeTabChoice) {
             displayStartUpToasts();
         }
 
@@ -97,31 +97,30 @@ public class MainActivity extends AppCompatActivity implements HomeSetTabFragmen
 
         //converting it back to a milliseconds representation:
         long currentDateMillis = currentDate.getTime();
-        long currentDateSeconds = currentDateMillis/1000;
+        long currentDateSeconds = currentDateMillis / 1000;
 
-        long oldDateSeconds = oldDate/1000;
+        long oldDateSeconds = oldDate / 1000;
 
         long diff = currentDateSeconds - oldDateSeconds;
 
-       if(diff > 86400) { //Basically if its been longer than a day since the last currency update.
-           editor.putLong("date", currentDateMillis).apply();
+        if (diff > 86400) { //Basically if its been longer than a day since the last currency update.
+            editor.putLong("date", currentDateMillis).apply();
 
-           //Passes the ViewModel down to CurrencyUtil for Async Retrofit call. Inserts currency into database.
-           ConverterViewModel converterViewModel = new ViewModelProvider(this).get(ConverterViewModel.class);
-           loadCurrencyData(converterViewModel);
+            //Passes the ViewModel down to CurrencyUtil for Async Retrofit call. Inserts currency into database.
+            ConverterViewModel converterViewModel = new ViewModelProvider(this).get(ConverterViewModel.class);
+            loadCurrencyData(converterViewModel);
 
-           updates = updates +1;
-           editor.putInt("updates", updates).apply();
-           Log.i("CTAG", "Update" + "\n" + "Old Date: " + oldDateSeconds + "\n" + "New Date: " + currentDateSeconds + "\n" +
+            updates = updates + 1;
+            editor.putInt("updates", updates).apply();
+            Log.i("CTAG", "Update" + "\n" + "Old Date: " + oldDateSeconds + "\n" + "New Date: " + currentDateSeconds + "\n" +
                     "\n" + "Time Elapsed: " + diff + "\n" + "Total updates: " + updates);
 
 
-       }
-        else {
-           Log.i("CTAG", "No Update" + "\n" + "Old Date: " + oldDateSeconds + "\n" + "New Date: " + currentDateSeconds
-           + "\n" + "Time Elapsed: " + diff + "\n" + "Total updates: " + updates);
+        } else {
+            Log.i("CTAG", "No Update" + "\n" + "Old Date: " + oldDateSeconds + "\n" + "New Date: " + currentDateSeconds
+                    + "\n" + "Time Elapsed: " + diff + "\n" + "Total updates: " + updates);
 
-       }
+        }
     }
 
     // Populates the Favorites tab with a few examples on a fresh install
@@ -132,14 +131,14 @@ public class MainActivity extends AppCompatActivity implements HomeSetTabFragmen
         boolean freshInstall = sharedPref.getBoolean("fresh_install", true);
         SharedPreferences.Editor editor = sharedPref.edit();
 
-        if(freshInstall) {
+        if (freshInstall) {
 
             ConverterViewModel mConverterViewModel = new ViewModelProvider(this).get(ConverterViewModel.class);
 
             Converter converter = new Converter("Distance", "Kilometer", "Mile");
 
             //Currency objects are parsed over from Converters. The category "Currency" is critical.
-            Converter converter2 = new Converter("Currency", "USD","CAD");
+            Converter converter2 = new Converter("Currency", "USD", "CAD");
 
             mConverterViewModel.insert(converter);
             mConverterViewModel.insert(converter2);
@@ -226,8 +225,6 @@ public class MainActivity extends AppCompatActivity implements HomeSetTabFragmen
                     @Override
                     public void run() {
                         hideKeyboard(MainActivity.this);
-
-
                     }
                 }, 350);
 
@@ -237,17 +234,16 @@ public class MainActivity extends AppCompatActivity implements HomeSetTabFragmen
                     @Override
                     public void run() {
 
-                        if(mViewPager.getCurrentItem() == 0) {
+                        if (mViewPager.getCurrentItem() == 0) {
                             unitSpinnerCategory(mUnitCategory);
                         }
 
 //                        Log.i("FTAG", freshInstall +"");
 
                         //Shows a one time alert to give directions on how to use favorite tab
-                        if(mViewPager.getCurrentItem() == 1 && freshInstall) {
+                        if (mViewPager.getCurrentItem() == 1 && freshInstall) {
                             showFavoritesAlertDialog();
                         }
-
 
                     }
                 }, 550);
@@ -282,7 +278,7 @@ public class MainActivity extends AppCompatActivity implements HomeSetTabFragmen
 
     private void showFavoritesAlertDialog() {
 
-        if(!mAlertShown) {
+        if (!mAlertShown) {
             AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
             alertDialog.setTitle("Favorites Tab");
             alertDialog.setMessage("Click the add button on the Converter Tab to create more favorites.");
@@ -308,11 +304,10 @@ public class MainActivity extends AppCompatActivity implements HomeSetTabFragmen
         boolean favPref = sharedPref.getBoolean("favorites_tab_default", false);
 
         TabLayout.Tab tab;
-        if(favPref) {
+        if (favPref) {
             tab = mTabLayout.getTabAt(1);
 
-        }
-        else{
+        } else {
             tab = mTabLayout.getTabAt(0);
 
         }
@@ -331,10 +326,9 @@ public class MainActivity extends AppCompatActivity implements HomeSetTabFragmen
         MenuItem itemFavorites = menu.findItem(R.id.homeFavoritesTrue_MenuItem);
         MenuItem itemConverter = menu.findItem(R.id.homeConverterTrue_MenuItem);
 
-        if(mHomeTabChoice) {
+        if (mHomeTabChoice) {
             itemFavorites.setChecked(true);
-        }
-        else {
+        } else {
             itemConverter.setChecked(true);
 
         }
@@ -349,7 +343,7 @@ public class MainActivity extends AppCompatActivity implements HomeSetTabFragmen
         TabLayout.Tab favoritesTab = mTabLayout.getTabAt(1);
         TabLayout.Tab converterTab = mTabLayout.getTabAt(0);
 
-        switch(item.getItemId()) {
+        switch (item.getItemId()) {
             case R.id.homeFavoritesTrue_MenuItem:
                 setFavoritesTab(1);
                 item.setChecked(true);
@@ -374,10 +368,9 @@ public class MainActivity extends AppCompatActivity implements HomeSetTabFragmen
         SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
 
-        if(i == 1) {
+        if (i == 1) {
             editor.putBoolean("favorites_tab_default", true).apply();
-        }
-        else{
+        } else {
             editor.putBoolean("favorites_tab_default", false).apply();
         }
     }
@@ -406,7 +399,7 @@ public class MainActivity extends AppCompatActivity implements HomeSetTabFragmen
 
         mUnitCategory = unitCategory;
 
-        if(mViewPager.getCurrentItem() == 0) {
+        if (mViewPager.getCurrentItem() == 0) {
             Toast toast = Toast.makeText(this, "CATEGORY: " + unitCategory, Toast.LENGTH_SHORT);
             toast.show();
         }
