@@ -9,15 +9,15 @@ Working:
 Temp needs to work on Favorites Tab
 
 Finish adding data on Spinner drop downs
-    > Currently on Area SQ_FOOT
+    > Currently on Time
 
 Clean up UI
     > Info page on options menu
 
 Other Bugs
-    > Millimeter data bug. Fix units.
 
    Fixed
+        > Millimeter data bug. Fix units.
         > Weird spinner text.
         > Fix spinner colors
         > Crash when user input is just "."

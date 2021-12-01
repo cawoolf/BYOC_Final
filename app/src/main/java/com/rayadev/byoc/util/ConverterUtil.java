@@ -423,7 +423,7 @@ public class ConverterUtil {
                     constant = 1000000;
                 }
                 break;
-            case MILLIMETER: //Some bugs with converting Millimeter.. Oh each other case UNIT now needs a MILLIMETER
+            case MILLIMETER:
                 if (to == Unit.INCH) {
                     constant = 0.0393701;
                 } else if (to == Unit.CENTIMETER) {
@@ -452,8 +452,11 @@ public class ConverterUtil {
 
             //TIME CASE STATEMENTS
             case DECADE:
+                if (to == Unit.DECADE) {
+                    constant = 1;
+                }
                 if (to == Unit.YEAR) {
-                    constant = 10;
+
                 }
                 if (to == Unit.MONTH) {
 
@@ -474,11 +477,196 @@ public class ConverterUtil {
 
                 }
                 break;
+
             case YEAR:
                 if (to == Unit.DECADE) {
-                    constant = 0.10;
+
+                }
+                if (to == Unit.YEAR) {
+                    constant = 1;
+                }
+                if (to == Unit.MONTH) {
+
+                }
+                if (to == Unit.WEEK) {
+
+                }
+                if (to == Unit.DAY) {
+
+                }
+                if (to == Unit.HOUR) {
+
+                }
+                if (to == Unit.MINUTE) {
+
+                }
+                if (to == Unit.SECOND) {
+
                 }
                 break;
+
+            case MONTH:
+                if (to == Unit.DECADE) {
+                    constant = 10;
+                }
+                if (to == Unit.YEAR) {
+
+                }
+                if (to == Unit.MONTH) {
+                    constant = 1;
+                }
+                if (to == Unit.WEEK) {
+
+                }
+                if (to == Unit.DAY) {
+
+                }
+                if (to == Unit.HOUR) {
+
+                }
+                if (to == Unit.MINUTE) {
+
+                }
+                if (to == Unit.SECOND) {
+
+                }
+                break;
+
+            case WEEK:
+                if (to == Unit.DECADE) {
+
+                }
+                if (to == Unit.YEAR) {
+
+                }
+                if (to == Unit.MONTH) {
+
+                }
+                if (to == Unit.WEEK) {
+                    constant = 1;
+                }
+                if (to == Unit.DAY) {
+
+                }
+                if (to == Unit.HOUR) {
+
+                }
+                if (to == Unit.MINUTE) {
+
+                }
+                if (to == Unit.SECOND) {
+
+                }
+                break;
+
+            case DAY:
+                if (to == Unit.DECADE) {
+
+                }
+                if (to == Unit.YEAR) {
+
+                }
+                if (to == Unit.MONTH) {
+
+                }
+                if (to == Unit.WEEK) {
+
+                }
+                if (to == Unit.DAY) {
+                    constant = 1;
+                }
+                if (to == Unit.HOUR) {
+
+                }
+                if (to == Unit.MINUTE) {
+
+                }
+                if (to == Unit.SECOND) {
+
+                }
+                break;
+
+            case HOUR:
+                if (to == Unit.DECADE) {
+
+                }
+                if (to == Unit.YEAR) {
+
+                }
+                if (to == Unit.MONTH) {
+
+                }
+                if (to == Unit.WEEK) {
+
+                }
+                if (to == Unit.DAY) {
+
+                }
+                if (to == Unit.HOUR) {
+                    constant = 1;
+                }
+                if (to == Unit.MINUTE) {
+
+                }
+                if (to == Unit.SECOND) {
+
+                }
+                break;
+
+            case MINUTE:
+                if (to == Unit.DECADE) {
+
+                }
+                if (to == Unit.YEAR) {
+
+                }
+                if (to == Unit.MONTH) {
+
+                }
+                if (to == Unit.WEEK) {
+
+                }
+                if (to == Unit.DAY) {
+
+                }
+                if (to == Unit.HOUR) {
+
+                }
+                if (to == Unit.MINUTE) {
+                    constant = 1;
+                }
+                if (to == Unit.SECOND) {
+
+                }
+                break;
+
+            case SECOND:
+                if (to == Unit.DECADE) {
+
+                }
+                if (to == Unit.YEAR) {
+
+                }
+                if (to == Unit.MONTH) {
+
+                }
+                if (to == Unit.WEEK) {
+
+                }
+                if (to == Unit.DAY) {
+
+                }
+                if (to == Unit.HOUR) {
+
+                }
+                if (to == Unit.MINUTE) {
+
+                }
+                if (to == Unit.SECOND) {
+                    constant = 1;
+                }
+                break;
+
 
             //VOLUME CASE STATEMENTS
 
