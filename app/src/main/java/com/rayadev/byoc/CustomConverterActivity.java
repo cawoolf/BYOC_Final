@@ -2,6 +2,7 @@ package com.rayadev.byoc;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.os.VibrationEffect;
 import android.os.Vibrator;
@@ -18,6 +19,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.ViewModelProvider;
@@ -71,6 +73,7 @@ public class CustomConverterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_custom_converter);
 
+        instructionsAlert();
         setUpToolbar();
         linkViews();
         setOnClicks();
@@ -78,11 +81,30 @@ public class CustomConverterActivity extends AppCompatActivity {
         keyboardManager();
         suppressKeyBoard();
 
-        Toast.makeText(this, "1) Input Values For Units" + "\n" + "2) Click Build Converter!", Toast.LENGTH_LONG).show();
+//        Toast.makeText(this, "1) Input Values For Units" + "\n" + "2) Click Build Converter!", Toast.LENGTH_LONG).show();
         mUnitATitleTextView.setText("Enter Unit Name Above");
         mUnitBTitleTextView.setText("Enter Unit Name Above");
 
         mConverterViewModel = new ViewModelProvider(this).get(ConverterViewModel.class);
+    }
+
+    private void instructionsAlert() {
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(CustomConverterActivity.this);
+
+        builder.setMessage("1) Enter all values for the units" + "\n" + "2) Click Build Converter!")
+                .setTitle("Create Your Own Unit Converter");
+
+        builder.setPositiveButton("Dismiss", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                }
+        );
+
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
 
     private void setUpToolbar() {
