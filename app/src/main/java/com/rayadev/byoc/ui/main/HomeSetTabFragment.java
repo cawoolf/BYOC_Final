@@ -121,6 +121,12 @@ public class HomeSetTabFragment extends Fragment implements HomeSetRecyclerViewA
 
 
                         }
+
+                        else if(mUnitCategory.equals(getString(R.string.unit_category_temperature))){
+                            setConverterBoxTitles(mUnitBName, mUnitAName);
+                            setUpTargetTemperature(mUnitBName, mUnitAName);
+                            Log.i("TAG_69", "Temp Swap BA");
+                        }
                         else {
                                 setConverterBoxLogic(toUnit, fromUnit);
                                 setConverterBoxTitles(mUnitBName, mUnitAName);
@@ -143,6 +149,12 @@ public class HomeSetTabFragment extends Fragment implements HomeSetRecyclerViewA
                             CustomConverterUtil toUnit_fromUnit = new CustomConverterUtil(mUnitAValue, mUnitBValue);
                             setCustomConverterBoxLogic(fromUnit_toUnit, toUnit_fromUnit);
 
+                        }
+
+                        else if(mUnitCategory.equals(getString(R.string.unit_category_temperature))){
+                            setConverterBoxTitles(mUnitAName, mUnitBName);
+                            setUpTargetTemperature(mUnitAName, mUnitBName);
+                            Log.i("TAG_69", "Temp Swap AB");
                         }
 
                         else {
@@ -225,6 +237,11 @@ public class HomeSetTabFragment extends Fragment implements HomeSetRecyclerViewA
             CustomConverterUtil fromUnit_toUnit = new CustomConverterUtil(mUnitAValue, mUnitBValue);
             CustomConverterUtil toUnit_fromUnit = new CustomConverterUtil(mUnitAValue, mUnitBValue);
             setCustomConverterBoxLogic(fromUnit_toUnit, toUnit_fromUnit);
+        }
+
+        else if(unitCategory.equals(getString(R.string.unit_category_temperature))) {
+            setUpTargetTemperature(mUnitAName, mUnitBName);
+            Log.i("TAG_69", "Temp Converter Set Up");
         }
 
         else {
@@ -349,46 +366,63 @@ public class HomeSetTabFragment extends Fragment implements HomeSetRecyclerViewA
 
     }
 
-    private void keyboardManager() {
+    private void setUpTargetTemperature(String tempA, String tempB) {
+        Log.i("STAG", "setUpTargetTemp() called");
 
-        //Keyboard opens when Converter Icon is clicked
-        mUnitAInputEditText.requestFocus();
-        InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
-        imm.showSoftInput(mUnitAInputEditText, InputMethodManager.SHOW_IMPLICIT);
+        mUnitAInputEditText.clearFocus();
+        mUnitBInputEditText.clearFocus();
 
-        //When keyboard is closed, Hides the converter UI.
-        KeyboardUtils.addKeyboardToggleListener(getActivity(), new KeyboardUtils.SoftKeyboardToggleListener() {
+        clearUserInput();
+        keyboardManager();
 
+        String userInput = tempA + tempB;
+        String userInputReversed = tempB + tempA;
+        String[] tempCombos = getTempCombos();
+
+
+        //Special user choice to deal with reversed temperature
+        MyTextWatcherUtils utilA = new MyTextWatcherUtils(3, mUnitAInputEditText, mUnitBInputEditText, userInput, tempCombos);
+        MyTextWatcherUtils utilB = new MyTextWatcherUtils(4,  mUnitAInputEditText, mUnitBInputEditText, userInputReversed, tempCombos);
+
+
+        utilA.setUnitEditTextWatcher(mUnitAInputEditText);
+        utilB.setUnitEditTextWatcher(mUnitBInputEditText);
+
+
+        mUnitBInputEditText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
-            public void onToggleSoftKeyboard(boolean isVisible) {
+            public void onFocusChange(View v, boolean hasFocus) {
+                clearUserInput();
+            }
+        });
 
-                if (isVisible) {
-                    if(mUnitAInputEditText.hasFocus() || mUnitBInputEditText.hasFocus()) {
-                        mConverterUI.setVisibility(View.VISIBLE);
-                    }
-                } else {
-                    mConverterUI.setVisibility(View.GONE);
-                    clearUserInput();
-                }
+        mUnitBInputEditText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                clearUserInput();
             }
         });
 
     }
 
+    private String[] getTempCombos(){
 
 
-    private void clearUserInput() {
+        String FtoC = getString(R.string.temperature_fahrenheit) + getString(R.string.temperature_celsius);
+        String FtoK = getString(R.string.temperature_fahrenheit)+getString(R.string.temperature_kelvin);
 
-        if (mUnitAInputEditText.getText() != null) {
-            mUnitAInputEditText.getText().clear();
-        }
+        String CtoF = getString(R.string.temperature_celsius)+getString(R.string.temperature_fahrenheit);
+        String CtoK = getString(R.string.temperature_celsius) + getString(R.string.temperature_kelvin);
 
-        if (mUnitBInputEditText.getText() != null) {
-            mUnitBInputEditText.getText().clear();
-        }
+        String KtoF = getString(R.string.temperature_kelvin) + getString(R.string.temperature_fahrenheit);
+        String KtoC = getString(R.string.temperature_kelvin) + getString(R.string.temperature_celsius);
+
+        String[] tempCombos = {FtoC,FtoK, CtoF, CtoK, KtoF, KtoC};
+
+
+        return tempCombos;
 
     }
-
 
 
     private void setUpTargetCurrency(String currencyPair, String currencyA, String currencyB) {
@@ -444,6 +478,46 @@ public class HomeSetTabFragment extends Fragment implements HomeSetRecyclerViewA
                 clearUserInput();
             }
         });
+
+    }
+
+
+
+    private void keyboardManager() {
+        //Keyboard opens when Converter Icon is clicked
+        mUnitAInputEditText.requestFocus();
+        InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.showSoftInput(mUnitAInputEditText, InputMethodManager.SHOW_IMPLICIT);
+
+        //When keyboard is closed, Hides the converter UI.
+        KeyboardUtils.addKeyboardToggleListener(getActivity(), new KeyboardUtils.SoftKeyboardToggleListener() {
+
+            @Override
+            public void onToggleSoftKeyboard(boolean isVisible) {
+
+                if (isVisible) {
+                    if(mUnitAInputEditText.hasFocus() || mUnitBInputEditText.hasFocus()) {
+                        mConverterUI.setVisibility(View.VISIBLE);
+                    }
+                } else {
+                    mConverterUI.setVisibility(View.GONE);
+                    clearUserInput();
+                }
+            }
+        });
+
+    }
+
+
+    private void clearUserInput() {
+
+        if (mUnitAInputEditText.getText() != null) {
+            mUnitAInputEditText.getText().clear();
+        }
+
+        if (mUnitBInputEditText.getText() != null) {
+            mUnitBInputEditText.getText().clear();
+        }
 
     }
 

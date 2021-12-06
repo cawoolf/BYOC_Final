@@ -39,7 +39,7 @@ public class MyTextWatcherUtils {
 
     }
 
-
+    //Constructor for Converters + Currency
     public MyTextWatcherUtils(int userSelection, EditText viewA, EditText viewB, double currencyValue) {
 
         this.userSelection = userSelection;
