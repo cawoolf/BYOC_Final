@@ -40,6 +40,8 @@ import org.jetbrains.annotations.NotNull;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class MainActivity extends AppCompatActivity implements HomeSetTabFragment.HideConverterUIInterface, ConverterTabFragment.SpinnerCategorySelection {
@@ -90,10 +92,12 @@ public class MainActivity extends AppCompatActivity implements HomeSetTabFragmen
         SharedPreferences.Editor editor = sharedPref.edit();
 
         long oldDate = sharedPref.getLong("date", 0);
+        Date oldDate_Object = new Date(oldDate);
         int updates = sharedPref.getInt("updates", 0);
 
         //getting the current time in milliseconds, and creating a Date object from it:
         Date currentDate = new Date(System.currentTimeMillis()); //or simply new Date();
+        DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss.SSS");
 
         //converting it back to a milliseconds representation:
         long currentDateMillis = currentDate.getTime();
@@ -112,13 +116,19 @@ public class MainActivity extends AppCompatActivity implements HomeSetTabFragmen
 
             updates = updates + 1;
             editor.putInt("updates", updates).apply();
-            Log.i("CTAG", "Update" + "\n" + "Old Date: " + oldDateSeconds + "\n" + "New Date: " + currentDateSeconds + "\n" +
+//            Log.i("CTAG", "Update" + "\n" + "Old Date: " + oldDateSeconds + "\n" + "New Date: " + currentDateSeconds + "\n" +
+//                    "\n" + "Time Elapsed: " + diff + "\n" + "Total updates: " + updates);
+
+            Log.i("CTAG", "Update" + "\n" + "Old Date: " + dateFormat.format(oldDate_Object) + "\n" + "New Date: " + dateFormat.format(currentDateSeconds) + "\n" +
                     "\n" + "Time Elapsed: " + diff + "\n" + "Total updates: " + updates);
 
 
         } else {
-            Log.i("CTAG", "No Update" + "\n" + "Old Date: " + oldDateSeconds + "\n" + "New Date: " + currentDateSeconds
-                    + "\n" + "Time Elapsed: " + diff + "\n" + "Total updates: " + updates);
+//            Log.i("CTAG", "No Update" + "\n" + "Old Date: " + oldDateSeconds + "\n" + "New Date: " + currentDateSeconds
+//                    + "\n" + "Time Elapsed: " + diff + "\n" + "Total updates: " + updates);
+
+            Log.i("CTAG", "Update" + "\n" + "Old Date: " + dateFormat.format(oldDate_Object) + "\n" + "New Date: " + dateFormat.format(currentDateSeconds) + "\n" +
+                    "\n" + "Time Elapsed: " + diff + "\n" + "Total updates: " + updates);
 
         }
     }
