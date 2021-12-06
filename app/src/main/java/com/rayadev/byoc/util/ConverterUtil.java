@@ -955,100 +955,100 @@ public class ConverterUtil {
                     constant = 1;
                 }
                 if(to == Unit.KILOGRAM) {
-
+                    constant = 1000;
                 }
                 if(to == Unit.GRAM) {
-
+                    constant = 1000000;
                 }
                 if(to == Unit.TON) {
-
+                    constant = 1.10231;
                 }
                 if(to == Unit.POUND) {
-
+                    constant = 2204.62;
                 }
                 if(to == Unit.OUNCE) {
-
+                    constant = 35274;
                 }
                 break;
 
             case KILOGRAM:
                 if(to == Unit.METRIC_TONNE) {
-
+                    constant = 0.001;
                 }
                 if(to == Unit.KILOGRAM) {
                     constant = 1;
                 }
                 if(to == Unit.GRAM) {
-
+                    constant = 1000;
                 }
                 if(to == Unit.TON) {
-
+                    constant = 0.00110231;
                 }
                 if(to == Unit.POUND) {
-
+                    constant = 2.20462;
                 }
                 if(to == Unit.OUNCE) {
-
+                    constant = 35.274;
                 }
                 break;
 
             case TON:
                 if(to == Unit.METRIC_TONNE) {
-
+                    constant = 0.907185;
                 }
                 if(to == Unit.KILOGRAM) {
-
+                    constant = 907.185;
                 }
                 if(to == Unit.GRAM) {
-
+                    constant = 907185;
                 }
                 if(to == Unit.TON) {
                     constant = 1;
                 }
                 if(to == Unit.POUND) {
-
+                    constant = 2000;
                 }
                 if(to == Unit.OUNCE) {
-
+                    constant = 32000;
                 }
                 break;
 
             case POUND:
                 if(to == Unit.METRIC_TONNE) {
-
+                    constant = 0.000453592;
                 }
                 if(to == Unit.KILOGRAM) {
-
+                    constant = 0.453592;
                 }
                 if(to == Unit.GRAM) {
-
+                    constant = 453.592;
                 }
                 if(to == Unit.TON) {
-
+                    constant = 0.0005;
                 }
                 if(to == Unit.POUND) {
                     constant = 1;
                 }
                 if(to == Unit.OUNCE) {
-
+                    constant = 16;
                 }
                 break;
 
             case OUNCE:
                 if(to == Unit.METRIC_TONNE) {
-
+                    constant = 2.83495e-5;
                 }
                 if(to == Unit.KILOGRAM) {
-
+                    constant = 0.0283495;
                 }
                 if(to == Unit.GRAM) {
-
+                    constant = 28.3495;
                 }
                 if(to == Unit.TON) {
-
+                    constant = 3.125e-5;
                 }
                 if(to == Unit.POUND) {
-
+                    constant = 0.0625;
                 }
                 if(to == Unit.OUNCE) {
                     constant = 1;
