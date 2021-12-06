@@ -3,6 +3,8 @@ package com.rayadev.byoc.util;
 
 import android.util.Log;
 
+import java.nio.channels.GatheringByteChannel;
+
 public class ConverterUtil {
 
 
@@ -669,8 +671,390 @@ public class ConverterUtil {
 
 
             //VOLUME CASE STATEMENTS
+            case GALLON:
+                if(to == Unit.GALLON) {
+                    constant = 1;
+                }
+                if(to == Unit.QUART) {
+
+                }
+                if(to == Unit.FLUID_OUNCE) {
+
+                }
+                if(to == Unit.CUP) {
+
+                }
+                if(to == Unit.TABLESPOON) {
+
+                }
+                if(to == Unit.CUBIC_METER) {
+
+                }
+                if(to == Unit.LITRE) {
+
+                }
+                if(to == Unit.CENTILITER) {
+
+                }
+                if(to == Unit.MILLILITER) {
+
+                }
+                break;
+
+            case QUART:
+                if(to == Unit.GALLON) {
+
+                }
+                if(to == Unit.QUART) {
+                    constant = 1;
+
+                }
+                if(to == Unit.FLUID_OUNCE) {
+
+                }
+                if(to == Unit.CUP) {
+
+                }
+                if(to == Unit.TABLESPOON) {
+
+                }
+                if(to == Unit.CUBIC_METER) {
+
+                }
+                if(to == Unit.LITRE) {
+
+                }
+                if(to == Unit.CENTILITER) {
+
+                }
+                if(to == Unit.MILLILITER) {
+
+                }
+                break;
+
+            case FLUID_OUNCE:
+                if(to == Unit.GALLON) {
+
+                }
+                if(to == Unit.QUART) {
+
+                }
+                if(to == Unit.FLUID_OUNCE) {
+                    constant = 1;
+                }
+                if(to == Unit.CUP) {
+
+                }
+                if(to == Unit.TABLESPOON) {
+
+                }
+                if(to == Unit.CUBIC_METER) {
+
+                }
+                if(to == Unit.LITRE) {
+
+                }
+                if(to == Unit.CENTILITER) {
+
+                }
+                if(to == Unit.MILLILITER) {
+
+                }
+                break;
+
+
+            case CUP:
+                if(to == Unit.GALLON) {
+
+                }
+                if(to == Unit.QUART) {
+
+                }
+                if(to == Unit.FLUID_OUNCE) {
+
+                }
+                if(to == Unit.CUP) {
+                    constant = 1;
+                }
+                if(to == Unit.TABLESPOON) {
+
+                }
+                if(to == Unit.CUBIC_METER) {
+
+                }
+                if(to == Unit.LITRE) {
+
+                }
+                if(to == Unit.CENTILITER) {
+
+                }
+                if(to == Unit.MILLILITER) {
+
+                }
+                break;
+
+
+            case TABLESPOON:
+                if(to == Unit.GALLON) {
+
+                }
+                if(to == Unit.QUART) {
+
+                }
+                if(to == Unit.FLUID_OUNCE) {
+
+                }
+                if(to == Unit.CUP) {
+
+                }
+                if(to == Unit.TABLESPOON) {
+                    constant = 1;
+                }
+                if(to == Unit.CUBIC_METER) {
+
+                }
+                if(to == Unit.LITRE) {
+
+                }
+                if(to == Unit.CENTILITER) {
+
+                }
+                if(to == Unit.MILLILITER) {
+
+                }
+                break;
+
+
+            case CUBIC_METER:
+                if(to == Unit.GALLON) {
+
+                }
+                if(to == Unit.QUART) {
+
+                }
+                if(to == Unit.FLUID_OUNCE) {
+
+                }
+                if(to == Unit.CUP) {
+
+                }
+                if(to == Unit.TABLESPOON) {
+
+                }
+                if(to == Unit.CUBIC_METER) {
+                    constant =1;
+                }
+                if(to == Unit.LITRE) {
+
+                }
+                if(to == Unit.CENTILITER) {
+
+                }
+                if(to == Unit.MILLILITER) {
+
+                }
+                break;
+
+
+            case LITRE:
+                if(to == Unit.GALLON) {
+
+                }
+                if(to == Unit.QUART) {
+
+                }
+                if(to == Unit.FLUID_OUNCE) {
+
+                }
+                if(to == Unit.CUP) {
+
+                }
+                if(to == Unit.TABLESPOON) {
+
+                }
+                if(to == Unit.CUBIC_METER) {
+
+                }
+                if(to == Unit.LITRE) {
+                    constant = 1;
+                }
+                if(to == Unit.CENTILITER) {
+
+                }
+                if(to == Unit.MILLILITER) {
+
+                }
+                break;
+
+
+            case CENTILITER:
+                if(to == Unit.GALLON) {
+
+                }
+                if(to == Unit.QUART) {
+
+                }
+                if(to == Unit.FLUID_OUNCE) {
+
+                }
+                if(to == Unit.CUP) {
+
+                }
+                if(to == Unit.TABLESPOON) {
+
+                }
+                if(to == Unit.CUBIC_METER) {
+
+                }
+                if(to == Unit.LITRE) {
+
+                }
+                if(to == Unit.CENTILITER) {
+                    constant = 1;
+                }
+                if(to == Unit.MILLILITER) {
+
+                }
+                break;
+
+
+            case MILLILITER:
+                if(to == Unit.GALLON) {
+
+                }
+                if(to == Unit.QUART) {
+
+                }
+                if(to == Unit.FLUID_OUNCE) {
+
+                }
+                if(to == Unit.CUP) {
+
+                }
+                if(to == Unit.TABLESPOON) {
+
+                }
+                if(to == Unit.CUBIC_METER) {
+
+                }
+                if(to == Unit.LITRE) {
+
+                }
+                if(to == Unit.CENTILITER) {
+
+                }
+                if(to == Unit.MILLILITER) {
+                    constant = 1;
+                }
+                break;
+
 
             //WEIGHT CASE STATEMENTS
+            case METRIC_TONNE:
+                if(to == Unit.METRIC_TONNE) {
+                    constant = 1;
+                }
+                if(to == Unit.KILOGRAM) {
+
+                }
+                if(to == Unit.GRAM) {
+
+                }
+                if(to == Unit.TON) {
+
+                }
+                if(to == Unit.POUND) {
+
+                }
+                if(to == Unit.OUNCE) {
+
+                }
+                break;
+
+            case KILOGRAM:
+                if(to == Unit.METRIC_TONNE) {
+
+                }
+                if(to == Unit.KILOGRAM) {
+                    constant = 1;
+                }
+                if(to == Unit.GRAM) {
+
+                }
+                if(to == Unit.TON) {
+
+                }
+                if(to == Unit.POUND) {
+
+                }
+                if(to == Unit.OUNCE) {
+
+                }
+                break;
+
+            case TON:
+                if(to == Unit.METRIC_TONNE) {
+
+                }
+                if(to == Unit.KILOGRAM) {
+
+                }
+                if(to == Unit.GRAM) {
+
+                }
+                if(to == Unit.TON) {
+                    constant = 1;
+                }
+                if(to == Unit.POUND) {
+
+                }
+                if(to == Unit.OUNCE) {
+
+                }
+                break;
+
+            case POUND:
+                if(to == Unit.METRIC_TONNE) {
+
+                }
+                if(to == Unit.KILOGRAM) {
+
+                }
+                if(to == Unit.GRAM) {
+
+                }
+                if(to == Unit.TON) {
+
+                }
+                if(to == Unit.POUND) {
+                    constant = 1;
+                }
+                if(to == Unit.OUNCE) {
+
+                }
+                break;
+
+            case OUNCE:
+                if(to == Unit.METRIC_TONNE) {
+
+                }
+                if(to == Unit.KILOGRAM) {
+
+                }
+                if(to == Unit.GRAM) {
+
+                }
+                if(to == Unit.TON) {
+
+                }
+                if(to == Unit.POUND) {
+
+                }
+                if(to == Unit.OUNCE) {
+                    constant = 1;
+                }
+                break;
+
         }
 
         multiplier = constant;
