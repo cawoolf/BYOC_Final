@@ -6,17 +6,17 @@ Update Connection With Being to get consent for viewing an Ad
 
 Working:
 
-Temp needs to work on Favorites Tab
-
 Finish adding data on Spinner drop downs
-    > Currently on Time
+    > Currently on Time, and Volume, then DONE!
 
 Clean up UI
     > Info page on options menu
+    > Add currency date objects to info. Show the user when the last update ran.
 
 Other Bugs
 
    Fixed
+        > Temp needs to work on Favorites Tab
         > Millimeter data bug. Fix units.
         > Weird spinner text.
         > Fix spinner colors
