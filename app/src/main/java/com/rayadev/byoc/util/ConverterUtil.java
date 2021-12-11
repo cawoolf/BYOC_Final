@@ -512,25 +512,25 @@ public class ConverterUtil {
                     constant = 10;
                 }
                 if (to == Unit.YEAR) {
-
+                    constant = 0.0833334;
                 }
                 if (to == Unit.MONTH) {
                     constant = 1;
                 }
                 if (to == Unit.WEEK) {
-
+                    constant = 4.34524;
                 }
                 if (to == Unit.DAY) {
-
+                    constant = 30.4167;
                 }
                 if (to == Unit.HOUR) {
-
+                    constant = 730.001;
                 }
                 if (to == Unit.MINUTE) {
-
+                    constant = 43800;
                 }
                 if (to == Unit.SECOND) {
-
+                    constant = 2.628e+6;
                 }
                 break;
 
