@@ -458,52 +458,52 @@ public class ConverterUtil {
                     constant = 1;
                 }
                 if (to == Unit.YEAR) {
-
+                    constant = 10;
                 }
                 if (to == Unit.MONTH) {
-
+                    constant = 120;
                 }
                 if (to == Unit.WEEK) {
-
+                    constant = 521.429;
                 }
                 if (to == Unit.DAY) {
-
+                    constant = 3650;
                 }
                 if (to == Unit.HOUR) {
-
+                    constant = 87600;
                 }
                 if (to == Unit.MINUTE) {
-
+                    constant = 5.256e+6;
                 }
                 if (to == Unit.SECOND) {
-
+                    constant = 3.154e+8;
                 }
                 break;
 
             case YEAR:
                 if (to == Unit.DECADE) {
-
+                    constant = 0.1;
                 }
                 if (to == Unit.YEAR) {
                     constant = 1;
                 }
                 if (to == Unit.MONTH) {
-
+                    constant = 12;
                 }
                 if (to == Unit.WEEK) {
-
+                    constant = 52;
                 }
                 if (to == Unit.DAY) {
-
+                    constant = 365;
                 }
                 if (to == Unit.HOUR) {
-
+                    constant = 8760;
                 }
                 if (to == Unit.MINUTE) {
-
+                    constant = 525600;
                 }
                 if (to == Unit.SECOND) {
-
+                    constant = 3.154e+7;
                 }
                 break;
 
