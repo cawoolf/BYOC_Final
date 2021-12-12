@@ -676,272 +676,272 @@ public class ConverterUtil {
                     constant = 1;
                 }
                 if(to == Unit.QUART) {
-
+                    constant = 4;
                 }
                 if(to == Unit.FLUID_OUNCE) {
-
+                    constant = 128;
                 }
                 if(to == Unit.CUP) {
-
+                    constant = 16;
                 }
                 if(to == Unit.TABLESPOON) {
-
+                    constant = 256;
                 }
                 if(to == Unit.CUBIC_METER) {
-
+                    constant = 0.00378541;
                 }
                 if(to == Unit.LITRE) {
-
+                    constant = 3.78541;
                 }
                 if(to == Unit.CENTILITER) {
-
+                    constant = 378.541;
                 }
                 if(to == Unit.MILLILITER) {
-
+                    constant = 3785.41;
                 }
                 break;
 
             case QUART:
                 if(to == Unit.GALLON) {
-
+                    constant = 0.25;
                 }
                 if(to == Unit.QUART) {
                     constant = 1;
 
                 }
                 if(to == Unit.FLUID_OUNCE) {
-
+                    constant = 32;
                 }
                 if(to == Unit.CUP) {
-
+                    constant = 4;
                 }
                 if(to == Unit.TABLESPOON) {
-
+                    constant = 64;
                 }
                 if(to == Unit.CUBIC_METER) {
-
+                    constant = 0.000946353;
                 }
                 if(to == Unit.LITRE) {
-
+                    constant = 0.946353;
                 }
                 if(to == Unit.CENTILITER) {
-
+                    constant = 94.6353;
                 }
                 if(to == Unit.MILLILITER) {
-
+                    constant = 946.353;
                 }
                 break;
 
             case FLUID_OUNCE:
                 if(to == Unit.GALLON) {
-
+                    constant = 0.0078125;
                 }
                 if(to == Unit.QUART) {
-
+                    constant = 0.03125;
                 }
                 if(to == Unit.FLUID_OUNCE) {
                     constant = 1;
                 }
                 if(to == Unit.CUP) {
-
+                    constant = 0.125;
                 }
                 if(to == Unit.TABLESPOON) {
-
+                    constant = 2;
                 }
                 if(to == Unit.CUBIC_METER) {
-
+                    constant = 2.95735e-5;
                 }
                 if(to == Unit.LITRE) {
-
+                    constant = 0.0295735;
                 }
                 if(to == Unit.CENTILITER) {
-
+                    constant = 2.95735;
                 }
                 if(to == Unit.MILLILITER) {
-
+                    constant = 29.5735;
                 }
                 break;
 
 
             case CUP:
                 if(to == Unit.GALLON) {
-
+                    constant = 0.0625;
                 }
                 if(to == Unit.QUART) {
-
+                    constant = 0.25;
                 }
                 if(to == Unit.FLUID_OUNCE) {
-
+                    constant = 8;
                 }
                 if(to == Unit.CUP) {
                     constant = 1;
                 }
                 if(to == Unit.TABLESPOON) {
-
+                    constant = 16;
                 }
                 if(to == Unit.CUBIC_METER) {
-
+                    constant = 0.000236588;
                 }
                 if(to == Unit.LITRE) {
-
+                    constant = 0.236588;
                 }
                 if(to == Unit.CENTILITER) {
-
+                    constant = 23.6588;
                 }
                 if(to == Unit.MILLILITER) {
-
+                    constant = 236.588;
                 }
                 break;
 
 
             case TABLESPOON:
                 if(to == Unit.GALLON) {
-
+                    constant = 0.00390625;
                 }
                 if(to == Unit.QUART) {
-
+                    constant = 0.015625;
                 }
                 if(to == Unit.FLUID_OUNCE) {
-
+                    constant = 0.5;
                 }
                 if(to == Unit.CUP) {
-
+                    constant = 0.0625;
                 }
                 if(to == Unit.TABLESPOON) {
                     constant = 1;
                 }
                 if(to == Unit.CUBIC_METER) {
-
+                    constant = 1.47868e-5;
                 }
                 if(to == Unit.LITRE) {
-
+                    constant = 0.0147868;
                 }
                 if(to == Unit.CENTILITER) {
-
+                    constant = 1.47868;
                 }
                 if(to == Unit.MILLILITER) {
-
+                    constant = 14.7868;
                 }
                 break;
 
 
             case CUBIC_METER:
                 if(to == Unit.GALLON) {
-
+                    constant = 264.172;
                 }
                 if(to == Unit.QUART) {
-
+                    constant = 1056.69;
                 }
                 if(to == Unit.FLUID_OUNCE) {
-
+                    constant = 33814;
                 }
                 if(to == Unit.CUP) {
-
+                    constant = 4226.75;
                 }
                 if(to == Unit.TABLESPOON) {
-
+                    constant = 67628;
                 }
                 if(to == Unit.CUBIC_METER) {
                     constant =1;
                 }
                 if(to == Unit.LITRE) {
-
+                    constant = 1000;
                 }
                 if(to == Unit.CENTILITER) {
-
+                    constant = 100000;
                 }
                 if(to == Unit.MILLILITER) {
-
+                    constant = 1000000;
                 }
                 break;
 
 
             case LITRE:
                 if(to == Unit.GALLON) {
-
+                    constant = 0.264172;
                 }
                 if(to == Unit.QUART) {
-
+                    constant = 1.05669;
                 }
                 if(to == Unit.FLUID_OUNCE) {
-
+                    constant = 33.814;
                 }
                 if(to == Unit.CUP) {
-
+                    constant = 4.22675;
                 }
                 if(to == Unit.TABLESPOON) {
-
+                    constant = 67.628;
                 }
                 if(to == Unit.CUBIC_METER) {
-
+                    constant = 0.001;
                 }
                 if(to == Unit.LITRE) {
                     constant = 1;
                 }
                 if(to == Unit.CENTILITER) {
-
+                    constant = 100;
                 }
                 if(to == Unit.MILLILITER) {
-
+                    constant = 1000;
                 }
                 break;
 
 
             case CENTILITER:
                 if(to == Unit.GALLON) {
-
+                    constant = 0.00264172;
                 }
                 if(to == Unit.QUART) {
-
+                    constant = 0.0105669;
                 }
                 if(to == Unit.FLUID_OUNCE) {
-
+                    constant = 0.33814;
                 }
                 if(to == Unit.CUP) {
-
+                    constant = 0.0422675;
                 }
                 if(to == Unit.TABLESPOON) {
-
+                    constant = 0.67628;
                 }
                 if(to == Unit.CUBIC_METER) {
-
+                    constant = 1e-5;
                 }
                 if(to == Unit.LITRE) {
-
+                    constant = 0.01;
                 }
                 if(to == Unit.CENTILITER) {
                     constant = 1;
                 }
                 if(to == Unit.MILLILITER) {
-
+                    constant = 10;
                 }
                 break;
 
 
             case MILLILITER:
                 if(to == Unit.GALLON) {
-
+                    constant = 0.000264172;
                 }
                 if(to == Unit.QUART) {
-
+                    constant = 0.00105669;
                 }
                 if(to == Unit.FLUID_OUNCE) {
-
+                    constant = 0.033814;
                 }
                 if(to == Unit.CUP) {
-
+                    constant = 0.00422675;
                 }
                 if(to == Unit.TABLESPOON) {
-
+                    constant = 0.067628;
                 }
                 if(to == Unit.CUBIC_METER) {
-
+                    constant = 1e-6;
                 }
                 if(to == Unit.LITRE) {
-
+                    constant = 0.001;
                 }
                 if(to == Unit.CENTILITER) {
-
+                    constant = 0.1;
                 }
                 if(to == Unit.MILLILITER) {
                     constant = 1;
