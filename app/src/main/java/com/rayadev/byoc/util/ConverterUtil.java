@@ -536,133 +536,133 @@ public class ConverterUtil {
 
             case WEEK:
                 if (to == Unit.DECADE) {
-
+                    constant = 0.00191781;
                 }
                 if (to == Unit.YEAR) {
-
+                    constant = 0.0191781;
                 }
                 if (to == Unit.MONTH) {
-
+                    constant = 0.230137;
                 }
                 if (to == Unit.WEEK) {
                     constant = 1;
                 }
                 if (to == Unit.DAY) {
-
+                    constant = 7;
                 }
                 if (to == Unit.HOUR) {
-
+                    constant = 168;
                 }
                 if (to == Unit.MINUTE) {
-
+                    constant = 10080;
                 }
                 if (to == Unit.SECOND) {
-
+                    constant = 604800;
                 }
                 break;
 
             case DAY:
                 if (to == Unit.DECADE) {
-
+                    constant = 0.000273973;
                 }
                 if (to == Unit.YEAR) {
-
+                    constant = 0.000273973;
                 }
                 if (to == Unit.MONTH) {
-
+                    constant = 0.0328767;
                 }
                 if (to == Unit.WEEK) {
-
+                    constant = 0.142857;
                 }
                 if (to == Unit.DAY) {
                     constant = 1;
                 }
                 if (to == Unit.HOUR) {
-
+                    constant = 24;
                 }
                 if (to == Unit.MINUTE) {
-
+                    constant = 1440;
                 }
                 if (to == Unit.SECOND) {
-
+                    constant = 86400;
                 }
                 break;
 
             case HOUR:
                 if (to == Unit.DECADE) {
-
+                    constant = 1.14155e-5;
                 }
                 if (to == Unit.YEAR) {
-
+                    constant = 0.000114155;
                 }
                 if (to == Unit.MONTH) {
-
+                    constant = 0.00136986;
                 }
                 if (to == Unit.WEEK) {
-
+                    constant = 0.00136986;
                 }
                 if (to == Unit.DAY) {
-
+                    constant = 0.0416667;
                 }
                 if (to == Unit.HOUR) {
                     constant = 1;
                 }
                 if (to == Unit.MINUTE) {
-
+                    constant = 60;
                 }
                 if (to == Unit.SECOND) {
-
+                    constant = 3600;
                 }
                 break;
 
             case MINUTE:
                 if (to == Unit.DECADE) {
-
+                    constant = 1.90259e-7;
                 }
                 if (to == Unit.YEAR) {
-
+                    constant = 1.90259e-6;
                 }
                 if (to == Unit.MONTH) {
-
+                    constant = 2.2831e-5;
                 }
                 if (to == Unit.WEEK) {
-
+                    constant = 9.92063e-5;
                 }
                 if (to == Unit.DAY) {
-
+                    constant = 0.000694444;
                 }
                 if (to == Unit.HOUR) {
-
+                    constant = 0.0166667;
                 }
                 if (to == Unit.MINUTE) {
                     constant = 1;
                 }
                 if (to == Unit.SECOND) {
-
+                    constant = 60;
                 }
                 break;
 
             case SECOND:
                 if (to == Unit.DECADE) {
-
+                    constant = 3.17098e-9;
                 }
                 if (to == Unit.YEAR) {
-
+                    constant = 3.17098e-8;
                 }
                 if (to == Unit.MONTH) {
-
+                    constant = 3.80517e-7;
                 }
                 if (to == Unit.WEEK) {
-
+                    constant = 1.65344e-6;
                 }
                 if (to == Unit.DAY) {
-
+                    constant = 1.15741e-5;
                 }
                 if (to == Unit.HOUR) {
-
+                    constant = 0.000277778;
                 }
                 if (to == Unit.MINUTE) {
-
+                    constant = 0.0166667;
                 }
                 if (to == Unit.SECOND) {
                     constant = 1;
