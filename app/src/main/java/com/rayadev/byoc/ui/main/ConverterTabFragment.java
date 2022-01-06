@@ -1,10 +1,12 @@
 package com.rayadev.byoc.ui.main;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
@@ -14,6 +16,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -39,8 +42,11 @@ import org.jetbrains.annotations.NotNull;
 public class ConverterTabFragment extends Fragment {
 
 
-    private int spinnerID;
     private ConverterViewModel mConverterViewModel;
+
+    //Toolbar and Spinner UI
+    private int spinnerID;
+    private Spinner mSpinner;
 
     //Views for the converter UI
     private TextView mUnitATitleTextView, mUnitBTitleTextView;
@@ -50,6 +56,7 @@ public class ConverterTabFragment extends Fragment {
     //Bottom UI
     private ImageView mBuildConverterButton, mAddConverterButton;
     private LinearLayout mBottomUI;
+    private View mConverterUILayout;
 
     private SpinnerCategorySelection mSpinnerCategorySelection;
 
@@ -91,28 +98,25 @@ public class ConverterTabFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_converter_tab, container, false);
 
-        linkViews(view);
-        setBottomUIOnClicks();
-        buildSpinner(view);
-
-        //SetUp View Model
-        mConverterViewModel = new ViewModelProvider(this).get(ConverterViewModel.class);
-
-        //For first create suppress keyboard until user selects units.
-
-        if(mFreshFragment = true) {
-            suppressKeyBoard();
-        }
 
         return view;
 
     }
+
 
     // Any view setup should occur here.  E.g., view lookups and attaching view listeners.
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
 
 //        setSpinnerScrollViewFragment(spinnerID);
+
+        linkViews(view);
+        setBottomUIOnClicks();
+        buildSpinner(view);
+        setUpKeyboardManagement();
+
+        //SetUp View Model
+        mConverterViewModel = new ViewModelProvider(this).get(ConverterViewModel.class);
 
     }
 
@@ -125,16 +129,16 @@ public class ConverterTabFragment extends Fragment {
         mAddConverterButton = view.findViewById(R.id.add_converter_button);
 
         //Link ConverterBox Views
-        View converterUILayout = view.findViewById(R.id.converter_cardlayout_include_converter_tab); // root View id from include
+        mConverterUILayout = view.findViewById(R.id.converter_cardlayout_include_converter_tab); // root View id from include
 
-        mUnitATitleTextView = converterUILayout.findViewById(R.id.cardView_UnitATitle_TextView);
-        mUnitBTitleTextView = converterUILayout.findViewById(R.id.cardView_UnitBTitle_TextView);
+        mUnitATitleTextView = mConverterUILayout.findViewById(R.id.cardView_UnitATitle_TextView);
+        mUnitBTitleTextView = mConverterUILayout.findViewById(R.id.cardView_UnitBTitle_TextView);
 
-        mUnitAInputEditText = converterUILayout.findViewById(R.id.cardView_UnitAInput_EditText);
-        mUnitBInputEditText = converterUILayout.findViewById(R.id.cardView_UnitBInput_EditText);
+        mUnitAInputEditText = mConverterUILayout.findViewById(R.id.cardView_UnitAInput_EditText);
+        mUnitBInputEditText = mConverterUILayout.findViewById(R.id.cardView_UnitBInput_EditText);
 
-        mConverterInfoButton = converterUILayout.findViewById(R.id.cardView_InfoButton);
-        mConverterSwapButton = converterUILayout.findViewById(R.id.cardView_SwapButton);
+        mConverterInfoButton = mConverterUILayout.findViewById(R.id.cardView_InfoButton);
+        mConverterSwapButton = mConverterUILayout.findViewById(R.id.cardView_SwapButton);
 
     }
 
@@ -243,17 +247,17 @@ public class ConverterTabFragment extends Fragment {
         //Alphabetized
         String[]units = {getString(R.string.spinner_area_title), getString(R.string.spinner_currency_title), getString(R.string.spinner_distance_title),getString(R.string.spinner_temperature_title), getString(R.string.spinner_time_title), getString(R.string.spinner_volume_title), getString(R.string.spinner_weight_title)};
 
-        Spinner spinner = (Spinner) view.findViewById(R.id.spinner2);
+        mSpinner = (Spinner) view.findViewById(R.id.spinner2);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this.getActivity(), android.R.layout.simple_spinner_item, units);
         adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
-        spinner.setAdapter(adapter);
+        mSpinner.setAdapter(adapter);
 
         //Sets the initial spinner category to distance.
         if(mFreshFragment) {
-            spinner.setSelection(2);
+            mSpinner.setSelection(2);
         }
 
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        mSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parentView, View view, int position, long id) {
                 String selected = parentView.getItemAtPosition(position).toString();
@@ -261,7 +265,6 @@ public class ConverterTabFragment extends Fragment {
                 CharSequence text = selected;
 //                int duration = Toast.LENGTH_SHORT;
                 Log.i("STAG", text.toString());
-
 
 
                 if (text.equals(getString(R.string.spinner_area_title))) {
@@ -337,6 +340,37 @@ public class ConverterTabFragment extends Fragment {
 
     }
 
+    private void setUpKeyboardManagement() {
+        //For first create suppress keyboard until user selects units.
+        if(mFreshFragment = true) {
+            suppressKeyBoard();
+        }
+
+        //Should hide the keyboard whenever a user touches blank space on the cardview
+        //Saw lots of people trying to touch there to close the keyboard.
+        //Seems to work well.
+        RelativeLayout mTitleTextViews = mConverterUILayout.findViewById(R.id.cardView_Title_TextViews_RelativeLayout);
+        mTitleTextViews.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                hideKeyboard(getActivity());
+                return false;
+            }
+        });
+
+        //Hides keyboard if user clicks the spinner
+        //Just for making the UI flow better? Kinda choppy.
+        mSpinner.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+
+                hideKeyboard(getActivity());
+                return false;
+            }
+        });
+
+    }
+
     //Replaces the ScrollViews for unit selection based on the spinner menu choice.
     private void setSpinnerScrollViewFragment(int layoutID) {
         SpinnerScrollViewFragment mFragment = new SpinnerScrollViewFragment(layoutID, new SpinnerScrollViewFragment.UserConverterSelection() {
@@ -387,8 +421,9 @@ public class ConverterTabFragment extends Fragment {
         Log.i("STAG", "setUpTargetTemp() called");
 
         enableKeyboard();
-        mUnitAInputEditText.clearFocus();
-        mUnitBInputEditText.clearFocus();
+        //Not needed.
+//        mUnitAInputEditText.clearFocus();
+//        mUnitBInputEditText.clearFocus();
 
         clearUserInput();
 
@@ -461,8 +496,9 @@ public class ConverterTabFragment extends Fragment {
         //Restores the keyboard functionality for EditTexts that was disable in onCreateView.
         enableKeyboard();
 
-        mUnitAInputEditText.clearFocus();
-        mUnitBInputEditText.clearFocus();
+        //Not needed.
+//        mUnitAInputEditText.clearFocus();
+//        mUnitBInputEditText.clearFocus();
         clearUserInput();
 
 
@@ -558,6 +594,17 @@ public class ConverterTabFragment extends Fragment {
 
     }
 
+    public void hideKeyboard(@NotNull Activity activity) {
+        InputMethodManager imm = (InputMethodManager) activity.getSystemService(Activity.INPUT_METHOD_SERVICE);
+        //Find the currently focused view, so we can grab the correct window token from it.
+        View view = activity.getCurrentFocus();
+        //If no view currently has focus, create a new one, just so we can grab a window token from it
+        if (view == null) {
+            view = new View(activity);
+        }
+        imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+    }
+
 
     private void setUpTargetCurrency(String currencyPair, String currencyA, String currencyB) {
 
@@ -586,8 +633,8 @@ public class ConverterTabFragment extends Fragment {
     private void setCurrencyLogic(double currencyValue) {
 
         enableKeyboard();
-        mUnitAInputEditText.clearFocus();
-        mUnitBInputEditText.clearFocus();
+//        mUnitAInputEditText.clearFocus();
+//        mUnitBInputEditText.clearFocus();
 
         clearUserInput();
 
