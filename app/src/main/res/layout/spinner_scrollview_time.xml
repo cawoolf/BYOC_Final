@@ -7,7 +7,7 @@
     style="@style/custom_scrollview_style">
 
     <LinearLayout
-        android:id="@+id/masterAreaLinearLayout_Preset_ScrollView"
+        android:id="@+id/masterTimeLinearLayout_Preset_ScrollView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"

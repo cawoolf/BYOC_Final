@@ -7,7 +7,7 @@
     android:orientation="vertical">
 
     <LinearLayout
-        android:id="@+id/masterAreaLinearLayout_Preset_ScrollView"
+        android:id="@+id/masterWeightLinearLayout_Preset_ScrollView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
