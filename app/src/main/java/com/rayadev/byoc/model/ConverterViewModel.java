@@ -20,7 +20,7 @@ public class ConverterViewModel extends AndroidViewModel {
 
     public ConverterViewModel(@NonNull Application application) {
         super(application);
-        mRepository = new ConverterRepository(application);
+        mRepository = new ConverterRepository(application); //Repository initializes database
         mConverterFavoritesList = mRepository.getConverterFavoritesList();
     }
 

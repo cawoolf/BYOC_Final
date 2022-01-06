@@ -18,8 +18,14 @@ public abstract class ConverterDatabase extends RoomDatabase {
     private static ConverterDatabase INSTANCE;
 
     public static ConverterDatabase getDatabase(final Context context) {
+
+        //If there is no database, create one
+        //Does that mean that everytime the ConverterViewModel is initialized, the code runs all the way to here?
+        //Create a Test class for that?
         if (INSTANCE == null) {
             synchronized (ConverterDatabase.class) {
+
+                //Redundant if statement?
                 if (INSTANCE == null) {
 
                     // Create database here

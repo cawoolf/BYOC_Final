@@ -19,7 +19,8 @@ public class ConverterRepository{
 
     //Add a constructor that gets a handle to the database and initializes the member variables.
     public ConverterRepository(Application application) {
-        ConverterDatabase db = ConverterDatabase.getDatabase(application);
+
+        ConverterDatabase db = ConverterDatabase.getDatabase(application); //Creates the database instance
         mConverterDAO = db.getConverterDAO();
         mConverterFavoritesList = mConverterDAO.getFavoriteConverterList();
     }
