@@ -11,6 +11,9 @@
 
     <string name="action_1">Convert</string>
 
+    <!--Email-->
+    <string name="info_email">rayadevinfo@gmail.com</string>
+
 
     <!-- Unit Categories -->
     <string name="unit_category_distance">Distance</string>
